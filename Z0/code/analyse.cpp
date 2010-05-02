@@ -147,6 +147,8 @@ int cevent::setce(int k, float px, float py, float pz, float m)
 {
   int kk;   
 
+  cout << "********************************************* " << _ready << endl;
+  
   if(_ktotce < 1) {
     cout << "ERROR cevent::setce: _ktotce = " << _ktotce << endl;
     return -9;
@@ -160,12 +162,14 @@ int cevent::setce(int k, float px, float py, float pz, float m)
     if(_massce[k]>0) _charge[k] = m/fabs(m); 
     _ready = 1;
     for (kk=1; kk<=_ktotce; kk++) {
-      if(_charge[kk]<-1.) _ready = 0;
+      if(_charge[kk]<-1.) _ready = 1;
     }
+    cout << "********************************************* " << _ready << endl;
     return 0;
   }
   else {
     cout << "ERROR cevent::setce: _ktotce > k = " << k << endl;
+    cout << "********************************************* " << _ready << endl;
     return -8;
   }
 }	
@@ -319,7 +323,7 @@ float cevent::charge(int k)       // Liefert die Ladung des Teilchens k
 ///////////////////////////////////////////////////////////////////////////
 
 string str_datfile;
-int read_event(cevent &event);
+int read_event(cevent &event, unsigned char m);
 
 int main()
 {
@@ -408,8 +412,8 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
   for(n=1; n<=nevmax; n++) {
     
     cevent event;
-    result = read_event(event);
-
+    result = read_event(event, m);
+    
     nevent++;
     
     if(nevent<=5) {
@@ -448,18 +452,20 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
 	muonselection_N_cluster->Fill(ktot);
       }
 	
+      float p_T = 0.;
+      
       for(k=1; k<=ktot; k++) {
 
-	  float p_T = sqrt(event.momentum(k,1)*event.momentum(k,1) + event.momentum(k,2)*event.momentum(k,2));
+	  p_T += sqrt(event.momentum(k,1)*event.momentum(k,1) + event.momentum(k,2)*event.momentum(k,2));
 	  float p_ges = sqrt(event.momentum(k,1)*event.momentum(k,1) + event.momentum(k,2)*event.momentum(k,2) + event.momentum(k,3)*event.momentum(k,3));	//kann man das verwenden? statt p_T?
 	  hist_p_ges->Fill(p_ges);
 	  
-	  if (p_T < 15.){								//auch noch keine exakte aussage
-	    hadronselection_hist_p_T->Fill(p_T);
-	  }
-	  else {
-	    muonselection_hist_p_T->Fill(p_T);
-	  }
+// 	  if (p_T < 15.){								//auch noch keine exakte aussage
+// 	    hadronselection_hist_p_T->Fill(p_T);
+// 	  }
+// 	  else {
+// 	    muonselection_hist_p_T->Fill(p_T);
+// 	  }
 //  
 //  Beginne hier die Analyse
 //  Beispiel: Selektiere die Muonen (Massen-Kriterium)
@@ -475,6 +481,7 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
 	     }
            }
          }
+         hadronselection_hist_p_T->Fill(p_T);
       
       ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
       
@@ -482,17 +489,19 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
         hevent++;
         cutflow_hadronselection_hist_E_vis->Fill(etot);
 	cutflow_hadronselection_N_cluster->Fill(ktot);
+	float p_T = 0.;
 	for (int l=1; l<=ktot; ++l) {
-	  float p_T = sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
-	  if (p_T < 15.){
-	    cutflow_hadronselection_hist_p_T->Fill(p_T);
+	  p_T += sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
+// 	  if (p_T < 15.){
+// 	    cutflow_hadronselection_hist_p_T->Fill(p_T);
 	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
               px_mu = event.momentum(k,1);
 	      if ( fabs(px_mu) < 10 ){
 	        hadronselection_Muon_px->Fill(px_mu);					//ist... leer
 	      }
             }
-	  }
+// 	  }
+	  cutflow_hadronselection_hist_p_T->Fill(p_T);
 	}
 	  
       }
@@ -501,17 +510,19 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
         muevent++;
 	cutflow_muonselection_hist_E_vis->Fill(etot);
 	cutflow_muonselection_N_cluster->Fill(ktot);
+	float p_T = 0.;
 	for (int l=1; l<=ktot; ++l) {
-	  float p_T = sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
-	  if (p_T > 15.){
-	    cutflow_muonselection_hist_p_T->Fill(p_T);
+	  p_T += sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
+// 	  if (p_T > 15.){
+// 	    cutflow_muonselection_hist_p_T->Fill(p_T);
 	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
               px_mu = event.momentum(k,1);
 	      if ( fabs(px_mu) > 10 ){
 	        hadronselection_Muon_px->Fill(px_mu);					//auch leer!!! bringt auch keine aussage -> rausnehmen, was vernuenftiges machen
 	      }
             }
-	  }
+// 	  }
+	  cutflow_muonselection_hist_p_T->Fill(p_T);
 	}
       }
       }
@@ -555,46 +566,53 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
 //   
 // }
 
-int read_event(cevent &event)
+int read_event(cevent &event, unsigned char n)
 {
   int k;
   int l;
   int ktot;
   float px, py, pz, m;
   static bool first = 1;
-  static ifstream fin;
+  static ifstream fin[5];
 
   if(first) {
     cout << str_datfile << endl;
-    fin.open(str_datfile.c_str(),ios::in);
+    fin[n].open(str_datfile.c_str(),ios::in);
     first=0;
-    if (!fin) {
+    if (!fin[n]) {
       cout << "ERROR read_event: " << str_datfile << " cannot be read !" << endl;
       return -1;
     }
   }
 
-  if(!fin.eof()) {
+  if(!fin[n].eof()) {
     ktot = -1;
-    fin >> ktot;
+    fin[n] >> ktot;
+    cout << "********************************************* " << ktot << endl;
     if(ktot > 0) {
       event.setnce(ktot);                 
       for (k=1; k<=ktot; k++) {
-        fin >> l >> px >> py >> pz >> m;
+        fin[n] >> l >> px >> py >> pz >> m;
         event.setce(l,px,py,pz,m);                 
+	cout << "********************************************* " << endl;
       }
+      cout << "////////////////////////////////////////////// " << endl;
       return 0;
     }
     else if(ktot==0) {
+      fin[n].close();
+      cout << "********************************************* close /////////" << endl;
       return -1;
     }
     else if(ktot <0) {
-      fin.close();
+      fin[n].close();
+      cout << "********************************************* close /////////" << endl;
       return -2;
     }
   }
   else {
-    fin.close();
+    fin[n].close();
+    cout << "********************************************* close /////////" << endl;
     return -2;
   }
 

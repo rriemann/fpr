@@ -1,0 +1,35 @@
+Humboldt-Universitaet zu Berlin
+F-Praktikum 
+Versuch Z0 - Zresonanz
+Martin zur Nedden
+
+
+files:
+++++++
+
+   README              dieser file
+   analyse.cpp         Beispiel-C++-Programm
+   analyse.install     Install-Skript: erzeugt analyse aus analyse.cpp
+   89gev.dat           L3-Daten bei 89 GeV Schwerpunktsenergie
+   91gev.dat           L3-Daten bei 91 GeV Schwerpunktsenergie
+   93gev.dat           L3-Daten bei 93 GeV Schwerpunktsenergie
+   hadrons.dat         Monte-Carlo-Daten e+e- -> q q -> Hadronen, 91 GeV
+   muons.dat           Monte-Carlo-Daten e+e- -> mu mu, 91 GeV 
+   plot.C              ROOT-Skript Beispiel zum Plotten der selektierten Daten
+   bwigner.cxx	       ROOT-Skript fuer den Breit-Wiegner-Fit der Messpunkte
+   convolution.cxx     ROOT-Skript fuer die Beschreibung der ISR-Effekte
+   		       im Breit-Wiegner-Fit
+
+
+update history:
+~~~~~~~~~~~~~~~
+2004-10-07  
+2005-03-21   no root.install, new path names in analyse.install     
+2007-02-02   adaption for EEL linux cluster
+2008-12-11   rewriting Breit-Wiegner scripts to port to root
+2009-04-02   new analysis.install to be independent from
+             root path 
+
+web
+====
+http://www-eep.physik.hu-berlin.de/teaching/lab/z0resonance

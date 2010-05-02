@@ -461,7 +461,7 @@ int main(int argc, char *argv[])
       
       ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
       
-      if (etot > 0.8 && ktot >= 10){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+      if (etot > 0.5 && etot < 1.5 && ktot >= 10){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
         hevent++;
         cutflow_hadronselection_hist_E_vis->Fill(etot);
 	cutflow_hadronselection_N_cluster->Fill(ktot);
@@ -474,21 +474,21 @@ int main(int argc, char *argv[])
             }
 	}
       }
-      else{
-      if (etot < 0.8 && ktot < 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
-        muevent++;
-	cutflow_muonselection_hist_E_vis->Fill(etot);
-	cutflow_muonselection_N_cluster->Fill(ktot);
-	for (int l=1; l<=ktot; ++l) {
-	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
-              px_mu = event.momentum(k,1);
-	      if ( fabs(px_mu) > 10 ){
-	        hadronselection_Muon_px->Fill(px_mu);					//auch leer!!! bringt auch keine aussage -> rausnehmen, was vernuenftiges machen
-	      }
-            }
-	}
-      }
-      }
+//       else{
+//       if (etot < 0.8 && ktot < 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+//         muevent++;
+// 	cutflow_muonselection_hist_E_vis->Fill(etot);
+// 	cutflow_muonselection_N_cluster->Fill(ktot);
+// 	for (int l=1; l<=ktot; ++l) {
+// 	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
+//               px_mu = event.momentum(k,1);
+// 	      if ( fabs(px_mu) > 10 ){
+// 	        hadronselection_Muon_px->Fill(px_mu);					//auch leer!!! bringt auch keine aussage -> rausnehmen, was vernuenftiges machen
+// 	      }
+//             }
+// 	}
+//       }
+//       }
       }
       else if(result==-2) {
 	break;

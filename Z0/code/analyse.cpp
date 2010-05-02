@@ -323,17 +323,10 @@ float cevent::charge(int k)       // Liefert die Ladung des Teilchens k
 ///////////////////////////////////////////////////////////////////////////
 
 string str_datfile;
-int read_event(cevent &event, unsigned char m);
+int read_event(cevent &event);
 
 int main()
 {
-
-  const char *const inputfileselection[] = { "89gev.dat", "91gev.dat", "93gev.dat", "hadrons.dat", "muons.dat" };
-  const char *const outputfileselection[] = { "89gev.root", "91gev.root", "93gev.root", "hadrons.root", "muons.root" };
-  const unsigned char inputfileselectionSize = sizeof(inputfileselection)/sizeof(inputfileselection[0]);
-  
-for (unsigned char m = 0; m < inputfileselectionSize; ++m){
-	cout << inputfileselection[m] << endl;
 
   int n;
   int k;
@@ -545,14 +538,13 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
 
   histofile->Write();
 
-}
-/*  if(nevent > 0) {
+  if(nevent > 0) {
     return 0;
   }
   else {
     return -9;
   }
-  return 0;*/
+  return 0;
 }     
 
 
@@ -566,53 +558,47 @@ for (unsigned char m = 0; m < inputfileselectionSize; ++m){
 //   
 // }
 
-int read_event(cevent &event, unsigned char n)
+int read_event(cevent &event)
 {
   int k;
   int l;
   int ktot;
   float px, py, pz, m;
   static bool first = 1;
-  static ifstream fin[5];
+  static ifstream fin;
 
   if(first) {
     cout << str_datfile << endl;
-    fin[n].open(str_datfile.c_str(),ios::in);
+    fin.open(str_datfile.c_str(),ios::in);
     first=0;
-    if (!fin[n]) {
+    if (!fin) {
       cout << "ERROR read_event: " << str_datfile << " cannot be read !" << endl;
       return -1;
     }
   }
 
-  if(!fin[n].eof()) {
+  if(!fin.eof()) {
     ktot = -1;
-    fin[n] >> ktot;
-    cout << "********************************************* " << ktot << endl;
+    fin >> ktot;
     if(ktot > 0) {
       event.setnce(ktot);                 
       for (k=1; k<=ktot; k++) {
-        fin[n] >> l >> px >> py >> pz >> m;
+        fin >> l >> px >> py >> pz >> m;
         event.setce(l,px,py,pz,m);                 
-	cout << "********************************************* " << endl;
       }
-      cout << "////////////////////////////////////////////// " << endl;
       return 0;
     }
     else if(ktot==0) {
-      fin[n].close();
-      cout << "********************************************* close /////////" << endl;
+      fin.close();
       return -1;
     }
     else if(ktot <0) {
-      fin[n].close();
-      cout << "********************************************* close /////////" << endl;
+      fin.close();
       return -2;
     }
   }
   else {
-    fin[n].close();
-    cout << "********************************************* close /////////" << endl;
+    fin.close();
     return -2;
   }
 

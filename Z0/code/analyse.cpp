@@ -145,9 +145,7 @@ int cevent::setnce(int ktot)        //  zum Setzen von _ktotce
 
 int cevent::setce(int k, float px, float py, float pz, float m)
 {
-  int kk;   
-
-  cout << "********************************************* " << _ready << endl;
+  int kk;
   
   if(_ktotce < 1) {
     cout << "ERROR cevent::setce: _ktotce = " << _ktotce << endl;
@@ -164,7 +162,6 @@ int cevent::setce(int k, float px, float py, float pz, float m)
     for (kk=1; kk<=_ktotce; kk++) {
       if(_charge[kk]<-1.) _ready = 1;
     }
-    cout << "********************************************* " << _ready << endl;
     return 0;
   }
   else {
@@ -325,7 +322,7 @@ float cevent::charge(int k)       // Liefert die Ladung des Teilchens k
 string str_datfile;
 int read_event(cevent &event);
 
-int main()
+int main(int argc, char *argv[])
 {
 
   int n;
@@ -353,7 +350,8 @@ int main()
 //   char datfile[100];                       // Name des Datenfiles
 //   char hisfile[100];
 
-  string str_hisfile;
+  string str_hisfile = (string)argv[2];
+  str_datfile = (string)argv[1];
   
   cout << endl;
   cout << " ************************************************************\n";
@@ -364,11 +362,11 @@ int main()
 
 //   cout << "Bitte Namen des Datenfiles angeben (e.g. 89gev.dat)" << endl;
 //   cin >> datfile;
-  str_datfile = (string)(inputfileselection[m]);
+//   str_datfile = (string)(inputfileselection[m]);
 
 //   cout << "Bitte Namen des Histogrammfiles angeben (e.g. 89gev.root)" << endl;
 //   cin >> hisfile;
-  str_hisfile = (string)(outputfileselection[m]);
+//   str_hisfile = (string)(outputfileselection[m]);
 
 //   char datfile[20] = str_datfile.c_str();
 //   char hisfile[20] = str_hisfile.c_str();
@@ -381,22 +379,18 @@ int main()
    
    TH1F *muonselection_N_cluster  = new TH1F("muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);			//histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
    TH1F *muonselection_Muon_px    = new TH1F("muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
-   TH1F *muonselection_hist_p_T   = new TH1F("muonselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
    TH1F *muonselection_hist_E_vis = new TH1F("muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5);
    
    TH1F *hadronselection_N_cluster  = new TH1F("hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);
    TH1F *hadronselection_Muon_px    = new TH1F("hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
-   TH1F *hadronselection_hist_p_T   = new TH1F("hadronselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
    TH1F *hadronselection_hist_E_vis = new TH1F("hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5);
 
    TH1F *cutflow_muonselection_N_cluster  = new TH1F("cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);			//histogramme im cutflow
    TH1F *cutflow_muonselection_Muon_px    = new TH1F("cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
-   TH1F *cutflow_muonselection_hist_p_T   = new TH1F("cutflow_muonselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
    TH1F *cutflow_muonselection_hist_E_vis = new TH1F("cutflow_muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5);
    
    TH1F *cutflow_hadronselection_N_cluster  = new TH1F("cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);
    TH1F *cutflow_hadronselection_Muon_px    = new TH1F("cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
-   TH1F *cutflow_hadronselection_hist_p_T   = new TH1F("cutflow_hadronselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
    TH1F *cutflow_hadronselection_hist_E_vis = new TH1F("cutflow_hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5);
    
 //
@@ -405,7 +399,7 @@ int main()
   for(n=1; n<=nevmax; n++) {
     
     cevent event;
-    result = read_event(event, m);
+    result = read_event(event);
     
     nevent++;
     
@@ -444,22 +438,12 @@ int main()
       else {
 	muonselection_N_cluster->Fill(ktot);
       }
-	
-      float p_T = 0.;
       
       for(k=1; k<=ktot; k++) {
 
-	  p_T += sqrt(event.momentum(k,1)*event.momentum(k,1) + event.momentum(k,2)*event.momentum(k,2));
 	  float p_ges = sqrt(event.momentum(k,1)*event.momentum(k,1) + event.momentum(k,2)*event.momentum(k,2) + event.momentum(k,3)*event.momentum(k,3));	//kann man das verwenden? statt p_T?
 	  hist_p_ges->Fill(p_ges);
-	  
-// 	  if (p_T < 15.){								//auch noch keine exakte aussage
-// 	    hadronselection_hist_p_T->Fill(p_T);
-// 	  }
-// 	  else {
-// 	    muonselection_hist_p_T->Fill(p_T);
-// 	  }
-//  
+
 //  Beginne hier die Analyse
 //  Beispiel: Selektiere die Muonen (Massen-Kriterium)
 //
@@ -474,7 +458,6 @@ int main()
 	     }
            }
          }
-         hadronselection_hist_p_T->Fill(p_T);
       
       ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
       
@@ -482,40 +465,27 @@ int main()
         hevent++;
         cutflow_hadronselection_hist_E_vis->Fill(etot);
 	cutflow_hadronselection_N_cluster->Fill(ktot);
-	float p_T = 0.;
 	for (int l=1; l<=ktot; ++l) {
-	  p_T += sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
-// 	  if (p_T < 15.){
-// 	    cutflow_hadronselection_hist_p_T->Fill(p_T);
 	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
               px_mu = event.momentum(k,1);
 	      if ( fabs(px_mu) < 10 ){
 	        hadronselection_Muon_px->Fill(px_mu);					//ist... leer
 	      }
             }
-// 	  }
-	  cutflow_hadronselection_hist_p_T->Fill(p_T);
 	}
-	  
       }
       else{
       if (etot < 0.8 && ktot < 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
         muevent++;
 	cutflow_muonselection_hist_E_vis->Fill(etot);
 	cutflow_muonselection_N_cluster->Fill(ktot);
-	float p_T = 0.;
 	for (int l=1; l<=ktot; ++l) {
-	  p_T += sqrt(event.momentum(l,1)*event.momentum(l,1) + event.momentum(l,2)*event.momentum(l,2));
-// 	  if (p_T > 15.){
-// 	    cutflow_muonselection_hist_p_T->Fill(p_T);
 	    if(fabs(fabs(event.mass(k))-0.106)<0.001) {
               px_mu = event.momentum(k,1);
 	      if ( fabs(px_mu) > 10 ){
 	        hadronselection_Muon_px->Fill(px_mu);					//auch leer!!! bringt auch keine aussage -> rausnehmen, was vernuenftiges machen
 	      }
             }
-// 	  }
-	  cutflow_muonselection_hist_p_T->Fill(p_T);
 	}
       }
       }

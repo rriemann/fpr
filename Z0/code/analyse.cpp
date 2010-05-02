@@ -318,16 +318,18 @@ float cevent::charge(int k)       // Liefert die Ladung des Teilchens k
 
 ///////////////////////////////////////////////////////////////////////////
 
-char datfile[100];                       // Name des Datenfiles
-
+string str_datfile;
 int read_event(cevent &event);
-
-// void hadronselection();
-// void muonselection();
 
 int main()
 {
 
+  const char *const inputfileselection[] = { "89gev.dat", "91gev.dat", "93gev.dat", "hadrons.dat", "muons.dat" };
+  const char *const outputfileselection[] = { "89gev.root", "91gev.root", "93gev.root", "hadrons.root", "muons.root" };
+  const unsigned char inputfileselectionSize = sizeof(inputfileselection)/sizeof(inputfileselection[0]);
+  
+for (unsigned char m = 0; m < inputfileselectionSize; ++m){
+	cout << inputfileselection[m] << endl;
 
   int n;
   int k;
@@ -348,12 +350,14 @@ int main()
 
   int nevmax;
   int nevent = 0;
+  int hevent = 0;
+  int muevent = 0;
 
-  char hisfile[100];
+//   char datfile[100];                       // Name des Datenfiles
+//   char hisfile[100];
 
-//
-// Begruessung.....
-//
+  string str_hisfile;
+  
   cout << endl;
   cout << " ************************************************************\n";
   cout << " *       Willkommen zum F-Praktimumsversuch Z0 !!!          *\n";
@@ -361,39 +365,42 @@ int main()
   cout << " ************************************************************\n";
   cout << endl;
 
-  cout << "Bitte Namen des Datenfiles angeben (e.g. 89gev.dat)" << endl;
-  cin >> datfile;
+//   cout << "Bitte Namen des Datenfiles angeben (e.g. 89gev.dat)" << endl;
+//   cin >> datfile;
+  str_datfile = (string)(inputfileselection[m]);
 
-  cout << "Bitte Namen des Histogrammfiles angeben (e.g. 89gev.root)" << endl;
-  cin >> hisfile;
+//   cout << "Bitte Namen des Histogrammfiles angeben (e.g. 89gev.root)" << endl;
+//   cin >> hisfile;
+  str_hisfile = (string)(outputfileselection[m]);
 
-  cout << "Bitte Zahl der zu verarbeitenden Ereignisse angeben (e.g. 1000)" 
-       << endl;
-  cin >> nevmax;
+//   char datfile[20] = str_datfile.c_str();
+//   char hisfile[20] = str_hisfile.c_str();
 
-   TFile *histofile = new TFile(hisfile,"RECREATE");
+  nevmax = 10000;
+
+   TFile *histofile = new TFile(str_hisfile.c_str(),"RECREATE");
 
    TH1F *hist_p_ges  = new TH1F("P_ges","p_{ges}",100,0.,30.);
    
    TH1F *muonselection_N_cluster  = new TH1F("muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);			//histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
    TH1F *muonselection_Muon_px    = new TH1F("muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
    TH1F *muonselection_hist_p_T   = new TH1F("muonselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
-   TH1F *muonselection_hist_E_vis = new TH1F("muonselection_Evis","Normierte sichtbare Energie",100,0.,150.);
+   TH1F *muonselection_hist_E_vis = new TH1F("muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5);
    
    TH1F *hadronselection_N_cluster  = new TH1F("hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);
    TH1F *hadronselection_Muon_px    = new TH1F("hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
    TH1F *hadronselection_hist_p_T   = new TH1F("hadronselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
-   TH1F *hadronselection_hist_E_vis = new TH1F("hadronselection_E_vis","Normierte sichtbare Energie",100,0.,150.);
+   TH1F *hadronselection_hist_E_vis = new TH1F("hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5);
 
    TH1F *cutflow_muonselection_N_cluster  = new TH1F("cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);			//histogramme im cutflow
    TH1F *cutflow_muonselection_Muon_px    = new TH1F("cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
    TH1F *cutflow_muonselection_hist_p_T   = new TH1F("cutflow_muonselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
-   TH1F *cutflow_muonselection_hist_E_vis = new TH1F("cutflow_muonselection_Evis","Normierte sichtbare Energie",100,0.,150.);
+   TH1F *cutflow_muonselection_hist_E_vis = new TH1F("cutflow_muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5);
    
    TH1F *cutflow_hadronselection_N_cluster  = new TH1F("cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100.);
    TH1F *cutflow_hadronselection_Muon_px    = new TH1F("cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50.);
    TH1F *cutflow_hadronselection_hist_p_T   = new TH1F("cutflow_hadronselection_p_T","transversaler Impuls der Teilchen",100,0.,50.);
-   TH1F *cutflow_hadronselection_hist_E_vis = new TH1F("cutflow_hadronselection_E_vis","Normierte sichtbare Energie",100,0.,150.);
+   TH1F *cutflow_hadronselection_hist_E_vis = new TH1F("cutflow_hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5);
    
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -421,8 +428,8 @@ int main()
 // 
     if(result==0) {
       
-      float etot = event.GetEtot();
-      if (etot > 0.8*91.){									//was ist mit den muonevents, die diese bedingung erfüllen? gesondert betrachten?
+      float etot = event.GetEtot()*1./91.0;
+      if (etot > 0.8){									//was ist mit den muonevents, die diese bedingung erfüllen? gesondert betrachten?
 	      hadronselection_hist_E_vis->Fill(etot);
       }
       else{
@@ -471,7 +478,8 @@ int main()
       
       ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
       
-      if (etot > 0.8*91. && ktot >= 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+      if (etot > 0.8 && ktot >= 10){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+        hevent++;
         cutflow_hadronselection_hist_E_vis->Fill(etot);
 	cutflow_hadronselection_N_cluster->Fill(ktot);
 	for (int l=1; l<=ktot; ++l) {
@@ -489,7 +497,8 @@ int main()
 	  
       }
       else{
-      if (etot < 0.8*91. && ktot < 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+      if (etot < 0.8 && ktot < 20){									//wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+        muevent++;
 	cutflow_muonselection_hist_E_vis->Fill(etot);
 	cutflow_muonselection_N_cluster->Fill(ktot);
 	for (int l=1; l<=ktot; ++l) {
@@ -516,6 +525,8 @@ int main()
 //  Statistik:
 //
   cout << "Zahl der analysierten Ereignisse = " << nevent << endl;
+  cout << "Zahl der analysierten h-Ereignisse = " << hevent << endl;
+  cout << "Zahl der analysierten mu-Ereignisse = " << muevent << endl;
 
 //
 // Alle Histogramme werden auf den oben definierten File geschrieben										woher weiß er, dass die histos in dieses file gehoeren?
@@ -523,13 +534,14 @@ int main()
 
   histofile->Write();
 
-  if(nevent > 0) {
+}
+/*  if(nevent > 0) {
     return 0;
   }
   else {
     return -9;
   }
-  return 0;
+  return 0;*/
 }     
 
 
@@ -553,11 +565,11 @@ int read_event(cevent &event)
   static ifstream fin;
 
   if(first) {
-    cout << datfile << endl;
-    fin.open(datfile,ios::in);
+    cout << str_datfile << endl;
+    fin.open(str_datfile.c_str(),ios::in);
     first=0;
     if (!fin) {
-      cout << "ERROR read_event: " << datfile << " cannot be read !" << endl;
+      cout << "ERROR read_event: " << str_datfile << " cannot be read !" << endl;
       return -1;
     }
   }

@@ -115,6 +115,7 @@ public:
     float mass ( int );
     float charge ( int );
     float GetEtot();
+    float GetParticleEnergy(int k);
 };
 
 
@@ -164,7 +165,6 @@ int cevent::setce ( int k, float px, float py, float pz, float m ) {
         return 0;
     } else {
         cout << "ERROR cevent::setce: _ktotce > k = " << k << endl;
-        cout << "********************************************* " << _ready << endl;
         return -8;
     }
 }
@@ -301,6 +301,9 @@ float cevent::mass ( int k ) {     // Liefert die Masse des Teilchens k
 
 }
 
+float cevent::GetParticleEnergy(int k){
+    return sqrt( mass(k)*mass(k) + momentum(k,1)*momentum(k,1) + momentum(k,2)*momentum(k,2) + momentum(k,3)*momentum(k,3) );
+}
 
 float cevent::charge ( int k ) {  // Liefert die Ladung des Teilchens k
 
@@ -361,10 +364,12 @@ int main ( int argc, char *argv[] ) {
     TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
     TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
     TH1F *muonselection_hist_E_vis = new TH1F ( "muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5 );
+    TH1F *muonselection_hist_E_T   = new TH1F ( "muonselection_E_T","Normierte E_{T}",100,0.,1.5 );
 
     TH1F *hadronselection_N_cluster  = new TH1F ( "hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );
     TH1F *hadronselection_Muon_px    = new TH1F ( "hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
     TH1F *hadronselection_hist_E_vis = new TH1F ( "hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5 );
+    TH1F *hadronselection_hist_E_T   = new TH1F ( "hadronselection_E_T","Normierte E_{T}",100,0.,1.5 );
 
     TH1F *cutflow_muonselection_N_cluster  = new TH1F ( "cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );                  //histogramme im cutflow
     TH1F *cutflow_muonselection_Muon_px    = new TH1F ( "cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
@@ -401,6 +406,7 @@ int main ( int argc, char *argv[] ) {
         if ( result==0 ) {
 
             float etot = event.GetEtot() *1./91.0;
+            
             if ( etot > 0.8 ) {                                                                 //was ist mit den muonevents, die diese bedingung erfüllen? gesondert betrachten?
                 hadronselection_hist_E_vis->Fill ( etot );
             } else {
@@ -418,10 +424,18 @@ int main ( int argc, char *argv[] ) {
                 muonselection_N_cluster->Fill ( ktot );
             }
 
+            float E_particle = 0.;
+            float E_T = 0.;
+            float E_par = 0.;
+
             for ( k=1; k<=ktot; k++ ) {
 
                 float p_ges = sqrt ( event.momentum ( k,1 ) *event.momentum ( k,1 ) + event.momentum ( k,2 ) *event.momentum ( k,2 ) + event.momentum ( k,3 ) *event.momentum ( k,3 ) );        //kann man das verwenden? statt p_T?
                 hist_p_ges->Fill ( p_ges );
+                
+                E_particle = event.GetParticleEnergy(k);
+                E_T += E_particle * sqrt ( event.momentum ( k,1 ) *event.momentum ( k,1 ) + event.momentum ( k,2 ) *event.momentum ( k,2 )) /p_ges;
+                E_par += sqrt(E_particle*E_particle - E_T*E_T); 
 
 //  Beginne hier die Analyse
 //  Beispiel: Selektiere die Muonen (Massen-Kriterium)
@@ -436,6 +450,8 @@ int main ( int argc, char *argv[] ) {
                     }
                 }
             }
+            hadronselection_hist_E_T->Fill(E_T*1./91.);
+            muonselection_hist_E_T->Fill(E_T*1./91.);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 

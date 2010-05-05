@@ -45,6 +45,7 @@
 #include "TFile.h"
 #include "TH1.h"
 #include "TF1.h"
+#include "TLorentzVector.h"
 
 using std::cout;
 using std::endl;
@@ -361,6 +362,9 @@ int main ( int argc, char *argv[] ) {
 
     TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",100,0.,30. );
 
+    TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",100,0.,1.5 );
+    TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", 100, 0., 1.5);
+    
     TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
     TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
     TH1F *muonselection_hist_E_vis = new TH1F ( "muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5 );
@@ -378,6 +382,8 @@ int main ( int argc, char *argv[] ) {
     TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );
     TH1F *cutflow_hadronselection_Muon_px    = new TH1F ( "cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
     TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5 );
+    
+    TH1F *zmass_after_hadroncuts = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", 100, 0., 1.5);
 
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -405,7 +411,9 @@ int main ( int argc, char *argv[] ) {
 //
         if ( result==0 ) {
 
-            float etot = event.GetEtot() *1./91.0;
+            float etot = event.GetEtot() *1./91.0;                                              //besser: SP-E
+            
+            hist_Eevent_ges->Fill(etot);
             
             if ( etot > 0.8 ) {                                                                 //was ist mit den muonevents, die diese bedingung erfüllen? gesondert betrachten?
                 hadronselection_hist_E_vis->Fill ( etot );
@@ -427,9 +435,16 @@ int main ( int argc, char *argv[] ) {
             float E_particle = 0.;
             float E_T = 0.;
             float E_par = 0.;
+            
+            TLorentzVector tlv_event(0,0,0,0);
 
             for ( k=1; k<=ktot; k++ ) {
+                
+                TLorentzVector tlv_particle;
+                tlv_particle.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
 
+                tlv_event += tlv_particle;
+                
                 float p_ges = sqrt ( event.momentum ( k,1 ) *event.momentum ( k,1 ) + event.momentum ( k,2 ) *event.momentum ( k,2 ) + event.momentum ( k,3 ) *event.momentum ( k,3 ) );        //kann man das verwenden? statt p_T?
                 hist_p_ges->Fill ( p_ges );
                 
@@ -450,24 +465,33 @@ int main ( int argc, char *argv[] ) {
                     }
                 }
             }
+            hist_zmass->Fill(tlv_event.M()/91.);
+            
             hadronselection_hist_E_T->Fill(E_T*1./91.);
             muonselection_hist_E_T->Fill(E_T*1./91.);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
+            tlv_event.SetXYZM(0,0,0,0);
+            
             if ( etot > 0.5 && etot < 1.5 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
                 hevent++;
                 cutflow_hadronselection_hist_E_vis->Fill ( etot );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 for ( int l=1; l<=ktot; ++l ) {
-                    if ( fabs ( fabs ( event.mass ( k ) )-0.106 ) <0.001 ) {
-                        px_mu = event.momentum ( k,1 );
+                    TLorentzVector tlv_part;
+                    tlv_part.SetXYZM(event.momentum(l,1), event.momentum(l,2), event.momentum(l,3), event.mass(l));
+                    tlv_event += tlv_part;
+                    if ( fabs ( fabs ( event.mass ( l ) )-0.106 ) <0.001 ) {
+                        px_mu = event.momentum ( l,1 );
                         if ( fabs ( px_mu ) < 10 ) {
                             hadronselection_Muon_px->Fill ( px_mu );                                    //ist... leer
                         }
                     }
                 }
             }
+            zmass_after_hadroncuts->Fill(tlv_event.M()/91.);
+                    
 //       else{
 //       if (etot < 0.8 && ktot < 20){                                                                  //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
 //         muevent++;

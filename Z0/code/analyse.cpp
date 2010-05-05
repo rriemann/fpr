@@ -349,13 +349,6 @@ int main ( int argc, char *argv[] ) {
     string str_hisfile = ( string ) argv[2];
     str_datfile = ( string ) argv[1];
 
-    cout << endl;
-    cout << " ************************************************************\n";
-    cout << " *       Willkommen zum F-Praktimumsversuch Z0 !!!          *\n";
-    cout << " * >>> analyse.cpp <<<    C++ version  3.0  M.z.N.  02/2007 *\n";
-    cout << " ************************************************************\n";
-    cout << endl;
-
     nevmax = 10000;
     
     const int BINS = 50;
@@ -389,10 +382,6 @@ int main ( int argc, char *argv[] ) {
         result = read_event ( event );
 
         nevent++;
-
-//         if ( nevent<=5 ) {
-//             event.print();
-//         }
 
 //
 //  read_event gibt zurueck

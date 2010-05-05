@@ -367,7 +367,7 @@ int main ( int argc, char *argv[] ) {
 
     TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",BINS,0.,1.5 );
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
-    TH1F *hist_missing_E_T = new TH1F("missing_E_T", "Missing E_{T}", BINS, 0., 1.5);
+    TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
     
     TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
     TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
@@ -435,43 +435,32 @@ int main ( int argc, char *argv[] ) {
             } else {
                 muonselection_N_cluster->Fill ( ktot );
             }
-
-            float event_E_T = 0.;
-            float event_E_par = 0.;
             
             TLorentzVector tlv_event(0,0,0,0);
+            vector<TLorentzVector> vec_event;
 
             for ( k=1; k<=ktot; k++ ) {
                 
                 TLorentzVector tlv_particle;
                 tlv_particle.SetPxPyPzE(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.GetParticleEnergy(k));
+                vec_event.push_back(tlv_particle);
 
                 tlv_event += tlv_particle;
                 
                 float p_ges = tlv_particle.P();        //kann man das verwenden? statt p_T?
                 hist_p_ges->Fill ( p_ges );
-
-                event_E_T += tlv_particle.E() * tlv_particle.Pt() / p_ges;
-                event_E_par += sqrt(tlv_particle.E()*tlv_particle.E() - event_E_T*event_E_T); 
-
-//  Beginne hier die Analyse
-//  Beispiel: Selektiere die Muonen (Massen-Kriterium)
-//
-                if ( fabs ( fabs ( event.mass ( k ) )-0.106 ) <0.001 ) {
-
-                    px_mu = event.momentum ( k,1 );
-                    if ( fabs ( px_mu ) > 10 ) {
-                        muonselection_Muon_px->Fill ( px_mu );
-                    } else {
-                        hadronselection_Muon_px->Fill ( px_mu );                                        //ebenfalls noch nicht soo toll als unterscheidung
-                    }
-                }
             }
+
+//             for(vector<TFile*>::iterator f_it(files.begin()), f_it_end(files.end()); f_it != f_it_end; ++f_it) {
+//             *f_it;
+//             }
             hist_zmass->Fill(tlv_event.M()/91.);
-            
+
+            float event_E_T = tlv_event.Et();
+            float event_E_par = sqrt(tlv_event.E()*tlv_event.E() - event_E_T*event_E_T);
             hadronselection_hist_E_T->Fill(event_E_T/s);
             muonselection_hist_E_T->Fill(event_E_T/s);
-            hist_missing_E_T->Fill((s-event_E_T)/s);
+            hist_E_T->Fill(event_E_T/s);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 

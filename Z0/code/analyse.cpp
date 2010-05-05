@@ -364,20 +364,11 @@ int main ( int argc, char *argv[] ) {
     TFile *histofile = new TFile ( str_hisfile.c_str(),"RECREATE" );
 
     TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",BINS,0.,30. );
-
     TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",BINS,0.,1.5 );
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
     TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
-    
-    TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
-    TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
-    TH1F *muonselection_hist_E_vis = new TH1F ( "muonselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
-    TH1F *muonselection_hist_E_T   = new TH1F ( "muonselection_E_T","Normierte E_{T}",BINS,0.,1.5 );
-
-    TH1F *hadronselection_N_cluster  = new TH1F ( "hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
-    TH1F *hadronselection_Muon_px    = new TH1F ( "hadronselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
-    TH1F *hadronselection_hist_E_vis = new TH1F ( "hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
-    TH1F *hadronselection_hist_E_T   = new TH1F ( "hadronselection_E_T","Normierte E_{T}",BINS,0.,1.5 );
+    TH1F *hist_N_cluster = new TH1F("N_Cluster", "N_{Cluster}", BINS, 0., 100.);
+    TH1F *hist_E_vis = new TH1F( "E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
     TH1F *cutflow_muonselection_N_cluster  = new TH1F ( "cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme im cutflow
     TH1F *cutflow_muonselection_Muon_px    = new TH1F ( "cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
@@ -415,27 +406,17 @@ int main ( int argc, char *argv[] ) {
 //
         if ( result==0 ) {
 
-            float etot = event.GetEtot() *1./91.0;                                              //besser: SP-E
+            float etot = event.GetEtot()/s;
             
             hist_Eevent_ges->Fill(etot);
-            
-            if ( etot > 0.8 ) {                                                                 //was ist mit den muonevents, die diese bedingung erfüllen? gesondert betrachten?
-                hadronselection_hist_E_vis->Fill ( etot );
-            } else {
-                muonselection_hist_E_vis->Fill ( etot );
-            }
 
 //
 // Auslese der totalen Anzahl an Teilchen (k) im gegebenen Ereignis
 //
             ktot = event.number_particles();
-
-            if ( ktot >= 20 ) {                                                                 //hadronische ereignisse haben mehr kalo-treffer/teilchen als andere ereignisse (zB µ) -> cut darauf
-                hadronselection_N_cluster->Fill ( ktot );                                               //sollte vermutl. das wichtigste histogramm sein, weil daraus der wq bestimmt wird???
-            } else {
-                muonselection_N_cluster->Fill ( ktot );
-            }
             
+            hist_N_cluster->Fill(ktot);
+
             TLorentzVector tlv_event(0,0,0,0);
             vector<TLorentzVector> vec_event;
 
@@ -447,20 +428,19 @@ int main ( int argc, char *argv[] ) {
 
                 tlv_event += tlv_particle;
                 
-                float p_ges = tlv_particle.P();        //kann man das verwenden? statt p_T?
-                hist_p_ges->Fill ( p_ges );
+                hist_p_ges->Fill ( tlv_particle.P() );
             }
 
 //             for(vector<TFile*>::iterator f_it(files.begin()), f_it_end(files.end()); f_it != f_it_end; ++f_it) {
 //             *f_it;
 //             }
+            hist_E_vis->Fill(tlv_event.E()/s);
+            
             hist_zmass->Fill(tlv_event.M()/91.);
 
             float event_E_T = tlv_event.Et();
             float event_E_par = sqrt(tlv_event.E()*tlv_event.E() - event_E_T*event_E_T);
-            hadronselection_hist_E_T->Fill(event_E_T/s);
-            muonselection_hist_E_T->Fill(event_E_T/s);
-            hist_E_T->Fill(event_E_T/s);
+            hist_E_T->Fill(event_E_T/tlv_event.E());
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
@@ -475,10 +455,6 @@ int main ( int argc, char *argv[] ) {
                     tlv_part.SetXYZM(event.momentum(l,1), event.momentum(l,2), event.momentum(l,3), event.mass(l));
                     tlv_event += tlv_part;
                     if ( fabs ( fabs ( event.mass ( l ) )-0.106 ) <0.001 ) {
-                        px_mu = event.momentum ( l,1 );
-                        if ( fabs ( px_mu ) < 10 ) {
-                            hadronselection_Muon_px->Fill ( px_mu );                                    //ist... leer
-                        }
                     }
                 }
             }
@@ -492,9 +468,6 @@ int main ( int argc, char *argv[] ) {
 //      for (int l=1; l<=ktot; ++l) {
 //          if(fabs(fabs(event.mass(k))-0.106)<0.001) {
 //               px_mu = event.momentum(k,1);
-//            if ( fabs(px_mu) > 10 ){
-//              hadronselection_Muon_px->Fill(px_mu);                                   //auch leer!!! bringt auch keine aussage -> rausnehmen, was vernuenftiges machen
-//            }
 //             }
 //      }
 //       }

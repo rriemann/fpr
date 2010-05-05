@@ -364,7 +364,6 @@ int main ( int argc, char *argv[] ) {
     TFile *histofile = new TFile ( str_hisfile.c_str(),"RECREATE" );
 
     TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",BINS,0.,30. );
-    TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",BINS,0.,1.5 );
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
     TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
     TH1F *hist_N_cluster = new TH1F("N_Cluster", "N_{Cluster}", BINS, 0., 100.);
@@ -391,9 +390,9 @@ int main ( int argc, char *argv[] ) {
 
         nevent++;
 
-        if ( nevent<=5 ) {
-            event.print();
-        }
+//         if ( nevent<=5 ) {
+//             event.print();
+//         }
 
 //
 //  read_event gibt zurueck
@@ -406,10 +405,7 @@ int main ( int argc, char *argv[] ) {
 // Fuehre die Analyse nur aus , falls das Ereginis nicht leer ist !
 //
         if ( result==0 ) {
-
-            float etot = event.GetEtot()/s;
             
-            hist_Eevent_ges->Fill(etot);
 
 //
 // Auslese der totalen Anzahl an Teilchen (k) im gegebenen Ereignis
@@ -437,29 +433,20 @@ int main ( int argc, char *argv[] ) {
 //             }
             hist_E_vis->Fill(tlv_event.E()/s);
             
-            hist_zmass->Fill(tlv_event.M()/91.);
+            hist_zmass->Fill(tlv_event.M()/s);
 
             hist_E_T->Fill(tlv_event.Et()/s);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
-            tlv_event.SetXYZM(0,0,0,0);
-            
-            if ( etot > 0.5 && etot < 1.5 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+            if ( tlv_event.E()/s > 0.7 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
-                cutflow_hadronselection_hist_E_vis->Fill ( etot );
+                cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
-                for ( int l=1; l<=ktot; ++l ) {
-                    TLorentzVector tlv_part;
-                    tlv_part.SetXYZM(event.momentum(l,1), event.momentum(l,2), event.momentum(l,3), event.mass(l));
-                    tlv_event += tlv_part;
-                    if ( fabs ( fabs ( event.mass ( l ) )-0.106 ) <0.001 ) {
-                    }
-                }
             }
-            zmass_after_hadroncuts->Fill(tlv_event.M()/91.);
-                    
+            zmass_after_hadroncuts->Fill(tlv_event.M()/s);
+
 //       else{
 //       if (etot < 0.8 && ktot < 20){                                                                  //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
 //         muevent++;

@@ -428,7 +428,7 @@ int main ( int argc, char *argv[] ) {
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
-            if ( tlv_event.E()/s > 0.7 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+            if ( tlv_event.E()/s > 0.7 && ktot > 10 ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );

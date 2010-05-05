@@ -6,7 +6,7 @@ CC=g++
 analyseZ0: analyse.o
 	$(CXX) analyse.o $(LDLIBS) -o analyseZ0
 
-run:
+run: analyseZ0
 	./run_all.sh
 
 clean:

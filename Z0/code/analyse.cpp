@@ -357,33 +357,37 @@ int main ( int argc, char *argv[] ) {
     cout << endl;
 
     nevmax = 10000;
+    
+    const int BINS = 50;
+    const float s = 91.33;                                          //TODO
 
     TFile *histofile = new TFile ( str_hisfile.c_str(),"RECREATE" );
 
-    TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",100,0.,30. );
+    TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",BINS,0.,30. );
 
-    TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",100,0.,1.5 );
-    TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", 100, 0., 1.5);
+    TH1F *hist_Eevent_ges  = new TH1F ( "E-event_ges","Event-Energie",BINS,0.,1.5 );
+    TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
+    TH1F *hist_missing_E_T = new TH1F("missing_E_T", "Missing E_{T}", BINS, 0., 1.5);
     
-    TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
-    TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
-    TH1F *muonselection_hist_E_vis = new TH1F ( "muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5 );
-    TH1F *muonselection_hist_E_T   = new TH1F ( "muonselection_E_T","Normierte E_{T}",100,0.,1.5 );
+    TH1F *muonselection_N_cluster  = new TH1F ( "muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme, in denen die einzelnen cuts verarbeitet sind, ohne cutflow
+    TH1F *muonselection_Muon_px    = new TH1F ( "muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
+    TH1F *muonselection_hist_E_vis = new TH1F ( "muonselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
+    TH1F *muonselection_hist_E_T   = new TH1F ( "muonselection_E_T","Normierte E_{T}",BINS,0.,1.5 );
 
-    TH1F *hadronselection_N_cluster  = new TH1F ( "hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );
-    TH1F *hadronselection_Muon_px    = new TH1F ( "hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
-    TH1F *hadronselection_hist_E_vis = new TH1F ( "hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5 );
-    TH1F *hadronselection_hist_E_T   = new TH1F ( "hadronselection_E_T","Normierte E_{T}",100,0.,1.5 );
+    TH1F *hadronselection_N_cluster  = new TH1F ( "hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
+    TH1F *hadronselection_Muon_px    = new TH1F ( "hadronselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
+    TH1F *hadronselection_hist_E_vis = new TH1F ( "hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
+    TH1F *hadronselection_hist_E_T   = new TH1F ( "hadronselection_E_T","Normierte E_{T}",BINS,0.,1.5 );
 
-    TH1F *cutflow_muonselection_N_cluster  = new TH1F ( "cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );                  //histogramme im cutflow
-    TH1F *cutflow_muonselection_Muon_px    = new TH1F ( "cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
-    TH1F *cutflow_muonselection_hist_E_vis = new TH1F ( "cutflow_muonselection_Evis","Normierte sichtbare Energie",100,0.,1.5 );
+    TH1F *cutflow_muonselection_N_cluster  = new TH1F ( "cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme im cutflow
+    TH1F *cutflow_muonselection_Muon_px    = new TH1F ( "cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
+    TH1F *cutflow_muonselection_hist_E_vis = new TH1F ( "cutflow_muonselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
-    TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",100,0.,100. );
-    TH1F *cutflow_hadronselection_Muon_px    = new TH1F ( "cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",100,-50.,50. );
-    TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",100,0.,1.5 );
+    TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
+    TH1F *cutflow_hadronselection_Muon_px    = new TH1F ( "cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
+    TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
     
-    TH1F *zmass_after_hadroncuts = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", 100, 0., 1.5);
+    TH1F *zmass_after_hadroncuts = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
 
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -432,25 +436,23 @@ int main ( int argc, char *argv[] ) {
                 muonselection_N_cluster->Fill ( ktot );
             }
 
-            float E_particle = 0.;
-            float E_T = 0.;
-            float E_par = 0.;
+            float event_E_T = 0.;
+            float event_E_par = 0.;
             
             TLorentzVector tlv_event(0,0,0,0);
 
             for ( k=1; k<=ktot; k++ ) {
                 
                 TLorentzVector tlv_particle;
-                tlv_particle.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
+                tlv_particle.SetPxPyPzE(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.GetParticleEnergy(k));
 
                 tlv_event += tlv_particle;
                 
-                float p_ges = sqrt ( event.momentum ( k,1 ) *event.momentum ( k,1 ) + event.momentum ( k,2 ) *event.momentum ( k,2 ) + event.momentum ( k,3 ) *event.momentum ( k,3 ) );        //kann man das verwenden? statt p_T?
+                float p_ges = tlv_particle.P();        //kann man das verwenden? statt p_T?
                 hist_p_ges->Fill ( p_ges );
-                
-                E_particle = event.GetParticleEnergy(k);
-                E_T += E_particle * sqrt ( event.momentum ( k,1 ) *event.momentum ( k,1 ) + event.momentum ( k,2 ) *event.momentum ( k,2 )) /p_ges;
-                E_par += sqrt(E_particle*E_particle - E_T*E_T); 
+
+                event_E_T += tlv_particle.E() * tlv_particle.Pt() / p_ges;
+                event_E_par += sqrt(tlv_particle.E()*tlv_particle.E() - event_E_T*event_E_T); 
 
 //  Beginne hier die Analyse
 //  Beispiel: Selektiere die Muonen (Massen-Kriterium)
@@ -467,8 +469,9 @@ int main ( int argc, char *argv[] ) {
             }
             hist_zmass->Fill(tlv_event.M()/91.);
             
-            hadronselection_hist_E_T->Fill(E_T*1./91.);
-            muonselection_hist_E_T->Fill(E_T*1./91.);
+            hadronselection_hist_E_T->Fill(event_E_T/s);
+            muonselection_hist_E_T->Fill(event_E_T/s);
+            hist_missing_E_T->Fill((s-event_E_T)/s);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 

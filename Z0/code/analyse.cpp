@@ -377,6 +377,7 @@ int main ( int argc, char *argv[] ) {
     TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
     TH1F *cutflow_hadronselection_Muon_px    = new TH1F ( "cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
     TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
+    TH1F *cutflow_hadronselection_hist_E_T   = new TH1F("cutflow_hadronselection_E_T", "cutflow E_{T}", BINS, 0., 1.5);
     
     TH1F *zmass_after_hadroncuts = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
 
@@ -438,9 +439,7 @@ int main ( int argc, char *argv[] ) {
             
             hist_zmass->Fill(tlv_event.M()/91.);
 
-            float event_E_T = tlv_event.Et();
-            float event_E_par = sqrt(tlv_event.E()*tlv_event.E() - event_E_T*event_E_T);
-            hist_E_T->Fill(event_E_T/tlv_event.E());
+            hist_E_T->Fill(tlv_event.Et()/s);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
@@ -448,6 +447,7 @@ int main ( int argc, char *argv[] ) {
             
             if ( etot > 0.5 && etot < 1.5 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
                 hevent++;
+                cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
                 cutflow_hadronselection_hist_E_vis->Fill ( etot );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 for ( int l=1; l<=ktot; ++l ) {

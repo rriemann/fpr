@@ -352,7 +352,7 @@ int main ( int argc, char *argv[] ) {
     nevmax = 10000;
     
     const int BINS = 50;
-    const float s = 91.33;                                          //TODO
+    const float s = atof(argv[3]);
 
     TFile *histofile = new TFile ( str_hisfile.c_str(),"RECREATE" );
 
@@ -371,7 +371,7 @@ int main ( int argc, char *argv[] ) {
     TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
     TH1F *cutflow_hadronselection_hist_E_T   = new TH1F("cutflow_hadronselection_E_T", "cutflow E_{T}", BINS, 0., 1.5);
     
-    TH1F *zmass_after_hadroncuts = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
+    TH1F *cutflow_hadronselection_zmass = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
 
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -428,13 +428,13 @@ int main ( int argc, char *argv[] ) {
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
 
-            if ( tlv_event.E()/s > 0.7 && ktot >= 10 ) {                                                                     //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
+            if ( tlv_event.E()/s > 0.7 && ktot > 11 ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
+                cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
             }
-            zmass_after_hadroncuts->Fill(tlv_event.M()/s);
 
 //       else{
 //       if (etot < 0.8 && ktot < 20){                                                                  //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)

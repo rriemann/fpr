@@ -434,7 +434,8 @@ int main ( int argc, char *argv[] ) {
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
-            } else if (tlv_event.E() < 0.7 && ktot < 11){
+            }
+            if (ktot < 11 && (tlv_event.E() < 0.7 ||  (tlv_event.E() > 1. && tlv_event.E() < 1.2) )  ){
                 muevent++;
                 cutflow_muonselection_hist_E_vis->Fill(tlv_event.E());
                 cutflow_muonselection_N_cluster->Fill(ktot);

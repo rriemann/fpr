@@ -1,5 +1,5 @@
 CXXFLAGS=`root-config --cflags`
-LDLIBS=`root-config --libs`
+LDLIBS=`root-config --libs` -lMinuit
 CXX=g++
 CC=g++
 
@@ -8,6 +8,9 @@ analyseZ0: analyse.o
 
 run: analyseZ0
 	./run_all.sh
+
+fit: bwigner
+# 	$(CXX) bwigner.o convolution.o $(LDLIBS) -o bwigner
 
 clean:
 	rm -f analyseZ0 analyse.o

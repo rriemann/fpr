@@ -434,20 +434,12 @@ int main ( int argc, char *argv[] ) {
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
+            } else if (tlv_event.E() < 0.7 && ktot < 11){
+                muevent++;
+                cutflow_muonselection_hist_E_vis->Fill(tlv_event.E());
+                cutflow_muonselection_N_cluster->Fill(ktot);
             }
 
-//       else{
-//       if (etot < 0.8 && ktot < 20){                                                                  //wie gesagt, noch nicht alles perfekt (zT ueberschneidende bereiche)
-//         muevent++;
-//      cutflow_muonselection_hist_E_vis->Fill(etot);
-//      cutflow_muonselection_N_cluster->Fill(ktot);
-//      for (int l=1; l<=ktot; ++l) {
-//          if(fabs(fabs(event.mass(k))-0.106)<0.001) {
-//               px_mu = event.momentum(k,1);
-//             }
-//      }
-//       }
-//       }
         } else if ( result==-2 ) {
             break;
         }

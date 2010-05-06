@@ -1,4 +1,4 @@
-#include "convolution.cxx"
+#include "convolution.cpp"
 #include <iostream>
 #include <math.h>
 #include <TH1.h>
@@ -193,4 +193,9 @@ void bwigner()
   contcan->cd();
   gPad->SaveAs("corr.png");
   return;
+}
+
+int main(){
+  bwigner();
+  return 0;
 }

@@ -369,6 +369,10 @@ int main ( int argc, char *argv[] ) {
     TH1F *cutflow_hadronselection_hist_E_T   = new TH1F("cutflow_hadronselection_E_T", "cutflow E_{T}", BINS, 0., 1.5);
     
     TH1F *cutflow_hadronselection_zmass = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
+    
+    
+    TH1F *cutflow_bgselection_hist_E_vis = new TH1F ( "cutflow_bgselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
+    TH1F *cutflow_bgselection_N_cluster  = new TH1F ( "cutflow_bgselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
 
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -422,18 +426,24 @@ int main ( int argc, char *argv[] ) {
             hist_E_T->Fill(tlv_event.Et()/s);
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
-
+            bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
+            bool is_muon   = (ktot < 11);
             if ( tlv_event.E()/s > 0.7 && ktot > 11 ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
+
             }
             if (ktot < 11){
                 muevent++;
                 cutflow_muonselection_hist_E_vis->Fill(tlv_event.E()/s);
                 cutflow_muonselection_N_cluster->Fill(ktot);
+            }
+            if(!is_hadron && !is_muon) {
+                cutflow_bgselection_hist_E_vis->Fill(tlv_event.E()/s);
+                cutflow_bgselection_N_cluster->Fill( ktot );
             }
 
         } else if ( result==-2 ) {

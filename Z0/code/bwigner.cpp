@@ -53,7 +53,7 @@ void bwigner()
     cout << "\txfehler: "; cin >> xe[i]; cout << endl;
     cout << "\ty: "; cin >> y[i];
     cout << "\tyfehler: "; cin >> ye[i]; cout << endl;
-  }
+  } 
 
   // Create graph from data and fit against fitfuncion
   TCanvas* canvas = new TCanvas("canvas","Breit-Wigner Fit fuer Z0-Resonanz");
@@ -154,17 +154,17 @@ void bwigner()
   gPad->Delete();
   
   TGraph* contour;
-  char* lsg = "gamma-sigma";
-  char* asgx = "Zerfallsbreite [GeV]";
-  char* asgy = "Wirkungsquerschnitt [nb]";
+  char lsg[] = "gamma-sigma";
+  char asgx[] = "Zerfallsbreite [GeV]";
+  char asgy[] = "Wirkungsquerschnitt [nb]";
   
-  char* lsm = "mass-sigma";
-  char* asmx = "Z0 Masse [GeV]";
-  char* asmy = "Wirkungsquerschnitt [nb]";
+  char lsm[] = "mass-sigma";
+  char asmx[] = "Z0 Masse [GeV]";
+  char asmy[] = "Wirkungsquerschnitt [nb]";
   
-  char* lgm = "mass-gamma";
-  char* agmx = "Z0 Masse [GeV]";
-  char* agmy = "Zerfallsbreite [GeV]";
+  char lgm[] = "mass-gamma";
+  char agmx[] = "Z0 Masse [GeV]";
+  char agmy[] = "Zerfallsbreite [GeV]";
   
   char* larray[5]={0,lsg,0,lsm,lgm};
   char* aarray[5][2]={{},{asgx,asgy},{},{asmx,asmy},{agmx,agmy},};

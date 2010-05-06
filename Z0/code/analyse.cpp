@@ -356,18 +356,15 @@ int main ( int argc, char *argv[] ) {
 
     TFile *histofile = new TFile ( str_hisfile.c_str(),"RECREATE" );
 
-    TH1F *hist_p_ges  = new TH1F ( "P_ges","p_{ges}",BINS,0.,30. );
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
     TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
     TH1F *hist_N_cluster = new TH1F("N_Cluster", "N_{Cluster}", BINS, 0., 100.);
     TH1F *hist_E_vis = new TH1F( "E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
     TH1F *cutflow_muonselection_N_cluster  = new TH1F ( "cutflow_muonselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );                  //histogramme im cutflow
-    TH1F *cutflow_muonselection_Muon_px    = new TH1F ( "cutflow_muonselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
     TH1F *cutflow_muonselection_hist_E_vis = new TH1F ( "cutflow_muonselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
     TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
-    TH1F *cutflow_hadronselection_Muon_px    = new TH1F ( "cutflow_hadronselection_mu_px","x-Komponente des Muon-Impulses",BINS,-50.,50. );
     TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
     TH1F *cutflow_hadronselection_hist_E_T   = new TH1F("cutflow_hadronselection_E_T", "cutflow E_{T}", BINS, 0., 1.5);
     
@@ -413,8 +410,6 @@ int main ( int argc, char *argv[] ) {
                 vec_event.push_back(tlv_particle);
 
                 tlv_event += tlv_particle;
-                
-                hist_p_ges->Fill ( tlv_particle.P() );
             }
 
 //             for(vector<TFile*>::iterator f_it(files.begin()), f_it_end(files.end()); f_it != f_it_end; ++f_it) {
@@ -435,9 +430,9 @@ int main ( int argc, char *argv[] ) {
                 cutflow_hadronselection_N_cluster->Fill ( ktot );
                 cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
             }
-            if (ktot < 11 && (tlv_event.E()/s < 0.7 ||  (tlv_event.E()/s > 1. && tlv_event.E()/s < 1.2) )  ){
+            if (ktot < 11){
                 muevent++;
-                cutflow_muonselection_hist_E_vis->Fill(tlv_event.E());
+                cutflow_muonselection_hist_E_vis->Fill(tlv_event.E()/s);
                 cutflow_muonselection_N_cluster->Fill(ktot);
             }
 
@@ -466,17 +461,6 @@ int main ( int argc, char *argv[] ) {
     }
     return 0;
 }
-
-
-///////////////////////////////////////////////////////////////////
-
-// void hadronselection(){
-//
-// }
-//
-// void muonselection(){
-//
-// }
 
 int read_event ( cevent &event ) {
     int k;

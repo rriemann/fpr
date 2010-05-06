@@ -429,7 +429,7 @@ int main ( int argc, char *argv[] ) {
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
             bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
             bool is_muon   = (ktot < 11);
-            if ( tlv_event.E()/s > 0.7 && ktot > 11 ) {
+            if ( is_hadron ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
                 cutflow_hadronselection_hist_E_vis->Fill ( tlv_event.E()/s );
@@ -437,12 +437,12 @@ int main ( int argc, char *argv[] ) {
                 cutflow_hadronselection_zmass->Fill(tlv_event.M()/s);
 
             }
-            if (ktot < 11){
+            if ( is_muon ){
                 muevent++;
                 cutflow_muonselection_hist_E_vis->Fill(tlv_event.E()/s);
                 cutflow_muonselection_N_cluster->Fill(ktot);
             }
-            if(!is_hadron && !is_muon) { // && tlv_event.E()/s < 0.4 ) {
+            if(!is_hadron && !is_muon && tlv_event.E()/s < 0.4 ) {
                 bgevent++;
                 cutflow_bgselection_hist_E_vis->Fill(tlv_event.E()/s);
                 cutflow_bgselection_N_cluster->Fill( ktot );

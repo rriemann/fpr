@@ -140,7 +140,7 @@ void bwigner()
 
   // Make the plots
   gPad->Update();
-  gPad->SaveAs("fit.png");
+  gPad->SaveAs("../tmp/fit.png");
   bool qcontours;
   cout << "Konturen zeichnen (1/0)? (nur wenn keine parameter festgehalten!)" << endl;
   cin >> qcontours;
@@ -191,7 +191,7 @@ void bwigner()
     }
   }
   contcan->cd();
-  gPad->SaveAs("corr.png");
+  gPad->SaveAs("../tmp/corr.png");
   return;
 }
 

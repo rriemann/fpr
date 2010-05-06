@@ -345,6 +345,7 @@ int main ( int argc, char *argv[] ) {
     int nevent = 0;
     int hevent = 0;
     int muevent = 0;
+    int bgevent = 0;
 
     string str_hisfile = ( string ) argv[2];
     str_datfile = ( string ) argv[1];
@@ -443,9 +444,10 @@ int main ( int argc, char *argv[] ) {
             if(ktot < 11) {
                 muevent++;
                 cutflow_muonselection_hist_E_vis->Fill(tlv_event.E()/s);
-                cutflow_muonselection_N_cluster->Fill(ktot/s);
+                cutflow_muonselection_N_cluster->Fill(ktot);
             }
-            if(!is_hadron && !is_muon) {
+            if(!is_hadron && !is_muon) { // && tlv_event.E()/s < 0.4 ) {
+                bgevent++;
                 cutflow_bgselection_hist_E_vis->Fill(tlv_event.E()/s);
                 cutflow_bgselection_N_cluster->Fill( ktot );
             }
@@ -461,6 +463,8 @@ int main ( int argc, char *argv[] ) {
     cout << "Zahl der analysierten Ereignisse = " << nevent << endl;
     cout << "Zahl der analysierten h-Ereignisse = " << hevent << endl;
     cout << "Zahl der analysierten mu-Ereignisse = " << muevent << endl;
+    cout << "Zahl der analysierten bg-Ereignisse = " << bgevent << endl;
+    cout << "Diff zu Gesamt: " << (nevent - hevent - muevent - bgevent) << endl;
 
 //
 // Alle Histogramme werden auf den oben definierten File geschrieben                                                                            woher weiß er, dass die histos in dieses file gehoeren?

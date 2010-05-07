@@ -359,6 +359,7 @@ int main ( int argc, char *argv[] ) {
 
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
     TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
+    TH1F *hist_mass = new TH1F("mass", "mass", BINS, 0., 1.1);
     TH1F *hist_N_cluster = new TH1F("N_Cluster", "N_{Cluster}", BINS, 0., 100.);
     TH1F *hist_E_vis = new TH1F( "E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
@@ -415,6 +416,7 @@ int main ( int argc, char *argv[] ) {
                 vec_event.push_back(tlv_particle);
 
                 tlv_event += tlv_particle;
+                hist_mass->Fill(tlv_particle.M()/s);
             }
 
 //             for(vector<TFile*>::iterator f_it(files.begin()), f_it_end(files.end()); f_it != f_it_end; ++f_it) {

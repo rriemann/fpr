@@ -47,6 +47,7 @@
 #include "TH1.h"
 #include "TF1.h"
 #include "TLorentzVector.h"
+#include "TVector3.h"
 
 using std::cout;
 using std::endl;
@@ -410,6 +411,11 @@ int main ( int argc, char *argv[] ) {
             TLorentzVector tlv_event(0,0,0,0);
             vector<TLorentzVector> vec_event;
 
+            int N_mu_per_event = 0;
+            int muon_candidate_1 = 0;
+            TLorentzVector tlv_muon_candidate1, tlv_muon_candidate2;
+            double angle;
+            
             for ( k=1; k<=ktot; k++ ) {
                 
                 TLorentzVector tlv_particle;
@@ -418,6 +424,17 @@ int main ( int argc, char *argv[] ) {
 
                 tlv_event += tlv_particle;
                 hist_mass->Fill( tlv_particle.M() );
+                
+                if ( fabs(tlv_particle.M()-fabs(0.106) ) < 0.001){
+                    if (muon_candidate_1 != 0 && event.charge(k)*event.charge(muon_candidate_1) == -1){
+                        N_mu_per_event = 2;
+                        
+                        tlv_muon_candidate2.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
+                        angle = tlv_muon_candidate2.Angle( tlv_muon_candidate1.Vect() );
+                    }
+                    muon_candidate_1 = k;
+                    tlv_muon_candidate1.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
+                }
             }
 
 //             for(vector<TFile*>::iterator f_it(files.begin()), f_it_end(files.end()); f_it != f_it_end; ++f_it) {
@@ -431,7 +448,7 @@ int main ( int argc, char *argv[] ) {
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
             bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
-            bool is_muon   = (ktot < 11);
+            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs(cos(angle)) > 0.8);                      //TODO sollte es nicht eher >0.8 sein??? bei t+s ist das anders....
             if ( is_hadron ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );

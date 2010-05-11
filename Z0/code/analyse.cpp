@@ -448,7 +448,7 @@ int main ( int argc, char *argv[] ) {
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
             bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
-            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs((angle)) > 0.64);                      //TODO sollte es nicht eher >0.8 sein??? bei t+s ist das anders....
+            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs(cos(angle)) > 0.64);                      //TODO
             if ( is_hadron ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );

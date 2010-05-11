@@ -1,26 +1,26 @@
 N_had_89gev : 1804$
-N_mu_89gev : 7409$
+N_mu_89gev : 504$
 N_bg_89gev : 705$
 L_89gev : 179.3$
 
 N_had_91gev : 3956$
-N_mu_91gev : 5391$
+N_mu_91gev : 425$
 N_bg_91gev : 518$
 L_91gev : 135.9$
 
 N_had_93gev : 2121$
-N_mu_93gev : 6038$
+N_mu_93gev : 424$
 N_bg_93gev : 783$
 L_93gev : 151.1$
 
 epsilon_had : 9769/10000$
-epsilon_mu : 9963/9970$
+epsilon_mu : 6070/9970$
 
 sigma_had_89gev : (N_had_89gev - N_bg_89gev)/(L_89gev * epsilon_had);
-sigma_mu_89gev : (N_mu_89gev - N_bg_89gev)/(L_89gev * epsilon_mu);
-
 sigma_had_91gev : (N_had_91gev - N_bg_91gev)/(L_91gev * epsilon_had);
-sigma_mu_91gev : (N_mu_91gev - N_bg_91gev)/(L_91gev * epsilon_mu);
-
 sigma_had_93gev : (N_had_93gev - N_bg_93gev)/(L_93gev * epsilon_had);
-sigma_mu_93gev : (N_mu_93gev - N_bg_93gev)/(L_93gev * epsilon_mu);
+
+
+sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
+sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
+sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);

@@ -348,7 +348,7 @@ int main ( int argc, char *argv[] ) {
     str_datfile = ( string ) argv[1];
 
     nevmax = 10000;
-    
+
     const int BINS = 50;
     const float s = atof(argv[3]);
 
@@ -357,6 +357,7 @@ int main ( int argc, char *argv[] ) {
     TH1F *hist_zmass = new TH1F("zmass", "Z-Masse", BINS, 0., 1.5);
     TH1F *hist_E_T = new TH1F("E_T", "E_{T}", BINS, 0., 1.5);
     TH1F *hist_mass = new TH1F("mass", "mass", BINS, -0.01, 0.3);
+    TH1F *hist_most_energy = new TH1F("most_energy", "most energy", BINS, -0.01, 1.3);
     TH1F *hist_N_cluster = new TH1F("N_Cluster", "N_{Cluster}", BINS, 0., 100.);
     TH1F *hist_E_vis = new TH1F( "E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
 
@@ -366,10 +367,10 @@ int main ( int argc, char *argv[] ) {
     TH1F *cutflow_hadronselection_N_cluster  = new TH1F ( "cutflow_hadronselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
     TH1F *cutflow_hadronselection_hist_E_vis = new TH1F ( "cutflow_hadronselection_E_vis","Normierte sichtbare Energie",BINS,0.,1.5 );
     TH1F *cutflow_hadronselection_hist_E_T   = new TH1F("cutflow_hadronselection_E_T", "cutflow E_{T}", BINS, 0., 1.5);
-    
+
     TH1F *cutflow_hadronselection_zmass = new TH1F("zmass_after_hadroncuts", "Z-Masse nach Had.-Cuts", BINS, 0., 1.5);
-    
-    
+
+
     TH1F *cutflow_bgselection_hist_E_vis = new TH1F ( "cutflow_bgselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
     TH1F *cutflow_bgselection_N_cluster  = new TH1F ( "cutflow_bgselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
     TH1F *muon_abs_cos_theta  = new TH1F ( "muon_abs_cos_theta","abs(cos(\\theta))",BINS,0.,1. );
@@ -395,39 +396,39 @@ int main ( int argc, char *argv[] ) {
 // Fuehre die Analyse nur aus , falls das Ereginis nicht leer ist !
 //
         if ( result==0 ) {
-            
+
 
 //
 // Auslese der totalen Anzahl an Teilchen (k) im gegebenen Ereignis
 //
             ktot = event.number_particles();
-            
+
             hist_N_cluster->Fill(ktot);
 
             TLorentzVector tlv_event(0,0,0,0);
             vector<TLorentzVector> vec_event;
 
-            int N_mu_per_event = 0;
+            bool is_mu_event = false;
             int muon_candidate_1 = 0;
             TLorentzVector tlv_muon_candidate1, tlv_muon_candidate2;
-            double angle;
-            
+            TLorentzVector tlv_most_energy;
+
             for ( k=1; k<=ktot; k++ ) {
-                
+
                 TLorentzVector tlv_particle;
                 tlv_particle.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
                 vec_event.push_back(tlv_particle);
 
                 tlv_event += tlv_particle;
                 hist_mass->Fill( tlv_particle.M() );
-                
+                if ( tlv_most_energy.E() < tlv_particle.E() ) {
+                    tlv_most_energy = tlv_particle;
+                }
                 if ( fabs(tlv_particle.M()-0.106 ) < 0.001){
                     if (muon_candidate_1 != 0 && event.charge(k)*event.charge(muon_candidate_1) == -1){
-                        N_mu_per_event = 2;
-                        
+                        is_mu_event = true;
                         tlv_muon_candidate2.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
-                        angle = tlv_muon_candidate2.Angle( tlv_muon_candidate1.Vect() );
-                        muon_abs_cos_theta->Fill(fabs(cos(angle)));
+                        muon_abs_cos_theta->Fill(fabs(cos(tlv_muon_candidate2.Angle( tlv_muon_candidate1.Vect() ))));
                     }
                     muon_candidate_1 = k;
                     tlv_muon_candidate1.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
@@ -438,14 +439,22 @@ int main ( int argc, char *argv[] ) {
 //             *f_it;
 //             }
             hist_E_vis->Fill(tlv_event.E()/s);
-            
             hist_zmass->Fill(tlv_event.M()/s);
-
             hist_E_T->Fill(tlv_event.Et()/s);
+            hist_most_energy->Fill( tlv_most_energy.E()/tlv_event.E() );
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
             bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
-            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs(cos(angle)) > 0.9);                      //TODO
+            bool is_muon   = ktot < 12
+                             && is_mu_event
+                             && fabs(cos(tlv_muon_candidate2.Angle(
+                                         tlv_muon_candidate1.Vect()))) > 0.9
+                             && tlv_most_energy.E()/tlv_event.E() > 0.4
+                             && tlv_most_energy.E()/tlv_event.E() < 0.54
+                             && tlv_event.E()/s > 0.8
+                             && tlv_event.E()/s < 1.4
+                             // && tlv_event.Pt()/tlv_event.E() < 0.94 // TODO macht kein sinn
+                             ;
             if ( is_hadron ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );
@@ -536,4 +545,4 @@ int read_event ( cevent &event ) {
     return -9;
 
 }
-// kate: indent-mode cstyle; space-indent on; indent-width 4; 
+// kate: indent-mode cstyle; space-indent on; indent-width 4; replace-trailing-space-save on;

@@ -67,15 +67,12 @@
 % 	urlcolor	=	darkblue,
 	pdftitle	=	{Report zum 2. Elektronikversuch},
 	pdfsubject	=	{Praktikumsversuch}
-	pdfauthor	=
-{robert.riemann@physik.hu-berlin.de,thomas.murach@physik.hu-berlin.de},
-	pdfkeywords	=	{Praktikumsversuch, Elektronik, 2009, passive
-Schaltungen},
+	pdfauthor	=   {robert.riemann@physik.hu-berlin.de,thomas.murach@physik.hu-berlin.de},
+	pdfkeywords	=	{Fortgeschrittenen–Praktikum,Praktikumsversuch, Teilchenphysik, 2010, Z Resonanz},
 	pdfcreator	=	{pdftex},
 	pdfproducer	=	{pdftex}
 }
 
-% \newcommand{\eqneed}{\stackrel{!}{=}}
 \newcommand{\dd}[1]{\mathrm{d}#1\,} % declare dx operator, usage: \dd{x} for dx
 \newcommand{\lref}[1]{Listing (\ref{lst:#1})} % refer to a listing, usage: \lref{label} for Listing (...)
 \newcommand{\fref}[1]{Abb. (\ref{fig:#1})} % refer to a figure, usage: \lref{label} for Abb. (...)
@@ -86,16 +83,15 @@ Schaltungen},
 % % % % % % % % % % % % % % % % % % % % % % % % 
 \title{{\centering \rule{15cm}{0.001cm}\\
 \Large{\textsc{Institut für Physik der
-Humboldt-Universität zu Berlin}}}\\ \centering \rule{15cm}{0.001cm}\\
+Humboldt–Universität zu Berlin}}}\\ \centering \rule{15cm}{0.001cm}\\
 \vspace{15mm} \centering
 \includegraphics[scale=0.9]{siegel}\\
 \vspace{18mm}
-{\bf{\huge{Elektronikpraktikum}}}\\
+{\bf{\huge{Fortgeschrittenen–Praktikum}}}\\
 Versuchsprotokoll\\
 \vspace{14mm}
-Versuch 2 - Bipolar-Transistoren und Verst"arker-Grundschaltungen\\
-\vspace{14mm} {\small{\textbf{Versuchsort: NEW 15 0'304\\
-Gruppe 6}}}\\}
+$Z^0$–Resonanz\\
+\vspace{14mm} {\small{\textbf{Betreuer: M. zur Nedden}}}\\}
 \author{Robert Riemann; Matr.Nr.: 521085\\
 Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
 \vspace{18mm}
@@ -106,7 +102,6 @@ Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
 \twocolumn
 
 \tableofcontents
-
 \listoffigures
 \listoftables
 
@@ -136,6 +131,36 @@ Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
 % 	\caption{Periodendauer in Abhängigkeit der Maximalauslenkung}
 % 	\label{fig:Winkelabhaengigkeit}
 % \end{figure}
+
+% \begin{table}[htbp]
+% \centering
+% \setlength{\tabcolsep}{14pt}
+% \begin{tabular*}{\columnwidth}{%
+% S[tabformat=2.1]%
+% S[tabformat=2.2]%
+% S[tabformat=1.2]}
+% \toprule
+% {$R$ in \si{\ohm}} &
+% {$U$ in \si{\volt}} &
+% {$\frac{U}{U_{R=0}}$}\\
+% \midrule
+% \multicolumn{3}{c}{\textit{Eingangswiderstand $R_E$}}\\
+% \midrule
+% 0 & 16 & 1 \\
+% 4.7e3 & 8 & 0.5 \\
+% \midrule
+% \multicolumn{3}{c}{\textit{Ausgangswiderstand $R_A$}}\\
+% \midrule
+% 0 & 1.8 & 1 \\
+% 12 & 0.52 & 0.29 \\
+% 27 & 1.2 & 0.67 \\
+% 18 & 0.8 & 0.44 \\
+% \bottomrule
+% \end{tabular*}
+% \caption{experimentelle Messung der Ein- und Ausgangswiderstände}
+% \label{tab:221messungexp_widerstaende}
+% \end{table}
+
 
 % \newpage
 

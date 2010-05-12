@@ -1,7 +1,7 @@
 N_had_89gev : 1804$
 N_mu_89gev : 486$
 N_bg_89gev : 705$
-L_89gev : 179.3$
+L_89gev : 179.3$                /*einheit: (nb)^-1*/
 
 N_had_91gev : 3956$
 N_mu_91gev : 412$
@@ -16,36 +16,47 @@ L_93gev : 151.1$
 q_el : 1.602176e-19$
 hquer : 1.05457e-34$
 c : 299792458$
-G_F : 1.16637e-5$
+G_F : 1.16637e-5;               /*einheit: 1/GeV^2*/
 
 /*Umrechnung GeV-1/sekunde:*/
 gev_in_sek : q_el/hquer*1e9;
 
-sigma0_had : 36.4188$
+sigma0_had : 36.4188$          /*einheit: nanobarn = 1e-37 m^2*/
 gamma_had : 1.90489$
-M_Z  : 91.1219*1e9*q_el/c^2$
-gamma_Z : 2.00875$
-tau = 1/(gamma*gev_in_sek);
-sigma_0_mu : 9.00127*1e-9*1e-28$    /*nano barn->m^2 statt cm^2*/
+M_Z  : 91.1219$                /*einheit: GeV*/
+gamma_Z : 2.00875$             /*einheit: GeV*/
+tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
+sigma_0_mu : 9.00127$          /*einheit: nanobarn = 1e-37 m^2*/
 
 epsilon_had : 9769/10000$
 epsilon_mu : 6044/9970$
 
-sigma_had_89gev : (N_had_89gev - N_bg_89gev)/(L_89gev * epsilon_had);
-sigma_had_91gev : (N_had_91gev - N_bg_91gev)/(L_91gev * epsilon_had);
-sigma_had_93gev : (N_had_93gev - N_bg_93gev)/(L_93gev * epsilon_had);
+sigma_had_89gev : N_had_89gev/(L_89gev * epsilon_had);     /*einheit: nb*/
+sigma_had_91gev : N_had_91gev/(L_91gev * epsilon_had);
+sigma_had_93gev : N_had_93gev/(L_93gev * epsilon_had);
 
 
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
 sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
 
-gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi)*c^2/hquer^2)*gamma_Z);    /*einheit: GeV*/
+gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
 
 /*############################*/
 
-gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$
-beta   : gamma_Z/3 - gamma_nue$
-alpha : sigma0_had*M_Z^2/(12*%pi)*gamma_Z^2$
-gamma_e_v1 : float(beta/2 + sqrt(beta^2/4-alpha));
-gamma_e_v2 : float(beta/2 - sqrt(beta^2/4-alpha));
+gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$                  /*einheit: GeV*/
+beta   : gamma_Z - 3*gamma_nue$                          /*einheit: GeV*/
+alpha : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);      /*einheit: GeV^2; ist aber nicht so gut, der wert*/
+
+gamma_e_v1 : float(beta/6 + sqrt(beta^2/36-alpha/3));
+gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                                /*kommt jetzt nicht soo gut raus*/
+
+/*###########################*/
+
+vorfaktor : G_F*M_Z^3/(24*sqrt(2)*%pi);
+sin2_theta_w : float( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) );    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
+
+/*##########################*/
+
+gamma_had : gamma_Z - 3*gamma_nue - 3*gamma_e_v2$
+N_C : float( gamma_had / ((1+0.12/%pi)*vorfaktor*(2*(1+(1-4*2/3*sin2_theta_w)^2) + 3*(1+(1-4*1/3*sin2_theta_w)^2) )) );

@@ -20,7 +20,10 @@ G_F : 1.16637e-5$
 
 /*Umrechnung GeV-1/sekunde:*/
 gev_in_sek : q_el/hquer*1e9;
-M_Z : 91.1547*1e9*q_el/c^2$
+
+sigma0_had : 36.4188$
+gamma_had : 1.90489$
+M_Z  : 91.1219*1e9*q_el/c^2$
 gamma_Z : 2.00875$
 tau = 1/(gamma*gev_in_sek);
 sigma_0_mu : 9.00127*1e-9*1e-28$    /*nano barn->m^2 statt cm^2*/
@@ -38,3 +41,11 @@ sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
 
 gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi)*c^2/hquer^2)*gamma_Z);    /*einheit: GeV*/
+
+/*############################*/
+
+gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$
+beta   : gamma_Z/3 - gamma_nue$
+alpha : sigma0_had*M_Z^2/(12*%pi)*gamma_Z^2$
+gamma_e_v1 : float(beta/2 + sqrt(beta^2/4-alpha));
+gamma_e_v2 : float(beta/2 - sqrt(beta^2/4-alpha));

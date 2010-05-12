@@ -1,0 +1,151 @@
+\documentclass[a4paper,twocolumn,11pt]{article}
+% \documentclass[a4paper,twocolumn=on,11pt,DIV11,pagesize]{scrartcl}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage{anysize}
+\usepackage{amssymb} % mathematische Symbole
+\usepackage{amsmath} % erweiterte mathematische Symbole
+\usepackage{siunitx}
+\sisetup{
+	seperr		=	true,
+	trapambigerr	=	true,
+	openerr		=	(,
+	closeerr	=	),
+	expproduct	=	cdot,
+	padnumber	=	both,
+	stickyper	=	true,
+	per		=	slash,
+	trapambigfrac	=	true,
+	repeatunits	=	false,
+	openfrac	=	(,
+	closefrac	=	),
+	prefixsymbolic 	=	true,
+	prefixproduct	=	cdot,
+	decimalsymbol	=	comma,
+        tabnumalign     =       left,
+        tabtextalign    =       left
+}
+\usepackage{longtable} % für mehrseitige Tabellen
+\usepackage{booktabs}
+% \usepackage{float} \restylefloat{figure} % wichtig für für genaues Bild-positionieren [H]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman}
+\usepackage[pdftex]{hyperref}
+\usepackage{booktabs}
+\usepackage{color}
+\definecolor{grey}{rgb}{.4,.4,.4}
+\usepackage{listings}
+\definecolor{ltgray}{gray}{0.90}
+% \definecolor{darkblue}{rgb}{0,0,.6}
+% \definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.35,0}
+% \definecolor{red}{rgb}{.98,0,0}
+\lstset{language=C++,
+%   commentstyle=\itshape\color{darkgreen},
+%   commentstyle=\color{darkgreen},
+%   keywordstyle=\bfseries, %\color{darkblue},
+%   stringstyle=\color{darkred},
+%   basicstyle=\ttfamily\scriptsize,
+  morekeywords={TH1F,TLorentzVector,TVector3,cevent,vector,TFile},
+  basicstyle=\scriptsize,
+  numbers=left,
+  numberstyle=\tiny,%\color{gray},
+  stepnumber=1,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lrtb,
+  captionpos=b,
+  extendedchars=true,
+  inputencoding=utf8,
+%   backgroundcolor=\color{ltgray}
+}
+\hypersetup{
+% 	colorlinks	=	true,
+% 	urlcolor	=	darkblue,
+	pdftitle	=	{Report zum 2. Elektronikversuch},
+	pdfsubject	=	{Praktikumsversuch}
+	pdfauthor	=
+{robert.riemann@physik.hu-berlin.de,thomas.murach@physik.hu-berlin.de},
+	pdfkeywords	=	{Praktikumsversuch, Elektronik, 2009, passive
+Schaltungen},
+	pdfcreator	=	{pdftex},
+	pdfproducer	=	{pdftex}
+}
+
+% \newcommand{\eqneed}{\stackrel{!}{=}}
+\newcommand{\dd}[1]{\mathrm{d}#1\,} % declare dx operator, usage: \dd{x} for dx
+\newcommand{\lref}[1]{Listing (\ref{lst:#1})} % refer to a listing, usage: \lref{label} for Listing (...)
+\newcommand{\fref}[1]{Abb. (\ref{fig:#1})} % refer to a figure, usage: \lref{label} for Abb. (...)
+\newcommand{\tref}[1]{Tab. (\ref{tab:#1})} % refer to a table, usage: \lref{label} for Tab. (...)
+\newcommand{\eref}[1]{Gl. (\ref{eqn:#1})} % refer to a equation, usage: \lref{label} for Tab. (...)
+
+\begin{document}
+% % % % % % % % % % % % % % % % % % % % % % % % 
+\title{{\centering \rule{15cm}{0.001cm}\\
+\Large{\textsc{Institut für Physik der
+Humboldt-Universität zu Berlin}}}\\ \centering \rule{15cm}{0.001cm}\\
+\vspace{15mm} \centering
+\includegraphics[scale=0.9]{siegel}\\
+\vspace{18mm}
+{\bf{\huge{Elektronikpraktikum}}}\\
+Versuchsprotokoll\\
+\vspace{14mm}
+Versuch 2 - Bipolar-Transistoren und Verst"arker-Grundschaltungen\\
+\vspace{14mm} {\small{\textbf{Versuchsort: NEW 15 0'304\\
+Gruppe 6}}}\\}
+\author{Robert Riemann; Matr.Nr.: 521085\\
+Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
+\vspace{18mm}
+% \date{15. Juni 2008}
+% % % % % % % % % % % % % % % % % % % % % % % %
+\onecolumn
+\maketitle
+\twocolumn
+
+\tableofcontents
+
+\listoffigures
+\listoftables
+
+\input{versuchsziel}
+\input{auswertung}
+\input{ergebnis}
+\input{quellen}
+\input{anhang}
+
+% \section{Beispiele}
+% blabla
+% 
+% Weitere Information sind der Versuchsbeschreibung im \cite{script} zu entnehmen.
+% 
+% \begin{eqnarray}
+% 	g &=& \SI{9.8157(11)}{\metre\per\second\squared} \\
+%         \left[ g \right] &=& \si{\metre\per\Square\second} % großschreibung!
+% 	\label{eqn:asdf}
+% \end{eqnarray}
+% 
+% Dann kann man auf \eref{asdf} verweisen.
+
+
+% \begin{figure}[htb]
+% 	\centering
+% 	\includegraphics[width=1\columnwidth,keepaspectratio]{Winkelabhaengigkeit2}
+% 	\caption{Periodendauer in Abhängigkeit der Maximalauslenkung}
+% 	\label{fig:Winkelabhaengigkeit}
+% \end{figure}
+
+% \newpage
+
+% \onecolumn
+% \appendix
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=0.98\textwidth,keepaspectratio]{Messprotokoll}
+% 	\caption{Messprotokoll}
+% 	\label{fig:protokoll}
+% \end{figure}
+%\colorbox{yellow}{} Farben verwenden
+\end{document}

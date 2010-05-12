@@ -13,7 +13,14 @@ N_mu_93gev : 409$
 N_bg_93gev : 783$
 L_93gev : 151.1$
 
+q_el : 1.602176e-19$
+hquer : 1.05457e-34$
+/*Fermi-Konstante*/
 G_F : 1.16637e-5$
+/*Umrechnung GeV-1/sekunde:*/
+gev_in_sek : q_el/hquer*1e9;
+/*gamma : wert$
+tau = 1/(gamma*gev_in_sek);*/
 
 epsilon_had : 9769/10000$
 epsilon_mu : 6044/9970$

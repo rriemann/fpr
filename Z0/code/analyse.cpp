@@ -372,6 +372,7 @@ int main ( int argc, char *argv[] ) {
     
     TH1F *cutflow_bgselection_hist_E_vis = new TH1F ( "cutflow_bgselection_Evis","Normierte sichtbare Energie",BINS,0.,1.5 );
     TH1F *cutflow_bgselection_N_cluster  = new TH1F ( "cutflow_bgselection_N_cls","Anzahl Teilchen im Calo",BINS,0.,100. );
+    TH1F *muon_abs_cos_theta  = new TH1F ( "muon_abs_cos_theta","abs(cos(\\theta))",BINS,0.,1. );
 
 //
 //  Schleife ueber alle EREIGNISSE (n)
@@ -426,6 +427,7 @@ int main ( int argc, char *argv[] ) {
                         
                         tlv_muon_candidate2.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
                         angle = tlv_muon_candidate2.Angle( tlv_muon_candidate1.Vect() );
+                        muon_abs_cos_theta->Fill(fabs(cos(angle)));
                     }
                     muon_candidate_1 = k;
                     tlv_muon_candidate1.SetXYZM(event.momentum(k,1), event.momentum(k,2), event.momentum(k,3), event.mass(k));
@@ -443,7 +445,7 @@ int main ( int argc, char *argv[] ) {
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
             bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 11);
-            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs(cos(angle)) > 0.64);                      //TODO
+            bool is_muon   = (ktot < 11 && N_mu_per_event == 2 && fabs(cos(angle)) > 0.8);                      //TODO
             if ( is_hadron ) {
                 hevent++;
                 cutflow_hadronselection_hist_E_T->Fill( tlv_event.Et()/s );

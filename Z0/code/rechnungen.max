@@ -22,14 +22,15 @@ G_F : 1.16637e-5;               /*einheit: 1/GeV^2*/
 gev_in_sek : q_el/hquer*1e9;
 
 sigma0_had : 36.4188$          /*einheit: nanobarn = 1e-37 m^2*/
-gamma_had : 1.90489$
+gamma_Z : 1.90489$             /*einheit: GeV*/
 M_Z  : 91.1219$                /*einheit: GeV*/
-gamma_Z : 2.00875$             /*einheit: GeV*/
 tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
-sigma_0_mu : 9.00127$          /*einheit: nanobarn = 1e-37 m^2*/
+sigma_0_mu : 9.10366$          /*einheit: nanobarn = 1e-37 m^2*/
 
 epsilon_had : 9769/10000$
 epsilon_mu : 6044/9970$
+
+/*############################*/
 
 sigma_had_89gev : N_had_89gev/(L_89gev * epsilon_had);     /*einheit: nb*/
 sigma_had_91gev : N_had_91gev/(L_91gev * epsilon_had);
@@ -45,18 +46,18 @@ gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *ga
 /*############################*/
 
 gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$                  /*einheit: GeV*/
-beta   : gamma_Z - 3*gamma_nue$                          /*einheit: GeV*/
-alpha : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);      /*einheit: GeV^2; ist aber nicht so gut, der wert*/
+beta      : gamma_Z - 3*gamma_nue$                       /*einheit: GeV*/
+alpha     : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);  /*einheit: GeV^2; ist aber nicht so gut, der wert*/
 
 gamma_e_v1 : float(beta/6 + sqrt(beta^2/36-alpha/3));
 gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                                /*kommt jetzt nicht soo gut raus*/
 
-/*###########################*/
+/*############################*/
 
-vorfaktor : G_F*M_Z^3/(24*sqrt(2)*%pi);
+vorfaktor    : G_F*M_Z^3/(24*sqrt(2)*%pi);
 sin2_theta_w : float( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) );    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
 
-/*##########################*/
+/*############################*/
 
 gamma_had : gamma_Z - 3*gamma_nue - 3*gamma_e_v2$
-N_C : float( gamma_had / ((1+0.12/%pi)*vorfaktor*(2*(1+(1-4*2/3*sin2_theta_w)^2) + 3*(1+(1-4*1/3*sin2_theta_w)^2) )) );
+N_C       : float( gamma_had / ((1+0.12/%pi)*vorfaktor*(2*(1+(1-4*2/3*sin2_theta_w)^2) + 3*(1+(1-4*1/3*sin2_theta_w)^2) )) );

@@ -118,7 +118,6 @@ public:
     float mass ( int );
     float charge ( int );
     float GetEtot();
-    float GetParticleEnergy(int k);
 };
 
 
@@ -302,10 +301,6 @@ float cevent::mass ( int k ) {     // Liefert die Masse des Teilchens k
 
     return _massce[k];
 
-}
-
-float cevent::GetParticleEnergy(int k){
-    return sqrt( mass(k)*mass(k) + momentum(k,1)*momentum(k,1) + momentum(k,2)*momentum(k,2) + momentum(k,3)*momentum(k,3) );
 }
 
 float cevent::charge ( int k ) {  // Liefert die Ladung des Teilchens k

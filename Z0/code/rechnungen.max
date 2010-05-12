@@ -1,15 +1,15 @@
 N_had_89gev : 1804$
-N_mu_89gev : 486$
+N_mu_89gev : 67$
 N_bg_89gev : 705$
 L_89gev : 179.3$                /*einheit: (nb)^-1*/
 
 N_had_91gev : 3956$
-N_mu_91gev : 412$
+N_mu_91gev : 122$
 N_bg_91gev : 518$
 L_91gev : 135.9$
 
 N_had_93gev : 2121$
-N_mu_93gev : 409$
+N_mu_93gev : 77$
 N_bg_93gev : 783$
 L_93gev : 151.1$
 
@@ -25,10 +25,9 @@ sigma0_had : 36.4188$          /*einheit: nanobarn = 1e-37 m^2*/
 gamma_Z : 1.90489$             /*einheit: GeV*/
 M_Z  : 91.1219$                /*einheit: GeV*/
 tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
-sigma_0_mu : 9.10366$          /*einheit: nanobarn = 1e-37 m^2*/
 
 epsilon_had : 9769/10000$
-epsilon_mu : 6044/9970$
+epsilon_mu : 5855/9970$
 
 /*############################*/
 
@@ -40,6 +39,8 @@ sigma_had_93gev : N_had_93gev/(L_93gev * epsilon_had);
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
 sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
+
+sigma_0_mu : 2.3654$          /*einheit: nanobarn = 1e-37 m^2*/
 
 gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
 
@@ -54,7 +55,8 @@ gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                           
 
 /*############################*/
 
-vorfaktor    : G_F*M_Z^3/(24*sqrt(2)*%pi);
+vorfaktor    : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
+float(vorfaktor);
 sin2_theta_w : float( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) );    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
 
 /*############################*/

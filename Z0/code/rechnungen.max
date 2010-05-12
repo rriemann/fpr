@@ -16,24 +16,24 @@ L_93gev : 151.1$
 q_el : 1.602176e-19$
 hquer : 1.05457e-34$
 c : 299792458$
-G_F : 1.16637e-5$
+G_F : 1.16637e-5;               /*einheit: 1/GeV^2*/
 
 /*Umrechnung GeV-1/sekunde:*/
 gev_in_sek : q_el/hquer*1e9;
 
 sigma0_had : 36.4188$
 gamma_had : 1.90489$
-M_Z  : 91.1219*1e9*q_el/c^2$
-gamma_Z : 2.00875$
+M_Z  : 91.1219$                /*einheit in GeV*/
+gamma_Z : 2.00875$        /*einheit in GeV*/
 tau = 1/(gamma*gev_in_sek);
 sigma_0_mu : 9.00127*1e-9*1e-28$    /*nano barn->m^2 statt cm^2*/
 
 epsilon_had : 9769/10000$
 epsilon_mu : 6044/9970$
 
-sigma_had_89gev : (N_had_89gev - N_bg_89gev)/(L_89gev * epsilon_had);
-sigma_had_91gev : (N_had_91gev - N_bg_91gev)/(L_91gev * epsilon_had);
-sigma_had_93gev : (N_had_93gev - N_bg_93gev)/(L_93gev * epsilon_had);
+sigma_had_89gev : N_had_89gev/(L_89gev * epsilon_had);
+sigma_had_91gev : N_had_91gev/(L_91gev * epsilon_had);
+sigma_had_93gev : N_had_93gev/(L_93gev * epsilon_had);
 
 
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
@@ -46,6 +46,6 @@ gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi)*c^2/hquer^2)*gamma_Z);    /*einhe
 
 gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$
 beta   : gamma_Z/3 - gamma_nue$
-alpha : sigma0_had*M_Z^2/(12*%pi)*gamma_Z^2$
+alpha : float(sigma0_had*M_Z^2/(12*%pi)*gamma_Z^2);
 gamma_e_v1 : float(beta/2 + sqrt(beta^2/4-alpha));
 gamma_e_v2 : float(beta/2 - sqrt(beta^2/4-alpha));

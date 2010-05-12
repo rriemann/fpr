@@ -46,8 +46,9 @@ gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *ga
 
 /*############################*/
 
-gamma_nue : G_F*M_Z^3/(12*%pi*sqrt(2))$                  /*einheit: GeV*/
-beta      : gamma_Z - 3*gamma_nue$                       /*einheit: GeV*/
+vorfaktor : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
+gamma_nue : 2*vorfaktor$                                       /*einheit: GeV*/
+beta      : gamma_Z - 3*gamma_nue$                             /*einheit: GeV*/
 alpha     : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);  /*einheit: GeV^2; ist aber nicht so gut, der wert*/
 
 gamma_e_v1 : float(beta/6 + sqrt(beta^2/36-alpha/3));
@@ -55,7 +56,6 @@ gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                           
 
 /*############################*/
 
-vorfaktor    : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
 float(vorfaktor);
 sin2_theta_w : float( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) );    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
 

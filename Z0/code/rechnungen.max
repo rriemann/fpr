@@ -5,8 +5,6 @@ N_mu_89gev : 67$
 N_bg_89gev : 705$
 L_89gev : 179.3$                /*einheit: (nb)^-1*/
 
-
-
 N_had_91gev : 3980$/*4002$*//*3966$*/
 N_mu_91gev : 122$
 N_bg_91gev : 518$
@@ -46,10 +44,15 @@ dsigma_had_93gev: float(sqrt( (sqrt(41^2 + 51^2)/(L_89gev * epsilon_had)^2 + (N_
 
 
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
-sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
-sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
+dsigma_mu_89gev: float(sqrt( (sqrt(70)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
 
-sigma_0_mu : 2.1517$/*2.14108$*//*2.156$*/          /*einheit: nanobarn = 1e-37 m^2*/
+sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
+dsigma_mu_91gev: float(sqrt( (sqrt(94)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
+
+sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
+dsigma_mu_93gev: float(sqrt( (sqrt(90)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
+
+sigma_0_mu : 2.15617$/*2.14108$*//*2.156$*/          /*einheit: nanobarn = 1e-37 m^2*/
 
 gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
 

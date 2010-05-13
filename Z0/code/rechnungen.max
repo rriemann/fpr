@@ -24,54 +24,68 @@ G_F : 1.16637e-5;               /*einheit: 1/GeV^2*/
 gev_in_sek : q_el/hquer*1e9;
 
 sigma0_had : 40.3311$/*40.4881$*//*40.2138$*/          /*einheit: nanobarn = 1e-37 m^2*/
+dsigma0_had : 0.272499$
 gamma_Z : 2.60481$/*2.64099$*//*2.58927$*/             /*einheit: GeV*/
+dgamma_Z: 0.0290985$
 M_Z  : 91.156$/*91.1573$*//*91.1585$*/                /*einheit: GeV*/
+dM_Z : 0.016797$
 tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
 
 epsilon_had : 9770/10000$ /*8: 9970, 10: 9769*/
+depsilon_had: sqrt((1+158^2)/10000^2)$
 epsilon_mu : 5855/9970$
+depsilon_mu: sqrt(197/10000^2)$
 
 /*############################*/
 
 sigma_had_89gev : N_had_89gev/(L_89gev * epsilon_had);     /*einheit: nb*/
-dsigma_had_89gev: float(sqrt( (sqrt(39^2 + 52^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*sqrt((1+158^2)/10000^2) )^2)));
+dsigma_had_89gev: float(sqrt( (sqrt(39^2 + 52^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
 
 sigma_had_91gev : N_had_91gev/(L_91gev * epsilon_had);
-dsigma_had_91gev: float(sqrt( (sqrt(22^2 + 79^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*sqrt((1+158^2)/10000^2) )^2)));
+dsigma_had_91gev: float(sqrt( (sqrt(22^2 + 79^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
 
 sigma_had_93gev : N_had_93gev/(L_93gev * epsilon_had);
-dsigma_had_93gev: float(sqrt( (sqrt(41^2 + 51^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*sqrt((1+158^2)/10000^2) )^2)));
+dsigma_had_93gev: float(sqrt( (sqrt(41^2 + 51^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
 
 
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
-dsigma_mu_89gev: float(sqrt( (sqrt(70)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
+dsigma_mu_89gev: float(sqrt( (sqrt(70)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
-dsigma_mu_91gev: float(sqrt( (sqrt(94)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
+dsigma_mu_91gev: float(sqrt( (sqrt(94)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
-dsigma_mu_93gev: float(sqrt( (sqrt(90)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*sqrt(197/10000^2) )^2)));
+dsigma_mu_93gev: float(sqrt( (sqrt(90)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_0_mu : 2.15617$/*2.14108$*//*2.156$*/          /*einheit: nanobarn = 1e-37 m^2*/
+dsigma_0_mu: 0.0338581$
 
 gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
+dgamma_e: 1/sqrt(12*%pi)*((sqrt(sigma_0_mu)*M_Z*dgamma_Z)^2 + ((sqrt(sigma_0_mu)*gamma_Z*dM_Z)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu)^2) * 1e-19*q_el^2/(c^2*hquer^2));
 
 /*############################*/
 
 vorfaktor : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
+dvorfaktor: 3*G_F*M_Z^2/(24*sqrt(2)*%pi)*dM_Z$
 gamma_nue : 2*vorfaktor$                                       /*einheit: GeV*/   /*stimmt mit c+s ueberein*/
+dgamma_nue: 2*dvorfaktor$
 beta      : gamma_Z - 3*gamma_nue$                             /*einheit: GeV*/
+dbeta     : sqrt(dgamma_Z^2 + (3*dgamma_nue)^2)$
 alpha     : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);  /*einheit: GeV^2; ist aber nicht so gut, der wert*/
+dalpha    : float(1/(12*%pi) * sqrt((M_Z^2*gamma_Z^2*dsigma0_had)^2 + (sigma0_had*M_Z*2*gamma_Z^2*dM_Z)^2 + (sigma0_had*M_Z^2*gamma_Z*2*dgamma_Z)^2) * 1e-19*q_el^2/(c^2*hquer^2));
 
 gamma_e_v1 : float(beta/6 + sqrt(beta^2/36-alpha/3));
 gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                                /*kommt jetzt nicht soo gut raus*/
+dgamma_e_v2: float(sqrt((dbeta/6)^2 + 1/2/gamma_e_v2*((beta/18*dbeta)^2 + (dalpha/3)^2)));
 
 /*############################*/
 
-float(vorfaktor);
-sin2_theta_w : float(realpart( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) ));    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
+sin2_theta_w : float(realpart( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) ));
+dsin2_theta_w: float(1/(8*sqrt(gamma_e_v2/vorfaktor -1))*sqrt((dgamma_e_v2/alpha)^2 + (gamma_e_v2/alpha^2*dalpha)^2));
 
 /*############################*/
 
 gamma_had : float(gamma_Z - 3*gamma_nue - 3*gamma_e_v2);
+dgamma_had: float(sqrt(dgamma_Z^2 + 9*gamma_nue^2 + 9*gamma_e_v2));
 N_C       : float( gamma_had / ((1+0.12/%pi)*vorfaktor*(2*(1+(1-4*2/3*sin2_theta_w)^2) + 3*(1+(1-4*1/3*sin2_theta_w)^2) )) );
+dN_C      : float(sqrt((N_C/gamma_had*dgamma_had)^2 + (N_C/vorfaktor*dvorfaktor)^2 + (gamma_had/((1+0.12/%pi)*vorfaktor*(2*(1+(1-4*2/3*sin2_theta_w)^2) + 3*(1+(1-4*1/3*sin2_theta_w)^2) )^2) *(4/9*176*sin2_theta_w^3-112/9*sin2_theta_w)*dsin2_theta_w )^2));

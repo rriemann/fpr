@@ -11,9 +11,9 @@ run: analyseZ0
 
 fit: bwigner
 	if ! [ -d ../tmp ]; then mkdir ../tmp; fi
-	echo "3 89.48 0 6.274 1 91.33 0 25.90 1 93.02 0 9.06 1 0 0" | ./bwigner
-	echo "3 89.48 0 0.6363 1 91.33 0 1.529 1 93.02 0 0.868 1 1 0 0 1.90489 1 91.1219 1 0" | ./bwigner
-# 	last bool: do corr plots.; mu -> sigma0 = 9.00127
+	echo "3 89.48 0 10.772 1 91.33 0 30.141 1 93.02 0 14.835 1 0 0" | ./bwigner
+	echo "3 89.48 0 0.6363 1 91.33 0 1.529 1 93.02 0 0.868 1 1 0 0 2.64099 1 91.1573 1 0" | ./bwigner
+# 	last bool: do corr plots.
 
 clean:
 	rm -f analyseZ0 analyse.o bwigner bwigner.o

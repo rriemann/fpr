@@ -1,14 +1,14 @@
-N_had_89gev : 1804$
+N_had_89gev : 1887$
 N_mu_89gev : 67$
 N_bg_89gev : 705$
 L_89gev : 179.3$                /*einheit: (nb)^-1*/
 
-N_had_91gev : 3956$
+N_had_91gev : 4002$
 N_mu_91gev : 122$
 N_bg_91gev : 518$
 L_91gev : 135.9$
 
-N_had_93gev : 2121$
+N_had_93gev : 2190$
 N_mu_93gev : 77$
 N_bg_93gev : 783$
 L_93gev : 151.1$
@@ -21,12 +21,12 @@ G_F : 1.16637e-5;               /*einheit: 1/GeV^2*/
 /*Umrechnung GeV-1/sekunde:*/
 gev_in_sek : q_el/hquer*1e9;
 
-sigma0_had : 36.4188$          /*einheit: nanobarn = 1e-37 m^2*/
-gamma_Z : 1.90489$             /*einheit: GeV*/
-M_Z  : 91.1219$                /*einheit: GeV*/
+sigma0_had : 40.4881$          /*einheit: nanobarn = 1e-37 m^2*/
+gamma_Z : 2.64099$             /*einheit: GeV*/
+M_Z  : 91.1573$                /*einheit: GeV*/
 tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
 
-epsilon_had : 9769/10000$
+epsilon_had : 9770/10000$
 epsilon_mu : 5855/9970$
 
 /*############################*/
@@ -40,14 +40,14 @@ sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
 sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
 
-sigma_0_mu : 2.3654$          /*einheit: nanobarn = 1e-37 m^2*/
+sigma_0_mu : 2.14108$          /*einheit: nanobarn = 1e-37 m^2*/
 
 gamma_e : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
 
 /*############################*/
 
 vorfaktor : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
-gamma_nue : 2*vorfaktor$                                       /*einheit: GeV*/
+gamma_nue : 2*vorfaktor$                                       /*einheit: GeV*/   /*stimmt mit c+s ueberein*/
 beta      : gamma_Z - 3*gamma_nue$                             /*einheit: GeV*/
 alpha     : sigma0_had * M_Z^2 / (12*%pi) * gamma_Z^2 * 1e-19*q_el^2/(c^2*hquer^2);  /*einheit: GeV^2; ist aber nicht so gut, der wert*/
 
@@ -57,7 +57,7 @@ gamma_e_v2 : float(beta/6 - sqrt(beta^2/36-alpha/3));                           
 /*############################*/
 
 float(vorfaktor);
-sin2_theta_w : float( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) );    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
+sin2_theta_w : float(realpart( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) ));    /*formel stimmt, aber erg. nicht. also kommen noch falsche werte rein*/
 
 /*############################*/
 

@@ -444,7 +444,7 @@ int main ( int argc, char *argv[] ) {
             hist_most_energy->Fill( tlv_most_energy.E()/tlv_event.E() );
 
             ///////////////////////////////////////////////////////// cutflow beginn /////////////////////////////
-            bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 8);
+            bool is_hadron = (tlv_event.E()/s > 0.7 && ktot > 9);
             bool is_muon   = ktot < 12
                              && is_mu_event
                              && fabs(cos(tlv_muon_candidate2.Angle(

@@ -29,6 +29,7 @@
 \usepackage{booktabs}
 % \usepackage{float} \restylefloat{figure} % wichtig für für genaues Bild-positionieren [H]
 \usepackage[utf8]{inputenc}
+\usepackage{uniinput}
 \usepackage[T1]{fontenc}
 \usepackage{ngerman}
 \usepackage[pdftex]{hyperref}
@@ -41,6 +42,13 @@
 % \definecolor{darkred}{rgb}{.6,0,0}
 \definecolor{darkgreen}{rgb}{0,.35,0}
 % \definecolor{red}{rgb}{.98,0,0}
+\lstdefinelanguage{Maxima}{
+  keywords={addrow,addcol,zeromatrix,ident,augcoefmatrix,ratsubst,diff,ev,tex,%
+    with_stdout,nouns,express,depends,load,submatrix,div,grad,curl,%
+    rootscontract,solve,part,assume,sqrt,integrate,abs,inf,exp,float},
+  sensitive=true,
+  comment=[n][\itshape]{/*}{*/}
+}
 \lstset{language=C++,
 %   commentstyle=\itshape\color{darkgreen},
 %   commentstyle=\color{darkgreen},

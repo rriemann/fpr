@@ -14,7 +14,7 @@ N_mu_91gev : 122$
 dN_mu_91gev: sqrt(N_mu_91gev);
 N_bg_91gev : 518$
 L_91gev : 135.9$
-dL_91egv: 0.01*L_91gev;
+dL_91gev: 0.01*L_91gev;
 
 N_had_93gev : 2149$/*2190$*//*2132$*/
 dN_had_93gev: sqrt(N_had_93gev);
@@ -40,31 +40,36 @@ M_Z  : 91.156$/*91.1573$*//*91.1585$*/                /*einheit: GeV*/
 dM_Z : 0.016797$
 tau = 1/(gamma_Z*gev_in_sek);  /*einheit: sek*/
 
-epsilon_had : 9770/10000$ /*8: 9970, 10: 9769*/
-depsilon_had: sqrt((1+158^2)/10000^2)$
-epsilon_mu : 5855/9970$
-depsilon_mu: sqrt(197/10000^2)$
+epsilon_had      : 9770/10000$ /*8: 9970, 10: 9769*/
+depsilon_had     : sqrt((1+158^2)/10000^2)$
+depsilon_had_stat: sqrt(9770)/10000$
+epsilon_mu       : 5855/9970$
+depsilon_mu      : sqrt(197/10000^2)$
+depsilon_mu_stat : sqrt(5855)/10000$
 
 /*############################*/
 
 sigma_had_89gev : N_had_89gev/(L_89gev * epsilon_had);     /*einheit: nb*/
 dsigma_had_89gev: float(sqrt( (sqrt(39^2 + 52^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
+dsigma_had_89gev_stat: float(sqrt( (dN_had_91gev/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had_stat )^2) + (N_had_89gev/(L_89gev^2*epsilon_had)*dL_89gev)^2));
 
 sigma_had_91gev : N_had_91gev/(L_91gev * epsilon_had);
-dsigma_had_91gev: float(sqrt( (sqrt(22^2 + 79^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
+dsigma_had_91gev: float(sqrt( (sqrt(22^2 + 79^2)/(L_91gev * epsilon_had)^2 + (N_had_91gev/(L_91gev*epsilon_had^2)*depsilon_had )^2)));
+dsigma_had_91gev_stat: float(sqrt( (dN_had_91gev/(L_91gev * epsilon_had)^2 + (N_had_91gev/(L_91gev*epsilon_had^2)*depsilon_had_stat )^2) + (N_had_91gev/(L_91gev^2*epsilon_had)*dL_91gev)^2));
 
 sigma_had_93gev : N_had_93gev/(L_93gev * epsilon_had);
-dsigma_had_93gev: float(sqrt( (sqrt(41^2 + 51^2)/(L_89gev * epsilon_had)^2 + (N_had_89gev/(L_89gev*epsilon_had^2)*depsilon_had )^2)));
+dsigma_had_93gev: float(sqrt( (sqrt(41^2 + 51^2)/(L_93gev * epsilon_had)^2 + (N_had_93gev/(L_93gev*epsilon_had^2)*depsilon_had )^2)));
+dsigma_had_93gev_stat: float(sqrt( (dN_had_91gev/(L_93gev * epsilon_had)^2 + (N_had_93gev/(L_93gev*epsilon_had^2)*depsilon_had_stat )^2) + (N_had_93gev/(L_93gev^2*epsilon_had)*dL_93gev)^2));
 
 
 sigma_mu_89gev : N_mu_89gev/(L_89gev * epsilon_mu);
 dsigma_mu_89gev: float(sqrt( (sqrt(70)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_mu_91gev : N_mu_91gev/(L_91gev * epsilon_mu);
-dsigma_mu_91gev: float(sqrt( (sqrt(94)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
+dsigma_mu_91gev: float(sqrt( (sqrt(94)/(L_91gev * epsilon_mu)^2 + (N_mu_91gev/(L_91gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_mu_93gev : N_mu_93gev/(L_93gev * epsilon_mu);
-dsigma_mu_93gev: float(sqrt( (sqrt(90)/(L_89gev * epsilon_mu)^2 + (N_mu_89gev/(L_89gev*epsilon_mu^2)*depsilon_mu )^2)));
+dsigma_mu_93gev: float(sqrt( (sqrt(90)/(L_93gev * epsilon_mu)^2 + (N_mu_93gev/(L_93gev*epsilon_mu^2)*depsilon_mu )^2)));
 
 sigma_0_mu : 2.15617$/*2.14108$*//*2.156$*/          /*einheit: nanobarn = 1e-37 m^2*/
 dsigma_0_mu: 0.0338581$

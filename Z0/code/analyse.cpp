@@ -1,5 +1,4 @@
 
-//geeignete cuts: muon_px sieht für hadron.dat und muon.dat anders aus -> hadron: |mupx| < 10gev; hadrons_n > 20, muon_n < 10; hadrons: muon_pt < 10gev, muons: u.a. pt > 20gev --> kann man rausschneiden
 //Evis ist auch unterschiedlich -> nutzen
 
 //oft: keine exakte aussage --> cutflow zum verbessern
@@ -489,7 +488,7 @@ int main ( int argc, char *argv[] ) {
     cout << "Diff zu Gesamt: " << (nevent - hevent - muevent - bgevent) << endl;
 
 //
-// Alle Histogramme werden auf den oben definierten File geschrieben                                                                            woher weiß er, dass die histos in dieses file gehoeren?
+// Alle Histogramme werden auf den oben definierten File geschrieben
 //
 
     histofile->Write();

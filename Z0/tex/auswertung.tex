@@ -40,7 +40,7 @@ l}
 \bottomrule
 \label{tab:hadronic_xsecs}
 \end{tabular*}
-\caption{experimentelle Messung der Ein- und Ausgangswiderstände}
+\caption{Zahl der analysierten Hadronen-Ereignisse und zugehörige Wirkungsquerschnitte bei verschiedenen Schwerpunktsenergien}
 \end{figure*}
 
 Der Wirkungsquerschnitt, der auch in \tref{hadronic_xsecs} aufgeführt ist, ergibt sich aus den gegebenen Daten nach \cite[Gl.13]{script} wie folgt:
@@ -70,5 +70,28 @@ Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistische
 
 \section{Bestimmung des myonischen Wirkungsquerschnitts $\sigma_0^{Mu}$}
 \subsection{Selektion der Myonenereignisse}
+Hier sind wir genauso wie bei der Selektion der Hadronenevents vorgegangen. Wie bereits oben in \fref{Ncluster_vgl} gezeigt, haben alle Myonen-Ereignisse weniger als 12 Cluster-Einträge, was als Cut genutzt wurde. Weiterhin konnte man anhand der Masse verlangen, dass mindestens zwei Teilchen die Masse eines Myons besitzen. Außerdem sollte der Kosinus des Winkels, den die Bahnen beider Myonen bilden, größer als 0.9 sein, da man verlangen möchte, dass die Myonen annähernd Back-to-Back fliegen sollten. Schließlich haben wir an die Energie eines Events einige Anforderungen gestellt, zum Beispiel, dass eines der Myonen ca. die Hälfte der Gesamtenergie trägt. Die Ideen für diese Cuts kamen im Wesentlichen aus ??BLABLA?? (Kap. 5). Mit diesen Schnitten erhielten wir eine Effizienz von
+\begin{eqnarray}
+\epsilon_{Mu} &=& \frac{5855 \pm sqrt{5855} \pm 197}{9970} = 0.59 \pm 0.01 \pm 0.02
+\end{eqnarray}
+Damit konnten, analog zum Hadronen-Fall, die Wirkungsquerschnitte bei den verschiedenen Schwerpunktsenergien angegeben werden. Die Ergebnisse sind in \tref{muonic_xsecs} zu finden.
+\begin{figure*}
+\begin{tabular*}{\textwidth}{%
+S[tabformat=2.1]%
+l%
+l}
+\toprule
+{Energie [\si{GeV}]} &
+{Zahl analysierter Myonen-Ereignisse N} &
+{Wirkungsquerschnitt $\sigma_0^{Mu}$ [\si{\nano\barn}]}\\
+\midrule
+89,48 & 67 ± 8 ±  & 10,55 ± 0,18 ± 0,16 \\
+91,33 & 122 ± 11 ± 79 & 29,98 ± 0,49 ± 0,43 \\
+93,02 & 77 ± 9 ± 51 & 14,56 ± 0,24 ± 0,24 \\
+\bottomrule
+\label{tab:muonic_xsecs}
+\end{tabular*}
+\caption{Zahl der analysierten Myonen-Ereignisse und zugehörige Wirkungsquerschnitte bei verschiedenen Schwerpunktsenergien}
+\end{figure*}
 
 \subsection{Bestimmung des Wirkungsquerschnitts}

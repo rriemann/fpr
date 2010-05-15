@@ -56,13 +56,18 @@ $N$ ist dabei die Zahl der analysierten Hadronenereignisse, $L$ ist die bereits 
 \end{figure}
 Wie man sehen kann, sehen sich die Verteilungen sehr ähnlich, was die Vermutung nahelegt, dass vornehmlich die gleichen Prozesse stattfanden. Dies bestätigt uns in der Annahme, dass der Untergrund mit gutem Gewissen vernachlässigt werden kann.\\
 Der statistische Fehler des Wirkungsquerschnitts ergibt sich durch Fehlerfortpflanzung aus den jeweiligen Fehlern von $N$, $L$ und $\epsilon_{had}$:
-\begin{eqnarray}
-\Delta\sigma_{had} &=& \sqrt{\left( \frac{\partial\sigma}{\partial L}\Delta L\right)^2 + \left( \frac{\partial\sigma}{\partial N}\Delta N\right)^2 + \left( \frac{\partial\sigma}{\partial \epsilon_{had}}\Delta\epsilon_{had} \right)^2}\\
-&=& \sqrt{\left( \frac{N}{L^2\epsilon_{had}}\Delta L\right)^2 + \left( \frac{1}{L\epsilon_{had}}\Delta N\right)^2 + \left( \frac{N}{L \epsilon_{had}^2}\Delta\epsilon_{had} \right)^2}
-\end{eqnarray}
+\begin{equation}
+  \begin{split}
+    \Delta\sigma_{had} =  \sqrt{\left( \frac{\partial\sigma}{\partial L}\Delta L\right)^2 + \left( \frac{\partial\sigma}{\partial N}\Delta N\right)^2} \\
+    \overline{+ \left( \frac{\partial\sigma}{\partial \epsilon_{had}}\Delta\epsilon_{had} \right)^2} \\
+    = \sqrt{\left( \frac{N}{L^2\epsilon_{had}}\Delta L\right)^2 + \left( \frac{1}{L\epsilon_{had}}\Delta N\right)^2} \\
+    \overline{+ \left( \frac{N}{L \epsilon_{had}^2}\Delta\epsilon_{had} \right)^2}
+  \end{split}
+\end{equation}
+
 In dieser Art haben wir auch alle weiteren Fehler berechnet, wie z.B. den systematischen Fehler von $\sigma_{had}$, der sich aus den systematischen Unsicherheiten von $N$ und $\epsilon_{had}$ zusammensetzt.
 
 Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang unter ??BLABLA?? gefunden werden. Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_{had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{had}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
 \begin{eqnarray}
-\sigma_0^{Had} = 40.33 \pm 0.65 \pm 0.27
+\sigma_0^{Had} = 40,33 \pm 0.65 \pm 0,27
 \end{eqnarray}

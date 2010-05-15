@@ -10,27 +10,24 @@ zu erreichen. Dabei ist der erste angegebene Fehler der statistische Fehler und 
 \subsection{Berechnung der hadronischen Wirkungsquerschnitte bei verschiedenen $\sqrt{s}$}
 Die eben besprochenen Schnitte haben wir nun auf die Messdaten angewandt. Dabei kamen die in \tref{hadronic_xsecs} gezeigten Werte heraus. Die angegebenen Fehler sind wiederum statistischer und dann systematischer Fehler. Diese Konvention verwenden wir im gesamten folgenden Protokoll.\\
 Der Fehler des Wirkungsquerschnitts ergibt sich durch Fehlerfortpflanzung aus den jeweiligen Fehlern von N und von $\epsilon_{had}$.
-
-\begin{table}[htbp]
-\centering
-\setlength{\tabcolsep}{14pt}
-\begin{tabular*}{\columnwidth}{%
+\begin{figure*}
+\begin{tabular*}{\textwidth}{%
 S[tabformat=2.1]%
-S[tabformat=2.2]%
-S[tabformat=1.2]}
+l%
+l}
 \toprule
-{Energie / GeV} &
-{Zahl N der analysierten Hadronen-Ereignisse} &
-{Wirkungsquerschnitt $\sigma_0^{Had}$ / nb}\\
+{Energie [\si{GeV}]} &
+{Zahl analysierter Hadr.-Ereignisse N} &
+{Wirkungsquerschnitt $\sigma_0^{Had}$ [\si{\nano\barn}]}\\
 \midrule
-89.48 & {$1848 \pm 43 \pm 52$} & {$10.55 \pm 0.18 \pm 0.16$} \\
-91.33 & {$3980 \pm 63 \pm 79$} & {$29.98 \pm 0.49 \pm 0.43$} \\
-93.02 & {$2149 \pm 46 \pm 51$} & {$14.56 \pm 0.24 \pm 0.24$} \\
+89.48 & 1848 ± 43 ± 52 & \num{10.55(18,16)} ± 0.18 ± 0.16 \\
+91.33 & 3980 ± 63 ± 79 & \num{29.98} ± 0.49 ± 0.43 \\
+93.02 & 2149 ± 46 ± 51 & \num{14.56} ± 0.24 ± 0.24 \\
 \bottomrule
+\label{tab:hadronic_xsecs}
 \end{tabular*}
 \caption{experimentelle Messung der Ein- und Ausgangswiderstände}
-\label{tab:hadronic_xsecs}
-\end{table}
+\end{figure*}
 
 Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang unter ??BLABLA?? gefunden werden. Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_{had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{had}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
 \begin{eqnarray}

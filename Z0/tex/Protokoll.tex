@@ -1,10 +1,11 @@
-\documentclass[a4paper,twocolumn,11pt]{article}
-% \documentclass[a4paper,twocolumn=on,11pt,DIV11,pagesize]{scrartcl}
+\documentclass[a4paper,twocolumn,oneside,bibtotoc,smallheadings,tocleft,pointlessnumbers,halfparskip]{scrartcl}
 \usepackage[pdftex]{graphicx}
-\usepackage{subfigure}
-\usepackage{anysize}
-\usepackage{amssymb} % mathematische Symbole
-\usepackage{amsmath} % erweiterte mathematische Symbole
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{uniinput}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb,amsmath}
+\usepackage{booktabs}
 \usepackage{siunitx}
 \sisetup{
 	seperr		=	true,
@@ -25,23 +26,14 @@
         tabnumalign     =       left,
         tabtextalign    =       left
 }
-\usepackage{longtable} % für mehrseitige Tabellen
-\usepackage{booktabs}
-% \usepackage{float} \restylefloat{figure} % wichtig für für genaues Bild-positionieren [H]
-\usepackage[utf8]{inputenc}
-\usepackage{uniinput}
-\usepackage[T1]{fontenc}
-\usepackage{ngerman}
-\usepackage[pdftex]{hyperref}
-\usepackage{booktabs}
 \usepackage{color}
 \definecolor{grey}{rgb}{.4,.4,.4}
-\usepackage{listings}
+\definecolor{darkgreen}{rgb}{0,.35,0}
 \definecolor{ltgray}{gray}{0.90}
 % \definecolor{darkblue}{rgb}{0,0,.6}
 % \definecolor{darkred}{rgb}{.6,0,0}
-\definecolor{darkgreen}{rgb}{0,.35,0}
 % \definecolor{red}{rgb}{.98,0,0}
+\usepackage{listings}
 \lstdefinelanguage{Maxima}{
   keywords={addrow,addcol,zeromatrix,ident,augcoefmatrix,ratsubst,diff,ev,tex,%
     with_stdout,nouns,express,depends,load,submatrix,div,grad,curl,%
@@ -70,6 +62,7 @@
   inputencoding=utf8,
 %   backgroundcolor=\color{ltgray}
 }
+\usepackage[pdftex]{hyperref}
 \hypersetup{
 % 	colorlinks	=	true,
 % 	urlcolor	=	darkblue,
@@ -86,6 +79,7 @@
 \newcommand{\fref}[1]{Abb. (\ref{fig:#1})} % refer to a figure, usage: \lref{label} for Abb. (...)
 \newcommand{\tref}[1]{Tab. (\ref{tab:#1})} % refer to a table, usage: \lref{label} for Tab. (...)
 \newcommand{\eref}[1]{Gl. (\ref{eqn:#1})} % refer to a equation, usage: \lref{label} for Tab. (...)
+
 
 \begin{document}
 % % % % % % % % % % % % % % % % % % % % % % % % 

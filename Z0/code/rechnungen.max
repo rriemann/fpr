@@ -82,17 +82,18 @@ dsigma_0_mu     : 0.0338581$
 dsigma_0_mu_stat: 0.051529$
 
 gamma_e      : float(sqrt(M_Z^2*sigma_0_mu/(12*%pi) * 1e-19*q_el^2/(c^2*hquer^2)) *gamma_Z );    /*einheit: GeV*/
-dgamma_e     : 1/sqrt(12*%pi)*((sqrt(sigma_0_mu)*M_Z*dgamma_Z)^2 + ((sqrt(sigma_0_mu)*gamma_Z*dM_Z)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu)^2) * 1e-19*q_el^2/(c^2*hquer^2));
-dgamma_e_stat: 1/sqrt(12*%pi)*((sqrt(sigma_0_mu)*M_Z*dgamma_Z_stat)^2 + ((sqrt(sigma_0_mu)*gamma_Z*dM_Z_stat)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu_stat)^2) * 1e-19*q_el^2/(c^2*hquer^2));
+dgamma_e     : float(1/sqrt(12*%pi)*sqrt( (sqrt(sigma_0_mu)*M_Z*dgamma_Z)^2 + (sqrt(sigma_0_mu)*gamma_Z*dM_Z)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu)^2 ) * 1e-19*q_el^2/(c^2*hquer^2));
+dgamma_e_stat: float(1/sqrt(12*%pi)*sqrt( (sqrt(sigma_0_mu)*M_Z*dgamma_Z_stat)^2 + (sqrt(sigma_0_mu)*gamma_Z*dM_Z_stat)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu_stat)^2 ) * 1e-19*q_el^2/(c^2*hquer^2));
+/*dgamma_e_stat: float(1/sqrt(12*%pi)*((sqrt(sigma_0_mu)*M_Z*dgamma_Z_stat)^2 + ((sqrt(sigma_0_mu)*gamma_Z*dM_Z_stat)^2 + (1/sqrt(sigma_0_mu)/2*gamma_Z*M_Z*dsigma_0_mu_stat)^2) * 1e-19*q_el^2/(c^2*hquer^2)));*/
 
 /*############################*/
 
 vorfaktor      : G_F*M_Z^3/(24*sqrt(2)*%pi)$                        /*einheit: GeV*/
 dvorfaktor     : 3*G_F*M_Z^2/(24*sqrt(2)*%pi)*dM_Z$
 dvorfaktor_stat: 3*G_F*M_Z^2/(24*sqrt(2)*%pi)*dM_Z_stat$
-gamma_nue      : 2*vorfaktor$                                       /*einheit: GeV*/
-dgamma_nue     : 2*dvorfaktor$
-dgamma_nue_stat: 2*dvorfaktor$
+gamma_nue      : float(2*vorfaktor);                                       /*einheit: GeV*/
+dgamma_nue     : float(2*dvorfaktor);
+dgamma_nue_stat: float(2*dvorfaktor_stat);
 beta       : gamma_Z - 3*gamma_nue$                             /*einheit: GeV*/
 dbeta      : sqrt(dgamma_Z^2 + (3*dgamma_nue)^2)$
 dbeta_stat : sqrt(dgamma_Z_stat^2 + (3*dgamma_nue_stat)^2)$

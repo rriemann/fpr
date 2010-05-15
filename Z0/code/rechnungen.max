@@ -1,5 +1,5 @@
 N_had_89gev : 1848$
-dN_had_89gev: sqrt(N_had_89gev);
+dN_had_89gev: float(sqrt(N_had_89gev));
 N_mu_89gev : 67$
 dN_mu_89gev: sqrt(N_mu_89gev);
 N_bg_89gev : 705$
@@ -7,7 +7,7 @@ L_89gev : 179.3$                /*einheit: (nb)^-1*/
 dL_89gev: 0.01*L_89gev;
 
 N_had_91gev : 3980$
-dN_had_91gev: sqrt(N_had_91gev);
+dN_had_91gev: float(sqrt(N_had_91gev));
 N_mu_91gev : 122$
 dN_mu_91gev: sqrt(N_mu_91gev);
 N_bg_91gev : 518$
@@ -15,7 +15,7 @@ L_91gev : 135.9$
 dL_91gev: 0.01*L_91gev;
 
 N_had_93gev : 2149$
-dN_had_93gev: sqrt(N_had_93gev);
+dN_had_93gev: float(sqrt(N_had_93gev));
 N_mu_93gev : 77$
 dN_mu_93gev: sqrt(N_mu_93gev);
 N_bg_93gev : 783$

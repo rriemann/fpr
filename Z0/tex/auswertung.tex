@@ -1,6 +1,20 @@
 \section{Bestimmung des hadronischen Wirkungsquerschnitts $\sigma_0^{Had}$}
 \subsection{Selektion der hadronischen Ereignisse}
-Wir haben mehrere Datensamples zu Verfügung gehabt. Zunächst waren dort die gemessenen L3-Daten, die bei verschiedenen Schwerpunktenergien aufgenommen wurden (bei 89.48 GeV, 91.33 GeV und 93.02 GeV). Die integrierten Luminositäten unterscheiden sich auch und wurden in \cite[S.9]{script} gegeben; außerdem konnten wir mit zwei Monte-Carlo-Daten arbeiten, die uns der aktuellen Theorie entsprechende Verteilungen von Hadronen und Myonen gab. Mit diesen Simulationsdaten konnten wir also überprüfen, welche Wirkung unsere Cuts auf den jeweiligen $Z^0$-Zerfallskanal hatten. So konnten wir feststellen, dass bei hadronischen Ereignissen immer mindestens ca. 9 Cluster (separierte Einträge im Kalorimeter) Teilchen detektiert haben. Daraus ließ sich ein wirksamer Cut gewinnen, der unter anderem die meisten Myonen-Ereignisse nicht zulässt. Ein weiterer Cut wurde angewendet, indem verlangt wurde, dass die (sichtbare) Energie eines Events mehr als $70\%$ der Schwerpunktsenergie beträgt. Zum Beispiel zerfallen $\tau$-Leptonen oft so, dass die Art und Anzahl der Teilchen, die in die Kalorimeter gelangt, sehr einem hadronischen Ereignis ähnelt. Allerdings wird dabei viel Energie an dabei entstehende Neutrines abgegeben, die nicht registriert werden können, sodass die sichtbare Energie in einem solchen Fall wesentlich kleiner ist. Mit diesem Cut können demnach viele $\tau$-Zerfälle ausgeschlossen werden. Dabei haben wir auch immer darauf geachtet, dass die Effizienz unserer Cuts nicht zu klein wird. Mit den eben erwähnten Cuts gelang es uns, eine Effizienz von
+Wir haben mehrere Datensamples zu Verfügung gehabt. Zunächst waren dort die gemessenen L3-Daten, die bei verschiedenen Schwerpunktenergien aufgenommen wurden (bei 89.48 GeV, 91.33 GeV und 93.02 GeV). Die integrierten Luminositäten unterscheiden sich auch und wurden in \cite[S.9]{script} gegeben; außerdem konnten wir mit zwei Monte-Carlo-Daten (MC) arbeiten, die uns der aktuellen Theorie entsprechende Verteilungen von Hadronen und Myonen gab. Mit diesen Simulationsdaten konnten wir also überprüfen, welche Wirkung unsere Cuts auf den jeweiligen $Z^0$-Zerfallskanal hatten. So konnten wir feststellen, dass bei hadronischen Ereignissen immer mindestens ca. 9 Cluster (separierte Einträge im Kalorimeter) Teilchen detektiert haben (siehe \fref{Ncluster_vgl}).
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\columnwidth,keepaspectratio]{Ncluster_vgl.pdf}
+	\caption{Verteilung der Kalorimetereinträge für MC-Samples}
+	\label{fig:Ncluster_vgl}
+\end{figure}
+Daraus ließ sich ein wirksamer Cut gewinnen, der unter anderem die meisten Myonen-Ereignisse nicht zulässt. Ein weiterer Cut wurde angewendet, indem verlangt wurde, dass die (sichtbare) Energie eines Events mehr als $70\%$ der Schwerpunktsenergie beträgt (siehe \fref{Evisvgl_mc} für einen Vergleich der sichtbaren Energie für beide MC-Samples).
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\columnwidth,keepaspectratio]{Evisvgl_mc.pdf}
+	\caption{Verteilung der sichtbaren Energie für MC-Samples}
+	\label{fig:Evisvgl_mc}
+\end{figure}
+Zum Beispiel zerfallen $\tau$-Leptonen oft so, dass die Art und Anzahl der Teilchen, die in die Kalorimeter gelangt, sehr einem hadronischen Ereignis ähnelt. Allerdings wird dabei viel Energie an dabei entstehende Neutrines abgegeben, die nicht registriert werden können, sodass die sichtbare Energie in einem solchen Fall wesentlich kleiner ist. Mit diesem Cut können demnach viele $\tau$-Zerfälle ausgeschlossen werden. Dabei haben wir auch immer darauf geachtet, dass die Effizienz unserer Cuts nicht zu klein wird. Mit den eben erwähnten Cuts gelang es uns, eine Effizienz von
 \begin{eqnarray}
 \epsilon_{had} &=& \frac{9770 \pm \sqrt{9770} \pm 158}{10000}\\
 &=& 0.98 \pm 0.01 \pm 0.02
@@ -9,7 +23,6 @@ zu erreichen. Dabei ist der erste angegebene Fehler der statistische Fehler und 
 
 \subsection{Berechnung der hadronischen Wirkungsquerschnitte bei verschiedenen $\sqrt{s}$}
 Die eben besprochenen Schnitte haben wir nun auf die Messdaten angewandt. Dabei kamen die in \tref{hadronic_xsecs} gezeigten Werte heraus. Die angegebenen Fehler sind wiederum statistischer und dann systematischer Fehler. Diese Konvention verwenden wir im gesamten folgenden Protokoll.\\
-Der Fehler des Wirkungsquerschnitts ergibt sich durch Fehlerfortpflanzung aus den jeweiligen Fehlern von N und von $\epsilon_{had}$.
 
 \begin{table}[htbp]
 \centering
@@ -31,6 +44,25 @@ S[tabformat=1.2]}
 \caption{experimentelle Messung der Ein- und Ausgangswiderstände}
 \label{tab:hadronic_xsecs}
 \end{table}
+
+Der Wirkungsquerschnitt, der auch in \tref{hadronic_xsecs} eufgeführt ist, ergibt sich aus den gegebenen Daten wie folgt:
+\begin{eqnarray}
+\sigma_{had} = \frac{N - N_U}{L\epsilon_{had}} = \frac{N}{L\epsilon_{had}}
+\end{eqnarray}
+$N$ ist dabei die Zahl der analysierten Hadronenereignisse, $L$ ist die bereits erwähnte schwerpunktsenergieabhängige Luminosität und $\epsilon_{had}$ wurde oben bereits eingeführt. Die Zahl der vermuteten Untergrundereignisse $N_U$ haben wir auf null gesetzt, weil unsere Cuts die jeweiligen Events sehr effektiv passieren lassen. Außerdem kann man die Form der Verteilungen von z.B. der sichtbaren Energie (nach den betreffenden Selektionsschnitten) sowohl für die Monte Carlo-Samples wie auch für die Daten-Samples vergleichen (\fref{Evis_vgl}).
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\columnwidth,keepaspectratio]{Evis_vgl.pdf}
+	\caption{Verteilung der sichtbaren Energie für verschiedene Samples}
+	\label{fig:Evis_vgl}
+\end{figure}
+Wie man sehen kann, sehen sich die Verteilungen sehr ähnlich, was die Vermutung nahelegt, dass vornehmlich die gleichen Prozesse stattfanden. Dies bestätigt uns in der Annahme, dass der Untergrund mit gutem Gewissen vernachlässigt werden kann.\\
+Der statistische Fehler des Wirkungsquerschnitts ergibt sich durch Fehlerfortpflanzung aus den jeweiligen Fehlern von $N$, $L$ und $\epsilon_{had}$:
+\begin{eqnarray}
+\Delta\sigma_{had} &=& \sqrt{\left( \frac{\partial\sigma}{\partial L}\Delta L\right)^2 + \left( \frac{\partial\sigma}{\partial N}\Delta N\right)^2 + \left( \frac{\partial\sigma}{\partial \epsilon_{had}}\Delta\epsilon_{had} \right)^2}\\
+&=& \sqrt{\left( \frac{N}{L^2\epsilon_{had}}\Delta L\right)^2 + \left( \frac{1}{L\epsilon_{had}}\Delta N\right)^2 + \left( \frac{N}{L \epsilon_{had}^2}\Delta\epsilon_{had} \right)^2}
+\end{eqnarray}
+In dieser Art haben wir auch alle weiteren Fehler berechnet, wie z.B. den systematischen Fehler von $\sigma_{had}$, der sich aus den systematischen Unsicherheiten von $N$ und $\epsilon_{had}$ zusammensetzt.
 
 Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang unter ??BLABLA?? gefunden werden. Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_{had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{had}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
 \begin{eqnarray}

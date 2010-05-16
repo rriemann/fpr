@@ -1,6 +1,6 @@
 \section{Bestimmung des hadronischen Wirkungsquerschnitts $\sigma_0^{Had}$}
 \subsection{Selektion der hadronischen Ereignisse}
-Wir haben mehrere Datensamples zu Verfügung gehabt. Zunächst waren dort die gemessenen L3-Daten, die bei verschiedenen Schwerpunktenergien aufgenommen wurden (bei 89.48 GeV, 91.33 GeV und 93.02 GeV). Die integrierten Luminositäten unterscheiden sich auch und wurden in \cite[S.9]{script} gegeben; außerdem konnten wir mit zwei Monte-Carlo-Daten (MC) arbeiten, die uns der aktuellen Theorie entsprechende Verteilungen von Hadronen und Myonen gab. Mit diesen Simulationsdaten konnten wir also überprüfen, welche Wirkung unsere Cuts auf den jeweiligen $Z^0$-Zerfallskanal hatten. So konnten wir feststellen, dass bei hadronischen Ereignissen immer mindestens ca. 9 Cluster (separierte Einträge im Kalorimeter) Teilchen detektiert haben (siehe \fref{Ncluster_vgl}).
+Wir haben mehrere Datensamples zu Verfügung gehabt. Zunächst waren dort die gemessenen L3-Daten, die bei verschiedenen Schwerpunktenergien $\sqrt{s}$ aufgenommen wurden (bei 89.48 GeV, 91.33 GeV und 93.02 GeV). Die integrierten Luminositäten unterscheiden sich auch und wurden in \cite[S.9]{script} gegeben; außerdem konnten wir mit zwei Monte-Carlo-Datensätzen (MC) arbeiten, die uns der aktuellen Theorie entsprechende Verteilungen von Hadronen und Myonen gab. Mit diesen Simulationsdaten konnten wir also überprüfen, welche Wirkung unsere Cuts auf den jeweiligen $Z^0$-Zerfallskanal hatten. So konnten wir feststellen, dass bei hadronischen Ereignissen immer mindestens ca. 9 Cluster (separierte Einträge im Kalorimeter) Teilchen detektiert haben (siehe \fref{Ncluster_vgl}).
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=1\columnwidth,keepaspectratio]{Ncluster_vgl.pdf}
@@ -19,7 +19,7 @@ Zum Beispiel zerfallen $\tau$-Leptonen oft so, dass die Art und Anzahl der Teilc
 \epsilon_\mathrm{Had} &=& \frac{9770 \pm \sqrt{9770} \pm 158}{10000}\\
 &=& 0.98 \pm 0.01 \pm 0.02
 \end{eqnarray}
-zu erreichen. Dabei ist der erste angegebene Fehler der statistische Fehler und der zweite ist der systematische Fehler, der aus der ''willkürlichen'' Wahl der Schnittkriterien resultiert. Wenn man diese Cuts allerdings auf das Myonen-Monte-Carlo-Sample anwendet, so werden nur 19 hadronische Events erkannt (bei 9970 Events im Sample!). Die Fehlerquote durch Myonenereignisse ist also sehr gering. Unsere Schnitte sind also offenbar gut geeignet, um Hadronen-Events aus den Daten zu selektieren.
+zu erreichen. Dabei ist der erste angegebene Fehler der statistische Fehler und der zweite ist der systematische Fehler, der aus der ''willkürlichen'' Wahl der Schnittkriterien resultiert. Wenn man diese Cuts allerdings auf das Myonen-Monte-Carlo-Sample anwendet, so werden nur 19 hadronische Events ``gefunden'' (bei 9970 Events im Sample!). Die Fehlerquote durch Myonenereignisse ist also sehr gering. Unsere Schnitte sind also offenbar gut geeignet, um Hadronen-Events aus den Daten zu selektieren.
 
 \subsection{Berechnung der hadronischen Wirkungsquerschnitte bei verschiedenen $\sqrt{s}$}
 Die eben besprochenen Schnitte haben wir nun auf die Messdaten angewandt. Dabei kamen die in \tref{hadronic_xsecs} gezeigten Werte heraus. Die angegebenen Fehler sind wiederum statistischer und dann systematischer Fehler. Diese Konvention verwenden wir im gesamten folgenden Protokoll.\\
@@ -35,13 +35,13 @@ l}
 {Zahl analysierter Hadr.-Ereignisse N} &
 {Wirkungsquerschnitt $\sigma_0^{Had}$ [\si{\nano\barn}]}\\
 \midrule
-89,48 & 1848 ± 43 ± 52 & 10,55 ± 0,18 ± 0,16 \\
-91,33 & 3980 ± 63 ± 79 & 29,98 ± 0,49 ± 0,43 \\
-93,02 & 2149 ± 46 ± 51 & 14,56 ± 0,24 ± 0,24 \\
+89.48 & 1848 ± 43 ± 52 & 10.55 ± 0.18 ± 0.16 \\
+91.33 & 3980 ± 63 ± 79 & 29.98 ± 0.49 ± 0.43 \\
+93.02 & 2149 ± 46 ± 51 & 14.56 ± 0.24 ± 0.24 \\
 \bottomrule
-\label{tab:hadronic_xsecs}
 \end{tabular*}
 \caption{Zahl der analysierten Hadronen-Ereignisse und zugehörige Wirkungsquerschnitte bei verschiedenen Schwerpunktsenergien}
+\label{tab:hadronic_xsecs}
 \end{table*}
 
 
@@ -69,12 +69,20 @@ Der statistische Fehler des Wirkungsquerschnitts ergibt sich durch Fehlerfortpfl
 
 In dieser Art haben wir auch alle weiteren Fehler berechnet, wie z.B. den systematischen Fehler von $\sigma_\mathrm{Had}$, der sich aus den systematischen Unsicherheiten von $N$ und $\epsilon_{\mathrm{Had}}$ zusammensetzt.
 
-Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang unter \lref{fit} gefunden werden. Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_\mathrm{Had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{\mathrm{Had}}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
+Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang A unter \lref{fit} gefunden werden. Es resultierte der Fit in \fref{hadfit}.\\
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/fit_hadrons.png}
+	\caption{Fit des hadronischen Wirkungsquerschnitts in Abhängigkeit von $\sqrt{s}$}
+	\label{fig:hadfit}
+\end{figure}
+Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_\mathrm{Had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{\mathrm{Had}}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
 \begin{equation}
-\sigma_0^{\mathrm{Had}} = 40,33 \pm 0,65 \pm 0,27 \si{\nano\barn}
+\sigma_0^{\mathrm{Had}} = (40.33 \pm 0.65 \pm 0.27) \si{\nano\barn}
 \end{equation}
 
-Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt ungefähr $2\%$ des Absolutwertes.\\
+Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt mit $0.7\si{\nano\barn}$ ungefähr $2\%$ des Absolutwertes.\\
+Der $\chi^2$-Wert der Anpassung war mit $8\cdot10^{-12}$ sehr klein, allerdings interessiert meist eher der Wert $\chi^2/$DoF, wobei DoF die ``Degrees of Freedom'', also die Anzahl der Freiheitsgrade, ist. Dieser Wert sollte nahe null liegen. Da in diesem Fall aber drei Parameter festgelegt werden mussten, wofür nur drei Messpunkte zur Verfügung standen, ist DoF null. Daher ist unbestimmt, wie groß der $\chi^2/$DoF-Wert nun eigentlich ist. Auf jeden Fall kann man dem Plot \fref{hadfit} ansehen, dass der Fit gut durch die Datenpunkte verläuft. Man kann den Parametern also Glauben schenken, auch ohne genaue Kenntnis über $\chi^2/$DoF.\\
 Weiterhin konnte man der Breit-Wigner-Anpassung auch die Werte für die Zerfallsbreite $\Gamma_Z$ und für die Masse $M_Z$ entnehmen:
 \begin{eqnarray}
 \Gamma_Z &=& (2.61 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}\\
@@ -85,12 +93,13 @@ Aus der Zerfallsbreite kann man die Lebensdauer des $Z^0$ berechnen:
 \tau_Z &=& \frac{1}{\Gamma_Z}\\
 &=& (2.53 \pm 0.31 \pm 0.02)\cdot 10^{-25}\si{\second}
 \end{eqnarray}
+Die Ergebnisse werden im Kapitel 5 ``Diskussion der Ergebnisse'' auf ihre Übereinstimmung mit Literaturwerten überprüft.
 
-\section{Bestimmung des myonischen Wirkungsquerschnitts $\sigma_0^{\mathrm{Mu}}$}
+\section{Bestimmung des myonischen Wirkungsquerschnitts $\sigma_0^{\mu}$}
 \subsection{Selektion der Myonenereignisse}
 Hier sind wir genauso wie bei der Selektion der Hadronenevents vorgegangen. Wie bereits oben in \fref{Ncluster_vgl} gezeigt, haben alle Myonen-Ereignisse weniger als 12 Cluster-Einträge,
-so dass hier ein Cut gesetzt werden konnte. Weiterhin kann man verlangen, dass mindestens zwei Teilchen die Masse eines Myons besitzen müssen. Außerdem muss der Kosinus des Winkels, den die Bahnen beider Myonen bilden, größer als 0,9 sein, womit man fordert, dass die Myonen annähernd Back-to-Back fliegen. Schließlich wurden an die Energie eines Events einige Anforderungen gestellt.
-Das Teilchen mit der meisten Energie soll ungefähr die Hälfte der sichtbaren Energie des gesamten Events tragen. Darüber hinaus soll die gemessene (sichtbare) Energie relativ zur Schwerpunktsenergie im Intervall von \SI{80}{\percent} bis \SI{140}{\percent} liegen.
+so dass hier ein Cut gesetzt werden konnte. Weiterhin kann man verlangen, dass mindestens zwei Teilchen die Masse eines Myons besitzen müssen. Außerdem muss der Betrag des Kosinus' des Winkels, den die Bahnen beider Myonen bilden, größer als 0.9 sein, womit man fordert, dass die Myonen annähernd Back-to-Back fliegen. Schließlich wurden an die Energie eines Events einige Anforderungen gestellt.
+Das Teilchen mit der meisten Energie soll ungefähr die Hälfte der sichtbaren Energie des gesamten Events tragen. Darüber hinaus soll die gemessene (sichtbare) Energie relativ zur Schwerpunktsenergie im Intervall von \SI{80}{\percent} bis \SI{140}{\percent} liegen. Die Tatsache, dass auch Events mit mehr als \si{100}{\percent} gemessen wurde, zeigt, dass die Energiemessung offenbar mit größeren Fehlern behaftet ist.\\
 Inspiriert wurden diese Cuts im Wesentlichen durch \cite[Kap. 5]{kap5}. Mit diesen Schnitten wird eine Effizienz von
 \begin{equation}
   \begin{split}
@@ -106,35 +115,46 @@ l}
 \toprule
 {Energie [\si{GeV}]} &
 {Zahl analysierter Myonen-Ereignisse N} &
-{Wirkungsquerschnitt $\sigma_0^{\mathrm{Mu}}$ [\si{\nano\barn}]}\\
+{Wirkungsquerschnitt $\sigma_0^{\mu}$ [\si{\nano\barn}]}\\
 \midrule
-89,48 & 67 ± 8 ± 8  & 10,55 ± 0,18 ± 0,16 \\
-91,33 & 122 ± 11 ± 10 & 29,98 ± 0,49 ± 0,43 \\
-93,02 & 77 ± 9 ± 9 & 14,56 ± 0,24 ± 0,24 \\
+89.48 & 67 ± 8 ± 8  & 0.64 ± 0.03 ± 0.3 \\
+91.33 & 122 ± 11 ± 10 & 1.53 ± 0.05 ± 0.4 \\
+93.02 & 77 ± 9 ± 9 & 0.87 ± 0.04 ± 0.03 \\
 \bottomrule
-\label{tab:muonic_xsecs}
 \end{tabular*}
 \caption{Zahl der analysierten Myonen-Ereignisse und zugehörige Wirkungsquerschnitte bei verschiedenen Schwerpunktsenergien}
+\label{tab:muonic_xsecs}
 \end{table*}
 
 \subsection{Bestimmung des Wirkungsquerschnitts}
-Mit den in \tref{muonic_xsecs} augelisteten $\sqrt{s}$-abhängigen Wirkungsquerschnitten kann man nun wiederum das Fit-Programm aufrufen. Dabei sollte einzig $\sigma_0$ angepasst werden, während die totale Zerfallsbreite des $Z^0$ und die Masse $M_Z$ als feste Parameter, die aus der hadronischen Anpassung resultierten, übergeben wurden. Das Fit-Ergebnis lautet also:
+Mit den in \tref{muonic_xsecs} aufgelisteten $\sqrt{s}$-abhängigen Wirkungsquerschnitten kann man nun wiederum das Fit-Programm aufrufen. Dabei sollte einzig $\sigma_0$ angepasst werden, während die totale Zerfallsbreite des $Z^0$ und die Masse $M_Z$ als feste Parameter, die aus der hadronischen Anpassung resultierten, übergeben wurden. Das Fit-Ergebnis (in \fref{muonfit} zu sehen) lautet also:
 \begin{eqnarray}
 \sigma_0^{\mu} = (2.16 \pm 0.05 \pm 0.03)\si{\nano\barn}
 \end{eqnarray}
-Der myonische Wirkungsquerschnitt ist also deutlich kleiner als der hadronische.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/fit_muons.png}
+	\caption{Fit des myonischen Wirkungsquerschnitts in Abhängigkeit von $\sqrt{s}$}
+	\label{fig:muonfit}
+\end{figure}
+Der myonische Wirkungsquerschnitt ist also deutlich kleiner als der hadronische.\\
+Der $\chi^2/$DoF-Wert kann hier genau angegeben werden, da in diesem Fit nur ein einziger Parameter variiert werden musste und DoF somit gleich zwei ist. $\chi^2/$DoF beträgt in diesem Fall also 3.4, was schon in der richtigen Größenordnung liegt.
 
 \section{Bestimmung einiger Partialbreiten, des Weinbergwinkels und des Farbfaktors}
 \subsection{$\Gamma_e$-Bestimmung}
 \subsubsection{$\Gamma_e$-Bestimmung aus dem myonischen Wirkungsquerschnitt}
 Man kann die elektronische Partialbreite aus \cite[Gl.5]{script} bestimmen:
 \begin{eqnarray}
- \sigma_0 &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_f}{\Gamma_Z^2}\\
- \sigma_0^{\mu} &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_{\mu}}{\Gamma_Z^2}\\
+ \sigma_0 &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_f}{\Gamma_Z^2}
+\end{eqnarray}
+Wenn man nun als aus dem $Z^0$-Zerfall entstehendes Teilchen ein Myon einsetzt, so wird aus $\Gamma_f\rightarrow\Gamma_{\mu}$, und als Wirkungsquerschnitt wird dann $\sigma_0^{\mu}$ eingesetzt.
+\begin{eqnarray}
+\sigma_0^{\mu} &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_{\mu}}{\Gamma_Z^2}\\
  \Gamma_e &=& \Gamma_{\mu} = \Gamma_{tau}\\
  \rightarrow \Gamma_e &=& \sqrt{\frac{M_Z^2\sigma_0^{\mu}}{12\pi}}\Gamma_Z\\
- &=& (91.002 \pm .003 \pm 0.002)\si{\mega\electronvolt}				%%ganz schoen klein????
+ &=& (91 \pm 2 \pm 1)\si{\mega\electronvolt}
 \end{eqnarray}
+Dabei wurde die Beziehung \cite[Gl.9]{script} verwendet, sodass man statt der myonischen genausogut die elektronische Zerfallsbreite berechnen kann.\\
 Weiterhin konnte man die elektronische Zerfallsbreite auch mit der folgenden Methode bestimmen:
 \begin{eqnarray}
 \Gamma_e &=& \frac{1}{3}(\Gamma_Z - 3\Gamma_{Had} - 3\Gamma_{\nu_l})\\
@@ -149,16 +169,40 @@ Weiterhin konnte man die elektronische Zerfallsbreite auch mit der folgenden Met
 \rightarrow \Gamma_e &=& \Gamma_{e,2}\\
 &=& (83 \pm 4 \pm 3) \si{\mega\electronvolt}
 \end{eqnarray}
-Die beiden elektronischen Zerfallsbreiten stimmen also sehr gut überein.
+Da dies die Lösung einer quadratischen Gleichung ist, muss man sehen, welche der beiden Lösungen die physikalisch sinnvollere ist. In diesem Fall haben wir die Lösung gewählt, die besser mit der vorher berechneten elektronischen Partialbreite übereinstimmt. Diese beiden Zerfallsbreiten stimmen also sehr gut überein (die relative Abweichung beträgt nur knapp 9\si{\percent}, und die Fehlerbereiche überschneiden sich).
 
 \subsection{Bestimmung des Weinbergwinkels}
-Aus den bisher bekannten Größen kann man über die in \cite[Gl.6]{script} gegebene Formel den Weinbergwinkel berechnen. Wir verwenden hierfür die eben bestimmte elektronische Partialbreite des $Z^0$-Zerfalls.
+Aus den bisher bekannten Größen kann man über die in \cite[Gl.6]{script} gegebene Formel den Weinbergwinkel berechnen. Wir verwenden hierfür die eben (mit der zweiten Methode) bestimmte elektronische Partialbreite des $Z^0$-Zerfalls.
 \begin{eqnarray}
 \Gamma_e &=& \frac{G_F M_Z^3}{24 \sqrt{2}\pi}\left(1+[1-4|Q_e|\sin^2\Theta_W]^2\right)\\
 |Q_e| &=& 1
 \end{eqnarray}
 Damit folgt also für die den Weinbergwinkel:
 \begin{eqnarray}
-\sin^2\theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
-&=& 0.23 \pm 0.05 \pm 0.08
+\sin^2\Theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
+&=& 0.23 \pm 0.05 \pm 0.08\\
+\Theta_W &=& \arcsin(\sqrt{\sin^2\Theta_W})\\
+&=& 0.50 \pm 0.11 \pm 0.07\\
+&=& (28 \pm 6 \pm 4)\symbol{23}
 \end{eqnarray}
+Dabei muss man beachten, dass das Ergebnis der Rechnung imaginär ist. Wir haben aber nur den physikalischen Anteil, also den Realteil des Ergebnisses, als Weinbergwinkel verwendet. Für den Vergleich mit den Literaturwerten verweise ich wiederum auf Kapitel 5.
+
+\subsection{Bestimmung der hadronischen Partialbreite}
+Aus den bereits bekannten Partialbreiten für die geladenen und ungeladenen Leptonen lässt sich nun auch noch die hadronische Partialbreite nach \cite[Gl.8]{script} berechnen:
+\begin{eqnarray}
+\Gamma_Z &=& \Gamma_{had} + 3\Gamma_{\nu_e} + 3\Gamma_e\\
+\Gamma_{Had} &=& \Gamma_Z - 3\Gamma_{\nu_e} - 3\Gamma_e\\
+&=& (1.86 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}
+\end{eqnarray}
+
+\subsection{Bestimmung des Farbfaktors}
+Abschließend konnten wir noch den Farbfaktor $N_C$ berechnen, indem wir \cite[Gl.15]{script} verwendeten:
+\begin{eqnarray}
+\Gamma_{Had} &=& N_CK_{QCD}(2\Gamma_u + 3\Gamma_d)
+\end{eqnarray}
+$\Gamma_u$ und $\Gamma_d$ berechnen wir mit Hilfe der bereits eingeführten Formel \cite[Gl.6]{script}, wobei für die Ladungen der Quarks die Werte $\frac{2}{3}$ für das Up-Quark und $-\frac{1}{3}$ für das Down-Quark eingesetzt wurde. Damit folgt für $N_C$:
+\begin{eqnarray}
+N_C &=& \frac{\Gamma_{Had}}{K_{QCD}(2\Gamma_u + 3\Gamma_d)}\\
+&=& 3.20 \pm 0.11 \pm 0.07
+\end{eqnarray}
+Dieses Ergebnis legt also den Schluss nahe, dass es die bereits bekannten drei Quarkfamilien gibt (Up-Down, Charm-Strange, Top-Bottom).

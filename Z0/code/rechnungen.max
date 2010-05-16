@@ -112,6 +112,8 @@ sin2_theta_w      : float(realpart( 1/4*(1-sqrt(gamma_e_v2/vorfaktor -1)) ));
 dsin2_theta_w     : float( 1/(8*sqrt(gamma_e_v2/vorfaktor -1)) * sqrt((dgamma_e_v2/vorfaktor)^2 + (3*gamma_e_v2/(vorfaktor*M_Z)*dM_Z)^2) );
 dsin2_theta_w_stat: float( 1/(8*sqrt(gamma_e_v2/vorfaktor -1)) * sqrt((dgamma_e_v2_stat/vorfaktor)^2 + (3*gamma_e_v2/(vorfaktor*M_Z)*dM_Z_stat)^2) );
 
+theta_w : float(asin(sqrt(sin2_theta_w)));
+
 /*############################*/
 
 gamma_had      : float(gamma_Z - 3*gamma_nue - 3*gamma_e_v2);

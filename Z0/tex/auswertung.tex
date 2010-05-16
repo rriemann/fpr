@@ -71,15 +71,25 @@ In dieser Art haben wir auch alle weiteren Fehler berechnet, wie z.B. den system
 
 Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm einsetzen. Dieses Programm wurde von uns leicht verändert und kann im Anhang unter \lref{fit} gefunden werden. Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_\mathrm{Had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{\mathrm{Had}}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
 \begin{equation}
-\sigma_0^{\mathrm{Had}} = 40,33 \pm 0.65 \pm 0,27
+\sigma_0^{\mathrm{Had}} = 40,33 \pm 0,65 \pm 0,27 \si{\nano\barn}
 \end{equation}
 
-Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt ungefähr $2\%$ des Absolutwertes.
+Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt ungefähr $2\%$ des Absolutwertes.\\
+Weiterhin konnte man der Breit-Wigner-Anpassung auch die Werte für die Zerfallsbreite $\Gamma_Z$ und für die Masse $M_Z$ entnehmen:
+\begin{eqnarray}
+\Gamma_Z &=& (2.61 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}\\
+M_Z &=& (91.16 \pm 0.02 \pm 0.02)\si{\giga\electronvolt}
+\end{eqnarray}
+Aus der Zerfallsbreite kann man die Lebensdauer des $Z^0$ berechnen:
+\begin{eqnarray}
+\tau_Z &=& \frac{1}{\Gamma_Z}\\
+&=& (2.53 \pm 0.31 \pm 0.02)\cdot 10^{-25}\si{\second}
+\end{eqnarray}
 
 \section{Bestimmung des myonischen Wirkungsquerschnitts $\sigma_0^{\mathrm{Mu}}$}
 \subsection{Selektion der Myonenereignisse}
 Hier sind wir genauso wie bei der Selektion der Hadronenevents vorgegangen. Wie bereits oben in \fref{Ncluster_vgl} gezeigt, haben alle Myonen-Ereignisse weniger als 12 Cluster-Einträge,
-so dass hier ein Cut gesetzt werden konnte. Weiterhin kann man verlangen, dass mindestens zwei Teilchen die Masse eines Myons besitzen müssen. Außerdem muss der Kosinus des Winkels, den die Bahnen beider Myonen bilden, größer als 0.9 sein, womit man fordert, dass die Myonen annähernd Back-to-Back fliegen. Schließlich wurden an die Energie eines Events einige Anforderungen gestellt.
+so dass hier ein Cut gesetzt werden konnte. Weiterhin kann man verlangen, dass mindestens zwei Teilchen die Masse eines Myons besitzen müssen. Außerdem muss der Kosinus des Winkels, den die Bahnen beider Myonen bilden, größer als 0,9 sein, womit man fordert, dass die Myonen annähernd Back-to-Back fliegen. Schließlich wurden an die Energie eines Events einige Anforderungen gestellt.
 Das Teilchen mit der meisten Energie soll ungefähr die Hälfte der sichtbaren Energie des gesamten Events tragen. Darüber hinaus soll die gemessene (sichtbare) Energie relativ zur Schwerpunktsenergie im Intervall von \SI{80}{\percent} bis \SI{140}{\percent} liegen.
 Inspiriert wurden diese Cuts im Wesentlichen durch \cite[Kap. 5]{kap5}. Mit diesen Schnitten wird eine Effizienz von
 \begin{equation}
@@ -108,3 +118,35 @@ l}
 \end{table*}
 
 \subsection{Bestimmung des Wirkungsquerschnitts}
+Mit den in \tref{muonic_xsecs} augelisteten $\sqrt{s}$-abhängigen Wirkungsquerschnitten kann man nun wiederum das Fit-Programm aufrufen. Dabei sollte einzig $\sigma_0$ angepasst werden, während die totale Zerfallsbreite des $Z^0$ und die Masse $M_Z$ als feste Parameter, die aus der hadronischen Anpassung resultierten, übergeben wurden. Das Fit-Ergebnis lautet also:
+\begin{eqnarray}
+\sigma_0^{\mu} = (2.16 \pm 0.05 \pm 0.03)\si{\nano\barn}
+\end{eqnarray}
+Der myonische Wirkungsquerschnitt ist also deutlich kleiner als der hadronische.
+
+\section{Bestimmung einiger Partialbreiten und des Farbfaktors}
+\subsection{$\Gamma_e$-Bestimmung}
+\subsubsection{$\Gamma_e$-Bestimmung aus dem myonischen Wirkungsquerschnitt}
+Man kann die elektronische Partialbreite aus \cite[Gl.5]{script} bestimmen:
+\begin{eqnarray}
+ \sigma_0 &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_f}{\Gamma_Z^2}\\
+ \sigma_0^{\mu} &=& \frac{12\pi}{M_Z^2}\frac{\Gamma_e\Gamma_{\mu}}{\Gamma_Z^2}\\
+ \Gamma_e &=& \Gamma_{\mu} = \Gamma_{tau}\\
+ \rightarrow \Gamma_e &=& \sqrt{\frac{M_Z^2\sigma_0^{\mu}}{12\pi}}\Gamma_Z\\
+ &=& (91.002 \pm .003 \pm 0.002)\si{\mega\electronvolt}				%%ganz schoen klein????
+\end{eqnarray}
+Weiterhin konnte man die elektronische Zerfallsbreite auch mit der folgenden Methode bestimmen:
+\begin{eqnarray}
+\Gamma_e &=& \frac{1}{3}(\Gamma_Z - 3\Gamma_{Had} - 3\Gamma_{\nu_l})\\
+\Gamma_{Had} &=& \frac{M_Z^2\Gamma_Z^2\sigma_0^{Had}}{12\pi}\cdot\frac{1}{\Gamma_e}\\
+&=& \frac{\alpha}{\Gamma_e}\\
+\Gamma_{\nu_e} &=& \frac{G_FM_Z^3}{12\sqrt{2}\pi}\\
+&=& (165.71 \pm 0.10 \pm 0.09)\si{\mega\electronvolt}\\
+\beta &=& \frac{1}{3}\Gamma_Z - \Gamma_{\nu_e}\\
+0 &=& \Gamma_e^2 - \beta\Gamma_e + \alpha\\
+\Gamma_{e,1} &=& 0.61\si{\giga\electronvolt}\\
+\Gamma_{e,2} &=& 0.083\si{\giga\electronvolt}\\
+\rightarrow \Gamma_e &=& \Gamma_{e,2}\\
+&=& (83 \pm 4 \pm 3) \si{\mega\electronvolt}
+\end{eqnarray}
+Die beiden elektronischen Zerfallsbreiten stimmen also sehr gut überein.

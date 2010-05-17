@@ -107,8 +107,8 @@ void define_style() {
 
     //use bold lines and markers
     atlasStyle->SetMarkerStyle(20);
-    atlasStyle->SetMarkerSize(1.0);
-    atlasStyle->SetHistLineWidth(2.);
+    atlasStyle->SetMarkerSize(0.1);
+    atlasStyle->SetHistLineWidth(1.);
     atlasStyle->SetLineStyleString(2,"[12 12]");
 
     //get rid of X error bars and y error bar caps

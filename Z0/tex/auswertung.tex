@@ -17,7 +17,7 @@ Daraus ließ sich ein wirksamer Cut gewinnen, der unter anderem die meisten Myon
 Zum Beispiel zerfallen $\tau$-Leptonen oft so, dass die Art und Anzahl der Teilchen, die in die Kalorimeter gelangt, sehr einem hadronischen Ereignis ähnelt. Allerdings wird dabei viel Energie an dabei entstehende Neutrines abgegeben, die nicht registriert werden können, sodass die sichtbare Energie in einem solchen Fall wesentlich kleiner ist. Mit diesem Cut können demnach viele $\tau$-Zerfälle ausgeschlossen werden. Dabei haben wir auch immer darauf geachtet, dass die Effizienz unserer Cuts nicht zu klein wird. Mit den eben erwähnten Cuts gelang es uns, eine Effizienz von
 \begin{eqnarray}
 \epsilon_\mathrm{Had} &=& \frac{9770 \pm \sqrt{9770} \pm 158}{10000}\\
-&=& 0.98 \pm 0.01 \pm 0.02
+\nonumber &=& 0.98 \pm 0.01 \pm 0.02
 \end{eqnarray}
 zu erreichen. Dabei ist der erste angegebene Fehler der statistische Fehler und der zweite der systematische Fehler, der aus der Variation der Schnittkriterien resultiert. Wenn man diese Cuts allerdings auf das Myonen-Monte-Carlo-Sample anwendet, so werden nur 19 hadronische Events ``gefunden'' (bei 9970 Events im Sample!). Die Fehlerquote durch Myonenereignisse ist also sehr gering. Unsere Schnitte sind also offenbar gut geeignet, um Hadronen-Events aus den Daten zu selektieren.
 
@@ -46,9 +46,9 @@ l}
 
 
 Der Wirkungsquerschnitt, der auch in \tref{hadronic_xsecs} aufgeführt ist, ergibt sich aus den gegebenen Daten nach \cite[Gl.13]{script} wie folgt:
-\begin{eqnarray}
+\begin{equation}
 \sigma_\mathrm{Had} = \frac{N - N_U}{L\epsilon_\mathrm{Had}} = \frac{N}{L\epsilon_\mathrm{Had}}
-\end{eqnarray}
+\end{equation}
 $N$ ist dabei die Zahl der analysierten Hadronenereignisse, $L$ ist die bereits erwähnte, schwerpunktsenergieabhängige Luminosität und $\epsilon_\mathrm{Had}$ wurde oben bereits eingeführt. Die Zahl der vermuteten Untergrundereignisse $N_U$ haben wir auf null gesetzt, weil unsere Cuts die jeweiligen Events sehr effektiv passieren lassen. Außerdem kann man die Form der Verteilungen von z.B. der sichtbaren Energie (nach den betreffenden Selektionsschnitten) sowohl für die Monte Carlo-Samples wie auch für die Daten-Samples vergleichen (\fref{Evis_vgl}).
 \begin{figure}[htb]
 	\centering
@@ -77,21 +77,21 @@ Diese Wirkungsquerschnitte kann man nun in das bereitgestellte Fit-Programm eins
 	\label{fig:hadfit}
 \end{figure}
 Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_\mathrm{Had}$ und der Luminosität (deren Fehler war in \cite[S.9]{script} mit $1\%$ des gegebenen Wertes angegeben) kann der statistische Fehler von $\sigma_0$ und mit den systematischen Fehlern von N und $\epsilon_{\mathrm{Had}}$ durch dieses Programm berechnet werden. Für den gesamten hadronischen Wirkungsquerschnitt resultiert also:
-\begin{equation}
+\begin{equation*}
 \sigma_0^{\mathrm{Had}} = (40.33 \pm 0.65 \pm 0.27) \si{\nano\barn}
-\end{equation}
+\end{equation*}
 
 Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt mit $0.7\si{\nano\barn}$ ungefähr $2\%$ des Absolutwertes.\\
 Der $\chi^2$-Wert der Anpassung war mit $8\cdot10^{-12}$ sehr klein, allerdings interessiert meist eher der Wert $\chi^2/$DoF, wobei DoF die ``Degrees of Freedom'', also die Anzahl der Freiheitsgrade, ist. Dieser Wert sollte nahe null liegen. Da in diesem Fall aber drei Parameter festgelegt werden mussten, wofür nur drei Messpunkte zur Verfügung standen, ist DoF gleich null. Daher ist unbestimmt, wie groß der $\chi^2/$DoF-Wert nun eigentlich ist. Auf jeden Fall kann man dem Plot \fref{hadfit} ansehen, dass der Fit gut durch die Datenpunkte verläuft. Man kann den Parametern also Glauben schenken, auch ohne genaue Kenntnis über $\chi^2/$DoF.\\
 Weiterhin konnte man der Breit-Wigner-Anpassung auch die Werte für die Zerfallsbreite $\Gamma_Z$ und für die Masse $M_Z$ entnehmen:
-\begin{eqnarray}
-\Gamma_Z &=& (2.61 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}\\
-M_Z &=& (91.16 \pm 0.02 \pm 0.02)\si{\giga\electronvolt}
-\end{eqnarray}
+\begin{eqnarray*}
+\Gamma_Z &=& \uuline{(2.61 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}}\\
+M_Z &=& \uuline{(91.16 \pm 0.02 \pm 0.02)\si{\giga\electronvolt}}
+\end{eqnarray*}
 Aus der Zerfallsbreite kann man die Lebensdauer des $Z^0$ berechnen:
 \begin{eqnarray}
 \tau_Z &=& \frac{1}{\Gamma_Z}\\
-&=& (2.53 \pm 0.31 \pm 0.02)\cdot 10^{-25}\si{\second}
+\nonumber &=& \uuline{(2.53 \pm 0.31 \pm 0.02)\cdot 10^{-25}\si{\second}}
 \end{eqnarray}
 Die Ergebnisse werden im Kapitel 5 ``Diskussion der Ergebnisse'' auf ihre Übereinstimmung mit Literaturwerten überprüft.
 
@@ -128,9 +128,9 @@ l}
 
 \subsection{Bestimmung des Wirkungsquerschnitts}
 Mit den in \tref{muonic_xsecs} aufgelisteten $\sqrt{s}$-abhängigen Wirkungsquerschnitten kann man nun wiederum das Fit-Programm aufrufen. Dabei sollte einzig $\sigma_0$ angepasst werden, während die totale Zerfallsbreite des $Z^0$ und die Masse $M_Z$ als feste Parameter, die aus der hadronischen Anpassung resultierten, übergeben wurden. Das Fit-Ergebnis (in \fref{muonfit} zu sehen) lautet also:
-\begin{eqnarray}
+\begin{equation*}
 \sigma_0^{\mu} = (2.16 \pm 0.05 \pm 0.03)\si{\nano\barn}
-\end{eqnarray}
+\end{equation*}
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=1\columnwidth,keepaspectratio]{fit_muon}
@@ -161,13 +161,13 @@ Weiterhin konnte man die elektronische Zerfallsbreite auch mit der folgenden Met
 \Gamma_{Had} &=& \frac{M_Z^2\Gamma_Z^2\sigma_0^{Had}}{12\pi}\cdot\frac{1}{\Gamma_e}\\
 &=& \frac{\alpha}{\Gamma_e}\\
 \Gamma_{\nu_e} &=& \frac{G_FM_Z^3}{12\sqrt{2}\pi}\\
-&=& (165.71 \pm 0.10 \pm 0.09)\si{\mega\electronvolt}\\
+\nonumber &=& (165.71 \pm 0.10 \pm 0.09)\si{\mega\electronvolt}\\
 \beta &=& \frac{1}{3}\Gamma_Z - \Gamma_{\nu_e}\\
 0 &=& \Gamma_e^2 - \beta\Gamma_e + \alpha\\
-\Gamma_{e,1} &=& 0.61\si{\giga\electronvolt}\\
-\Gamma_{e,2} &=& 0.083\si{\giga\electronvolt}\\
+\nonumber \Gamma_{e,1} &=& 0.61\si{\giga\electronvolt}\\
+\nonumber \Gamma_{e,2} &=& 0.083\si{\giga\electronvolt}\\
 \rightarrow \Gamma_e &=& \Gamma_{e,2}\\
-&=& (83 \pm 4 \pm 3) \si{\mega\electronvolt}
+\nonumber &=& (83 \pm 4 \pm 3) \si{\mega\electronvolt}
 \end{eqnarray}
 Da dies die Lösung einer quadratischen Gleichung ist, muss man sehen, welche der beiden Lösungen die physikalisch sinnvollere ist. In diesem Fall haben wir die Lösung gewählt, die besser mit der vorher berechneten elektronischen Partialbreite übereinstimmt. Diese beiden Zerfallsbreiten stimmen also sehr gut überein (die relative Abweichung beträgt nur knapp 9\si{\percent}, und die Fehlerbereiche überschneiden sich).
 
@@ -177,13 +177,16 @@ Aus den bisher bekannten Größen kann man über die in \cite[Gl.6]{script} gege
 \Gamma_e &=& \frac{G_F M_Z^3}{24 \sqrt{2}\pi}\left(1+[1-4|Q_e|\sin^2\Theta_W]^2\right)\\
 |Q_e| &=& 1
 \end{eqnarray}
-Damit folgt also für die den Weinbergwinkel:
+Man erhält also:
 \begin{eqnarray}
 \sin^2\Theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
-&=& 0.23 \pm 0.05 \pm 0.08\\
+\nonumber &=& 0.23 \pm 0.05 \pm 0.08
+\end{eqnarray}
+Damit folgt schließlich für die den Weinbergwinkel:
+\begin{eqnarray}
 \Theta_W &=& \arcsin(\sqrt{\sin^2\Theta_W})\\
-&=& 0.50 \pm 0.11 \pm 0.07\\
-&=& (28 \pm 6 \pm 4)\symbol{23}
+\nonumber &=& 0.50 \pm 0.11 \pm 0.07\\
+\nonumber &=& \uuline{(28 \pm 6 \pm 4)\symbol{23}}
 \end{eqnarray}
 Dabei muss man beachten, dass das Ergebnis der Rechnung imaginär ist. Wir haben aber nur den physikalischen Anteil, also den Realteil des Ergebnisses, als Weinbergwinkel verwendet. Für den Vergleich mit den Literaturwerten verweise ich wiederum auf \cite[Kap. 5]{kap5}.
 
@@ -192,7 +195,7 @@ Aus den bereits bekannten Partialbreiten für die geladenen und ungeladenen Lept
 \begin{eqnarray}
 \Gamma_Z &=& \Gamma_{had} + 3\Gamma_{\nu_e} + 3\Gamma_e\\
 \Gamma_{Had} &=& \Gamma_Z - 3\Gamma_{\nu_e} - 3\Gamma_e\\
-&=& (1.86 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}
+\nonumber &=& (1.86 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}
 \end{eqnarray}
 
 \subsection{Bestimmung des Farbfaktors}
@@ -203,6 +206,6 @@ Abschließend konnten wir noch den Farbfaktor $N_C$ berechnen, indem wir \cite[G
 $\Gamma_u$ und $\Gamma_d$ berechnen wir mit Hilfe der bereits eingeführten Formel \cite[Gl.6]{script}, wobei für die Ladungen der Quarks die Werte $\frac{2}{3}$ für das Up-Quark und $-\frac{1}{3}$ für das Down-Quark eingesetzt wurde. Damit folgt für $N_C$:
 \begin{eqnarray}
 N_C &=& \frac{\Gamma_{Had}}{K_{QCD}(2\Gamma_u + 3\Gamma_d)}\\
-&=& 3.20 \pm 0.11 \pm 0.07
+\nonumber &=& \uuline{3.20 \pm 0.11 \pm 0.07}
 \end{eqnarray}
 Dieses Ergebnis legt also den Schluss nahe, dass es die bereits bekannten drei Quarkfamilien gibt (Up-Down, Charm-Strange, Top-Bottom).

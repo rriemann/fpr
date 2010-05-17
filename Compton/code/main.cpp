@@ -23,9 +23,9 @@ int main ( int argc, char *argv[] ) {
 
     Double_t oeffnungszeit;
 
-    TH1F* hintergrund = new TH1F;
-    hintergrund = chn2hist("../data/rauschen.chn",oeffnungszeit);
-    hintergrund->Scale(1/oeffnungszeit);
+    TH1F* th1f_hintergrund = new TH1F;
+    th1f_hintergrund = chn2hist("../data/rauschen.chn",oeffnungszeit);
+    th1f_hintergrund->Scale(1/oeffnungszeit);
 
 }
 

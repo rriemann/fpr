@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <stdint.h>
 
 //root includes
 #include <TH1F.h>
@@ -19,7 +20,7 @@
 
 typedef short int mWORD; //2 bytes
 // typedef long mLONG;      //4 bytes
-typedef int mLONG;      //4 bytes
+typedef int32_t mLONG;      //4 bytes
 
 struct ChnFormat {
   mWORD code;      //Must be -1

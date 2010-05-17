@@ -8,6 +8,7 @@
 #include "TROOT.h"
 #include "TFile.h"
 #include "TH1.h"
+#include "TCanvas.h"
 #include "TF1.h"
 #include "TLorentzVector.h"
 #include "TVector3.h"
@@ -21,6 +22,7 @@ using std::endl;
 using std::vector;
 using std::string;
 void define_style();
+void DrawTH1(TH1* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
 
 int main ( int argc, char *argv[] ) {
 
@@ -50,6 +52,8 @@ int main ( int argc, char *argv[] ) {
     th1f_caesium_alu->Scale(1/oeffnungszeit);
 
     file->Write();
+
+    DrawTH1(th1f_hintergrund, "Titel");
 
 }
 
@@ -106,9 +110,9 @@ void define_style() {
     atlasStyle->SetTitleSize(tsize,"z");
 
     //use bold lines and markers
-    atlasStyle->SetMarkerStyle(20);
-    atlasStyle->SetMarkerSize(1.0);
-    atlasStyle->SetHistLineWidth(2.);
+    // atlasStyle->SetMarkerStyle(20);
+    atlasStyle->SetMarkerSize(0.1);
+    // atlasStyle->SetHistLineWidth(2.);
     atlasStyle->SetLineStyleString(2,"[12 12]");
 
     //get rid of X error bars and y error bar caps
@@ -131,37 +135,26 @@ void define_style() {
     gROOT->SetStyle("ATLAS");
 }
 
-// void Diagram::DrawTH1(int index, string histname, string xaxis, string yaxis, string options, bool log) {
-//
-//   TH1* h1 = (TH1*) m_files[index]->Get(histname.c_str());
-//   h1->SetMarkerStyle(20);                                                                       //ATLAS-Style
-//   std::string folder = (string)m_files[index]->GetName();
-//   folder = folder.replace(folder.find(".root"), 100, "").substr(19);
-//
-//   if (h1 != NULL) {
-//   if (xaxis != "") {
-//       h1->GetXaxis()->SetTitle(xaxis.c_str());
-//     }
-//     if (yaxis != "") {
-//       h1->GetYaxis()->SetTitle(yaxis.c_str());
-//     }
-//     h1->SetTitle(Form("%s %s", m_names[index].c_str(), (histname).c_str()));
-//     h1->Scale(1./h1->Integral() * h1->GetEntries());
-//     TCanvas* c1 = GetCanvas(histname);
-//     h1->Draw(options.c_str());
-//     if (log) {
-//       c1->SetLogy(1);
-//       c1->SaveAs(Form("/afs/ifh.de/user/m/murach/scratch/data/plots/%s/%s_log.png", folder.c_str(), histname.c_str()));
-//     }
-//     else {
-//       c1->SaveAs(Form("/afs/ifh.de/user/m/murach/scratch/data/plots/%s/%s.png", folder.c_str(), histname.c_str()));
-//     }
-//     delete c1;
-//   }
-//   else {
-//     cout << "ERROR: Histogram " << histname << " in " << m_names[index] << " not found!" << endl;
-//   }
-//
-// }
+void DrawTH1(TH1* h1, string name, string options, bool log, string xaxis, string yaxis) {
+    if (xaxis != "") {
+        h1->GetXaxis()->SetTitle(xaxis.c_str());
+    }
+    if (yaxis != "") {
+        h1->GetYaxis()->SetTitle(yaxis.c_str());
+    }
+    TCanvas *c1 = new TCanvas("c1","c1",800,600);
+    c1->SetGrid();
+    c1->SetLeftMargin(0.15);
+    c1->SetBottomMargin(0.15);
+    c1->SetRightMargin(0.15);
+    h1->Draw(options.c_str());
+    if (log) {
+        c1->SetLogy(1);
+    }
+    c1->SaveAs(Form("../tmp/%s.pdf", name.c_str())); // + h1->GetTitle);
+    delete c1;
 
-// kate: indent-mode cstyle; space-indent on; indent-width 0;  replace-trailing-space-save on;
+}
+
+
+// kate: indent-mode cstyle; space-indent on; indent-width 4;

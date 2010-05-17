@@ -18,7 +18,8 @@
 */   
 
 typedef short int mWORD; //2 bytes
-typedef long mLONG;      //4 bytes
+// typedef long mLONG;      //4 bytes
+typedef int mLONG;      //4 bytes
 
 struct ChnFormat {
   mWORD code;      //Must be -1

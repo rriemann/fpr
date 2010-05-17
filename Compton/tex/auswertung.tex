@@ -41,6 +41,43 @@ TODO
 
 Durch die Verwendung des Hauptverstärkers kann das Signal mit höherer Präzision
 gemessen werden, jedoch muss man dafür eine zeitliche Verzögerung $Δt$ in Kauf
-nehmen. Um jene zu bestimmen, wurde der Trigger des Oszilloskops auf den
+nehmen. Um jene zu bestimmen, wird der Trigger des Oszilloskops auf den
 Vorverstärker gestellt und das Bild manuell im richtigen Moment angehalten, so
-dass im Ergebnis ein Standbild wie in \fref{latenz} exportiert werden konnte.
+dass im Ergebnis ein Standbild wie in \fref{latenz} exportiert werden kann.
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+S[tabformat=1.1]%
+}
+\toprule
+{$x_1$} & {$x_2$} & {$x_3$} & {$x_4$} & {$x_5$} & {$x_6$} & {$\bar x$} & {$Δx$}\\
+\midrule
+6.7 & 6,8 & 6,5 & 6.8 & 6.8 & 6.6 & 6.7 & 0.1 \\
+\bottomrule
+\end{tabular*}
+\label{tab:latenzmesswerte}
+\caption{Messwerte der Latenzzeit}
+\end{table}
+Die Messergebnisse sind in \tref{latenzmesswerte} enthalten. Wenn man den Fehler
+der einzelnen Messung mit \num{0,1} als letzte signifikante Stelle abschätzt, so
+kann der Fehler des Mittelwerts auch insgesamt großzügig mit \num{0.1} abgeschätzt
+werden. Die Latenzzeit beträgt somit
+\begin{equation}
+  Δt = \SI{6.7(1)}{\second}
+\end{equation}
+. Da die Öffnungszeit jedoch vom Computer vollautomatisch gemessen wird, ist
+eine Latenzzeit in diesen Versuch unerheblich.
+
+\subsection{Untergrundmessung}
+
+\subsection{Eichung}
+
+

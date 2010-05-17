@@ -14,6 +14,7 @@
 #include "TVector3.h"
 #include "TStyle.h"
 #include "TColor.h"
+#include "TFitResultPtr.h"
 
 #include "hn2hist.cpp"
 
@@ -23,6 +24,7 @@ using std::vector;
 using std::string;
 void define_style();
 void DrawTH1(TH1* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
+TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2);
 
 int main ( int argc, char *argv[] ) {
 
@@ -34,27 +36,38 @@ int main ( int argc, char *argv[] ) {
     TH1F* th1f_hintergrund = new TH1F;
     th1f_hintergrund = chn2hist("../data/rauschen2.chn",oeffnungszeit);
     th1f_hintergrund->Scale(1/oeffnungszeit);
+    DrawTH1(th1f_hintergrund, "hintergrund");
 
     TH1F* th1f_barium = new TH1F;
     th1f_barium = chn2hist("../data/ba.chn",oeffnungszeit);
     th1f_barium->Scale(1/oeffnungszeit);
+    DrawTH1(th1f_barium,"barium");
 
     TH1F* th1f_caesium = new TH1F;
     th1f_caesium = chn2hist("../data/cs.chn",oeffnungszeit);
     th1f_caesium->Scale(1/oeffnungszeit);
+    DrawTH1(th1f_caesium,"caesium");
 
     TH1F* th1f_natrium = new TH1F;
     th1f_natrium = chn2hist("../data/na.chn",oeffnungszeit);
     th1f_natrium->Scale(1/oeffnungszeit);
+    DrawTH1(th1f_natrium,"natrium");
 
     TH1F* th1f_caesium_alu = new TH1F;
     th1f_caesium_alu = chn2hist("../data/cs_alu.chn",oeffnungszeit);
     th1f_caesium_alu->Scale(1/oeffnungszeit);
 
-    file->Write();
 
-    DrawTH1(th1f_hintergrund, "Titel");
-
+    TH1F* th1f_caesium_ohne_hintergrund = new TH1F(*th1f_caesium);
+    th1f_caesium_ohne_hintergrund->SetName("caesium_ohne_hintergrund");
+    th1f_caesium_ohne_hintergrund->Add(th1f_hintergrund,-1);
+    DrawTH1(th1f_caesium_ohne_hintergrund,"caesium_ohne_hintergrund");
+    
+    TFitResultPtr fitres_caesium = FitGausInRange(th1f_caesium_ohne_hintergrund, 850,1125);
+    // Double_t par0 = fitres_caesium->Value(0);
+    // cout <<  par0 << endl;
+    
+    file->Write();    
 }
 
 void define_style() {
@@ -110,7 +123,6 @@ void define_style() {
     atlasStyle->SetTitleSize(tsize,"z");
 
     //use bold lines and markers
-
     // atlasStyle->SetMarkerStyle(20);
     atlasStyle->SetMarkerSize(0.1);
     // atlasStyle->SetHistLineWidth(2.);
@@ -157,5 +169,9 @@ void DrawTH1(TH1* h1, string name, string options, bool log, string xaxis, strin
 
 }
 
+TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2) {
+    TF1 *f1 = new TF1("f1", "gaus", x1, x2);
+    return h1->Fit("f1", "RS");
+}
 
 // kate: indent-mode cstyle; space-indent on; indent-width 4;

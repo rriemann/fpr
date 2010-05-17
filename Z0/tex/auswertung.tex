@@ -82,7 +82,11 @@ Unter Berücksichtigung der statistischen Fehler von N, $\epsilon_\mathrm{Had}$ 
 \end{equation*}
 
 Der Gesamtfehler, der pythagoräisch aus dem systematischen und dem statistischen Fehler addiert wird, beträgt mit $0.7\si{\nano\barn}$ ungefähr $2\%$ des Absolutwertes.\\
-Der $\chi^2$-Wert der Anpassung war mit $8\cdot10^{-12}$ sehr klein, allerdings interessiert meist eher der Wert $\chi^2/$DoF, wobei DoF die ``Degrees of Freedom'', also die Anzahl der Freiheitsgrade, ist. Dieser Wert sollte nahe null liegen. Da in diesem Fall aber drei Parameter festgelegt werden mussten, wofür nur drei Messpunkte zur Verfügung standen, ist DoF gleich null. Daher ist unbestimmt, wie groß der $\chi^2/$DoF-Wert nun eigentlich ist. Auf jeden Fall kann man dem Plot \fref{hadfit} ansehen, dass der Fit gut durch die Datenpunkte verläuft. Man kann den Parametern also Glauben schenken, auch ohne genaue Kenntnis über $\chi^2/$DoF.\\
+Der $\chi^2$-Wert der Anpassung war mit $8\cdot10^{-12}$ sehr klein, allerdings interessiert meist eher der Wert $\chi^2/$DoF, wobei DoF die ``Degrees of Freedom'', also die Anzahl der Freiheitsgrade, ist. Dieser Quotient sollte  im Bestfall nahe null liegen. Da in diesem Fall aber drei Parameter festgelegt werden mussten, wofür nur drei Messpunkte zur Verfügung standen, ist DoF gleich null. Daher ist unbestimmt, wie groß der $\chi^2/$DoF-Wert nun eigentlich ist.
+Rein analytisch wäre in diesem Fall ein Ergebnis gegen unendlich zu erwarten.
+Auf jeden Fall kann man dem Plot \fref{hadfit} ansehen, dass der Fit gut durch die Datenpunkte verläuft.
+% Man kann den Parametern also Glauben schenken, auch ohne genaue Kenntnis über $\chi^2/$DoF.\\
+
 Weiterhin konnte man der Breit-Wigner-Anpassung auch die Werte für die Zerfallsbreite $\Gamma_Z$ und für die Masse $M_Z$ entnehmen:
 \begin{eqnarray*}
 \Gamma_Z &=& \uuline{(2.61 \pm 0.05 \pm 0.03)\si{\giga\electronvolt}}\\
@@ -180,7 +184,7 @@ Aus den bisher bekannten Größen kann man über die in \cite[Gl.6]{script} gege
 Man erhält also:
 \begin{eqnarray}
 \sin^2\Theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
-\nonumber &=& 0.23 \pm 0.05 \pm 0.08
+\nonumber &=& \uuline{0.23 \pm 0.05 \pm 0.08}
 \end{eqnarray}
 Damit folgt schließlich für die den Weinbergwinkel:
 \begin{eqnarray}

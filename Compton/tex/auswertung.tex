@@ -28,7 +28,35 @@ und macht somit bei einer durchschnittlichen Strahlungsbelastung in Deutschland 
 \SI{4.3}{\milli\sievert} pro Jahr rund \SI{2}{\percent} aus.
 
 \subsection{Signalbetrachtung}
-TODO
+In unserem Experiment wurde ein Szintillationsdetektor, an den ein
+Photomultiplier angeschlossen war, verwendet, um ankommende Photonen in ein
+messbares elektrisches Signal umzuwandeln. Dieses Signal wurde anschließend
+durch einen Vorverstärker und zusätzlich noch durch einen Hauptverstärker
+geleitet. Auch wenn sich in der Nähe des Detektors keine radioaktive Quelle
+befand wurden trotzdem Signale gemessen, was hauptsächlich durch das thermisch
+bedingtes Rauschen der beteiligten Komponenten verursacht wurde. Diese
+Rausch-Signale konnten beobachtet und auf ihre Form hin untersucht werden.
+
+Sowohl das Signal des Vorverstärkers als auch des Hauptverstärkers kann in
+\fref{signalform} betrachtet werden.
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=1\columnwidth,keepaspectratio]{signalform}
+      \caption{Standbild des Digital-Oszilloskops zur Signalform-Betrachtung}
+      \label{fig:signalform}
+\end{figure}
+
+Man kann erkennen, dass die schwarze Linie dem Vorverstärkersignal entspricht,
+was dadurch deutlich wird, dass die Achseneinteilung (an Channel 1) bei gerade
+einmal \si{5}{\milli\volt} pro Kästchen lag, während das noch einmal verstärkte
+Hauptverstärkersignal (grüne Linie) bei einer Achseneinteilung von
+\si{2}[{\volt} aufgetragen wurde. Offenbar wird das Signal im Hauptverstärker
+noch einmal geglättet, denn dessen Signal entspricht einer Gauß-Kurve, wobei im
+Gegensatz dazu das Vorverstärkersignal sprungartig ansteigt, dann aber viel
+Zeit braucht, um wieder auf das Niveau vor der Messung abzufallen (man kann
+grob abschätzen, dass das Vorverstärkersignal ungefähr
+$6\cdot20\si{\micro\second} = 120\si{\micro\second}$ für den Abfall benötigt,
+wohingegen das Hauptverstärkersignal nur etwa 10\si{\micro\second} braucht.)
 
 \subsection{Latenzzeit der Messtechnik}
 
@@ -42,8 +70,23 @@ TODO
 Durch die Verwendung des Hauptverstärkers kann das Signal mit höherer Präzision
 gemessen werden, jedoch muss man dafür eine zeitliche Verzögerung $Δt$ in Kauf
 nehmen. Um jene zu bestimmen, wird der Trigger des Oszilloskops auf den
-Vorverstärker gestellt und das Bild manuell im richtigen Moment angehalten, so
+Vorverstärker gestellt, die Schwellspannung für das Triggern auf einen Wert
+hochgeregelt, der nur bei Eintreffen eines Signals erreicht wird und nicht
+durch die permanente Fluktuation, und dann wurde das Bild manuell angehalten, so
 dass im Ergebnis ein Standbild wie in \fref{latenz} exportiert werden kann.
+Hierfür haben wir die Zeitskala kleiner eingestellt, um bessere Messungen
+vornehmen zu können. Das Rädchen, mit dem die Ablesehilfe verschoben werden
+konnte, ließ sich in der gewählten Einstellung in
+0,1\si{\micro\second}-Schritten verstellen. Damit ist jeder einzelne Messwert
+mit diesem zufälligen Fehler behaftet. Da in diesen Schritten eindeutig
+erkennbar war, bei welcher Schieber-Position das Maximum der
+Hauptverstärkerkurve sowie der Sprung in der Vorverstärkerkurve zu finden ist,
+tragen diese ``Ableseungenauigkeiten'' kaum zum zufälligen Fehler bei und
+werden vernachlässigt. Systematische Fehler könnten aufgetreten sein (z.B.
+durch eine konstante Verzögerung zwischen Channel 1 und Channel 2), aber da wir
+dazu keine Aussage treffen können, betrachten wir auch solche Fehler nicht
+weiter. Die somit resultierenden Ergebnisse können in \tref{latenzmesswerte}
+betrachtet werden.
 \begin{table}[htbp]
 \centering
 % \setlength{\tabcolsep}{14pt}
@@ -66,15 +109,13 @@ S[tabformat=1.1]%
 \label{tab:latenzmesswerte}
 \caption{Messwerte der Latenzzeit}
 \end{table}
-Die Messergebnisse sind in \tref{latenzmesswerte} enthalten. Wenn man den Fehler
-der einzelnen Messung mit \num{0,1} als letzte signifikante Stelle abschätzt, so
-kann der Fehler des Mittelwerts auch insgesamt großzügig mit \num{0.1} abgeschätzt
-werden. Die Latenzzeit beträgt somit
+Die Latenzzeit beträgt somit
 \begin{equation}
-  Δt = \SI{6.7(1)}{\second}
+  Δt = \SI{6.7(1)}{\micro\second}		%müsste mit student-fak. ok sein
 \end{equation}
-. Da die Öffnungszeit jedoch vom Computer vollautomatisch gemessen wird, ist
-eine Latenzzeit in diesen Versuch unerheblich.
+. Der angegeben Fehler ist dabei das Vertrauensintervall und nicht die
+StandardDaabweichung. Da die Öffnungszeit jedoch vom Computer vollautomatisch
+gemessen wird, ist eine Latenzzeit in diesen Versuch unerheblich.
 
 \subsection{Untergrundmessung}
 

@@ -7,13 +7,40 @@ Abschätzung der maximalen, persönlichen Belastung sinnvoll.
 
 Folgende Annahmen wurden getroffen:
 \begin{itemize}
-  \item Die betreffende Person wiegt \SI{80}{\kilo\gram}.
-  \item Die Einwirkdauer beträgt jeweils \SI{12}{\hour}.
-  \item Die Aktivität aller 3 Präparate übersteigt jeweils nicht
+  \item Die betreffende Person wiegt $m = \SI{80}{\kilo\gram}$.
+  \item Die Einwirkdauer beträgt jeweils $s = \SI{12}{\hour}$.
+  \item Die Aktivität $A$ aller 3 Präparate übersteigt jeweils nicht
         \SI{4e5}{\becquerel}.
-  \item Die Halbzeit aller 3 Präparate wird mit dem maximalen Wert, 30 Jahren,
+  \item Die Halbzeit $t$ aller 3 Präparate wird mit dem maximalen Wert, 30 Jahren,
         abgeschätzt.
-  \item Seit der Vermessung der Präparate sind aufgerundet 3 Jahre vergangen.
+  \item Seit der Vermessung der Präparate sind aufgerundet $u = $ 3 Jahre vergangen.
   \item \SI{100}{\percent} der Strahlung wird aufgenommen.
   \item Der Strahlungsgewichtungsfaktor für γ-Strahlung beträgt 1.
+  \item Die γ-Quanten haben eine maximale Energie von
+        $E = \SI{0.7}{\mega\eV} = \SI{1.12e-13}{\joule}$
+  \item Es gibt $n = 3$ Proben.
 \end{itemize}
+Damit berechnet sich die radioaktive Belastung zu
+\begin{equation}
+  s \left(\frac{1}{2}\right)^{u/t} n E A / m = \SI{0.07}{\milli\sievert}
+\end{equation}
+und macht somit bei einer durchschnittlichen Strahlungsbelastung in Deutschland von
+\SI{4.3}{\milli\sievert} pro Jahr rund \SI{2}{\percent} aus.
+
+\subsection{Signalbetrachtung}
+TODO
+
+\subsection{Latenzzeit der Messtechnik}
+
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=1\columnwidth,keepaspectratio]{messverzoegerung}
+      \caption{Standbild des Digital-Oszilloskops zur Messung der Latenzzeit}
+      \label{fig:latenz}
+\end{figure}
+
+Durch die Verwendung des Hauptverstärkers kann das Signal mit höherer Präzision
+gemessen werden, jedoch muss man dafür eine zeitliche Verzögerung $Δt$ in Kauf
+nehmen. Um jene zu bestimmen, wurde der Trigger des Oszilloskops auf den
+Vorverstärker gestellt und das Bild manuell im richtigen Moment angehalten, so
+dass im Ergebnis ein Standbild wie in \fref{latenz} exportiert werden konnte.

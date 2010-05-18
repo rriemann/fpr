@@ -1,3 +1,5 @@
 /* 4.2 */
 verzoegerung_mw  : (6.6 + 6.7 + 3*6.8 + 6.5)/6;		/*einheit: mikrosekunden*/
-dverzoegerung_mw : float(sqrt(6)*0.1);			/*einheit: mikrosekunden*/
+dverzoegerung_mw : float(0.1/sqrt(6));			/*einheit: mikrosekunden*/
+stdabw : float(sqrt(1/6*(2*0.1^2+3*0.2^2)));
+vertrauensintervall : stdabw / 2.571;

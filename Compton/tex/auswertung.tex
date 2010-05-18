@@ -103,7 +103,7 @@ S[tabformat=1.1]%
 \toprule
 {$x_1$} & {$x_2$} & {$x_3$} & {$x_4$} & {$x_5$} & {$x_6$} & {$\bar x$} & {$Δx$}\\
 \midrule
-6.7 & 6,8 & 6,5 & 6.8 & 6.8 & 6.6 & 6.7 & 0.1 \\
+6.7 & 6,8 & 6,5 & 6.8 & 6.8 & 6.6 & 6.7 & 0,2 \\
 \bottomrule
 \end{tabular*}
 \label{tab:latenzmesswerte}
@@ -111,10 +111,18 @@ S[tabformat=1.1]%
 \end{table}
 Die Latenzzeit beträgt somit
 \begin{equation}
-  Δt = \SI{6.7(1)}{\micro\second}		%müsste mit student-fak. ok sein
+  Δt = \SI{6.7(2)}{\micro\second}
 \end{equation}
-. Der angegeben Fehler ist dabei das Vertrauensintervall und nicht die
-StandardDaabweichung. Da die Öffnungszeit jedoch vom Computer vollautomatisch
+. Der angegeben Fehler ist dabei die
+Standardabweichung $\sigma$, und das Vertrauensintervall beträgt 0,06. Die
+Standardabweichung wurde nach der üblichen Methode (s. \cite[S.10]{barlow})
+berechnet: 
+\begin{equation}
+  \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^N(\overline{x}-x_i)^2}
+\end{equation}
+In unserem Fall war $N=6$.
+
+Da die Öffnungszeit jedoch vom Computer vollautomatisch
 gemessen wird, ist eine Latenzzeit in diesen Versuch unerheblich.
 
 \subsection{Untergrundmessung}

@@ -35,7 +35,7 @@ int main ( int argc, char *argv[] ) {
     Double_t oeffnungszeit;
     TFile* file = new TFile("../tmp/out.root","RECREATE");
 
-    TFitResultPtr tfitres_array_eichung[3]; // ba, na, cs
+    TFitResultPtr tfitres_array_eichung[3]; // ba, na, cs - fit-parameter-gruppen
     Double_t dbl_array_proben_energie[] = {0.356, 0.511, 0.662}; // ba, na, cs; in MeV
     Double_t dbl_array_proben_energie_rel_fehler[] = {0.05, 0.04, 0.04};
 
@@ -92,13 +92,14 @@ int main ( int argc, char *argv[] ) {
     TGraphErrors* tgrapherrors_energie_eichung_fit = new TGraphErrors(3);
     tgrapherrors_energie_eichung_fit->SetMarkerSize(1.0);
     tgrapherrors_energie_eichung_fit->SetMarkerStyle(20);
-    for(unsigned char i; i < 3; ++i) {
+    for(unsigned short i=0; i < 3; ++i) {
         // Value 1: mean, Value 2: sigma
         tgrapherrors_energie_eichung_fit->SetPoint(i,tfitres_array_eichung[i]->Value(1),dbl_array_proben_energie[i]);
         tgrapherrors_energie_eichung_fit->SetPointError(i,tfitres_array_eichung[i]->Value(2),dbl_array_proben_energie_rel_fehler[i]);
     }
     TF1 *tf1_linear_eichung = new TF1("f1_linere_eichung","pol1",0,3000);
-    TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");
+    TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");              //bekommt also die 2 parameter des fits als values, erster wert: 0
+    cout << tfitres_eichung->Value(0) << " " << tfitres_eichung->Value(1) << endl;
     DrawOnCanvas(tgrapherrors_energie_eichung_fit,"eichung","AP",false,"Kanal","Energie [MeV]");
 
     TH1F* th1f_caesium_ohne_hintergrund_energie = ApplyCalibration(tf1_linear_eichung,th1f_caesium_ohne_hintergrund);
@@ -110,26 +111,35 @@ int main ( int argc, char *argv[] ) {
     TGraphErrors* tgrapherrors_energie_aufloesung = new TGraphErrors(3);
     tgrapherrors_energie_aufloesung->SetMarkerSize(1.0);
     tgrapherrors_energie_aufloesung->SetMarkerStyle(20);
-    for(unsigned char i; i < 3; ++i) {
+    for(unsigned short i=0; i < 3; ++i) {
         // Value 1: mean, Value 2: sigma
-        Double_t energie = tf1_linear_eichung->Eval(tfitres_array_eichung[i]->Value(1));
-        Double_t sigma = tfitres_array_eichung[i]->Value(2);
-        Double_t kanal_nach_energie = tfitres_eichung->Value(1); // TODO verifizieren
-        Double_t rel_energie_aufloesung = sigma*kanal_nach_energie*fwhm_faktor/energie;
+        Double_t kanal_nach_energie = tfitres_eichung->Value(1); // TODO verifizieren   //kann auch aus der schleife rausgenommen werden
+        Double_t energie = tf1_linear_eichung->Eval(tfitres_array_eichung[i]->Value(1));// alles mittelwerte der einzelnen photopeaks
+//         cout << "energie " << energie << endl;                  //energie des photopeaks
+//         cout << "tfitres_array_eichung[i]->Value(1) " << tfitres_array_eichung[i]->Value(1) << endl;
+        Double_t sigma = tfitres_array_eichung[i]->Value(2)*kanal_nach_energie;
+//         cout << "sigma " << sigma << endl;
+        Double_t rel_energie_aufloesung = sigma*fwhm_faktor/energie;
+//         cout << "rel_energie_aufloesung " << rel_energie_aufloesung << endl;
         tgrapherrors_energie_aufloesung->SetPoint(i,energie,rel_energie_aufloesung);
 
-        Double_t sigma_fehler = tfitres_array_eichung[i]->Errors()[2];
         Double_t kanal_nach_energie_fehler = tfitres_eichung->Errors()[1]; // TODO verifizieren
+        cout << "kanal_nach_energie_fehler " << kanal_nach_energie_fehler << endl;
+        Double_t sigma_fehler = sqrt(
+                pow(tfitres_array_eichung[i]->Errors()[2]*kanal_nach_energie,2) + 
+                pow(tfitres_array_eichung[i]->Value(2)*kanal_nach_energie_fehler,2));
+        cout << "sigma_fehler " << sigma_fehler << endl;
         Double_t energie_fehler = sigma;
         Double_t rel_energie_fehler = fwhm_faktor*sqrt(
-            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2) +
+            pow(kanal_nach_energie/energie*sigma_fehler,2) +
             pow(kanal_nach_energie*sigma/(energie*energie)*energie_fehler,2) +
-            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2)
+            pow(sigma/energie*kanal_nach_energie_fehler,2)
         );
         // cout << energie << endl;
-        // tgrapherrors_energie_aufloesung->SetPointError(i,energie_fehler,rel_energie_fehler);
+        cout << energie_fehler << " " << rel_energie_fehler << endl;
+        tgrapherrors_energie_aufloesung->SetPointError(i,energie_fehler,rel_energie_fehler);
     }
-    DrawOnCanvas(tgrapherrors_energie_aufloesung,"rel_aufloesung","AP",false,"relativ. Energieauflösung","Energie [MeV]");
+    DrawOnCanvas(tgrapherrors_energie_aufloesung,"rel_aufloesung","AP",false,"relativ. Energieaufloesung","Energie [MeV]");
 
 
 

@@ -165,7 +165,6 @@ Aluminiumatome pro Volumeneinheit lautet somit:
   \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
 \end{equation}
 
-
 Nachdem wir diesen Wert bestimmt haben, können wir nun die verbliebenen
 Unbekannten in der Wirkungsquerschittsformel betrachten. Da wäre zum einen die
 Anzahl der ungehindert passierten Photonen $N_0$. Diese Zahl ergibt sich aus
@@ -175,4 +174,17 @@ Messdaten, die bei Vorhandensein einer Quelle gemessen wurden, ein normiertes
 Untergrundspektrum abzieht, sodass bis auf eine gewisse Fluktuation nur noch
 uns interessierendes physikalisches Signal vorhanden ist. Dieses
 Photopeak-Signal wurde in einem gewissen Bereich mit einer Gauß-Verteilung
-gefittet. Da man nun 
+gefittet. Da man nun eine Funktion gegeben hat, deren Fläche man (zumindest
+numerisch) berechnen kann. Weil aber unsere Grenzen, in denen gefittet
+wird, willkürlich festgelegt sind, sollte man versuchen, die Integration
+möglichst unabhängig von dieser Wahl zu machen. Daher berechnen wir die
+Photopeakfläche durch eine Integration von $-\infty$ bis $+\infty$. Bei
+einer Gaußkurve ist das Ergebnis einer Integration in diesen Grenzen bekannt,
+und somit brauchen wir uns um die Integration selbst keine Gedanken mehr zu
+machen und müssen nur noch die Fit-Parameter einsetzen.
+
+Allgemein sieht eine Gauß-Funktion folgerndermaßen aus:
+\begin{equation}
+  \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
+\end{equation}
+Für den $^137$Cs-Photopeak ergeben sich bei einer Fit-Funktion 

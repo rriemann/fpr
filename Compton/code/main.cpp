@@ -26,6 +26,7 @@ using std::string;
 void define_style();
 void DrawOnCanvas(TObject* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
 TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2);
+TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig);
 
 int main ( int argc, char *argv[] ) {
 
@@ -33,11 +34,13 @@ int main ( int argc, char *argv[] ) {
 
     Double_t oeffnungszeit;
     TFile* file = new TFile("../tmp/out.root","RECREATE");
+
     TFitResultPtr tfitres_array_eichung[3]; // ba, na, cs
     Double_t dbl_array_proben_energie[] = {0.356, 0.511, 0.662}; // ba, na, cs; in MeV
-    Double_t dbl_array_proben_energie_fehler[] = {0.356*0.05, // in MeV
-                                                  0.511*0.04,
-                                                  0.662*0.04};
+    Double_t dbl_array_proben_energie_rel_fehler[] = {0.05, 0.04, 0.04};
+
+    // http://de.wikipedia.org/wiki/Halbwertsbreite
+    const Double_t fwhm_faktor = 2.0*sqrt(2.0*log(2));
 
     TH1F* th1f_hintergrund = new TH1F;
     th1f_hintergrund = chn2hist("../data/rauschen2.chn",oeffnungszeit);
@@ -80,6 +83,11 @@ int main ( int argc, char *argv[] ) {
     TH1F* th1f_caesium_alu = new TH1F;
     th1f_caesium_alu = chn2hist("../data/cs_alu.chn",oeffnungszeit);
     th1f_caesium_alu->Scale(1/oeffnungszeit);
+    TH1F* th1f_caesium_alu_ohne_hintergrund = new TH1F(*th1f_caesium_alu);
+    th1f_caesium_alu_ohne_hintergrund->SetName("caesium_alu_ohne_hintergrund");
+    th1f_caesium_alu_ohne_hintergrund->Add(th1f_hintergrund,-1);
+    DrawOnCanvas(th1f_caesium_alu_ohne_hintergrund,"caesium_alu_ohne_hintergrund");
+    TFitResultPtr tfitres_alu_caesium = FitGausInRange(th1f_caesium_alu_ohne_hintergrund, 850,1125);
 
     TGraphErrors* tgrapherrors_energie_eichung_fit = new TGraphErrors(3);
     tgrapherrors_energie_eichung_fit->SetMarkerSize(1.0);
@@ -87,19 +95,43 @@ int main ( int argc, char *argv[] ) {
     for(unsigned char i; i < 3; ++i) {
         // Value 1: mean, Value 2: sigma
         tgrapherrors_energie_eichung_fit->SetPoint(i,tfitres_array_eichung[i]->Value(1),dbl_array_proben_energie[i]);
-        tgrapherrors_energie_eichung_fit->SetPointError(i,tfitres_array_eichung[i]->Value(2),dbl_array_proben_energie_fehler[i]);
+        tgrapherrors_energie_eichung_fit->SetPointError(i,tfitres_array_eichung[i]->Value(2),dbl_array_proben_energie_rel_fehler[i]);
     }
     TF1 *tf1_linear_eichung = new TF1("f1_linere_eichung","pol1",0,3000);
     TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");
     DrawOnCanvas(tgrapherrors_energie_eichung_fit,"eichung","AP",false,"Kanal","Energie [MeV]");
 
-    TH1F* th1f_caesium_ohne_hintergrund_energie = new TH1F(*th1f_caesium);
-    TF1 *tf1_linear_eichung2 = new TF1();
-    th1f_caesium_ohne_hintergrund_energie->Eval(tf1_linear_eichung,"S");
-    DrawOnCanvas(th1f_caesium_ohne_hintergrund,
-        "caesium_ohne_hintergrund_energie","",false,"Energie [MeV]","Anzahl");
-    
-    
+    TH1F* th1f_caesium_ohne_hintergrund_energie = ApplyCalibration(tf1_linear_eichung,th1f_caesium_ohne_hintergrund);
+    DrawOnCanvas(th1f_caesium_ohne_hintergrund_energie,"caesium_ohne_hintergrund_energie","",false,"Energie [MeV]","Anzahl");
+
+    TH1F* th1f_caesium_alu_ohne_hintergrund_energie = ApplyCalibration(tf1_linear_eichung,th1f_caesium_ohne_hintergrund);
+    DrawOnCanvas(th1f_caesium_alu_ohne_hintergrund_energie,"caesium_alu_ohne_hintergrund_energie","",false,"Energie [MeV]","Anzahl");
+
+    TGraphErrors* tgrapherrors_energie_aufloesung = new TGraphErrors(3);
+    tgrapherrors_energie_aufloesung->SetMarkerSize(1.0);
+    tgrapherrors_energie_aufloesung->SetMarkerStyle(20);
+    for(unsigned char i; i < 3; ++i) {
+        // Value 1: mean, Value 2: sigma
+        Double_t energie = tf1_linear_eichung->Eval(tfitres_array_eichung[i]->Value(1));
+        Double_t sigma = tfitres_array_eichung[i]->Value(2);
+        Double_t kanal_nach_energie = tfitres_eichung->Value(1); // TODO verifizieren
+        Double_t rel_energie_aufloesung = sigma*kanal_nach_energie*fwhm_faktor/energie;
+        tgrapherrors_energie_aufloesung->SetPoint(i,energie,rel_energie_aufloesung);
+
+        Double_t sigma_fehler = tfitres_array_eichung[i]->Errors()[2];
+        Double_t kanal_nach_energie_fehler = tfitres_eichung->Errors()[1]; // TODO verifizieren
+        Double_t energie_fehler = sigma;
+        Double_t rel_energie_fehler = fwhm_faktor*sqrt(
+            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2) +
+            pow(kanal_nach_energie*sigma/(energie*energie)*energie_fehler,2) +
+            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2)
+        );
+        // cout << energie << endl;
+        // tgrapherrors_energie_aufloesung->SetPointError(i,energie_fehler,rel_energie_fehler);
+    }
+    DrawOnCanvas(tgrapherrors_energie_aufloesung,"rel_aufloesung","AP",false,"relativ. Energieauflösung","Energie [MeV]");
+
+
 
 //     cout << tfitres_natrium->Chi2() << endl; // FCN
 //     cout << tfitres_caesium->Errors()[0] << endl; // constant ?
@@ -144,13 +176,15 @@ TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2) {
     return h1->Fit("f1", "RS");
 }
 
-// TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig) {
-//     TH1F* h1 = new TH1F(h1_orig);
-//     Int_t bin_count = h1->GetNbinsX();
-//     Double_t x1
-//     h1->GetXaxis()->Set();
-//     return h1;
-// }
+TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig) {
+    TH1F* h1 = new TH1F(*h1_orig);
+    h1->SetStats(false);
+    Int_t bin_count = h1->GetNbinsX();
+    Double_t x1 = f1->Eval(h1->GetBinCenter(1)); // TODO
+    Double_t x2 = f1->Eval(h1->GetBinCenter(bin_count));
+    h1->GetXaxis()->Set(bin_count,x1,x2);
+    return h1;
+}
 
 void define_style() {
     TStyle *atlasStyle= new TStyle("ATLAS","Atlas style");

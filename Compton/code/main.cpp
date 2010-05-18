@@ -110,26 +110,29 @@ int main ( int argc, char *argv[] ) {
     TGraphErrors* tgrapherrors_energie_aufloesung = new TGraphErrors(3);
     tgrapherrors_energie_aufloesung->SetMarkerSize(1.0);
     tgrapherrors_energie_aufloesung->SetMarkerStyle(20);
-    for(unsigned char i; i < 3; ++i) {
+    for(unsigned short i=0; i < 3; ++i) {
         // Value 1: mean, Value 2: sigma
-        Double_t energie = tf1_linear_eichung->Eval(tfitres_array_eichung[i]->Value(1));
-        Double_t sigma = tfitres_array_eichung[i]->Value(2);
         Double_t kanal_nach_energie = tfitres_eichung->Value(1); // TODO verifizieren
-        Double_t rel_energie_aufloesung = sigma*kanal_nach_energie*fwhm_faktor/energie;
+        Double_t energie = tf1_linear_eichung->Eval(tfitres_array_eichung[i]->Value(1));
+        Double_t sigma = tfitres_array_eichung[i]->Value(2)*kanal_nach_energie;
+        Double_t rel_energie_aufloesung = sigma*fwhm_faktor/energie;
         tgrapherrors_energie_aufloesung->SetPoint(i,energie,rel_energie_aufloesung);
 
-        Double_t sigma_fehler = tfitres_array_eichung[i]->Errors()[2];
         Double_t kanal_nach_energie_fehler = tfitres_eichung->Errors()[1]; // TODO verifizieren
+        Double_t sigma_fehler = sqrt(
+                pow(tfitres_array_eichung[i]->Errors()[2]/kanal_nach_energie,2) + 
+                pow(tfitres_array_eichung[i]->Value(2)/(kanal_nach_energie*kanal_nach_energie)*kanal_nach_energie_fehler,2));
         Double_t energie_fehler = sigma;
         Double_t rel_energie_fehler = fwhm_faktor*sqrt(
-            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2) +
+            pow(kanal_nach_energie/energie*sigma_fehler,2) +
             pow(kanal_nach_energie*sigma/(energie*energie)*energie_fehler,2) +
-            pow(kanal_nach_energie/energie*kanal_nach_energie_fehler,2)
+            pow(sigma/energie*kanal_nach_energie_fehler,2)
         );
         // cout << energie << endl;
-        // tgrapherrors_energie_aufloesung->SetPointError(i,energie_fehler,rel_energie_fehler);
+        cout << energie_fehler << " " << rel_energie_fehler << endl;
+        tgrapherrors_energie_aufloesung->SetPointError(i,energie_fehler,rel_energie_fehler);
     }
-    DrawOnCanvas(tgrapherrors_energie_aufloesung,"rel_aufloesung","AP",false,"relativ. Energieauflösung","Energie [MeV]");
+    DrawOnCanvas(tgrapherrors_energie_aufloesung,"rel_aufloesung","AP",false,"relativ. Energieaufloesung","Energie [MeV]");
 
 
 

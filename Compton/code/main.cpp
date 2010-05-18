@@ -24,7 +24,7 @@ using std::endl;
 using std::vector;
 using std::string;
 void define_style();
-void DrawTH1(TH1* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
+void DrawOnCanvas(TObject* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
 TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2);
 
 int main ( int argc, char *argv[] ) {
@@ -42,38 +42,38 @@ int main ( int argc, char *argv[] ) {
     TH1F* th1f_hintergrund = new TH1F;
     th1f_hintergrund = chn2hist("../data/rauschen2.chn",oeffnungszeit);
     th1f_hintergrund->Scale(1/oeffnungszeit);
-    DrawTH1(th1f_hintergrund, "hintergrund");
+    DrawOnCanvas(th1f_hintergrund, "hintergrund");
 
     TH1F* th1f_barium = new TH1F;
     th1f_barium = chn2hist("../data/ba.chn",oeffnungszeit);
     th1f_barium->Scale(1/oeffnungszeit);
-    DrawTH1(th1f_barium,"barium");
+    DrawOnCanvas(th1f_barium,"barium");
     TH1F* th1f_barium_ohne_hintergrund = new TH1F(*th1f_barium);
     th1f_barium_ohne_hintergrund->SetName("barium_ohne_hintergrund");
     th1f_barium_ohne_hintergrund->Add(th1f_hintergrund,-1);
-    DrawTH1(th1f_barium_ohne_hintergrund,"barium_ohne_hintergrund");
+    DrawOnCanvas(th1f_barium_ohne_hintergrund,"barium_ohne_hintergrund");
     TFitResultPtr tfitres_barium = FitGausInRange(th1f_barium_ohne_hintergrund, 500, 600);
     tfitres_array_eichung[0] = tfitres_barium;
 
     TH1F* th1f_natrium = new TH1F;
     th1f_natrium = chn2hist("../data/na.chn",oeffnungszeit);
     th1f_natrium->Scale(1/oeffnungszeit);
-    DrawTH1(th1f_natrium,"natrium");
+    DrawOnCanvas(th1f_natrium,"natrium");
     TH1F* th1f_natrium_ohne_hintergrund = new TH1F(*th1f_natrium);
     th1f_natrium_ohne_hintergrund->SetName("natrium_ohne_hintergrund");
     th1f_natrium_ohne_hintergrund->Add(th1f_hintergrund,-1);
-    DrawTH1(th1f_natrium_ohne_hintergrund,"natrium_ohne_hintergrund");
+    DrawOnCanvas(th1f_natrium_ohne_hintergrund,"natrium_ohne_hintergrund");
     TFitResultPtr tfitres_natrium = FitGausInRange(th1f_natrium_ohne_hintergrund, 700, 850);
     tfitres_array_eichung[2] = tfitres_natrium;
 
     TH1F* th1f_caesium = new TH1F;
     th1f_caesium = chn2hist("../data/cs.chn",oeffnungszeit);
     th1f_caesium->Scale(1/oeffnungszeit);
-    DrawTH1(th1f_caesium,"caesium");
+    DrawOnCanvas(th1f_caesium,"caesium");
     TH1F* th1f_caesium_ohne_hintergrund = new TH1F(*th1f_caesium);
     th1f_caesium_ohne_hintergrund->SetName("caesium_ohne_hintergrund");
     th1f_caesium_ohne_hintergrund->Add(th1f_hintergrund,-1);
-    DrawTH1(th1f_caesium_ohne_hintergrund,"caesium_ohne_hintergrund");
+    DrawOnCanvas(th1f_caesium_ohne_hintergrund,"caesium_ohne_hintergrund");
     TFitResultPtr tfitres_caesium = FitGausInRange(th1f_caesium_ohne_hintergrund, 850,1125);
     tfitres_array_eichung[1] = tfitres_caesium;
 
@@ -84,12 +84,12 @@ int main ( int argc, char *argv[] ) {
     TGraphErrors* tgrapherrors_energie_eichung_fit = new TGraphErrors(3);
     for(unsigned char i; i < 3; ++i) {
         // Value 1: mean, Value 2: sigma
-        tgrapherrors_energie_eichung_fit->SetPoint(i,dbl_array_proben_energie[i],tfitres_array_eichung[i]->Value(1));
-        tgrapherrors_energie_eichung_fit->SetPointError(i,dbl_array_proben_energie_fehler[i],tfitres_array_eichung[i]->Value(2));
+        tgrapherrors_energie_eichung_fit->SetPoint(i,tfitres_array_eichung[i]->Value(1),dbl_array_proben_energie[i]);
+        tgrapherrors_energie_eichung_fit->SetPointError(i,tfitres_array_eichung[i]->Value(2),dbl_array_proben_energie_fehler[i]);
     }
     TF1 *tf1_linear_eichung = new TF1("f1_linere_eichung","pol1",0,1);
-//     TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit()
-
+    TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");
+    DrawOnCanvas(tgrapherrors_energie_eichung_fit,"eichung","APE",false,"Kanal","Energie [MeV]");
 
 //     cout << tfitres_natrium->Chi2() << endl; // FCN
 //     cout << tfitres_caesium->Errors()[0] << endl; // constant ?
@@ -101,25 +101,32 @@ int main ( int argc, char *argv[] ) {
     file->Write();
 }
 
-void DrawTH1(TH1* h1, string name, string options, bool log, string xaxis, string yaxis) {
-    if (xaxis != "") {
-        h1->GetXaxis()->SetTitle(xaxis.c_str());
-    }
-    if (yaxis != "") {
-        h1->GetYaxis()->SetTitle(yaxis.c_str());
-    }
+void DrawOnCanvas(TObject* obj, string name, string options, bool log, string xaxis, string yaxis) {
     TCanvas *c1 = new TCanvas("c1","c1",800,600);
     c1->SetGrid();
     c1->SetLeftMargin(0.15);
     c1->SetBottomMargin(0.15);
     c1->SetRightMargin(0.15);
-    h1->Draw(options.c_str());
     if (log) {
         c1->SetLogy(1);
     }
-    c1->SaveAs(Form("../tmp/%s.pdf", name.c_str())); // + h1->GetTitle);
+    if(obj->InheritsFrom("TH1") || obj->InheritsFrom("TGraph")) {
+        if(obj->InheritsFrom("TH1")) {
+            TH1* o = (TH1*)obj;
+            if (xaxis != "") o->GetXaxis()->SetTitle(xaxis.c_str());
+            if (yaxis != "") o->GetYaxis()->SetTitle(yaxis.c_str());
+            o->Draw(options.c_str());
+        } else {
+            TGraph* o = (TGraph*)obj;
+            if (xaxis != "") o->GetXaxis()->SetTitle(xaxis.c_str());
+            if (yaxis != "") o->GetYaxis()->SetTitle(yaxis.c_str());
+            o->Draw(options.c_str());
+        }
+    } else {
+        obj->Draw(options.c_str());
+    }
+    c1->SaveAs(Form("../tmp/%s.pdf", name.c_str()));
     delete c1;
-
 }
 
 TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2) {

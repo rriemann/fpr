@@ -152,19 +152,18 @@ resultiert:
 \begin{equation}
   \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
 \end{equation}
-Es bleibt zu klären, welchen Wert die Teilchendichte für Aluminium $\rho_T$ in
+Es bleibt zu klären, welchen Wert die Elektonendichte für Aluminium $\rho_T$ in
 diesem Fall besitzt. Dabei kann man auf die bekannte Massendichte $\rho$ sowie
 auf die molare Masse $A$ zurückgreifen:
 \begin{equation}
   \rho_T = \frac{N_A}{A}\rho
 \end{equation}
 Hier ist $N_A$ die Avogadro-Konstante, deren Wert ebenso wie die
-andern beiden Größen \cite{pdb} entnommen wurde. Die Zahl der
+andern beiden Größen \cite[Tab.2]{script} entnommen wurde. Die Zahl der
 Aluminiumatome pro Volumeneinheit lautet somit:
 \begin{equation}
   \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
 \end{equation}
-
 
 Nachdem wir diesen Wert bestimmt haben, können wir nun die verbliebenen
 Unbekannten in der Wirkungsquerschittsformel betrachten. Da wäre zum einen die
@@ -175,4 +174,55 @@ Messdaten, die bei Vorhandensein einer Quelle gemessen wurden, ein normiertes
 Untergrundspektrum abzieht, sodass bis auf eine gewisse Fluktuation nur noch
 uns interessierendes physikalisches Signal vorhanden ist. Dieses
 Photopeak-Signal wurde in einem gewissen Bereich mit einer Gauß-Verteilung
-gefittet. Da man nun 
+gefittet. Da man nun eine Funktion gegeben hat, deren Fläche man (zumindest
+numerisch) berechnen kann. Weil aber unsere Grenzen, in denen gefittet
+wird, willkürlich festgelegt sind, sollte man versuchen, die Integration
+möglichst unabhängig von dieser Wahl zu machen. Daher berechnen wir die
+Photopeakfläche durch eine Integration von $-\infty$ bis $+\infty$. Bei
+einer Gaußkurve ist das Ergebnis einer Integration in diesen Grenzen bekannt,
+und somit brauchen wir uns um die Integration selbst keine Gedanken mehr zu
+machen und müssen nur noch die Fit-Parameter einsetzen.
+
+Allgemein sieht eine Gauß-Funktion folgerndermaßen aus:
+\begin{equation}
+  N(c) = N_{max}\mathrm e^{-\frac{(c-\mu)^2}{s^2}}
+\end{equation}
+Dabei steht die Variable $c$ in diesem Fall für den Channel, während die
+anderen Größen, also $N_{max}$ für den Maximalwert der Verteilung, $\mu$ für den
+Mittelwert und $s$ als Maß für die Breite der Gaußfunktion, die Fitparameter
+sind. Für den $^{137}$Cs-Photopeak ohne Aluminiumblock ergeben sich bei einer
+solchen Fitfunktion die folgenden Werte:
+\begin{eqnarray}
+N_0 &=& 0,13\\		%fehlerbetrachtung!!!
+\mu &=& 994\\
+s &=& 65
+\end{eqnarray}
+
+Somit kann man auch problemlos die Fläche $N_0$ unter dieser Kurve
+angeben, was gleich der uns interessierenden Anzahl der ungestört eintreffenden
+Photonen ist:
+\begin{eqnarray}
+F_{Photo} &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
+&=& N_{max}\sqrt{\pi}\cdot s\\
+\nonumber &=& 0123456789
+\end{eqnarray}
+Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
+Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
+
+Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
+Hindernis aufgenommen wurde, so ergeben sich die folgenden Daten:
+\begin{eqnarray}
+N_0 &=& \\
+\mu &=& \\
+s &=& 
+\end{eqnarray}
+Damit ergibt sich als Fläche unter der Kurve $N'$:
+\begin{equation}
+N' = 
+\end{equation}
+
+Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
+\begin{eqnarray}
+\sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
+\nonumber &=& 
+\end{eqnarray}

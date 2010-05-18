@@ -114,11 +114,11 @@ Die Latenzzeit beträgt somit
   Δt = \SI{6.7(2)}{\micro\second}
 \end{equation}
 . Der angegeben Fehler ist dabei die
-Standardabweichung $\sigma$, und das Vertrauensintervall beträgt 0,06. Die
+Standardabweichung $\sigma_s$, und das Vertrauensintervall beträgt 0,06. Die
 Standardabweichung wurde nach der üblichen Methode (s. \cite[S.10]{barlow})
 berechnet: 
 \begin{equation}
-  \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^N(\overline{x}-x_i)^2}
+  \sigma_s = \sqrt{\frac{1}{N}\sum_{i=1}^N(\overline{x}-x_i)^2}
 \end{equation}
 In unserem Fall war $N=6$.
 
@@ -129,4 +129,50 @@ gemessen wird, ist eine Latenzzeit in diesen Versuch unerheblich.
 
 \subsection{Eichung}
 
+\subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
+Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen
+Wirkungsquerschitts für Compton-Streuung. Wir betrachten dafür die Tatsache,
+dass Teilchen, die mit dem Festkörper, also dem Aluminiumblock, gewechselwirkt
+haben, anschließend in erster Näherung ihre Richtung verändern und somit vom
+Detektor nicht mehr registriert werden können. Diese Annahme ist sicherlich
+nicht vollständig korrekt und wird daher später noch diskutiert. Die
+Messgrößen, die sich für die Betrachtung anbieten, sind demnach die Anzahl der
+registrierten Photonen ohne ein Aluminium-Hindernis $N_0$ sowie die Zahl der
+Photonen $N'$ mit einem Aluminium-Block zwischen Quelle und Detektor. Um daraus
+den Wirkungsquerschitt zu berechnen, verwenden wir die aus der Vorlesung
+``Einführung in die Kern- und Teilchenphysik'' bei Hr. Prof. Lohse bekannte
+Beziehung
+\begin{eqnarray}
+  N'(x) &=& N_0 \mathrm e^{-\sigma \rho_T x}\\
+\rightarrow \sigma &=& \frac{1}{\rho_T x}\ln\left(\frac{N_0}{N'(x)}\right)
+\end{eqnarray}
+In unserem Fall ist die Dicke des Aluminiumblocks mit $x = d =
+\si{123456}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
+resultiert:
+\begin{equation}
+  \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
+\end{equation}
+Es bleibt zu klären, welchen Wert die Teilchendichte für Aluminium $\rho_T$ in
+diesem Fall besitzt. Dabei kann man auf die bekannte Massendichte $\rho$ sowie
+auf die molare Masse $A$ zurückgreifen:
+\begin{equation}
+  \rho_T = \frac{N_A}{A}\rho
+\end{equation}
+Hier ist $N_A$ die Avogadro-Konstante, deren Wert ebenso wie die
+andern beiden Größen \cite{pdb} entnommen wurde. Die Zahl der
+Aluminiumatome pro Volumeneinheit lautet somit:
+\begin{equation}
+  \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
+\end{equation}
 
+
+Nachdem wir diesen Wert bestimmt haben, können wir nun die verbliebenen
+Unbekannten in der Wirkungsquerschittsformel betrachten. Da wäre zum einen die
+Anzahl der ungehindert passierten Photonen $N_0$. Diese Zahl ergibt sich aus
+der Fläche unter dem Photopeak. Um diese Fläche bestimmen zu können, wurde im
+letzten Abschnitt bereits ein Programm erstellt, das von den normierten
+Messdaten, die bei Vorhandensein einer Quelle gemessen wurden, ein normiertes
+Untergrundspektrum abzieht, sodass bis auf eine gewisse Fluktuation nur noch
+uns interessierendes physikalisches Signal vorhanden ist. Dieses
+Photopeak-Signal wurde in einem gewissen Bereich mit einer Gauß-Verteilung
+gefittet. Da man nun 

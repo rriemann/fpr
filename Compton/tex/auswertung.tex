@@ -147,19 +147,19 @@ Beziehung
 \rightarrow \sigma &=& \frac{1}{\rho_T x}\ln\left(\frac{N_0}{N'(x)}\right)
 \end{eqnarray}
 In unserem Fall ist die Dicke des Aluminiumblocks mit $x = d =
-\si{123456}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
+\si{5}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
 resultiert:
 \begin{equation}
   \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
 \end{equation}
-Es bleibt zu klären, welchen Wert die Teilchendichte für Aluminium $\rho_T$ in
+Es bleibt zu klären, welchen Wert die Elektonendichte für Aluminium $\rho_T$ in
 diesem Fall besitzt. Dabei kann man auf die bekannte Massendichte $\rho$ sowie
 auf die molare Masse $A$ zurückgreifen:
 \begin{equation}
   \rho_T = \frac{N_A}{A}\rho
 \end{equation}
 Hier ist $N_A$ die Avogadro-Konstante, deren Wert ebenso wie die
-andern beiden Größen \cite{pdb} entnommen wurde. Die Zahl der
+andern beiden Größen \cite[Tab.2]{script} entnommen wurde. Die Zahl der
 Aluminiumatome pro Volumeneinheit lautet somit:
 \begin{equation}
   \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
@@ -185,6 +185,44 @@ machen und müssen nur noch die Fit-Parameter einsetzen.
 
 Allgemein sieht eine Gauß-Funktion folgerndermaßen aus:
 \begin{equation}
-  \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
+  N(c) = N_{max}\mathrm e^{-\frac{(c-\mu)^2}{s^2}}
 \end{equation}
-Für den $^137$Cs-Photopeak ergeben sich bei einer Fit-Funktion 
+Dabei steht die Variable $c$ in diesem Fall für den Channel, während die
+anderen Größen, also $N_{max}$ für den Maximalwert der Verteilung, $\mu$ für den
+Mittelwert und $s$ als Maß für die Breite der Gaußfunktion, die Fitparameter
+sind. Für den $^{137}$Cs-Photopeak ohne Aluminiumblock ergeben sich bei einer
+solchen Fitfunktion die folgenden Werte:
+\begin{eqnarray}
+N_0 &=& 0,13\\		%fehlerbetrachtung!!!
+\mu &=& 994\\
+s &=& 65
+\end{eqnarray}
+
+Somit kann man auch problemlos die Fläche $N_0$ unter dieser Kurve
+angeben, was gleich der uns interessierenden Anzahl der ungestört eintreffenden
+Photonen ist:
+\begin{eqnarray}
+F_{Photo} &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
+&=& N_{max}\sqrt{\pi}\cdot s\\
+\nonumber &=& 0123456789
+\end{eqnarray}
+Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
+Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
+
+Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
+Hindernis aufgenommen wurde, so ergeben sich die folgenden Daten:
+\begin{eqnarray}
+N_0 &=& \\
+\mu &=& \\
+s &=& 
+\end{eqnarray}
+Damit ergibt sich als Fläche unter der Kurve $N'$:
+\begin{equation}
+N' = 
+\end{equation}
+
+Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
+\begin{eqnarray}
+\sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
+\nonumber &=& 
+\end{eqnarray}

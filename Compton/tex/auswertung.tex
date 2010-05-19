@@ -125,9 +125,33 @@ In unserem Fall war $N=6$.
 Da die Öffnungszeit jedoch vom Computer vollautomatisch
 gemessen wird, ist eine Latenzzeit in diesen Versuch unerheblich.
 
-\subsection{Untergrundmessung}
+\subsection{Energiekalibration}
 
-\subsection{Eichung}
+Die digitale Messtechnik ermöglicht das Abspeichern von Histogrammen, bei denen
+jeweils einem Kanal eine gewisse Anzahl an detektierten Teilchen zugeordnet
+wird. Unbekannt ist allergings, welcher Energie ein gegebener Kanal entspricht.
+Um jedem Kanal eine Energie zuordnen zu können, wird eine Eichung/Kalibration
+durchgeführt. Hierbei wird ausgenutzt, dass die diskrete Energie der γ-Quanten
+bereits bekannt ist.
+
+Verwendet man nun die Präparate aus \tref{proben}, misst
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{%
+l%
+l}
+\toprule
+{Präparat} & {Energie der γ-Quanten [\si{\mega\eV}]} \\
+\midrule
+$^{133}$Ba & 0,356 ± \SI{5}{\percent} \\
+$^{22}$Na & 0,511 ± \SI{4}{\percent} \\
+$^{137}$Cs & 0,356 ± \SI{4}{\percent} \\
+\bottomrule
+\end{tabular*}
+\label{tab:proben}
+\caption{Verwendete Präparate}
+\end{table}
 
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
 Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen
@@ -159,7 +183,7 @@ zurückgreifen:
 \begin{equation}
   \rho_T = \frac{N_A}{A}\cdot Z\rho
 \end{equation}
-Hier ist $N_A$ die Avogadro-Konstante, die \cite{pdb} entnommen wurde, die
+Hier ist $N_A$ die Avogadro-Konstante, die dem \cite{pdb} entnommen wurde, die
 drei anderen Größen wurden \cite[Tab.2]{script} entnommen. Die Zahl der
 Elektronen pro Volumeneinheit lautet somit:
 \begin{equation}

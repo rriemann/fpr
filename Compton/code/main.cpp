@@ -93,6 +93,7 @@ int main ( int argc, char *argv[] ) {
     th1f_caesium_alu = chn2hist("../data/cs_alu.chn",oeffnungszeit);
     th1f_caesium_alu->Rebin(rebin);
     th1f_caesium_alu->Scale(1/oeffnungszeit);
+    DrawOnCanvas(th1f_caesium_alu,"caesium_alu");
     TH1F* th1f_caesium_alu_ohne_hintergrund = new TH1F(*th1f_caesium_alu);
     th1f_caesium_alu_ohne_hintergrund->SetName("caesium_alu_ohne_hintergrund");
     th1f_caesium_alu_ohne_hintergrund->Add(th1f_hintergrund,-1);
@@ -231,10 +232,10 @@ void define_style() {
     atlasStyle->SetNumberContours(NCont);
 
     // set the paper & margin sizes
-    atlasStyle->SetPaperSize(20,26);
+    atlasStyle->SetPaperSize(20,20);
     atlasStyle->SetPadTopMargin(0.05);
     atlasStyle->SetPadRightMargin(0.05);
-    atlasStyle->SetPadBottomMargin(0.16);
+    atlasStyle->SetPadBottomMargin(0.0);
     atlasStyle->SetPadLeftMargin(0.12);
 
     // use large fonts
@@ -260,7 +261,7 @@ void define_style() {
 
     //use bold lines and markers
     atlasStyle->SetMarkerStyle(20);
-    atlasStyle->SetMarkerSize(0.3);
+    atlasStyle->SetMarkerSize(0.7);
     // atlasStyle->SetHistLineWidth(2.);
     atlasStyle->SetLineStyleString(2,"[12 12]");
 

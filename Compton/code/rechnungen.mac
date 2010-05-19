@@ -31,7 +31,7 @@ N_max_mitAl  : 0.4552$		/*aus dem fit*/
 dN_max_mitAl: 0.0044$
 sigma_mitAl  : 66.14$		/*aus dem fit*/
 dsigma_mitAl: 0.63$
-Nprime : 1sqrt(%pi)*sigma_mitAl*N_max_mitAl$
+Nprime : sqrt(%pi)*sigma_mitAl*N_max_mitAl$
 
 sigma_compton : float(1/(rho_t*d)*log(N_0/Nprime));
 

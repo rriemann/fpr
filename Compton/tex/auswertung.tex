@@ -48,15 +48,16 @@ Sowohl das Signal des Vorverstärkers als auch des Hauptverstärkers kann in
 
 Man kann erkennen, dass die schwarze Linie dem Vorverstärkersignal entspricht,
 was dadurch deutlich wird, dass die Achseneinteilung (an Channel 1) bei gerade
-einmal \si{5}{\milli\volt} pro Kästchen lag, während das noch einmal verstärkte
+einmal \SI{5}{\milli\volt} pro Kästchen lag, während das noch einmal verstärkte
 Hauptverstärkersignal (grüne Linie) bei einer Achseneinteilung von
-\si{2}[{\volt} aufgetragen wurde. Offenbar wird das Signal im Hauptverstärker
+\SI{2}{\volt} aufgetragen wurde. Offenbar wird das Signal im Hauptverstärker
 noch einmal geglättet, denn dessen Signal entspricht einer Gauß-Kurve, wobei im
 Gegensatz dazu das Vorverstärkersignal sprungartig ansteigt, dann aber viel
 Zeit braucht, um wieder auf das Niveau vor der Messung abzufallen (man kann
 grob abschätzen, dass das Vorverstärkersignal ungefähr
-$6\cdot20\si{\micro\second} = 120\si{\micro\second}$ für den Abfall benötigt,
-wohingegen das Hauptverstärkersignal nur etwa 10\si{\micro\second} braucht.)
+$6\cdot\SI{20}{\micro\second} = \SI{120}{\micro\second}$ für den Abfall
+benötigt, wohingegen das Hauptverstärkersignal nur etwa \SI{10}{\micro\second}
+braucht.)
 
 \subsection{Latenzzeit der Messtechnik}
 
@@ -77,7 +78,7 @@ dass im Ergebnis ein Standbild wie in \fref{latenz} exportiert werden kann.
 Hierfür haben wir die Zeitskala kleiner eingestellt, um bessere Messungen
 vornehmen zu können. Das Rädchen, mit dem die Ablesehilfe verschoben werden
 konnte, ließ sich in der gewählten Einstellung in
-0,1\si{\micro\second}-Schritten verstellen. Damit ist jeder einzelne Messwert
+\SI{0,1}{\micro\second}-Schritten verstellen. Damit ist jeder einzelne Messwert
 mit diesem zufälligen Fehler behaftet. Da in diesen Schritten eindeutig
 erkennbar war, bei welcher Schieber-Position das Maximum der
 Hauptverstärkerkurve sowie der Sprung in der Vorverstärkerkurve zu finden ist,
@@ -125,9 +126,33 @@ In unserem Fall war $N=6$.
 Da die Öffnungszeit jedoch vom Computer vollautomatisch
 gemessen wird, ist eine Latenzzeit in diesen Versuch unerheblich.
 
-\subsection{Untergrundmessung}
+\subsection{Energiekalibration}
 
-\subsection{Eichung}
+Die digitale Messtechnik ermöglicht das Abspeichern von Histogrammen, bei denen
+jeweils einem Kanal eine gewisse Anzahl an detektierten Teilchen zugeordnet
+wird. Unbekannt ist allergings, welcher Energie ein gegebener Kanal entspricht.
+Um jedem Kanal eine Energie zuordnen zu können, wird eine Eichung/Kalibration
+durchgeführt. Hierbei wird ausgenutzt, dass die diskrete Energie der γ-Quanten
+bereits bekannt ist.
+
+Verwendet man nun die Präparate aus \tref{proben}, misst
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{%
+l%
+l}
+\toprule
+{Präparat} & {Energie der γ-Quanten [\si{\mega\eV}]} \\
+\midrule
+$^{133}$Ba & 0,356 ± \SI{5}{\percent} \\
+$^{22}$Na & 0,511 ± \SI{4}{\percent} \\
+$^{137}$Cs & 0,356 ± \SI{4}{\percent} \\
+\bottomrule
+\end{tabular*}
+\label{tab:proben}
+\caption{Verwendete Präparate}
+\end{table}
 
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
 Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen
@@ -147,7 +172,7 @@ Beziehung
 \rightarrow \sigma &=& \frac{1}{\rho_T x}\ln\left(\frac{N_0}{N'(x)}\right)
 \end{eqnarray}
 In unserem Fall ist die Dicke des Aluminiumblocks mit $x = d =
-\si{5}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
+\SI{5}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
 resultiert:
 \begin{equation}
   \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
@@ -159,11 +184,11 @@ zurückgreifen:
 \begin{equation}
   \rho_T = \frac{N_A}{A}\cdot Z\rho
 \end{equation}
-Hier ist $N_A$ die Avogadro-Konstante, die \cite{pdb} entnommen wurde, die
+Hier ist $N_A$ die Avogadro-Konstante, die dem \cite{pdb} entnommen wurde, die
 drei anderen Größen wurden \cite[Tab.2]{script} entnommen. Die Zahl der
 Elektronen pro Volumeneinheit lautet somit:
 \begin{equation}
-  \rho_T = 7,83\cdot 10^{23} \cdot \frac{1}{\si{\centi\meter^3}}
+  \rho_T = \SI{7,83e23}{\per\centi\meter\cubed}
 \end{equation}
 
 Nachdem wir diesen Wert bestimmt haben, können wir nun die verbliebenen
@@ -214,8 +239,8 @@ Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
 Hindernis aufgenommen wurde, anwendet, so ergeben sich die folgenden Daten:
 \begin{eqnarray}
 N_{\mathrm{max, Al}} &=& 0,4552 \pm 0,044\\
-\mu_{\mathrm{Al} &=& 993,6 \pm 0,6\\
-s_{\mathrm{Al} &=& 66,14 \pm 0,63
+\mu_{\mathrm{Al}} &=& 993,6 \pm 0,6\\
+s_{\mathrm{Al}} &=& 66,14 \pm 0,63
 \end{eqnarray}
 Damit ergibt sich als Fläche unter der Kurve $N'$:
 \begin{equation}
@@ -225,7 +250,7 @@ N' = 53 \pm 1
 Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
 \begin{eqnarray}
 \sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
-\nonumber &=& \si{260(7)}{\milli\barn}
+\nonumber &=& \SI{260(7)}{\milli\barn}
 \end{eqnarray}
 
 % kommentare,...
@@ -267,5 +292,5 @@ Compton-Wirkungsquerschnitt $\sigma_{\mathrm{korr}}$ berechnen:
 \begin{eqnarray}
 \sigma_{\mathrm{korr}} &=& \frac{1}{\rho_T
 d}\ln\left(\frac{N_0}{N'_{\mathrm{korr}}}\right)\\
-&=& 
+&=& \SI{261(6)}{\milli\barn}
 \end{eqnarray}

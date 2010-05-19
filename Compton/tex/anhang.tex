@@ -1,6 +1,75 @@
 \newpage
 
 \onecolumn
+
 \appendix
+
+\section{Histogramme}
+
+\begin{figure}[htbp]
+  \subfigure[Barium]{
+    \label{fig:barium_ohne_hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/barium_ohne_hintergrund} 
+  }
+  \subfigure[Narium]{
+    \label{fig:natrium_ohne_hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/natrium_ohne_hintergrund} 
+  }
+  \subfigure[Cäsium]{
+    \label{fig:caesium_ohne_hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium_ohne_hintergrund} 
+  }
+  \caption{Vom Hintergrund bereinigte Histogramme}
+  \label{fig:ohne_hintergrund}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \subfigure[Cäsium]{
+    \label{fig:caesium_energie mit Hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium_energie} 
+  }
+  \subfigure[Cäsium]{
+    \label{fig:caesium_ohne_hintergrund_energie ohne Hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium_ohne_hintergrund_energie} 
+  }
+  \subfigure[Cäsium mit Aluminiumtarget ohne Hintergrund]{
+    \label{fig:caesium_alu_ohne_hintergrund_energie}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium_alu_ohne_hintergrund_energie} 
+  }
+  \caption{Histogramme auf Energie skaliert.}
+  \label{fig:energie}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \subfigure[Barium]{
+    \label{fig:barium}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/barium} 
+  }
+  \subfigure[Narium]{
+    \label{fig:natrium}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/natrium} 
+  }
+  \subfigure[Cäsium]{
+    \label{fig:caesium}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium} 
+  }
+  \subfigure[Cäsium mit Aluminiumtarget]{
+    \label{fig:caesium_alu}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/caesium_alu} 
+  }
+  \subfigure[Hintergrundmessung]{
+    \label{fig:hintergrund}
+    \includegraphics[width=0.44\textwidth,keepaspectratio]{../tmp/hintergrund} 
+  }
+  \caption{Zeitnormierte, neu gebinnte Histogramme}
+  \label{fig:gemessene_histogramme}
+\end{figure}
+
+
+
+\newpage
+
 \section{Quellcode}
 \lstinputlisting[label=lst:source,caption={Programmquelltext},lastline=208]{../code/main.cpp}

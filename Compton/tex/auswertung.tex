@@ -156,13 +156,13 @@ Es bleibt zu klären, welchen Wert die Elektonendichte für Aluminium $\rho_T$ i
 diesem Fall besitzt. Dabei kann man auf die bekannte Massendichte $\rho$ sowie
 auf die molare Masse $A$ zurückgreifen:
 \begin{equation}
-  \rho_T = \frac{N_A}{A}\rho
+  \rho_T = \frac{N_A}{A}\cdot Z \rho
 \end{equation}
-Hier ist $N_A$ die Avogadro-Konstante, deren Wert ebenso wie die
-andern beiden Größen \cite[Tab.2]{script} entnommen wurde. Die Zahl der
-Aluminiumatome pro Volumeneinheit lautet somit:
+Hier ist $N_A$ die Avogadro-Konstante, deren Wert \cite{pdb} entnommen wurde,
+und die anderen beiden Größen wurden \cite[Tab.2]{script} entnommen wurde. Die
+Zahl der Elektronen pro Volumeneinheit lautet somit:
 \begin{equation}
-  \rho_T = 6,023\cdot 10^{22} \cdot \frac{1}{\si{\centi\meter^3}}
+  \rho_T = 7,83\cdot 10^{23} \cdot \frac{1}{\si{\centi\meter^3}}
 \end{equation}
 
 Nachdem wir diesen Wert bestimmt haben, können wir nun die verbliebenen
@@ -202,7 +202,7 @@ Somit kann man auch problemlos die Fläche $N_0$ unter dieser Kurve
 angeben, was gleich der uns interessierenden Anzahl der ungestört eintreffenden
 Photonen ist:
 \begin{eqnarray}
-F_{Photo} &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
+N_0 &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
 &=& N_{max}\sqrt{\pi}\cdot s\\
 \nonumber &=& 0123456789
 \end{eqnarray}

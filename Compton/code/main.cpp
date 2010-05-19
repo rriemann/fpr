@@ -109,8 +109,7 @@ int main ( int argc, char *argv[] ) {
         tgrapherrors_energie_eichung_fit->SetPointError(i,tfitres_array_eichung[i]->Value(2),dbl_array_proben_energie_rel_fehler[i]);
     }
     TF1 *tf1_linear_eichung = new TF1("f1_linere_eichung","pol1",0,3000);
-    TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");              //bekommt also die 2 parameter des fits als values, erster wert: 0
-    cout << tfitres_eichung->Value(0) << " " << tfitres_eichung->Value(1) << endl;
+    TFitResultPtr tfitres_eichung = tgrapherrors_energie_eichung_fit->Fit(tf1_linear_eichung,"S");
     DrawOnCanvas(tgrapherrors_energie_eichung_fit,"eichung","AP",false,"Kanal","Energie [MeV]");
 
     TH1F* th1f_caesium_ohne_hintergrund_energie = ApplyCalibration(tf1_linear_eichung,th1f_caesium_ohne_hintergrund);

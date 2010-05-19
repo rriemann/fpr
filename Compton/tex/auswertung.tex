@@ -133,9 +133,13 @@ jeweils einem Kanal eine gewisse Anzahl an detektierten Teilchen zugeordnet
 wird. Unbekannt ist allergings, welcher Energie ein gegebener Kanal entspricht.
 Um jedem Kanal eine Energie zuordnen zu können, wird eine Eichung/Kalibration
 durchgeführt. Hierbei wird ausgenutzt, dass die diskrete Energie der γ-Quanten
-bereits bekannt ist.
+bereits bekannt ist. Diese Energie führt zu den Maxima.
 
-Verwendet man nun die Präparate aus \tref{proben}, misst
+Es wurde auch eine Langzeitmessung (ca. eine Stunde)
+ohne Probe durchgeführt, in der der Untergrund gemessen wurde, welcher den
+Eigenheiten des Detektors, Streulicht, und dem benachbartem Versuchsaufbau
+zuzuschreiben ist.
+
 \begin{table}[htbp]
 \centering
 % \setlength{\tabcolsep}{14pt}
@@ -153,6 +157,41 @@ $^{137}$Cs & 0,356 ± \SI{4}{\percent} \\
 \label{tab:proben}
 \caption{Verwendete Präparate}
 \end{table}
+
+Da die Messungen nicht die selbe Öffnungszeit aufweisen, wurden sämtliche
+Histogramme auf die gleiche Zeit normiert. Daraufhin wurden jeweils 10 Kanäle
+eines Histograms zusammengelegt um die Anpassungsrechnungen zu vereinfachen und
+eine höhere Statistik zu erhalten. Die Ergebnisse befinden sich im Anhang
+\ref{sec:plots} in \fref{gemessene_histogramme}.
+
+Im nächsten Schritt wurden die Histogramme vom Hintergrund gesäubert, in dem
+das Hintergrund-Histogramm von den anderen subtrahiert wurde.
+
+Nun wurde das Histogramm jeder einzelnen Probe der Bereich des Maximums mit einer
+Gaußfunktion angepasst. Hierzu wurden die Boardmittel von \cite{root} verwendet.
+Die Resultate der Anpassung sind in \fref{gemessene_histogramme} mit abgedruckt.
+
+Der Mittelwert der Gaußanpassung wurde nun mit der Halbwertsbreite als Fehler
+den Energien der γ-Quanten zugeordnet. Aus dem entstehenden Diagramm in
+\fref{eichung} lässt sich durch eine lineare Regression nun die
+Umrechnungsformel in \eref{eichung} von Kanal $k$ zu Energie $E$ gewinnen,
+welche das Ergebnis der Kalibration darstellt.
+
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/eichung}
+      \caption{Energiekalibration}
+      \label{fig:eichung}
+\end{figure}
+
+\begin{equation}
+ E(k) = \SI{0.0(1)}{\mega\eV} + k\cdot\SI{6.8(14)e-4}{\mega\eV}
+ \label{eqn:eichung}
+\end{equation}
+
+Man muss feststellen, dass die Fehler in \eref{eichung} relativ groß sind.
+Möglicherweise ist die Halbwertsbreite systematisch zu groß.
+
 
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
 Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen

@@ -41,8 +41,8 @@ Nprime  : float(sqrt(%pi)*sigma_mitAl*N_max_mitAl);
 dNprime: float(sqrt(%pi)*sqrt((sigma_mitAl*dN_max_mitAl)^2 +
 (dsigma_mitAl*N_max_mitAl)^2));
 sigma_compton   : float(1/(rho_t*d)*log(N_0/Nprime));
-dsigma_compton : float(1/(rho_t*d)*Nprime/N_0*sqrt((dN_0/Nprime)^2 +
-(N_0/Nprime^2*dNprime)^2));
+dsigma_compton : float(1/rho_t*sqrt((log(N_0/Nprime)*dd/d^2)^2 +
+(N_prime/(d*N_0))^2*( (dN_0/Nprime)^2+ (N_0/Nprime^2*dNprime)^2)));
 
 c  : omega_det/(4*%pi)$
 dc: domega_det/(4*%pi)$

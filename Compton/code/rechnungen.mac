@@ -12,3 +12,18 @@ R_kugel : sqrt(abstand_al_det^2 + det_radius^2);
 theta_max : atan(det_radius/abstand_al_det);
 
 omega_det : %pi*(theta_max - 1/2*sin(2*theta_max));
+
+/*compton-WQ*/
+N_A : 6.022e23$
+Z : 13$
+rho : 2.72$			/*g/cm^3*/
+A : 26.98$ 			/*g/mol*/
+rho_t : N_A/A*Z*rho; 	/*1/cm^3*/
+d : 5$				/*cm*/
+
+N_0 : $
+N' : $
+sigma : 1/(rho_t*d)*log(N_0/N');
+
+N'_korr : $
+sigma_korr : 1/(rho_t*d)*log(N_0/N'_korr);

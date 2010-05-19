@@ -213,7 +213,7 @@ Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
 Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
 Hindernis aufgenommen wurde, anwendet, so ergeben sich die folgenden Daten:
 \begin{eqnarray}
-N_0 &=& \\
+N_{max} &=& \\
 \mu &=& \\
 s &=& 
 \end{eqnarray}
@@ -250,13 +250,22 @@ Resultat einer kurzen Rechnung lautet dann:
 \begin{equation}
 \Omega_{\mathrm{Det}} = 
 \end{equation}
-Wenn man die in \cite[S.9]{script} nahegelegte Näherung trifft, dass
-d$\sigma/$d$\Omega$ konstant ist, so kann man leicht den zugehörigen
-Wirkungsquerschitt berechnen:
+Im letzten Abschnitt aber haben wir eigentlich den Wirkungsquerschnitt dafür
+berechnet, dass Photonen so gestreut werden, dass sie anschließend nicht mehr
+detektierbar sind. Um also diese Näherung nicht treffen zu müssen, berechnen wir
+nun aus den gegebenen Größen die wahre Anzahl $N'_{\mathrm{korr}}$ der Photonen,
+die den Aluminiumblock wirklich ohne Wechselwirkung passiert haben. Nach einer
+etwas längeren Rechnung erhalten wir als Ergebnis:
 \begin{eqnarray}
-\frac{d\sigma}{d\Omega} &=& \mathrm{const}=\frac{\sigma_{\mathrm{tot}}}{4\pi}\\
-\sigma_{\mathrm{Det}} &=&\frac{\sigma_{\mathrm{tot}}}
-{4\pi}\cdot\Omega_{\mathrm{Det}}
+N'_{\mathrm{korr}} &=& \frac{N_{\mathrm{mit Al}}-cN_0}{1-c}\\
+c &=& \frac{\Omega_{\mathrm{Det}}}{4\pi}\\
+\rightarrow N'_{\mathrm{korr}} &=& 
 \end{eqnarray}
-Hierbei ist $\sigma_{\mathrm{tot}}$ der im vorigen Abschnitt berechnete totale
-Compton-Wirkungsquerschnitt.
+Da nun die korrigierte Zahl der Teilchen bekannt ist, die ohne Wechselwirkung
+zum Detektor gelangten, kann man leicht den korrigierten
+Compton-Wirkungsquerschnitt $\sigma_{\mathrm{korr}}$ berechnen:
+\begin{eqnarray}
+\sigma_{\mathrm{korr}} &=& \frac{1}{\rho_T
+d}\ln\left(\frac{N_0}{N'_{\mathrm{korr}}}\right)\\
+&=& 
+\end{eqnarray}

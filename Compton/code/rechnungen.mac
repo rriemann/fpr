@@ -29,16 +29,16 @@ N_max_ohneAl  : 1.281$		/*aus dem fit*/
 dN_max_ohneAl: 0.008$
 sigma_ohneAl  : 65.61$		/*aus dem fit*/
 dsigma_ohneAl: 0.36$
-N_0  : float(sqrt(%pi)*sigma_ohneAl*N_max_ohneAl);
-dN_0: float(sqrt(%pi)*sqrt((sigma_ohneAl*dN_max_ohneAl)^2 +
+N_0  : float(sqrt(2*%pi)*sigma_ohneAl*N_max_ohneAl);
+dN_0: float(sqrt(2*%pi)*sqrt((sigma_ohneAl*dN_max_ohneAl)^2 +
 (dsigma_ohneAl*N_max_ohneAl)^2));
 
 N_max_mitAl  : 0.4552$		/*aus dem fit*/
 dN_max_mitAl: 0.0044$
 sigma_mitAl  : 66.14$		/*aus dem fit*/
 dsigma_mitAl: 0.63$
-Nprime  : float(sqrt(%pi)*sigma_mitAl*N_max_mitAl);
-dNprime: float(sqrt(%pi)*sqrt((sigma_mitAl*dN_max_mitAl)^2 +
+Nprime  : float(sqrt(2*%pi)*sigma_mitAl*N_max_mitAl);
+dNprime: float(sqrt(2*%pi)*sqrt((sigma_mitAl*dN_max_mitAl)^2 +
 (dsigma_mitAl*N_max_mitAl)^2));
 sigma_compton   : float(1/(rho_t*d)*log(N_0/Nprime));
 dsigma_compton : float(1/rho_t*sqrt((log(N_0/Nprime)*dd/d^2)^2 +

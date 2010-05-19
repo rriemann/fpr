@@ -325,18 +325,34 @@ Messdaten, die bei Vorhandensein einer Quelle gemessen wurden, ein normiertes
 Untergrundspektrum abzieht, sodass bis auf eine gewisse Fluktuation nur noch
 uns interessierendes physikalisches Signal vorhanden ist. Dieses
 Photopeak-Signal wurde in einem gewissen Bereich mit einer Gauß-Verteilung
-gefittet. Da man nun eine Funktion gegeben hat, deren Fläche man (zumindest
-numerisch) berechnen kann. Weil aber unsere Grenzen, in denen gefittet
-wird, willkürlich festgelegt sind, sollte man versuchen, die Integration
-möglichst unabhängig von dieser Wahl zu machen. Daher berechnen wir die
-Photopeakfläche durch eine Integration von $-\infty$ bis $+\infty$. Bei
-einer Gaußkurve ist das Ergebnis einer Integration in diesen Grenzen bekannt,
-und somit brauchen wir uns um die Integration selbst keine Gedanken mehr zu
-machen und müssen nur noch die Fit-Parameter einsetzen.
+gefittet (siehe \fref{caesium_alu_ohne_hintergrund_energie}). Da man nun eine
+Funktion gegeben hat, deren Fläche man berechnen kann.
+Weil aber unsere Grenzen, in denen gefittet wird, willkürlich festgelegt sind,
+sollte man versuchen, die Integration möglichst unabhängig von dieser Wahl zu
+machen. Daher berechnen wir die Photopeakfläche durch eine Integration von
+$-\infty$ bis $+\infty$. Bei einer Gaußkurve ist das Ergebnis einer Integration
+in diesen Grenzen bekannt, und somit brauchen wir uns um die Integration selbst
+keine Gedanken mehr zu machen und müssen nur noch die Fit-Parameter einsetzen.
+Wir haben mit \fref{cs_sig_und_untergrund} auch einen gemeinsamen Fit für den
+vergliebenen Untergrund und den Photopeak selbst erstellt. Die Formel dafür
+lautet wie folgt: 
+\begin{equation*}
+ F(c) = \underbrace{P_0\mathrm{e}^{-\frac{(c-P_1)^2}{2P_2^2}}}_{\mathrm{1.
+Photopeak}} + \underbrace{P_3\mathrm{e}^{-\frac{(c-P_4)^2}{2P_5^2}}}_{\mathrm{2.
+Photopeak}} +
+\underbrace{\frac{P_6}{1+\mathrm{e}^{-\frac{(c-P_7)^2}{2P_8^2}}}}_{\mathrm{
+Compton-Kante }}
+\end{equation*}
+Wir haben uns aber dafür entschieden, für die Flächenberechnung
+nur den Photopeak-Fit selbst zu betrachten, da der Untergrund von Effekten
+herrührt, die nicht zum für uns interessanten Signal zählen. Da wir also ein
+Modell für die Verteilung erstellt haben (gaußförmige Verteilung), und diese
+auch in einem Bereich angepasst wurde, in dem der Untergrund viel schwächer ist,
+macht es mehr Sinn, auch nur das Modell auf seinen Flächeninhalt zu untersuchen.
 
-Allgemein sieht eine Gauß-Funktion folgerndermaßen aus:
+Allgemein sieht eine solche Gauß-Funktion folgerndermaßen aus:
 \begin{equation}
-  N(c) = N_{max}\mathrm e^{-\frac{(c-\mu)^2}{s^2}}
+  N(c) = N_{max}\mathrm e^{-\frac{(c-\mu)^2}{2s^2}}
 \end{equation}
 Dabei steht die Variable $c$ in diesem Fall für den Channel, während die
 anderen Größen, also $N_{max}$ für den Maximalwert der Verteilung, $\mu$ für den
@@ -354,8 +370,8 @@ angeben, was gleich der uns interessierenden Anzahl der ungestört eintreffenden
 Photonen ist:
 \begin{eqnarray}
 N_0 &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
-&=& N_{\mathrm{max}}\sqrt{\pi}\cdot s\\
-\nonumber &=& 149 \pm 1
+&=& N_{\mathrm{max}}\sqrt{2\pi}\cdot s\\
+\nonumber &=& 211 \pm 2
 \end{eqnarray}
 Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
 Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
@@ -369,7 +385,7 @@ s_{\mathrm{Al}} &=& 66,14 \pm 0,63
 \end{eqnarray}
 Damit ergibt sich als Fläche unter der Kurve $N'$:
 \begin{equation}
-N' = 53 \pm 1
+N' = 75 \pm 1
 \end{equation}
 
 Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:

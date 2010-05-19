@@ -243,6 +243,42 @@ Hinweis darauf ist, dass der Peak wirklich Gauß-förmig ist und nicht bei
 kleineren Energien mehr Einträge besitzt als bei größeren. Das deutet schon auf
 eine systematische Unsicherheit des Detektors hin.
 
+\subsection{Relativer Fehler der Energieauflösung}
+
+Die Energieauflösung $A(E)$ mit der Halbwertsbreite $σ(E)$
+definiert sich laut \cite{script} folgendermaßen:
+\begin{equation}
+ A(E) = 2\sqrt{2\log{2}}\cdot\frac{σ(E)}{E}
+ \label{eqn:energie_aufloesung}
+\end{equation}
+
+Die Halbwertsbreite $σ(E)$ ist aus \fref{ohne_hintergrund} bekannt. Der Fehler
+für $A(E)$ lässt sich mittels Gauß’scher Fehlerrechnung ermitteln. In
+\fref{rel_aufloesung} ist der Zusammenhang dargestellt. Für die Anpassung
+wurde die Funktion in \eref{rel_aufloesung_anpassung} als passend befunden,
+wobei auf einen geringen Wert von $\chi^2\mathrm{DoF}$ geachtet wurde.
+
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/rel_aufloesung}
+      \caption{Energieauflösung}
+      \label{fig:rel_aufloesung}
+\end{figure}
+
+\begin{equation}
+ A(E) = \frac{\alpha}{\beta \cdot E + 1}
+ \label{eqn:rel_aufloesung_anpassung}
+\end{equation}
+
+Die Anpassung ergab folgende Werte:
+\begin{eqnarray}
+ \alpha &=& \num{0.4(5)}  \\
+ \beta &=& \num{2.7(58)}
+\end{eqnarray}
+Die Ergebnisse weisen wieder hohe Fehler auf, was wieder auf den hohen Fehler
+in σ zurückzuführen. Insgesamt ist aber eindeutig erkennbar, dass die relative
+Auflösung mit steigender Energie besser wird.
+
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
 Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen
 Wirkungsquerschitts für Compton-Streuung. Wir betrachten dafür die Tatsache,

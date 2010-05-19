@@ -31,10 +31,10 @@ N_max_mitAl  : 0.4552$		/*aus dem fit*/
 dN_max_mitAl: 0.0044$
 sigma_mitAl  : 66.14$		/*aus dem fit*/
 dsigma_mitAl: 0.63$
-N' : sqrt(%pi)*sigma_mitAl*N_max_mitAl$
+Nprime : sqrt(%pi)*sigma_mitAl*N_max_mitAl$
 
 sigma_compton : 1/(rho_t*d)*log(N_0/N');
 
 c: omega_det/(4*%pi)$
-N'_korr : (N_max_mitAl-c*N_0)/(1-c);
-sigma_compton_korr : 1/(rho_t*d)*log(N_0/N'_korr);
+Nprime_korr : (N_max_mitAl-c*N_0)/(1-c);
+sigma_compton_korr : 1/(rho_t*d)*log(N_0/Nprime_korr);

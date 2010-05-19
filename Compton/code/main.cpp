@@ -200,7 +200,7 @@ TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig) {
     TH1F* h1 = new TH1F(*h1_orig);
     h1->SetStats(false);
     Int_t bin_count = h1->GetNbinsX();
-    Double_t x1 = f1->Eval(h1->GetBinCenter(1)); // TODO
+    Double_t x1 = f1->Eval(h1->GetBinCenter(1));
     Double_t x2 = f1->Eval(h1->GetBinCenter(bin_count));
     h1->GetXaxis()->Set(bin_count,x1,x2);
     return h1;

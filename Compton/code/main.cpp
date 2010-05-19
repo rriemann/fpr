@@ -186,7 +186,7 @@ void DrawOnCanvas(TObject* obj, string name, string options, bool log, string xa
     } else {
         obj->Draw(options.c_str());
     }
-    c1->SaveAs(Form("../tmp/%s.png", name.c_str()));
+    c1->SaveAs(Form("../tmp/%s.pdf", name.c_str()));
     delete c1;
 }
 

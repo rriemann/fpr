@@ -5,13 +5,16 @@ stdabw : float(sqrt(1/6*(2*0.1^2+3*0.2^2)));
 vertrauensintervall : float(stdabw / 2.571);
 
 /*berechnung des detektor-raumwinkels*/
-abstand_al_det : 15.8;				/*einheit: cm*/
+abstand_al_det   : 15.8$				/*einheit: cm*/
+dabstand_al_det : 0.2$
 det_radius : 4;						/*einheit: cm*/
 
-R_kugel : float(sqrt(abstand_al_det^2 + det_radius^2));
-theta_max : atan(det_radius/abstand_al_det);
+theta_max   : atan(det_radius/abstand_al_det);
+dtheta_max : 1/(1+(det_radius/abstand_al_det)^2)*
+det_radius/abstand_al_det^2*dabstand_al_det;
 
 omega_det : float(%pi*(theta_max - 1/2*sin(2*theta_max)));
+domega_det : float(%pi*(1 - cos(2*theta_max))*dtheta_max);
 
 /*compton-WQ, CS + alu ohne HG*/
 N_A : 6.022e23$
@@ -19,22 +22,34 @@ Z : 13$
 rho : 2.72$				/*g/cm^3*/
 A : 26.98$ 				/*g/mol*/
 rho_t : float(N_A/A*Z*rho); 	/*1/cm^3*/
-d : 5$					/*cm*/
+d  : 5$					/*cm*/
+dd: 0.1$
 
 N_max_ohneAl  : 1.281$		/*aus dem fit*/
 dN_max_ohneAl: 0.008$
 sigma_ohneAl  : 65.61$		/*aus dem fit*/
 dsigma_ohneAl: 0.36$
-N_0 : sqrt(%pi)*sigma_ohneAl*N_max_ohneAl$
+N_0  : float(sqrt(%pi)*sigma_ohneAl*N_max_ohneAl);
+dN_0: loat(sqrt(%pi)*sqrt((sigma_ohneAl*dN_max_ohneAl)^2 +
+(dsigma_ohneAl*N_max_ohneAl)^2));
 
 N_max_mitAl  : 0.4552$		/*aus dem fit*/
 dN_max_mitAl: 0.0044$
 sigma_mitAl  : 66.14$		/*aus dem fit*/
 dsigma_mitAl: 0.63$
-Nprime : sqrt(%pi)*sigma_mitAl*N_max_mitAl$
+Nprime  : float(sqrt(%pi)*sigma_mitAl*N_max_mitAl);
+dNprime: float(sqrt(%pi)*sqrt((sigma_mitAl*dN_max_mitAl)^2 +
+(dsigma_mitAl*N_max_mitAl)^2));
+sigma_compton   : float(1/(rho_t*d)*log(N_0/Nprime));
+dsigma_compton : float(1/(rho_t*d)*Nprime/N_0*sqrt((dN_0/Nprime)^2 +
+(N_0/Nprime^2*dNprime)^2));
 
-sigma_compton : float(1/(rho_t*d)*log(N_0/Nprime));
-
-c: omega_det/(4*%pi)$
-Nprime_korr : float((N_max_mitAl-c*N_0)/(1-c));
-sigma_compton_korr : float(1/(rho_t*d)*log(N_0/Nprime_korr));
+c  : omega_det/(4*%pi)$
+dc: domega_det/(4*%pi)$
+Nprime_korr   : float((N_max_mitAl-c*N_0)/(1-c));
+dNprime_korr : float(sqrt((dN_max_mitAl/(1-c))^2 + (c*dN_0/(1-c))^2 +
+((N_0 + N_max_mitAl-c*N_0)/(1-c)^2*dc)^2 ));
+sigma_compton_korr   : float(1/(rho_t*d)*log(N_0/Nprime_korr));
+dsigma_compton_korr : float(1/rho_t*sqrt((log(N_0/Nprime_korr)*dd/d^2)^2 +
+(N_prime_korr/(d*N_0))^2*( (dN_0/Nprime_korr)^2+
+(N_0/Nprime_korr^2*dNprime_korr)^2)));

@@ -192,6 +192,43 @@ welche das Ergebnis der Kalibration darstellt.
 Man muss feststellen, dass die Fehler in \eref{eichung} relativ groß sind.
 Möglicherweise ist die Halbwertsbreite systematisch zu groß.
 
+Im Rahmen einer tiefergehenden Suche nach Gründen für die Breite des Photopeaks
+war zu untersuchen, ob zum einen die Lebensdauer des angeregten Kerns und zum
+anderen die nicht beachtete Bewegung der Elektronen um den Kern von Bedeutung
+sind.
+
+Nach der Aussendung der $\beta$-Strahlung, also eines Elektrons, verbleibt der
+Kern in einem angeregten, metastabilen Zustand, der eine charakteristische
+Lebensdauer (laut \cite[Abb. 4]{script} ist die Lebensdauer $\tau =
+\SI{2,5}{\minute}$) besitzt. Diese Lebensdauer wirkt sich über die
+Heisenberg'sche Unschärferelation auf die Genauigkeit der anschließend
+ausgesandten Strahlung aus, sodass im Endeffekt die Linienbreite beeinflusst
+wird. Die Breite berechnet sich dabei wie folgt:
+\begin{eqnarray}
+\Delta E &\geq& \frac{\hbar}{\Delta \tau}\\
+&\geq& \SI{4,4e-24}{\mega\eV}
+\end{eqnarray}
+Die Gaußbreite der Photopeaks liegt in der Größenordnung von einem MeV, sodass
+dieser Effekt, der eine wesentlich kleinere Größenordnung aufweist, auf jeden
+Fallvernachlässigt werden kann.
+
+Nun bleibt noch der Effekt zu betrachten, der sich aus der Bewegung der
+Elektronen begründet. Um dafür Aussagen treffen zu können, muss man die
+charakteristische Größenordnung der kinetischen Energie der Elektronen
+bestimmen. Dafür verwenden wir die Beziehung
+\begin{equation}
+E = \frac{3}{2}k_BT
+\end{equation}
+Die kinetische Energie kann also über die Temperatur ermittelt werden. Wir
+setzen dafür \SI{300}{\kelvin} ein, was in etwa der Temperatur im Versuchsraum
+entspicht. Die in der Formel noch enthaltene Boltzmannkonstante $k_B$ wird
+\cite{pdb} entnommen.
+\begin{equation}
+E = \frac{3}{2}k_BT = \SI{4e-8}{\mega\eV}
+\end{equation}
+Auch dieser Wert ist deutlich kleiner als die sonstigen typischen Energien des
+Systems und kann daher, auch wenn er schon deutlich größer als die
+Linienverbreiterung durch die Lebensdauer, vernachlässigt werden.
 
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}
 Das Ziel der folgenden Betrachtungen ist die Berechnung des totalen

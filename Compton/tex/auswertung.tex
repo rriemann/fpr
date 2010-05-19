@@ -194,9 +194,9 @@ Mittelwert und $s$ als Maß für die Breite der Gaußfunktion, die Fitparameter
 sind. Für den $^{137}$Cs-Photopeak ohne Aluminiumblock ergeben sich bei einer
 solchen Fitfunktion die folgenden Werte:
 \begin{eqnarray}
-N_{max} &=& 0,13\\		%fehlerbetrachtung!!!
-\mu &=& 994\\
-s &=& 65
+N_{\mathrm{max}} &=& 1,281 \pm 0,008\\
+\mu &=& 994,1 \pm 0,4\\
+s &=& 65,61 \pm 0,36
 \end{eqnarray}
 
 Somit kann man auch problemlos die Fläche $N_0$ unter dieser Kurve
@@ -204,8 +204,8 @@ angeben, was gleich der uns interessierenden Anzahl der ungestört eintreffenden
 Photonen ist:
 \begin{eqnarray}
 N_0 &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
-&=& N_{max}\sqrt{\pi}\cdot s\\
-\nonumber &=& 0123456789
+&=& N_{\mathrm{max}}\sqrt{\pi}\cdot s\\
+\nonumber &=& 149 \pm 1
 \end{eqnarray}
 Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
 Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
@@ -213,19 +213,19 @@ Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
 Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
 Hindernis aufgenommen wurde, anwendet, so ergeben sich die folgenden Daten:
 \begin{eqnarray}
-N_{max} &=& \\
-\mu &=& \\
-s &=& 
+N_{\mathrm{max, Al}} &=& 0,4552 \pm 0,044\\
+\mu_{\mathrm{Al} &=& 993,6 \pm 0,6\\
+s_{\mathrm{Al} &=& 66,14 \pm 0,63
 \end{eqnarray}
 Damit ergibt sich als Fläche unter der Kurve $N'$:
 \begin{equation}
-N' = 
+N' = 53 \pm 1
 \end{equation}
 
 Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
 \begin{eqnarray}
 \sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
-\nonumber &=& 
+\nonumber &=& \si{260(7)}{\milli\barn}
 \end{eqnarray}
 
 % kommentare,...
@@ -248,7 +248,7 @@ Comptonstreuung erst am Ende des Al-Blocks stattfindet. Dann kann leicht der vom
 Detektor eingenommene Raumwinkel $\Omega_{\mathrm{Det}}$ berechnet werden. Als
 Resultat einer kurzen Rechnung lautet dann:
 \begin{equation}
-\Omega_{\mathrm{Det}} = 
+\Omega_{\mathrm{Det}} = 0,032 \pm 0,001
 \end{equation}
 Im letzten Abschnitt aber haben wir eigentlich den Wirkungsquerschnitt dafür
 berechnet, dass Photonen so gestreut werden, dass sie anschließend nicht mehr
@@ -259,7 +259,7 @@ etwas längeren Rechnung erhalten wir als Ergebnis:
 \begin{eqnarray}
 N'_{\mathrm{korr}} &=& \frac{N_{\mathrm{mit Al}}-cN_0}{1-c}\\
 c &=& \frac{\Omega_{\mathrm{Det}}}{4\pi}\\
-\rightarrow N'_{\mathrm{korr}} &=& 
+\rightarrow N'_{\mathrm{korr}} &=& 53 \pm 1
 \end{eqnarray}
 Da nun die korrigierte Zahl der Teilchen bekannt ist, die ohne Wechselwirkung
 zum Detektor gelangten, kann man leicht den korrigierten

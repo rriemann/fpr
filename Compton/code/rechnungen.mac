@@ -30,7 +30,7 @@ dN_max_ohneAl: 0.008$
 sigma_ohneAl  : 65.61$		/*aus dem fit*/
 dsigma_ohneAl: 0.36$
 N_0  : float(sqrt(%pi)*sigma_ohneAl*N_max_ohneAl);
-dN_0: loat(sqrt(%pi)*sqrt((sigma_ohneAl*dN_max_ohneAl)^2 +
+dN_0: float(sqrt(%pi)*sqrt((sigma_ohneAl*dN_max_ohneAl)^2 +
 (dsigma_ohneAl*N_max_ohneAl)^2));
 
 N_max_mitAl  : 0.4552$		/*aus dem fit*/

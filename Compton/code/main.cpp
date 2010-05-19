@@ -26,7 +26,6 @@ using std::string;
 void define_style();
 void DrawOnCanvas(TObject* h1, string name, string options = "", bool log = false, string xaxis = "", string yaxis = "");
 TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2);
-TFitResultPtr FitCsUndUntergrund(TH1* h1, Double_t x1 ,Double_t x2);
 TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig);
 
 int main ( int argc, char *argv[] ) {
@@ -159,16 +158,14 @@ int main ( int argc, char *argv[] ) {
     ////////////////////////////////////////////////////////////////////////////
     //////// 4.5 Cs Spektrum 2
     ////////////////////////////////////////////////////////////////////////////
-    
-    TH1F* th1f_cs_und_untergrund = new TH1F;
-    th1f_cs_und_untergrund = chn2hist("../data/cs.chn",oeffnungszeit);
-    th1f_cs_und_untergrund->Rebin(rebin);
-    th1f_cs_und_untergrund->Scale(1/oeffnungszeit);
-    DrawOnCanvas(th1f_cs_und_untergrund,"caesium");
-//     TFitResultPtr results = FitCsUndUntergrund(th1f_cs_und_untergrund, 0,1300);
-    TFitResultPtr results = FitCsUndUntergrund(th1f_cs_und_untergrund, 0, 1300);
-    DrawOnCanvas(th1f_cs_und_untergrund,"th1f_cs_und_untergrund");
-    
+
+    TH1F* th1f_caesium2 = new TH1F(*th1f_caesium);
+    TF1 *tf1_caesium2 = new TF1("user", "[0]*exp(-0.5*((x-[1])/[2])^2) + [3]*exp(-0.5*((x-[4])/[5])^2) + [6]*1/(1 + exp((x-[7])/[8])^2)", 0, 1300);
+    tf1_caesium2->SetParameters(3.9, 200, 200, 0.5, 600, 60, 1.4, 1000, 160);
+    tf1_caesium2->SetLineColor(2);
+    TFitResultPtr tfitres_caesium2 = th1f_caesium2->Fit(tf1_caesium2, "RS");
+    DrawOnCanvas(th1f_caesium2,"caesium_fit_untergrund");
+
     file->Write();
 }
 

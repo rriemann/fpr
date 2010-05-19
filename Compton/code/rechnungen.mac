@@ -42,7 +42,7 @@ dNprime: float(sqrt(%pi)*sqrt((sigma_mitAl*dN_max_mitAl)^2 +
 (dsigma_mitAl*N_max_mitAl)^2));
 sigma_compton   : float(1/(rho_t*d)*log(N_0/Nprime));
 dsigma_compton : float(1/rho_t*sqrt((log(N_0/Nprime)*dd/d^2)^2 +
-(N_prime/(d*N_0))^2*( (dN_0/Nprime)^2+ (N_0/Nprime^2*dNprime)^2)));
+(Nprime/(d*N_0))^2*( (dN_0/Nprime)^2+ (N_0/Nprime^2*dNprime)^2)));
 
 c  : omega_det/(4*%pi)$
 dc: domega_det/(4*%pi)$
@@ -51,5 +51,5 @@ dNprime_korr : float(sqrt((dN_max_mitAl/(1-c))^2 + (c*dN_0/(1-c))^2 +
 ((N_0 + N_max_mitAl-c*N_0)/(1-c)^2*dc)^2 ));
 sigma_compton_korr   : float(1/(rho_t*d)*log(N_0/Nprime_korr));
 dsigma_compton_korr : float(1/rho_t*sqrt((log(N_0/Nprime_korr)*dd/d^2)^2 +
-(N_prime_korr/(d*N_0))^2*( (dN_0/Nprime_korr)^2+
+(Nprime_korr/(d*N_0))^2*( (dN_0/Nprime_korr)^2+
 (N_0/Nprime_korr^2*dNprime_korr)^2)));

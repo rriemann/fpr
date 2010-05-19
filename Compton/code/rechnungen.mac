@@ -2,23 +2,23 @@
 verzoegerung_mw  : (6.6 + 6.7 + 3*6.8 + 6.5)/6;		/*einheit: mikrosekunden*/
 dverzoegerung_mw : float(0.1/sqrt(6));			/*einheit: mikrosekunden*/
 stdabw : float(sqrt(1/6*(2*0.1^2+3*0.2^2)));
-vertrauensintervall : float(1stdabw / 2.571);
+vertrauensintervall : float(stdabw / 2.571);
 
 /*berechnung des detektor-raumwinkels*/
 abstand_al_det : 15.8;				/*einheit: cm*/
 det_radius : 4;						/*einheit: cm*/
 
-R_kugel : float(1sqrt(abstand_al_det^2 + det_radius^2));
+R_kugel : float(sqrt(abstand_al_det^2 + det_radius^2));
 theta_max : atan(det_radius/abstand_al_det);
 
-omega_det : float(1%pi*(theta_max - 1/2*sin(2*theta_max)));
+omega_det : float(%pi*(theta_max - 1/2*sin(2*theta_max)));
 
 /*compton-WQ, CS + alu ohne HG*/
 N_A : 6.022e23$
 Z : 13$
 rho : 2.72$				/*g/cm^3*/
 A : 26.98$ 				/*g/mol*/
-rho_t : float(1N_A/A*Z*rho); 	/*1/cm^3*/
+rho_t : float(N_A/A*Z*rho); 	/*1/cm^3*/
 d : 5$					/*cm*/
 
 N_max_ohneAl  : 1.281$		/*aus dem fit*/
@@ -36,5 +36,5 @@ Nprime : 1sqrt(%pi)*sigma_mitAl*N_max_mitAl$
 sigma_compton : float(1/(rho_t*d)*log(N_0/Nprime));
 
 c: omega_det/(4*%pi)$
-Nprime_korr : float(1(N_max_mitAl-c*N_0)/(1-c));
+Nprime_korr : float((N_max_mitAl-c*N_0)/(1-c));
 sigma_compton_korr : float(1/(rho_t*d)*log(N_0/Nprime_korr));

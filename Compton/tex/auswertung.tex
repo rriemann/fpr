@@ -152,15 +152,16 @@ resultiert:
 \begin{equation}
   \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
 \end{equation}
-Es bleibt zu klären, welchen Wert die Elektonendichte für Aluminium $\rho_T$ in
-diesem Fall besitzt. Dabei kann man auf die bekannte Massendichte $\rho$ sowie
-auf die molare Masse $A$ zurückgreifen:
+Es bleibt zu klären, welchen Wert die Dichte der Streuzentren $\rho_T$, in
+diesem Fall die Elektonendichte für Aluminium, besitzt. Dabei kann man
+auf die bekannte Massendichte $\rho$ sowie auf die molare Masse $A$
+zurückgreifen:
 \begin{equation}
-  \rho_T = \frac{N_A}{A}\cdot Z \rho
+  \rho_T = \frac{N_A}{A}\cdot Z\rho
 \end{equation}
-Hier ist $N_A$ die Avogadro-Konstante, deren Wert \cite{pdb} entnommen wurde,
-und die anderen beiden Größen wurden \cite[Tab.2]{script} entnommen wurde. Die
-Zahl der Elektronen pro Volumeneinheit lautet somit:
+Hier ist $N_A$ die Avogadro-Konstante, die \cite{pdb} entnommen wurde, die
+drei anderen Größen wurden \cite[Tab.2]{script} entnommen. Die Zahl der
+Elektronen pro Volumeneinheit lautet somit:
 \begin{equation}
   \rho_T = 7,83\cdot 10^{23} \cdot \frac{1}{\si{\centi\meter^3}}
 \end{equation}
@@ -193,7 +194,7 @@ Mittelwert und $s$ als Maß für die Breite der Gaußfunktion, die Fitparameter
 sind. Für den $^{137}$Cs-Photopeak ohne Aluminiumblock ergeben sich bei einer
 solchen Fitfunktion die folgenden Werte:
 \begin{eqnarray}
-N_0 &=& 0,13\\		%fehlerbetrachtung!!!
+N_{max} &=& 0,13\\		%fehlerbetrachtung!!!
 \mu &=& 994\\
 s &=& 65
 \end{eqnarray}
@@ -210,7 +211,7 @@ Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
 Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
 
 Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
-Hindernis aufgenommen wurde, so ergeben sich die folgenden Daten:
+Hindernis aufgenommen wurde, anwendet, so ergeben sich die folgenden Daten:
 \begin{eqnarray}
 N_0 &=& \\
 \mu &=& \\
@@ -226,3 +227,36 @@ Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
 \sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
 \nonumber &=& 
 \end{eqnarray}
+
+% kommentare,...
+% evtl nächster absatz
+
+\subsection{Korrektur des Wirkungsquerschnitts}
+Abschließend ist der berechnete Wirkungsquerschitt um einen gewissen Betrag zu
+korrigieren, da bisher nur der Photonen betrachtet wurden, die entweder den
+Aluminiumblock ungehindert passiert haben oder aber von diesem gestreut wurden
+und daher nicht detektiert werden konnten. Allerdings haben wir dabei bisher
+nicht berücksichtigt, dass es auch möglich ist, dass manche Photonen
+Comptonstreuung durchführen und trotzdem kaum ihre ursprüngliche Flugbahn
+ändern, sodass sie immernoch gemessen werden können. Diese Korrektur soll im
+Folgenden näherungsweise durchgeführt werden.
+
+Wir gehen davon aus, dass der Photonenstrahl perfekt kollimiert ist, senkrecht
+zur Detektorfläche fliegt und auf der Höhe des Mittelpunkts der Detektorfläche
+in den Aluminiumblock eintritt. Weiterhin gehen wir davon aus, dass die
+Comptonstreuung erst am Ende des Al-Blocks stattfindet. Dann kann leicht der vom
+Detektor eingenommene Raumwinkel $\Omega_{\mathrm{Det}}$ berechnet werden. Als
+Resultat einer kurzen Rechnung lautet dann:
+\begin{equation}
+\Omega_{\mathrm{Det}} = 
+\end{equation}
+Wenn man die in \cite[S.9]{script} nahegelegte Näherung trifft, dass
+d$\sigma/$d$\Omega$ konstant ist, so kann man leicht den zugehörigen
+Wirkungsquerschitt berechnen:
+\begin{eqnarray}
+\frac{d\sigma}{d\Omega} &=& \mathrm{const}=\frac{\sigma_{\mathrm{tot}}}{4\pi}\\
+\sigma_{\mathrm{Det}} &=&\frac{\sigma_{\mathrm{tot}}}
+{4\pi}\cdot\Omega_{\mathrm{Det}}
+\end{eqnarray}
+Hierbei ist $\sigma_{\mathrm{tot}}$ der im vorigen Abschnitt berechnete totale
+Compton-Wirkungsquerschnitt.

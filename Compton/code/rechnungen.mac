@@ -53,3 +53,15 @@ sigma_compton_korr   : float(1/(rho_t*d)*log(N_0/Nprime_korr));
 dsigma_compton_korr : float(1/rho_t*sqrt((log(N_0/Nprime_korr)*dd/d^2)^2 +
 (Nprime_korr/(d*N_0))^2*( (dN_0/Nprime_korr)^2+
 (N_0/Nprime_korr^2*dNprime_korr)^2)));
+
+
+/* Breite durch Unschaerferel. */
+lebensdauer : 2.5*60$		/*sek*/
+q_el : 1.602176e-19$
+hquer : 1.05457e-34$
+delta_E_lebensdauer : hquer/(lebensdauer*q_el*1e6);	/*MeV*/
+
+/* Breite durch dopplereffekt */
+k : 1.38e-23$
+Temp : 300$
+E_Therm : 3/2*k*Temp/(q_el*1e6);			/*MeV*/

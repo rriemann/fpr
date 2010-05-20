@@ -11,7 +11,7 @@ Folgende Annahmen wurden getroffen:
   \item Die Einwirkdauer beträgt jeweils $s = \SI{12}{\hour}$.
   \item Die Aktivität $A$ aller 3 Präparate übersteigt jeweils nicht
         \SI{4e5}{\becquerel}.
-  \item Die Halbzeit $t$ aller 3 Präparate wird mit dem maximalen Wert, 30 Jahren,
+  \item Die Halbwertszeit $t$ aller 3 Präparate wird mit dem maximalen Wert, 30 Jahren,
         abgeschätzt.
   \item Seit der Vermessung der Präparate sind aufgerundet $u = $ 3 Jahre vergangen.
   \item \SI{100}{\percent} der Strahlung wird aufgenommen.
@@ -245,18 +245,21 @@ eine systematische Unsicherheit des Detektors hin.
 
 \subsection{Relativer Fehler der Energieauflösung}
 
-Die Energieauflösung $A(E)$ mit der Halbwertsbreite $σ(E)$
+Die Energieauflösung $A(E)$ mit der Gaußbreite $σ(E)$
 definiert sich laut \cite{script} folgendermaßen:
-\begin{equation}
- A(E) = 2\sqrt{2\log{2}}\cdot\frac{σ(E)}{E}
+\begin{eqnarray}
+ \mathrm{FWHM} &=& 2\sqrt{2\log{2}}\cdotσ(E)\\
+ A(E) &=& \frac{\mathrm{FWHM}}{E}\\
+ &=&2\sqrt{2\log{2}}\cdot\frac{σ(E)}{E}
  \label{eqn:energie_aufloesung}
-\end{equation}
-
-Die Halbwertsbreite $σ(E)$ ist aus \fref{ohne_hintergrund} bekannt. Der Fehler
+\end{eqnarray}
+In Gl. 10 - 12 wird der Zusammenhang von Gaußbreite $\sigma$,
+Halbwertsbreite FWHM und relativer Energieauflösung $A(E)$ gezeigt.
+Die Gaußbreite $σ(E)$ ist aus \fref{ohne_hintergrund} bekannt. Der Fehler
 für $A(E)$ lässt sich mittels Gauß’scher Fehlerrechnung ermitteln. In
 \fref{rel_aufloesung} ist der Zusammenhang dargestellt. Für die Anpassung
 wurde die Funktion in \eref{rel_aufloesung_anpassung} als passend befunden,
-wobei auf einen geringen Wert von $\chi^2\mathrm{DoF}$ geachtet wurde.
+wobei auf einen geringen Wert von $\chi^2/\mathrm{DoF}$ geachtet wurde.
 
 \begin{figure}[htb]
       \centering
@@ -482,7 +485,9 @@ Messgeräte, die zwar nicht fehlerfrei arbeiten, aber doch die Messung selbst er
 und Ablesefehler etc. vermeiden können. Zum anderen haben wir mit der Aufnahme des
 Spektrums einen statistischen Prozess analysiert, sodass immer statistische Fluktuationen
 auftreten. Dies ließe sich generell durch längere Messungen verbessern, was aber im
-Rahmen eines Praktikums nicht möglich war.
+Rahmen eines Praktikums nicht möglich war. Dadurch bedingt sind auch die bereits betrachteten
+Fehler, die durch die Fits entstehen, da die Messpunkte nicht auf der idealen
+Verteilung liegen, was bei einer unendlich großen Statistik aber der Fall wäre.
 
 Außerdem ist nicht klar, inwieweit der Detektor selbst mit statistischen aber auch
 mit systematischen Fehlern behaftet ist. Es könnte zum Beispiel gut möglich sein, dass

@@ -175,7 +175,6 @@ int main ( int argc, char *argv[] ) {
     ////////////////////////////////////////////////////////////////////////////
 
     Double_t me = 0.51099892; // Elektronen-Masse
-//     TF1* tf1_klein_nishina = new TF1("klein_nishina","1000*2*pi*0.08*((1+x)/(x*x)*((2*(1+x)/(1+2*x)-1/x*log(1+2*x))))+1/(2*x)*log(1+2*x)-(1+3*x)/pow(1+2*x,2)",0.01/me,100/me); // in barn
     TF1* tf1_klein_nishina = new TF1("klein_nishina","1000*2*pi*0.08*((1+x)/(x*x)*((2*(1+x)/(1+2*x)-1/x*log(1+2*x)))+1/(2*x)*log(1+2*x)-(1+3*x)/pow(1+2*x,2))",0.01/me,100/me);
     tf1_klein_nishina->GetXaxis()->SetTitle("\\gamma");
     tf1_klein_nishina->GetYaxis()->SetTitle("totaler Wirkungsquerschnitt \\sigma [mb]");
@@ -184,7 +183,6 @@ int main ( int argc, char *argv[] ) {
     tgrapherrors_klein_nishina_value->SetPoint(0, 0.662/me,260);
     tgrapherrors_klein_nishina_value->SetPointError(0,0.662*0.04/me*2,7*2);
     tgrapherrors_klein_nishina_value->SetMarkerColor(2);
-    cout << "Klein-Nishina: " << tf1_klein_nishina->Eval(0.662/me) << endl;
 
     TCanvas *c1 = new TCanvas("c1","c1",600,600);
     c1->SetGrid();
@@ -194,9 +192,9 @@ int main ( int argc, char *argv[] ) {
     c1->SetLogy(1);
     c1->SetLogx(1);
     tf1_klein_nishina->Draw();
-    tgrapherrors_klein_nishina_value->Draw("same,P"); //,A
+    tgrapherrors_klein_nishina_value->Draw("same,P");
     c1->SaveAs("../tmp/klein_nishina.pdf");
-    
+
     file->Write();
 }
 

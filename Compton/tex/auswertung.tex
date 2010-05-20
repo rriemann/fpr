@@ -14,13 +14,13 @@ Folgende Annahmen wurden getroffen:
 \end{itemize}
 Damit berechnet sich die radioaktive Belastung $B$ zu
 \begin{equation}
-  B = \SI{0,6}{\milli\sievert}
+  B = \SI{0,02}{\milli\sievert}
 \end{equation}
 und macht somit bei einer durchschnittlichen Strahlungsbelastung in Deutschland von
-\SI{4.3}{\milli\sievert} pro Jahr rund \SI{14}{\percent} aus. Die Zeit seit dem
+\SI{4.3}{\milli\sievert} pro Jahr rund \SI{0,5}{\percent} aus. Die Zeit seit dem
 Vermessen der Proben wurde mit Hilfe des zur Verfügung gestellten Programms
-$source.C$ berechnet, und die anderen benötigten Größen wurden dem \cite[Tab. 1]{script}
-entnommen.
+\texttt{source.C} berechnet, und die anderen benötigten Größen wurden dem \cite[Tab. 1]{script}
+entnommen. Die Berechnung erfolgt mit \lref{Berechnungen}.
 
 \subsection{Signalbetrachtung}
 In unserem Experiment wurde ein Szintillationsdetektor, an den ein
@@ -421,7 +421,7 @@ in dem sowohl die Klein-Nishina-Formel als auch unser Punkt eingetragen ist.
 \begin{figure}[htb]
       \centering
       \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/klein_nishina}
-      \caption{Klein-Nishina-Formel und unser Messpunkt}
+      \caption{Klein-Nishina-Formel mit exp. Messwert, Fehler ist um Faktor 5 gestreckt}
       \label{fig:klein_nishina}
 \end{figure}
 Dabei ist zu erwähnen, dass die eingetragenen Fehlerbalken um den Faktor zwei

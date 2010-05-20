@@ -1,3 +1,28 @@
+q_el : 1.602176e-19$
+
+/* strahlungsbelastung */
+tau_cs : 30.17*365*24*3600$			/*in sek*/
+tau_ba : 10.54*365*24*3600$			/*in sek*/
+tau_na : 2.603*365*24*3600$			/*in sek*/
+
+zeit : 4.27511e8$					/*in sek*/
+A0_cs : 371000$					/*in Bq*/
+A0_ba : 397000$					/*in Bq*/
+A0_na : 374000$					/*in Bq*/
+dA0 : 0.04$
+
+E_cs : 0.662e6*q_el$
+E_ba : 0.356e6*q_el$
+E_na : 0.511e6*q_el$
+
+A_cs : A0_cs*0.5^(-zeit/tau_cs);
+A_ba : A0_cs*0.5^(-zeit/tau_ba);
+A_na : A0_cs*0.5^(-zeit/tau_na);
+
+dosis : 12*3600/80*(A_cs*E_cs+A_ba*E_ba+A_na*E_na);
+
+/* ################################# */
+
 /* 4.2 */
 verzoegerung_mw  : (6.6 + 6.7 + 3*6.8 + 6.5)/6;		/*einheit: mikrosekunden*/
 dverzoegerung_mw : float(0.1/sqrt(6));			/*einheit: mikrosekunden*/
@@ -57,7 +82,6 @@ dsigma_compton_korr : float(1/rho_t*sqrt((log(N_0/Nprime_korr)*dd/d^2)^2 +
 
 /* Breite durch Unschaerferel. */
 lebensdauer : 2.5*60$		/*sek*/
-q_el : 1.602176e-19$
 hquer : 1.05457e-34$
 delta_E_lebensdauer : hquer/(lebensdauer*q_el*1e6);	/*MeV*/
 

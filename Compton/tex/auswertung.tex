@@ -297,7 +297,7 @@ Beziehung
 \rightarrow \sigma &=& \frac{1}{\rho_T x}\ln\left(\frac{N_0}{N'(x)}\right)
 \end{eqnarray}
 In unserem Fall ist die Dicke des Aluminiumblocks mit $x = d =
-\SI{5}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
+\SI{5,0(1)}{\centi\meter}$ bekannt und konstant, sodass aus der obigen Formel
 resultiert:
 \begin{equation}
   \sigma = \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)
@@ -343,6 +343,12 @@ Photopeak}} +
 \underbrace{\frac{P_6}{1+\mathrm{e}^{-\frac{(c-P_7)^2}{2P_8^2}}}}_{\mathrm{
 Compton-Kante }}
 \end{equation*}
+Dabei sind die Parameter $P_0\dots P_8$ die anzupassenden Parameter. Die
+Gleichung besteht also aus einer Überlagerung der zwei Gaußkurven für den
+ersten und den zweiten Photopeak (beide resultieren aus jeweils einem bestimmten
+angeregten Energieniveau des nach dem Zerfall verbliebenen angeregten Kerns)
+sowie einem Term für die Compton-Kante.
+
 Wir haben uns aber dafür entschieden, für die Flächenberechnung
 nur den Photopeak-Fit selbst zu betrachten, da der Untergrund von Effekten
 herrührt, die nicht zum für uns interessanten Signal zählen. Da wir also ein
@@ -375,6 +381,9 @@ N_0 &=& \int\limits_{-\infty}^{+\infty}N(c)dc\\
 \end{eqnarray}
 Um die Effizienz der Detektion muss man sich keine Gedanken machen, da uns am
 Ende ohnehin nur das Verhältnis der Teilchenzahlen interessiert.
+Die angegebene Unsicherheit des Wirkungsquerschnitts ergibt sich Fehlerfortpflanzung
+aus den Unsicherheiten der Flächenbestimmung, die wiederum aus den Fehlern der
+Anpassungen resultieren.
 
 Wenn man das gleiche Verfahren auf das Signal, das mit dem Aluminiumblock als
 Hindernis aufgenommen wurde, anwendet, so ergeben sich die folgenden Daten:
@@ -393,9 +402,22 @@ Damit schließlich lässt sich der Wirkungsquerschitt $\sigma$ aurechnen:
 \sigma &=& \frac{1}{\rho_T d}\ln\left(\frac{N_0}{N'}\right)\\
 \nonumber &=& \SI{260(7)}{\milli\barn}
 \end{eqnarray}
+Der angegebene Fehler ergab sich dabei durch klassische Fehlerfortpflanzung
+aus den Fehlern, die uns unser Fit-Programm ausgegeben hat und aus den Fehlern der
+Dickenmessung des Aluminiumblocks.
 
-% kommentare,...
-% evtl nächster absatz
+Man kennt aus \cite{Gl.3}{script} den theoretischen Verlauf des Wirkungsquerschnitts
+gemäß der Klein-Nishina-Formel. Um zu testen, wie weit unser berechnetes Ergebnis mit
+der Vorhersage übereinstimmt, haben wir einen Plot \fref{klein_nishina} angefertigt,
+in dem sowohl die Klein-Nishina-Formel als auch unser Punkt eingetragen ist.
+\begin{figure}[htb]
+      \centering
+      \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/klein_nishina}
+      \caption{Klein-Nishina-Formel und unser Messpunkt}
+      \label{fig:klein_nishina}
+\end{figure}
+Dabei ist zu erwähnen, dass die eingetragenen Fehlerbalken um den Faktor fünf
+gestreckt sind, da man die Fehler sonst überhaupt nicht erkennen könnte.
 
 \subsection{Korrektur des Wirkungsquerschnitts}
 Abschließend ist der berechnete Wirkungsquerschitt um einen gewissen Betrag zu
@@ -435,3 +457,10 @@ Compton-Wirkungsquerschnitt $\sigma_{\mathrm{korr}}$ berechnen:
 d}\ln\left(\frac{N_0}{N'_{\mathrm{korr}}}\right)\\
 &=& \SI{261(6)}{\milli\barn}
 \end{eqnarray}
+
+Man kann erkennen, dass der Wirkungsquerschnitt etwsa größer geworden ist. Das war
+auch zu erwarten, da nun zu den bereits gezählten Compton-Ereignissen noch ein Teil
+der Photonen gezählt werden, die vorher noch zu den nicht gestreuten Teilchen gezählt
+wurden. Allerdings ist die Vergrößerung nicht signifikant und liegt auch
+noch im Bereich des vorigen Unsicherheitsintervalls. Aus statistischer Sicht hat sich
+demnach nicht wirklich etwas geändert.

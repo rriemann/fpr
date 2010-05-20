@@ -15,11 +15,12 @@ E_cs : 0.662e6*q_el$
 E_ba : 0.356e6*q_el$
 E_na : 0.511e6*q_el$
 
-A_cs : A0_cs*0.5^(-zeit/tau_cs);
-A_ba : A0_cs*0.5^(-zeit/tau_ba);
-A_na : A0_cs*0.5^(-zeit/tau_na);
+A_cs : A0_cs*0.5^(zeit/tau_cs);
+A_ba : A0_cs*0.5^(zeit/tau_ba);
+A_na : A0_cs*0.5^(zeit/tau_na);
 
 dosis : 12*3600/80*(A_cs*E_cs+A_ba*E_ba+A_na*E_na);
+rel_dosis : dosis/(4.3e-3);
 
 /* ################################# */
 

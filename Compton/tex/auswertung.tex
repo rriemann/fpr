@@ -19,8 +19,13 @@ Damit berechnet sich die radioaktive Belastung $B$ zu
 und macht somit bei einer durchschnittlichen Strahlungsbelastung in Deutschland von
 \SI{4.3}{\milli\sievert} pro Jahr rund \SI{0,5}{\percent} aus. Die Zeit seit dem
 Vermessen der Proben wurde mit Hilfe des zur Verfügung gestellten Programms
-\texttt{source.C} berechnet, und die anderen benötigten Größen wurden dem \cite[Tab. 1]{script}
+$source.C$ berechnet, und die anderen benötigten Größen wurden \cite[Tab.1]{script}
 entnommen. Die Berechnung erfolgt mit \lref{Berechnungen}.
+Da der erhaltene, zusätzliche Beitrag zur Jahresdosis absolut vernachlässigbar
+ist, haben wir auch auf eine Fehlerbetrachtung verzichtet. Da die Aktivität der
+Proben damals auf \SI{4}{\percent} genau bestimmt wurde, wird dieser Fehler auch
+heute in dieser Größenordnung liegen und somit nichts an der Aussage ändern, dass
+die Gesundheitsschädigung vernachlässigbar ist.
 
 \subsection{Signalbetrachtung}
 In unserem Experiment wurde ein Szintillationsdetektor, an den ein
@@ -185,7 +190,9 @@ welche das Ergebnis der Kalibration darstellt.
 \end{equation}
 
 Man muss feststellen, dass die Fehler in \eref{eichung} relativ groß sind.
-Möglicherweise ist die Halbwertsbreite systematisch zu groß.
+Möglicherweise ist die Halbwertsbreite systematisch zu groß. Dennoch ist der
+$\chi^2/$DoF-Wert, der ein Maß für die Güte des Fits ist, mit ca. $1.5e-6$
+sehr nahe bei null, wobei null der erstrebenswerte Wert ist.
 
 Im Rahmen einer tiefergehenden Suche nach Gründen für die Breite des Photopeaks
 war zu untersuchen, ob zum einen die Lebensdauer des angeregten Kerns und zum
@@ -275,7 +282,8 @@ Die Anpassung ergab folgende Werte:
 \end{eqnarray}
 Die Ergebnisse weisen wieder hohe Fehler auf, was wieder auf den hohen Fehler
 in σ zurückzuführen. Insgesamt ist aber eindeutig erkennbar, dass die relative
-Auflösung mit steigender Energie besser wird.
+Auflösung mit steigender Energie besser wird. Doch auch hier ist $\chi^2/$DoF
+nahe null, der Fit also dementsprechend in Ordnung.
 
 Bevor im Folgenden nun näher auf die gemessenen Histogramme eingegangen wird,
 wird noch einmal in \fref{rel_aufloesung} gezeigt, welches Ergebnis nach Abzug
@@ -294,11 +302,12 @@ Das Maximum innerhalb des Comptonkontiniums ist jedoch nur bei Energien der
 In \fref{caesium_ohne_hintergrund_energie_ohne_hintergrund} haben wir das Cäsiumspektrum in
 Abwesenheit des Aluminiumblocks in Energieeinheiten geplottet. Wie man
 erkennen kann, befindet sich dort mehr als ein Peak. Der energiereichste
-Peak entspricht dem dominanten Photopeak. Wie man \cite[Abb.4]{script} aber
-entnehmen kann, gibt es beim Cäsium mehrere mögliche Übergänge aus dem
-angeregten Zustand in den Grundzustand. Von diesen Übergängen resultieren die anderen
-beiden Peaks, die zusätzlich noch mit der Compton-Kurve überlagert sind. Die
-Comptonkurve spielt wegen des kleinen Anteils an vorwärtsgestreuten Photonen
+Peak entspricht dem dominanten Photopeak bei $E_{\gamma_1}=\SI{0,662}{\mega\eV}$.
+Wie man \cite[Abb.4]{script} aber entnehmen kann, gibt es beim Cäsium noch einen
+anderen möglichen Übergäng aus dem angeregten Zustand in den Grundzustand. Von diesem Übergang
+resultiert der andere, kleinere Peak ($E_{\gamma_2}=\SI{0,378}{\mega\eV}$), der zusätzlich
+noch mit der Compton-Kurve überlagert ist.
+Die Comptonkurve spielt wegen des kleinen Anteils an vorwärtsgestreuten Photonen
 ebenfalls eine Rolle und trägt einen Teil zum beobachteten Spektrum bei.
 
 \subsection{Bestimmung des totalen Compton-Wirkungsquerschnitts}

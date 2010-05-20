@@ -84,12 +84,12 @@ konnte, ließ sich in der gewählten Einstellung in
 mit diesem zufälligen Fehler behaftet. Da in diesen Schritten eindeutig
 erkennbar war, bei welcher Schieber-Position das Maximum der
 Hauptverstärkerkurve sowie der Sprung in der Vorverstärkerkurve zu finden ist,
-tragen diese ``Ableseungenauigkeiten'' kaum zum zufälligen Fehler bei und
+tragen diese Ableseungenauigkeiten kaum zum zufälligen Fehler bei und
 werden vernachlässigt. Systematische Fehler könnten aufgetreten sein (z.B.
 durch eine konstante Verzögerung zwischen Channel 1 und Channel 2), aber da wir
 dazu keine Aussage treffen können, betrachten wir auch solche Fehler nicht
 weiter. Die somit resultierenden Ergebnisse können in \tref{latenzmesswerte}
-betrachtet werden.
+eingesehen werden.
 \begin{table}[htbp]
 \centering
 % \setlength{\tabcolsep}{14pt}
@@ -109,9 +109,10 @@ S[tabformat=1.1]%
 6.7 & 6,8 & 6,5 & 6.8 & 6.8 & 6.6 & 6.7 & 0,2 \\
 \bottomrule
 \end{tabular*}
-\label{tab:latenzmesswerte}
 \caption{Messwerte der Latenzzeit}
+\label{tab:latenzmesswerte}
 \end{table}
+
 Die Latenzzeit beträgt somit
 \begin{equation}
   Δt = \SI{6.7(2)}{\micro\second}
@@ -169,12 +170,13 @@ eine höhere Statistik zu erhalten. Die Ergebnisse befinden sich im Anhang
 Im nächsten Schritt wurden die Histogramme vom Hintergrund gesäubert, in dem
 das Hintergrund-Histogramm von den anderen subtrahiert wurde.
 
-Nun wurde das Histogramm jeder einzelnen Probe der Bereich des Maximums mit einer
+Nun wurde im Histogramm jeder einzelnen Probe der Bereich des Maximums mit einer
 Gaußfunktion angepasst. Hierzu wurden die Boardmittel von \cite{root} verwendet.
 Die Resultate der Anpassung sind in \fref{gemessene_histogramme} mit abgedruckt.
 
-Der Mittelwert der Gaußanpassung wurde nun mit der Halbwertsbreite als Fehler
-den Energien der γ-Quanten zugeordnet. Aus dem entstehenden Diagramm in
+Der Mittelwert der Gaußanpassung wurde nun den Energien der γ-Quanten zugeordnet.
+Die Halbwertsbreite der Anpassung gibt den Fehler für den Mittelwert vor.
+Aus dem entstehenden Diagramm in
 \fref{eichung} lässt sich durch eine lineare Regression nun die
 Umrechnungsformel in \eref{eichung} von Kanal $k$ zu Energie $E$ gewinnen,
 welche das Ergebnis der Kalibration darstellt.
@@ -197,7 +199,7 @@ $\chi^2/$DoF-Wert, der ein Maß für die Güte des Fits ist, mit ca. $1.5e-6$
 sehr nahe bei null, wobei null der erstrebenswerte Wert ist.
 
 Im Rahmen einer tiefergehenden Suche nach Gründen für die Breite des Photopeaks
-war zu untersuchen, ob zum einen die Lebensdauer des angeregten Kerns und zum
+ist zu untersuchen, ob zum einen die Lebensdauer des angeregten Kerns und zum
 anderen die nicht beachtete Bewegung der Elektronen um den Kern von Bedeutung
 sind.
 
@@ -305,7 +307,7 @@ In \fref{caesium_ohne_hintergrund_energie_ohne_hintergrund} haben wir das Cäsiu
 Abwesenheit des Aluminiumblocks in Energieeinheiten geplottet. Wie man
 erkennen kann, befindet sich dort mehr als ein Peak. Der energiereichste
 Peak entspricht dem dominanten Photopeak bei $E_{\gamma_1}=\SI{0,662}{\mega\eV}$.
-Wie man \cite[Abb.4]{script} aber entnehmen kann, gibt es beim Cäsium noch einen
+Wie man \cite[Abb. 4]{script} aber entnehmen kann, gibt es beim Cäsium noch einen
 anderen möglichen Übergäng aus dem angeregten Zustand in den Grundzustand. Von diesem Übergang
 resultiert der andere, kleinere Peak ($E_{\gamma_2}=\SI{0,378}{\mega\eV}$), der zusätzlich
 noch mit der Compton-Kurve überlagert ist.

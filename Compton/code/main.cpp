@@ -165,10 +165,10 @@ int main ( int argc, char *argv[] ) {
 
     TH1F* th1f_caesium2 = new TH1F(*th1f_caesium);
     TF1 *tf1_caesium2 = new TF1("user", "[0]*exp(-0.5*((x-[1])/[2])^2) + [3]*exp(-0.5*((x-[4])/[5])^2) + [6]*1/(1 + exp((x-[7])/[8])^2)", 0, 1300);
-    tf1_caesium2->SetParameters(3.9, 200, 200, 0.5, 600, 60, 1.4, 1000, 160);
+    tf1_caesium2->SetParameters(0.5, 600, 200, 1.4, 1000, 160, 7., 200, 100);
     tf1_caesium2->SetLineColor(2);
     TFitResultPtr tfitres_caesium2 = th1f_caesium2->Fit(tf1_caesium2, "RS");
-    DrawOnCanvas(th1f_caesium2,"caesium_fit_untergrund");
+    DrawOnCanvas(th1f_caesium2,"caesium_fit_untergrund","",false,"Kanal","Anzahl");
 
     ////////////////////////////////////////////////////////////////////////////
     //////// Klein-Nishina-Formel

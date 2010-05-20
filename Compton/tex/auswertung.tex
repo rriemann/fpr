@@ -9,23 +9,18 @@ Folgende Annahmen wurden getroffen:
 \begin{itemize}
   \item Die betreffende Person wiegt $m = \SI{80}{\kilo\gram}$.
   \item Die Einwirkdauer beträgt jeweils $s = \SI{12}{\hour}$.
-  \item Die Aktivität $A$ aller 3 Präparate übersteigt jeweils nicht
-        \SI{4e5}{\becquerel}.
-  \item Die Halbwertszeit $t$ aller 3 Präparate wird mit dem maximalen Wert, 30 Jahren,
-        abgeschätzt.
-  \item Seit der Vermessung der Präparate sind aufgerundet $u = $ 3 Jahre vergangen.
   \item \SI{100}{\percent} der Strahlung wird aufgenommen.
   \item Der Strahlungsgewichtungsfaktor für γ-Strahlung beträgt 1.
-  \item Die γ-Quanten haben eine maximale Energie von
-        $E = \SI{0.7}{\mega\eV} = \SI{1.12e-13}{\joule}$
-  \item Es gibt $n = 3$ Proben.
 \end{itemize}
-Damit berechnet sich die radioaktive Belastung zu
+Damit berechnet sich die radioaktive Belastung $B$ zu
 \begin{equation}
-  s \left(\frac{1}{2}\right)^{u/t} n E A / m = \SI{0.07}{\milli\sievert}
+  B = \SI{0,6}{\milli\sievert}
 \end{equation}
 und macht somit bei einer durchschnittlichen Strahlungsbelastung in Deutschland von
-\SI{4.3}{\milli\sievert} pro Jahr rund \SI{2}{\percent} aus.
+\SI{4.3}{\milli\sievert} pro Jahr rund \SI{14}{\percent} aus. Die Zeit seit dem
+Vermessen der Proben wurde mit Hilfe des zur Verfügung gestellten Programms
+$source.C$ berechnet, und die anderen benötigten Größen wurden \cite[Tab.1]{script}
+entnommen.
 
 \subsection{Signalbetrachtung}
 In unserem Experiment wurde ein Szintillationsdetektor, an den ein

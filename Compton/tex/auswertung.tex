@@ -416,8 +416,17 @@ in dem sowohl die Klein-Nishina-Formel als auch unser Punkt eingetragen ist.
       \caption{Klein-Nishina-Formel und unser Messpunkt}
       \label{fig:klein_nishina}
 \end{figure}
-Dabei ist zu erwähnen, dass die eingetragenen Fehlerbalken um den Faktor fünf
-gestreckt sind, da man die Fehler sonst überhaupt nicht erkennen könnte.
+Dabei ist zu erwähnen, dass die eingetragenen Fehlerbalken um den Faktor zwei
+gestreckt sind, da man die Fehler sonst überhaupt nicht erkennen könnte. Man kann
+sehen, dass unser Punkt sehr gut mit dem Verlauf der theoretischen Kurve übereinstimmt,
+obwohl der Wirkungsquerschnitt noch nicht korrigiert ist. Diese Korrektur wird im
+nächsten Abschnitt nachgeholt. Wenn man die Klein-Nishina-Formel am gegebenen Punkt
+auswertet, so ergibt sich hier ein Wirkungsquerschnitt $\sigma_{\mathrm{KN}}$ von
+\begin{equation}
+\sigma_{\mathrm{KN}} = \SI{258}{\milli\barn}
+\end{equation}
+Die Abweichung unseres Wertes von dieser Zahl beträgt also nur \SI{1}{\percent},
+und der theoretische Wert liegt auch im $1\sigma$-Fehlerbereich unseres Wertes.
 
 \subsection{Korrektur des Wirkungsquerschnitts}
 Abschließend ist der berechnete Wirkungsquerschitt um einen gewissen Betrag zu
@@ -464,3 +473,22 @@ der Photonen gezählt werden, die vorher noch zu den nicht gestreuten Teilchen g
 wurden. Allerdings ist die Vergrößerung nicht signifikant und liegt auch
 noch im Bereich des vorigen Unsicherheitsintervalls. Aus statistischer Sicht hat sich
 demnach nicht wirklich etwas geändert.
+
+Abschließend soll noch erwähnt werden, dass die aufgenommenen Messwerte mit Fehlern
+behaftet sind, die man reduzieren kann. Zunächst haben wir die Abstände mit einem einfachen
+Lineal gemessen. Dies könnte man sicherlich zum einen durch ein feste mechanische Montur
+des Aluminium-Blocks erleichtern und zum anderen gibt es heutzutage elektronische
+Messgeräte, die zwar nicht fehlerfrei arbeiten, aber doch die Messung selbst erleichtern
+und Ablesefehler etc. vermeiden können. Zum anderen haben wir mit der Aufnahme des
+Spektrums einen statistischen Prozess analysiert, sodass immer statistische Fluktuationen
+auftreten. Dies ließe sich generell durch längere Messungen verbessern, was aber im
+Rahmen eines Praktikums nicht möglich war.
+
+Außerdem ist nicht klar, inwieweit der Detektor selbst mit statistischen aber auch
+mit systematischen Fehlern behaftet ist. Es könnte zum Beispiel gut möglich sein, dass
+der Photomultiplier nur Photonen ab einer gewissen Energie detektieren kann, sodass
+viele energiearme Photonen gar keinen Beitrag leisten können. Somit würde sich ein
+systematischer Fehler ergeben.
+
+Es gibt also noch mehrere Aspekte, die in einer weiterführenden Studie genauer
+untersucht bzw. verbessert werden könnten.

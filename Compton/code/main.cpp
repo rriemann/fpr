@@ -181,9 +181,10 @@ int main ( int argc, char *argv[] ) {
     tf1_klein_nishina->GetYaxis()->SetTitle("totaler Wirkungsquerschnitt \\sigma [mb]");
 
     TGraphErrors* tgrapherrors_klein_nishina_value = new TGraphErrors(1);
-    tgrapherrors_klein_nishina_value->SetPoint(0, 0.662/me,261);
-    tgrapherrors_klein_nishina_value->SetPointError(0,0.662*0.04/me*5,6*5);
+    tgrapherrors_klein_nishina_value->SetPoint(0, 0.662/me,260);
+    tgrapherrors_klein_nishina_value->SetPointError(0,0.662*0.04/me*2,7*2);
     tgrapherrors_klein_nishina_value->SetMarkerColor(2);
+    cout << "Klein-Nishina: " << tf1_klein_nishina->Eval(0.662/me) << endl;
 
     TCanvas *c1 = new TCanvas("c1","c1",600,600);
     c1->SetGrid();

@@ -237,13 +237,6 @@ TFitResultPtr FitGausInRange(TH1* h1, Double_t x1 ,Double_t x2) {
     return h1->Fit(f1, "RS");
 }
 
-TFitResultPtr FitCsUndUntergrund(TH1* h1, Double_t x1 ,Double_t x2) {
-    TF1 *f1 = new TF1("user", "[0]*exp(-0.5*((x-[1])/[2])^2) + [3]*exp(-0.5*((x-[4])/[5])^2) + [6]*1/(1 + exp((x-[7])/[8])^2)", x1, x2);
-    f1->SetParameters(3.9, 200, 200, 0.5, 600, 60, 1.4, 1000, 160);
-    f1->SetLineColor(2);
-    return h1->Fit(f1, "RS");
-}
-
 TH1F* ApplyCalibration(TF1* f1, TH1F* h1_orig) {
     TH1F* h1 = new TH1F(*h1_orig);
     h1->SetStats(false);

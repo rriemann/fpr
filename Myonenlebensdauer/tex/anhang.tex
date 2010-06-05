@@ -1,0 +1,88 @@
+\newpage
+
+\onecolumn
+
+\appendix
+
+\section{Histogramme}
+\label{sec:plots}
+
+\begin{figure}[htbp]
+  \subfloat[Barium]{
+    \label{fig:barium_ohne_hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/barium_ohne_hintergrund}
+  }
+  \subfloat[Narium]{
+    \label{fig:natrium_ohne_hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/natrium_ohne_hintergrund}
+  }
+  \newline
+  \subfloat[Cäsium]{
+    \label{fig:caesium_ohne_hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_ohne_hintergrund}
+  }
+  \subfloat[Fit: Cäsium und Untergrund]{
+    \label{fig:cs_sig_und_untergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_fit_untergrund}
+  }
+  \caption{Vom Hintergrund bereinigte Histogramme}
+  \label{fig:ohne_hintergrund}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \subfloat[Cäsium mit Hintergrund]{
+    \label{fig:caesium_energie mit Hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_energie}
+  }
+  \subfloat[Cäsium ohne Hintergrund]{
+    \label{fig:caesium_ohne_hintergrund_energie_ohne_hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_ohne_hintergrund_energie}
+  }
+  \newline
+  \subfloat[Cäsium mit Aluminiumtarget mit Hintergrund]{
+    \label{fig:caesium_alu_energie}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_alu_energie}
+  }
+  \subfloat[Cäsium mit Aluminiumtarget ohne Hintergrund]{
+    \label{fig:caesium_alu_ohne_hintergrund_energie}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_alu_ohne_hintergrund_energie}
+  }
+  \caption{Histogramme auf Energie skaliert.}
+  \label{fig:energie}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \subfloat[Barium]{
+    \label{fig:barium}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/barium}
+  }
+  \subfloat[Narium]{
+    \label{fig:natrium}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/natrium}
+  }
+  \newline
+  \subfloat[Cäsium]{
+    \label{fig:caesium}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium}
+  }
+  \subfloat[Cäsium mit Aluminiumtarget]{
+    \label{fig:caesium_alu}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/caesium_alu}
+  }
+  \newline
+  \subfloat[Hintergrundmessung]{
+    \label{fig:hintergrund}
+    \includegraphics[width=0.445\textwidth,keepaspectratio]{../tmp/hintergrund}
+  }
+  \caption{Zeitnormierte, neu gebinnte Histogramme}
+  \label{fig:gemessene_histogramme}
+\end{figure}
+
+\newpage
+
+\section{Quellcode}
+
+\lstinputlisting[label=lst:source,caption={Programmquelltext},lastline=248]{../code/main.cpp}
+\lstinputlisting[language=Maxima,label=lst:Berechnungen,caption={Berechnungen}]{../code/rechnungen.mac}

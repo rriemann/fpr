@@ -1,4 +1,6 @@
 \section{Auswertung}
+\subsection{Differenzen in Koinzidenzeinheiten}
+
 Um zu verstehen, welchen Einfluss die Signallaufzeiten in der Schaltung haben,
 wurde die Verzögerung dar Signale, die von den beiden zu SC2 gehörenden
 Photomultipliern PM2 und PM4 ausgehen, mit einem Oszilloskop gemessen. Dabei
@@ -20,7 +22,7 @@ mal durchgeführt. Die Zeitdifferenzen $t_i$ sind in \tref{diff} dargestellt.
 \begin{table}[htbp]
 \centering
 % \setlength{\tabcolsep}{14pt}
-\begin{tabular*}{\columnwidth}{%
+\begin{tabular*}{0.95\columnwidth}{%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
@@ -48,4 +50,39 @@ aber auch sehen, dass manche Zeitdifferenzen im Bereich von etwa
 \SI{0,2}{\nano\second} liegen, also auf jeden Fall vernachlässigbar gegenüber
 den Unsicherheiten der anderen Komponenten sind, zumal man davon ausgehen kann,
 dass gerade diese Events diejenigen sind, die in Wirklichkeit gleichzeitig
-stattfanden. Die Verzögerung wird also in diesem Bereich liegen.
+stattfanden. Die Verzögerung wird also in diesem Bereich liegen und somit die
+weitere Auswertung nicht beeinflussen.
+
+\subsection{Bestimmung der Ereignisraten}
+
+In diesem Versuchsteil wurden die Zählraten für verschiedene Kombinationen von
+Photomultipliern und Szintillatoren gemessen.
+
+\subsection{Ereignisraten für die einzelnen Photomultiplier}
+
+Als erstes haben wir die in den einzelnen Photomultipliern auftretenden
+Ereignisraten gemessen. Die resultierenden Messwerte inkl. deren Fehler sind in
+\tref{pm_messwerte} zusammengetragen.
+
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{l|rrrrr}%
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+% }
+\toprule
+& {$PM_1$} & {$PM_2$} & {$PM_3$} & {$PM_4$} & {$PM_5$}\\
+\midrule
+Rate & 1094 & 1878 & 1936 & 1178 & 1797\\
+Fehler & 33 & 43 & 44 & 34 & 42\\
+\bottomrule
+\end{tabular*}
+\caption{Messwerte der Ereignisraten (in \SI{1}{\per\second}) in den
+Photomultipliern $PM_i$}
+\label{tab:pm_messwerte}
+\end{table}

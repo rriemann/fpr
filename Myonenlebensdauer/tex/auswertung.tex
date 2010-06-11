@@ -61,8 +61,8 @@ Photomultipliern und Szintillatoren gemessen.
 \subsection{Ereignisraten für die einzelnen Photomultiplier}
 
 Als erstes haben wir die in den einzelnen Photomultipliern auftretenden
-Ereignisraten gemessen. Die resultierenden Messwerte inkl. deren Fehler sind in
-\tref{pm_messwerte} zusammengetragen.
+Ereignisraten jeweils acht mal gemessen. Die resultierenden Mittelwerte der
+Messwerte inkl. deren Fehler sind in \tref{pm_messwerte} zusammengetragen.
 
 \begin{table}[htbp]
 \centering
@@ -85,4 +85,33 @@ Fehler & 33 & 43 & 44 & 34 & 42\\
 \caption{Messwerte der Ereignisraten (in \SI{1}{\per\second}) in den
 Photomultipliern $PM_i$}
 \label{tab:pm_messwerte}
+\end{table}
+Hierbei wurde angenommen, dass man die statistischen Fehler über einfaches
+Radizieren ermitteln kann:
+\begin{equation}
+σ = \Delta N = \sqrt{N},
+\end{equation}
+was nur bei hinreichend großen Messwertanzahlen $N$ korrekt ist. Da $N$ bei uns
+in der Größenordnung von 1000 liegt, sollte diese Annahme gerechtfertigt sein.
+
+Nun war zu untersuchen, wie stark die Effizienz abnimmt, wenn man in den
+einzelnen Szintillationszählern eine Rechts-Links-Koinzidenz fordert. Dafür
+haben wir eine entsprechende Logikschaltung aufgebaut, die diese zeitliche
+Übereinstimmung überprüft. Auch hier haben wir immer acht mal gemessen; die
+Mittelwerte sowie die Fehler können in \tref{SC2_SC3_koinzidenz} betrachtet
+werden.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular*}{\columnwidth}{l|cc}
+\toprule
+& {SC2: $PM_2\wedge PM_4$} & SC3: $PM_3\wedge PM_5$\\
+\midrule
+Rate & 1094 & 1878\\
+Fehler & 33 & 43\\
+\bottomrule
+\end{tabular*}
+\caption{Messwerte der Ereignisraten (in \SI{1}{\per\second}) in den
+Photomultipliern $PM_i$}
+\label{tab:SC2_SC3_koinzidenz}
 \end{table}

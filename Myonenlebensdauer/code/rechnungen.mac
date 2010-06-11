@@ -14,3 +14,11 @@ dpm4 : float(sqrt(pm4));
 
 pm5  : float((1764+1823+1745+1735+1807+1880+1864+1761)/8);
 dpm5 : float(sqrt(pm5));
+
+/* PM_i && PM_j */
+
+pm2_pm4  : float( 139+155+141+190+122+132+150+175 );
+dpm2_pm4 : float(sqrt(pm2_pm4));
+
+pm3_pm5  : float( 172+199+191+190+231+204+239+205 );
+dpm3_pm5 : float(sqrt( pm3_pm5 ));

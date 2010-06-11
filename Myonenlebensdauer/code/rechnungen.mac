@@ -17,8 +17,14 @@ dpm5 : float(sqrt(pm5));
 
 /* PM_i && PM_j */
 
-pm2_pm4  : float( 139+155+141+190+122+132+150+175 );
+pm2_pm4  : float( (139+155+141+190+122+132+150+175)/8 );
 dpm2_pm4 : float(sqrt(pm2_pm4));
 
-pm3_pm5  : float( 172+199+191+190+231+204+239+205 );
+pm3_pm5  : float( (172+199+191+190+231+204+239+205)/8 );
 dpm3_pm5 : float(sqrt( pm3_pm5 ));
+
+mw_2und4  : float((pm2+pm4)/2);
+mw_3und5  : float((pm3+pm5)/2);
+
+epsilon_1 : float(pm2_pm4/mw_2und4);
+epsilon_2 : float(pm3_pm5/mw_3und5);

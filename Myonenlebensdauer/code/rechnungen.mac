@@ -28,3 +28,12 @@ mw_3und5  : float((pm3+pm5)/2);
 
 epsilon_1 : float(pm2_pm4/mw_2und4);
 epsilon_2 : float(pm3_pm5/mw_3und5);
+
+/* einzelne SCs */
+
+nur_sc1  : float( (1055+993+1029+1016+1068+941+1013+942)/8 );
+dnur_sc1 : float(sqrt(nur_sc1));
+nur_sc2  : float( (203+234+202+190+182+191+189+204)/8 );
+dnur_sc2 : float(sqrt(nur_sc2));
+nur_sc3  : float( (255+259+237+276+281+247+245+275)/8 );
+dnur_sc3 : float(sqrt(nur_sc3));

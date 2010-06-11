@@ -82,7 +82,7 @@ Rate & 1094 & 1878 & 1936 & 1178 & 1797\\
 Fehler & 33 & 43 & 44 & 34 & 42\\
 \bottomrule
 \end{tabular*}
-\caption{Messwerte der Ereignisraten $N_i$ (in \SI{1}{\per\second}) in den
+\caption{Mittelwerte der Ereignisraten $N_i$ (in \SI{1}{\per\second}) in den
 Photomultipliern $PM_i$}
 \label{tab:pm_messwerte}
 \end{table}
@@ -111,7 +111,7 @@ Rate & 151 & 204\\
 Fehler & 12 & 14\\
 \bottomrule
 \end{tabular*}
-\caption{Messwerte der Ereignisraten (in \SI{1}{\per\second}) in den
+\caption{Mittelwerte der Ereignisraten (in \SI{1}{\per\second}) in den
 Szintillationszählern SC2 und SC3}
 \label{tab:SC2_SC3_koinzidenz}
 \end{table}
@@ -125,5 +125,42 @@ Raten wird im Folgenden angegeben, ebenso die Effizienz:
 MW_1 &\equiv& \frac{N_2+N_4}{2} = 1528\\
 ε_1 &\equiv& \frac{N_{2\wedge4}}{V_1} = 0,099\\
 MW_2 &\equiv& \frac{N_3+N_5}{2} = 1867\\
-ε_2 &\equiv& \frac{N_{3\wedge5}}{V_2} = 0,109\\
+ε_2 &\equiv& \frac{N_{3\wedge5}}{V_2} = 0,109\\		%fehlerbetrachtung
 \end{eqnarray}
+Die Effizienz sinkt durch die neue Forderung auf etwa 10 bis 11 Prozent des
+ursprünglichen Wertes. Dadurch wird sicherlich die zur Auswertung zur Verfügung
+stehende Statistik verringert, aber dafür wird vor allem störender Hintergrund
+ausselektiert. Der Hauptuntergrund entsteht in diesem Fall durch zufällig in
+den Photomultipliern emittierte Elektronen, und da diese im Allgemeinen nicht
+gleichzeitig in beiden zu einem Szintillationszähler gehörenden
+Photomultipliern ausgelöst werden, ist die Koinzidenzforderung ein wirksamer
+Filter gegen solche Effekte. Man kann somit relativ sicher sein, dass ein reales
+Signal gemessen wurde (was aber noch kein Myonensignal sein muss; deren
+Selektion erfolgt später.) Daher gleicht die resultierende Reinheit des Signals
+den Nachteil der geringeren Statistik weit mehr als aus, sodass im Folgenden
+für alle Szintillatoren eine solche Forderung gestellt wird.
+
+Außerdem wurden die Raten in den einzelnen Szintillationszählern gemessen,
+wobei weiterhin gefordert wird, dass die jeweils anderen Szintillatoren in
+diesem Augenblick kein Ereignis detektieren. Die sich ergebenden Raten sind in
+\tref{einzelne_szintillatoren} dargestellt.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular*}{0.8\columnwidth}{c|cc}
+\toprule
+& Rate & Fehler\\
+\midrule
+$SC_1 \neg SC_2 \neg SC_3$ & 1007 & 32\\
+$\neg SC_1 \wedge SC_2 \neg SC_3$ & 199 & 14\\
+$\neg SC_1 \neg SC_2 \wedge SC_3$ & 259 & 16\\
+\bottomrule
+\end{tabular*}
+\caption{Mittelwerte der Ereignisraten (in \SI{1}{\per\second}) in den
+Szintillationszählern $SC_i$}
+\label{tab:einzelne_szintillatoren}
+\end{table}
+
+Schließlich sollten die Raten untersucht werden, die sich ergeben, wenn man
+verlangt, dass bestimmte Kombinationen von Szintillatoren gleichzeitig
+ansprechen. …

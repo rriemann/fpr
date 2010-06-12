@@ -161,6 +161,45 @@ Szintillationszählern $SC_i$}
 \label{tab:einzelne_szintillatoren}
 \end{table}
 
+Wie man erkennen kann, ist die Rate in $SC_1$ deutlich größer als in den
+anderen Szintillationszählern, was dadurch bedingt ist, dass in unserem
+Experiment dieser Szintillator nur mit einem Photomultiplier ausgestattet war,
+sodass hier das thermische Rauschen in diesem nicht herausgefiltert werden
+konnte. 
+
 Schließlich sollten die Raten untersucht werden, die sich ergeben, wenn man
 verlangt, dass bestimmte Kombinationen von Szintillatoren gleichzeitig
-ansprechen. …
+ansprechen. Dies ist auch für die nachfolgenden Versuchsteile von Bedeutung, da
+die Selektion der Myonenereignisse über solche Kombinationen erfolgt. Auch hier
+haben wir für jede Kombination acht Messwerte aufgenommen, deren Mittelwerte
+und statistische Fehler in \tref{sc_kombinationen} aufgeführt sind.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular*}{0.8\columnwidth}{r|cc}
+\toprule
+& Rate & Fehler\\
+\midrule
+$SC_1 \wedge SC_2$ & 20 & 1\\
+$SC_1 \wedge SC_2 \wedge SC_3$ & 10 & 1\\
+$SC_1 \wedge SC_2 \neg SC_3$ & 10 & 1\\
+$SC_2 \wedge SC_3$ & 36 & 2\\
+$SC_2 \vee SC_3$ & 948 & 31\\
+\bottomrule
+\end{tabular*}
+\caption{Mittelwerte der Ereignisraten (in \SI{1}{\per\second}) in den
+Szintillationszählern $SC_i$}
+\label{tab:sc_kombinationen}
+\end{table}
+
+Da hier (abgesehen vom letzten Fall) schon wesentlich stärkere Kriterien erfüllt
+werden mussten, sinkt die Zahl der gemessenen Ereignisse deutlich ab. Aus
+diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen,
+und dann durch diese Zeit dividiert, um die angegebene Rate zu erhalten. Daher
+ist hier die statistische Unsicherheit kleiner als die Wurzel des Mittelwerts.
+Der letzte Fall hingegen ($SC_2 \vee SC_3$) verlangt nur, dass in einem der
+beiden angegebenen Detektoren ein Teilchen registriert wird, und somit ist
+klar, dass die Zahl der Ereignisse in der Größenordnung der Summe der Events in
+den beiden einzelnen Szintillatoren ($\sum_i SC_{i=1}^2 = 458 $) (s.
+\tref{einzelne_szintillatoren}) entspricht. WOHER KOMMT HIER DIE GROßE
+ABWEICHUNG????

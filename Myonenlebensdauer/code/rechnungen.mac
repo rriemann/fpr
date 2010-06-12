@@ -37,3 +37,20 @@ nur_sc2  : float( (203+234+202+190+182+191+189+204)/8 );
 dnur_sc2 : float(sqrt(nur_sc2));
 nur_sc3  : float( (255+259+237+276+281+247+245+275)/8 );
 dnur_sc3 : float(sqrt(nur_sc3));
+
+/* kombinationen der SCs */
+
+sc1undsc2  : float( (198+169+208+178+198+200+202+218)/(10*8) );
+dsc1undsc2 : float(sqrt(10*sc1undsc2)/10);
+
+sc1undsc2undsc3  : float( (96+88+90+95+100+97+119+94)/(10*8) );
+dsc1undsc2undsc3 : float(sqrt(10*sc1undsc2undsc3)/10);
+
+sc1undsc2notsc3  : float( (103+102+99+115+105+100+97+117)/(10*8) );
+dsc1undsc2notsc3 : float(sqrt(10*sc1undsc2notsc3)/10);
+
+sc2undsc3  : float( (390+320+328+357+346+378+342+382)/(10*8) );
+dsc2undsc3 : float(sqrt(10*sc2undsc3)/10);
+
+sc2odersc3  : float( (981+1075+908+832+908+906+1010+964)/8 );
+dsc2odersc3 : float(sqrt(sc2odersc3));

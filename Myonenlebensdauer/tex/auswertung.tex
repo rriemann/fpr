@@ -4,7 +4,8 @@
 Um zu verstehen, welchen Einfluss die Signallaufzeiten in der Schaltung haben,
 wurde die Verzögerung dar Signale, die von den beiden zu SC2 gehörenden
 Photomultipliern PM2 und PM4 ausgehen, mit einem Oszilloskop gemessen. Dabei
-erhielten wir Bilder wie das in \fref{koinzidenz} dargestellte. 
+erhielten wir Bilder wie das in \fref{koinzidenz} dargestellte. Einige weitere
+beispielhafte Oszilloskop-Bilder sind in \fref{zeitdifferenzen} zu sehen.
 
 \begin{figure}[htb]
    \centering
@@ -203,8 +204,9 @@ ist hier die statistische Unsicherheit kleiner als die Wurzel des Mittelwerts.
 Der letzte Fall hingegen ($SC_2 \vee SC_3$) verlangt nur, dass in einem der
 beiden angegebenen Detektoren ein Teilchen registriert wird, und somit ist
 klar, dass die Zahl der Ereignisse in der Größenordnung der Summe der Events in
-den beiden einzelnen Szintillatoren ($\sum_i SC_{i=1}^2 = 458 $) (s.
-\tref{einzelne_szintillatoren}) entspricht. Allerdings muss man feststellen,
+den beiden einzelnen Szintillatoren (s. \tref{einzelne_szintillatoren}
+$\rightarrow \sum_i SC_{i=1}^2 = 458 $) entspricht. Allerdings muss man
+feststellen, 
 dass die Ereigniszahl für die Kombination $SC_2 \vee SC_3$ mit einem Wert von
 948 $\pm$ 31 ca. doppelt so groß ist wie die eben genannte Summe, was wir nicht
 erwartet haben. Im Falle der Messung der Rate $SC_2 \vee SC_3$ sind zwar
@@ -221,7 +223,20 @@ Einschätzung der Hintergrundrate verwendbar ist.
 \subsection{Signalbetrachtung}
 Zu allen im vorigen Abschnitt betrachteten Kombinationen von Photomultipliern
 bzw. Szintillationszählern wurde exemplarisch ein Bild aufgezeichnet. Alle
-Bilder sind im Anhang unter \ref{sec:plots} zu finden. 
+Bilder sind im Anhang unter \ref{sec:plots} zu finden.
 
-% 19 20 21 24 25 26 27 28
-% verwerfen: 24, 21 o. 25?
+Zunächst haben wir die Signalformen der einzelnen Photomultiplier in \fref{PMs}
+dargestellt. Man kann gut erkennen, dass alle Photomultiplier annähernd das
+gleiche, gaußförmige Signalprofil aussenden, was auch zu erwarten war. Da wir
+den Trigger auf den angezeigten Kanal eingestellt haben, kann man auch nur einen
+einzelnen (negativen) Peak sehen.
+
+In \fref{zeitdifferenzen} kann man die Zeitdifferenzen erkennen, die sich in
+den Koinzidenzschaltungen aufgrund von Signallaufzeiten und der verarbeitenden
+Logikelemente aus einem an sich (annähernd) gleichzeitig in beiden Multipliern
+stattfindenden Ereignissen ergibt. Da wir immer auf Channel 1 triggern ließen
+und keine Forderung an die Reihenfolge der Signale stellen, kommt es vor, dass
+auch negative Werte gemessen werden, aber das Oszilloskop macht daraus von sich
+aus bereits positive Zahlen, sodass wir uns über die Vorzeichen keine Gedanken
+mehr machen müssen. Die aus den Bildern abgelesenen Zeitverzögerungen wurden in
+\tref{diff} bereits aufgelistet.

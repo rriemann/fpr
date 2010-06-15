@@ -276,20 +276,95 @@ Im letzten Bild zu diesem Aufgabenteil (\fref{sc2_oder_sc3})
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=\columnwidth,keepaspectratio=true]{eichung}
-  % eichung.pdf: 842x595 pixel, 72dpi, 29.70x20.99 cm, bb=
-  \caption{Ausgangsdaten für die Eichung}
-  \label{fig:eichung}
+  \includegraphics[width=\columnwidth,keepaspectratio=true]{zeit_schaltung}
+  \caption{Schaltung zur Eichung des MCA}
+  \label{fig:zeit_schaltung}
 \end{figure}
 
 \begin{figure}[ht!]
   \centering
+  \includegraphics[width=\columnwidth,keepaspectratio=true]{eichung}
+  % eichung.pdf: 842x595 pixel, 72dpi, 29.70x20.99 cm, bb=
+  \caption{Ausgangsdaten für die Eichung, generiert mit Schaltung in \fref{zeit_schaltung}}
+  \label{fig:eichung}
+\end{figure}
+
+Die Myonen-Lebensdauer wurde in diesem Experiment durch die Messung einzelner
+Zerfalls-Zeiten bestimmt. Dies wurde mit einem Zeit-Spannungs-Wandler (TAC) und
+einem Multi-Kanal-Analysierer (MCA) experimentell umgesetzt. Da der MCA jedoch
+nur Kanäle misst und nicht direkt die einzelnen Zeitdifferenzen, ist eine
+Eichung notwendig. Mittels eines speziellen Zeituhr-Moduls war es möglich
+zeitlich verzögerte Signale variabler Länge zu produzieren, deren Dauer mit dem
+Oszilloskop kontrolliert werden konnte. Das mit der Schaltung in
+\fref{zeit_schaltung} aufgenommene Histogramm ist in \fref{eichung} dargestellt.
+
+Zur Eichung wurden nun die einzelnen in \tref{eichung_zeiten} notierten Zeiten
+über dem jeweiligen Kanal abgetragen. Dies wurde automatisch durchgeführt unter
+Verwendung der Funktion \texttt{get\_calibration(TH1F*)}, welche der Makrodatei
+beiliegt, die im Anhang \ref{sec:sourcecode} abgedruckt ist.
+
+Der Fehler des Kanals (Breite der einzelnen Maxima) wurde hierbei vernachlässigt,
+da er zumeist nicht mehr als 3 Bins beträgt und sich dem gegenüber der mittlere
+Abstand der Maxima in der Größenordung von 100 Bins befindet.
+
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{SS}
+\toprule
+{Zeitdauer $t$ in \si{\micro\second}} & {$U$ in \si{\volt}} \\
+\midrule
+0,35 & 0,04 \\
+1,61 & 0,2\\
+2,9 & 0,4\\
+4,2 & 1\\
+5,5 & 1\\
+6,8 & 1\\
+8,1 & 1\\
+9,4 & 2\\
+10,7 & 2\\
+12,0 & 2\\
+13,4 & 2\\
+14,7 & 2\\
+16,0 & 2\\
+17,3 & 2\\
+18,6 & 2\\
+\bottomrule
+\end{tabular*}
+\caption{Messung der Zeitdauern für die Eichung in \fref{eichungkalibration}}
+\label{tab:eichung_zeiten}
+\end{table}
+
+\begin{figure}[ht!]
+  \centering
   \includegraphics[width=\columnwidth,keepaspectratio=true]{eichungkalibration}
-  \caption{Eichung mittels der Daten aus \fref{eichung} und der Batchfunktion \texttt{get\_calibration(TH1F*)} aus dem Quellcode in Anhang \ref{sec:sourcecode}}
+  \caption{Eichung mittels der Daten aus \fref{eichung}, \tref{eichung_zeiten} und der Batchfunktion \texttt{get\_calibration(TH1F*)} aus dem Quellcode in Anhang \ref{sec:sourcecode}}
   \label{fig:eichungkalibration}
 \end{figure}
 
+Im Ergebnis der Eichung findet man folgende Vorschrift um einen Kanal $k$ in
+eine Zeitdauer $t$ umzurechnen:
+\begin{equation}
+  k = m \cdot t + n
+\end{equation}
+Der Anstieg $m$ und der Achsenabschnitt $n$ gehen aus dem in \fref{eichungkalibration}
+gezeigten $\chi^2$-Fit hervor und haben folgende Werte:
+\begin{eqnarray}
+  m &=& \SI{9.65(1)e-3}{\micro\second\per{Channel}} \\
+  n &=& \SI{-0.01(1)}{\micro\second}
+\end{eqnarray}
+
 \subsection{Fit}
+
+Mit
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\columnwidth,keepaspectratio=true]{muon_messung}
+  \caption{Schaltung zur Bestimmung der μ-Lebensdauer}
+  \label{fig:muon_schaltung}
+\end{figure}
+
 
 \begin{figure}[ht!]
   \centering

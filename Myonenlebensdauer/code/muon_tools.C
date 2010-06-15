@@ -299,19 +299,21 @@ TF1* get_fitfunction(const char* name = "user") {
   // Return value: fit function
   //
   TF1 *f_mu = new TF1(name,
-		      "[0]*exp(-x/[1])*(1.+1./[2]*exp(-x/[3]))+[4]",
-		      0, 20);
+		      "[0]*exp(-x/[1])*(1.+1./[2]*exp(-x/[3]))+[4]+x*[5]",
+		      4, 19);
   f_mu->SetParName(0, "N_{#mu}");
   f_mu->SetParName(1, "#tau_{#mu}");
   f_mu->SetParName(2, "N_{#mu^{+}} / N_{#mu^{-}}");
   f_mu->SetParName(3, "#tau_{C}");
   f_mu->SetParName(4, "N_{bkg}");
+  f_mu->SetParName(5, "N1_{bkg}");
   //  f_mu->SetParameter(0, h_mca_calib->GetMaximum());
   f_mu->SetParameter(0, 20.);
   f_mu->SetParameter(1, 2.);
   f_mu->FixParameter(2, 1.270);
   f_mu->FixParameter(3, 2.1);
   f_mu->SetParameter(4, 25.);
+  f_mu->SetParameter(5, 0.);
   gStyle->SetOptFit(1112);
   gROOT->GetListOfFunctions()->Add(f_mu);
   

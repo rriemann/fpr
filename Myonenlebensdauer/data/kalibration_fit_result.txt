@@ -4,3 +4,45 @@
   NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
    1  m            9.64530e-03   4.40865e-04   1.11115e-07   7.81770e-08
    2  b           -1.44224e-02   5.03295e-01   1.32919e-04   6.71148e-11
+
+
+
+Ergebniss erster Fit-Versuch mit Rebin(64):
+
+ FCN=238.918 FROM MIGRAD    STATUS=CONVERGED      22 CALLS          23 TOTAL
+                     EDM=6.73444e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{#mu}      1.10850e+04     fixed    
+   2  #tau_{#mu}   2.55936e+00   1.33465e-02   1.00939e-04  -8.69559e-03
+   3  N_{#mu^{+}} / N_{#mu^{-}}   1.27000e+00     fixed    
+   4  #tau_{C}     2.10000e+00     fixed    
+   5  N_{bkg}      3.22000e+02     fixed    
+   6  N1_{bkg}     0.00000e+00     fixed   
+   
+   
+REBIN 32: f_mu->SetRange(4.5,19.3)
+
+root [201] spektrum_channels_calib_rebin->Fit(f_mu,"R")
+ FCN=52.3562 FROM MIGRAD    STATUS=CONVERGED      45 CALLS          46 TOTAL
+                     EDM=1.65899e-15    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{#mu}      6.07292e+03   1.02648e+03   0.00000e+00  -5.10464e-11
+   2  #tau_{#mu}   2.18606e+00   1.74216e-01  -0.00000e+00   1.53964e-07
+   3  N_{#mu^{+}} / N_{#mu^{-}}   1.27000e+00     fixed    
+   4  #tau_{C}     2.10000e+00     fixed    
+   5  N_{bkg}      2.88842e+02   3.18261e+01   0.00000e+00  -2.37675e-10
+   6  N1_{bkg}    -5.16214e+00   1.87362e+00  -0.00000e+00  -2.54692e-09
+(class TFitResultPtr)23323680
+root [202] spektrum_channels_calib_rebin->Fit(f_mu,"R")
+ FCN=52.3562 FROM MIGRAD    STATUS=CONVERGED      60 CALLS          61 TOTAL
+                     EDM=4.63003e-13    STRATEGY= 1  ERROR MATRIX UNCERTAINTY 100.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{#mu}      6.07292e+03   4.06567e+02  -8.12982e-05  -1.35337e-10
+   2  #tau_{#mu}   2.18606e+00   6.25560e-02   1.38138e-08   6.81712e-06
+   3  N_{#mu^{+}} / N_{#mu^{-}}   1.27000e+00     fixed    
+   4  #tau_{C}     2.10000e+00     fixed    
+   5  N_{bkg}      2.88842e+02   1.74090e+01  -2.19463e-06  -6.30334e-10
+   6  N1_{bkg}    -5.16214e+00   1.09701e+00   1.24712e-07  -6.82051e-09

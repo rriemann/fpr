@@ -308,12 +308,12 @@ TF1* get_fitfunction(const char* name = "user") {
   f_mu->SetParName(4, "N_{bkg}");
   f_mu->SetParName(5, "N1_{bkg}");
   //  f_mu->SetParameter(0, h_mca_calib->GetMaximum());
-  f_mu->SetParameter(0, 20.);
-  f_mu->SetParameter(1, 2.);
+  f_mu->SetParameter(0, 6989);
+  f_mu->SetParameter(1, 2.101);
   f_mu->FixParameter(2, 1.270);
   f_mu->FixParameter(3, 2.1);
-  f_mu->SetParameter(4, 25.);
-  f_mu->SetParameter(5, 0.);
+  f_mu->SetParameter(4, 295.1);
+  f_mu->SetParameter(5, -5.502);
   gStyle->SetOptFit(1112);
   gROOT->GetListOfFunctions()->Add(f_mu);
   

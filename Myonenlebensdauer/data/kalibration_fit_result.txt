@@ -46,3 +46,24 @@ root [202] spektrum_channels_calib_rebin->Fit(f_mu,"R")
    4  #tau_{C}     2.10000e+00     fixed    
    5  N_{bkg}      2.88842e+02   1.74090e+01  -2.19463e-06  -6.30334e-10
    6  N1_{bkg}    -5.16214e+00   1.09701e+00   1.24712e-07  -6.82051e-09
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    FCN= unknown        FROM MIGrad      STATUS=RESET           0 CALLS           0 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{#mu}      6.00000e+03     fixed    
+   2  #tau_{#mu}   2.20000e+00     fixed    
+   3  N_{#mu^{+}} / N_{#mu^{-}}   1.27000e+00     fixed    
+   4  #tau_{C}     2.10000e+00     fixed    
+   5  N_{bkg}      2.00000e+02     fixed    
+   6  N1_{bkg}     0.00000e+00     fixed  
+

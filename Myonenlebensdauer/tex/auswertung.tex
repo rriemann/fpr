@@ -312,7 +312,7 @@ Abstand der Maxima in der Größenordung von 100 Bins befindet.
 % \setlength{\tabcolsep}{14pt}
 \begin{tabular*}{\columnwidth}{SS}
 \toprule
-{Zeitdauer $t$ in \si{\micro\second}} & {$U$ in \si{\volt}} \\
+{Zeitdauer $t$ in \si{\micro\second}} & {Messbereich in \si{\micro\second}} \\
 \midrule
 0,35 & 0,04 \\
 1,61 & 0,2\\
@@ -356,10 +356,33 @@ gezeigten $\chi^2$-Fit hervor und haben folgende Werte:
 
 \subsection{Fit}
 
-Mit
+Mit der nun eben gewonnenen Eichung kann nun das mit der Schaltung in
+\fref{muon_schaltung} gemessene Histogramm in \fref{messung} konvertiert werden.
+
+Das Ergebnis ist in \fref{fit} dargestellt. Der dort schon eingezeichnete
+$\chi^2$-Fit benutzt die \eref{fit}, welche im \cite[Gl. 12]{script} hergeleitet wurde.
+Hierbei wird die Anzahl der Einträge pro Bin mit $N$, die μ-Halbwertszeit mit
+$τ_μ$, das Verhältnis zwischen positiv und negativen Myonen
+$f = \SI{1.270(3)}{\micro\second}$ und der Halbwertszeit
+für den Atom-Einfang einen Myons $τ_c = \SI{2.1(1)}{\micro\second}$ bezeichnet.
+Es wurde versucht den Hintergrund mit einer möglichst einfachen Theorie
+(linearer Verlauf) zu beschreiben. Da nur zwei freie Parameter verwendet wurden,
+wird der Wert $\chi^2/\mbox{dof}$ klein gehalten.
+
+\begin{equation}
+  N(t) = N_0 e^{-t/τ_μ}\left(1+\frac{1}{f}e^{-t/τ_c}\right) + \underbrace{N+t\cdot N1}_{\mbox{Untergrund}}
+  \label{eqn:fit}
+\end{equation}
+
+Bevor der Fit durchgeführt wurde, sind jeweils 32 Bins der insgesamt 2048
+zusammengefasst worden. Die in \cite[Gl. 17]{script} angeführte \textsc{Scott}-Regel
+würde das Zusammenfassen von jeweis 128 Bins nahelegen, jedoch wurde beim Testen
+mit mehreren Varianten herausgefunden, dass der Fit eher ein  $\chi^2/\mbox{dof}$ nahe eins
+liefert, wenn eine geringere Binbreite gewählt wird.
 
 \begin{figure}[ht!]
   \centering
+  \vspace{0.2em}
   \includegraphics[width=\columnwidth,keepaspectratio=true]{muon_messung}
   \caption{Schaltung zur Bestimmung der μ-Lebensdauer}
   \label{fig:muon_schaltung}

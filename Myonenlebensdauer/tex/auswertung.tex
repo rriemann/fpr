@@ -401,9 +401,18 @@ entstandene Histogramm kann in \fref{ohne_verzoegerung} betrachtet werden.
 \end{figure}
 
 Aus \fref{ohne_verzoegerung} können wir noch die Rate der registrierten 
-Myonen-Zerfälle ableiten. Der vom MCA generierten Datei lässt sich entnehmen,
-dass das Histogramm über eine Messzeit von $Δt = \SI{1814}{\micro\second}$
-aufgenommen wurde. Die Summe über alle Bins kann mit ROOT zu $N = 2195$
+Myonen-Zerfälle ableiten. $Δt = $ Die Summe über alle Bins kann mit ROOT zu $N = 2195$ bestimmt
+werden. Daraus lässt sich nun die Rate $r$ errechnen.
+\begin{equation}
+ r = \frac{N}{Δt} = \SI{1.21}{\hertz}
+\end{equation}
+
+root [13] hist->Integral()                                                                                   
+(const Double_t)1.85190000000000000e+04
+root [14] hist->Integral()/150523.
+(const double)1.23031031802448801e-01
+
+
 
 \subsection{Fit}
 

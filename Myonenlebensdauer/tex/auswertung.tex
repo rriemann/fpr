@@ -392,6 +392,29 @@ würde das Zusammenfassen von jeweis 128 Bins nahelegen, jedoch wurde beim Teste
 mit mehreren Varianten herausgefunden, dass der Fit eher ein  $\chi^2/\mbox{dof}$ nahe eins
 liefert, wenn eine geringere Binbreite gewählt wird.
 
+Um einen passenden $χ^2$-Fit zu erhalten, wurden die Parameter zunächst auf
+die ungfähr zu erwartenden Werte festgelegt, die in \tref{fit_werte} gelistet
+sind. In der Tabelle sind auch gleich die Ergebnisse des Fits enthalten.
+
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{lll}
+\toprule
+& {Startwerte} & {Ergebnis} \\
+\midrule
+$N_0$ & 6000 & 7000±1000 \\
+$τ_μ$ & 2,2 & 2,1±0,1\\
+$f$ & 1,27& {fixiert}\\
+$τ_c$ & 2,2 & {fixiert}\\
+N & 200 & 300±30\\
+N1 & 0 & -6±2\\
+\bottomrule
+\end{tabular*}
+\caption{Startwerte und Ergebnisse des Fits von \eref{fit} in \fref{fit}}
+\label{tab:fit_werte}
+\end{table}
+
 \begin{figure}[ht!]
   \centering
   \vspace{0.2em}

@@ -201,7 +201,22 @@ werden mussten, sinkt die Zahl der gemessenen Ereignisse deutlich ab. Aus
 diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen,
 und dann durch diese Zeit dividiert, um die angegebene Rate zu erhalten. Daher
 ist hier die statistische Unsicherheit kleiner als die Wurzel des Mittelwerts.
-Der letzte Fall hingegen ($SC_2 \vee SC_3$) verlangt nur, dass in einem der
+An dieser Stelle kann man eine Betrachtung von Hintergrund und Signal
+durchführen. Die Signalraten in den einzelnen Photomultipliern liegen in der
+Größenordnung von 1000 bis 2000, in den Szintillationszählern $SC_2$ und
+$SC_3$, bei denen eine Korrelation der beteiligten Photomultiplier gefordert
+wird, liegen die Raten bei ca. 200. Die restlichen ca. 800 Events in den beiden
+Multipliern sind also auf zufälliges thermisches Rauschen zurückzuführen. Wenn
+man wie in \tref{sc_kombinationen} noch Kombinationen von Szintillatoren
+fordert, sinkt die gemessene Rate auf ungefähr 10 bis 40. Da solche
+Kombinationen später zur Identifikation von Myonensignalen verwendet werden,
+ist diese Messung von besonderem Interesse. Speziell die Rate für den Fall $SC_1
+\wedge SC_2 \neg SC_3$, die im Mittel einen Messwert von 10 Ereignissen pro
+Sekunde liefert, ist interessant, da diese Schaltung für die spätere
+Langzeitmessung verwendet wird. 
+
+Der letzte Fall in der Tabelle ($SC_2 \vee SC_3$) hingegen verlangt nur, dass in
+einem der
 beiden angegebenen Detektoren ein Teilchen registriert wird, und somit ist
 klar, dass die Zahl der Ereignisse in der Größenordnung der Summe der Events in
 den beiden einzelnen Szintillatoren (s. \tref{einzelne_szintillatoren}
@@ -248,7 +263,8 @@ zeitliche Verteilung der Signale in den beiden Szintillatoren aussieht.
 Getriggert wurde auf das UND-Signal, sodass die ersten beiden Peaks pro Kanal
 zur gleichen Zeit stattgefunden haben. Weiterhin ist zu erwähnen, dass alle im
 Rest des Bildes keine Koinzidenzen zu finden sein dürfen, da sonst erneut
-getriggert werden würde. Insgesamt fanden in diesem Fall 10 Ereignisse statt,
+getriggert werden würde. Insgesamt fanden in diesem Fall 10 Ereignisse
+(„Mehrfachtreffer“) statt,
 wobei man davon ausgehen kann, dass es sich hauptsächlich um
 Hintergrundereignisse handelt, da eben in dem gezeigten
 \SI{2}{\micro\second}-Ausschnitt keine Koinzidenz mehr zu finden ist. Ein
@@ -270,7 +286,7 @@ weitere Information gewinnen.
 
 Im letzten Bild zu diesem Aufgabenteil (\fref{sc2_oder_sc3}) sind wieder beide
 Kanäle sichtbar. Getriggert wurde wieder auf das Signal einer Logik-Komponente,
-in diesem Fall haben wir der Anschaulichkeit wegen ein ``UND'' verwendet. In
+in diesem Fall haben wir der Anschaulichkeit wegen ein „UND“ verwendet. In
 diesem Fall tritt im Anschluss pro Channel nur ein weiteres Event auf, was aber
 daran liegen kann, dass erneut getriggert wurde, sodass im rechten Teil des
 Bildes keine Chance bestanden haben könnte, etwas zu registrieren. Außerdem

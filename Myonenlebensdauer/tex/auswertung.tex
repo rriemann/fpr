@@ -412,19 +412,13 @@ bleibenden Teil des Histogramms nach dieser halben Stunde keine ausreichende
 Statistik aufgenommen hat, muss die Messung über eine wesentlich ausgedehntere
 Zeitspanne ausgeführt werden. Dies wird im nächsten Abschnitt beschrieben.
 
-Aus \fref{ohne_verzoegerung} können wir noch die Rate der registrierten 
-Myonen-Zerfälle ableiten. $Δt = $ Die Summe über alle Bins kann mit ROOT zu $N = 2195$ bestimmt
-werden. Daraus lässt sich nun die Rate $r$ errechnen.
+Aus \fref{messung} kann die Rate der registrierten Myonen-Zerfälle abgeleitet.
+Aus der vom MCA generierten Datei geht hervor, dass die Messung
+über eine Zeitdauer von $Δt = 150523$ statt fand. Die Summe über alle Bins kann
+mit ROOT zu $N = 18519$ bestimmt werden. Daraus lässt sich nun die Rate $r$ errechnen.
 \begin{equation}
- r = \frac{N}{Δt} = \SI{1.21}{\hertz}
+ r = \frac{N}{Δt} = \SI{0.12}{\hertz}
 \end{equation}
-
-root [13] hist->Integral()                                                                                   
-(const Double_t)1.85190000000000000e+04
-root [14] hist->Integral()/150523.
-(const double)1.23031031802448801e-01
-
-
 
 \subsection{Fit}
 

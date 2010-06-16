@@ -405,12 +405,15 @@ wird der Wert $\chi^2/\mbox{dof}$ klein gehalten.
 Bevor der Fit durchgeführt wurde, sind jeweils 32 Bins der insgesamt 2048
 zusammengefasst worden. Die in \cite[Gl. 17]{script} angeführte \textsc{Scott}-Regel
 würde das Zusammenfassen von jeweis 128 Bins nahelegen, jedoch wurde beim Testen
-mit mehreren Varianten herausgefunden, dass der Fit eher ein  $\chi^2/\mbox{dof}$ nahe eins
-liefert, wenn eine geringere Binbreite gewählt wird.
+mit mehreren Varianten herausgefunden, dass der Fit eher ein  $\chi^2/\mbox{dof}$
+nahe eins liefert, wenn eine geringere Binbreite gewählt wird.
 
 Um einen passenden $χ^2$-Fit zu erhalten, wurden die Parameter zunächst auf
 die ungfähr zu erwartenden Werte festgelegt, die in \tref{fit_werte} gelistet
 sind. In der Tabelle sind auch gleich die Ergebnisse des Fits enthalten.
+Um den Fit schnell zur Konvergenz zu führen, wurden zunächst alle Parameter
+festgehalten, um dann schließlich einen Parameter nach dem anderen frei zu lassen.
+
 
 \begin{table}[htbp]
 \centering
@@ -420,11 +423,11 @@ sind. In der Tabelle sind auch gleich die Ergebnisse des Fits enthalten.
 & {Startwerte} & {Ergebnis} \\
 \midrule
 $N_0$ & 6000 & 7000±1000 \\
-$τ_μ$ & 2,2 & 2,1±0,1\\
+$τ_μ$ in \si{\micro\second} & 2,2 & 2,1±0,2\\
 $f$ & 1,27& {fixiert}\\
-$τ_c$ & 2,2 & {fixiert}\\
+$τ_c$ in \si{\micro\second}& 2,2 & {fixiert}\\
 N & 200 & 300±30\\
-N1 & 0 & -6±2\\
+N1 in \si{\per\micro\second}  & 0 & -6±2\\
 \bottomrule
 \end{tabular*}
 \caption{Startwerte und Ergebnisse des Fits von \eref{fit} in \fref{fit}}
@@ -453,4 +456,19 @@ N1 & 0 & -6±2\\
   \caption{Fit}
   \label{fig:fit}
 \end{figure}
+
+Das Ergebnis für die mittlere Lebensdauer der Myonen ist demnach:
+\begin{equation}
+ τ_μ = \uuline{\SI{2.1(2)}{\micro\second}}
+\end{equation}
+
+\subsection{Systematik}
+
+Um den Einfluss der Größen $f$ und $τ_c$ zu untersuchen, wurde der Fit mehrmals
+mit unterschiedlich gewählten Konstanten durchgeführt. Da unser Fehler für die
+Lebensdauer mit \SI{0,2}{\micro\second}relativ groß ausfällt, spielt die
+Abweichung, welche aus innerhalb des σ-Bereichs anders gewählten Konstanten
+herrührt, eine zu vernachlässigende Rolle. Stets dominiert der Fehler aus dem Fit.
+
+TODO Tabelle (Laborbuch)
 

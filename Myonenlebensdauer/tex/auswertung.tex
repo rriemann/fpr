@@ -505,15 +505,66 @@ N1 in \si{\per\micro\second}  & 0 & -6±2\\
 Das Ergebnis für die mittlere Lebensdauer der Myonen ist demnach:
 \begin{equation}
  τ_μ = \uuline{\SI{2.1(2)}{\micro\second}}
+ \label{eqn:ergebnis}
 \end{equation}
 
 \subsection{Systematik}
 
 Um den Einfluss der Größen $f$ und $τ_c$ zu untersuchen, wurde der Fit mehrmals
 mit unterschiedlich gewählten Konstanten durchgeführt. Da unser Fehler für die
-Lebensdauer mit \SI{0,2}{\micro\second}relativ groß ausfällt, spielt die
-Abweichung, welche aus innerhalb des σ-Bereichs anders gewählten Konstanten
-herrührt, eine zu vernachlässigende Rolle. Stets dominiert der Fehler aus dem Fit.
+Lebensdauer mit \SI{0,2}{\micro\second} relativ groß ausfällt, spielt eine etwaige
+Abweichung von $f$ und $τ_c$ nur eine geringe Rolle. Die Abweichung durch $f$ kann gänzlich
+vernachlässigt werden. Wie in \tref{systematik} zu sehen ist, führt ein kleinerer
+Wert für $τ_c$ zu einem kleineren Wert für $τ_μ$.
 
-TODO Tabelle (Laborbuch)
+Im Ergebnis beträgt die Systematische Abweichung nach unten \SI{0.1}{\micro\second},
+während die Abweichung nach oben vernachlässigbar ist. Addiert man diesen Fehler
+zu dem Fehler aus \eref{ergebnis}, so erhält man:
+\begin{equation}
+ τ_μ = \uuline{(2,2 ± 0,2\,^{+0,0}_{-0,1}) \si{\micro\second}}
+ \label{eqn:ergebnis_sys}
+\end{equation}
 
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{
+l
+S[table-format = 1.4]
+S[table-format = 1.1,table-figures-uncertainty = 1]
+}
+\toprule
+Material& {$τ_c$ in \si{\micro\second}} & {$τ_μ$ in \si{\micro\second}} \\
+\midrule
+Szintillator & 2.1 & 2.2(2) \\
+Aluminium & 0.865 & 2.1(2)\\
+Kupfer & 0.1636 & 2.1(2)\\
+Blei & 0.0746 & 2.1(2)\\
+\bottomrule
+\end{tabular*}
+\caption{Einfluss des fixierten Parameter $τ_c$ auf den Fit.}
+\label{tab:systematik}
+\end{table}
+
+\subsection{Konfidenzniveau}
+
+Gehen wir davon aus, dass die Formel in \eref{fit} näherungsweise ein einfaches,
+exonentielles Zerfallsgesetz ist, so lässt sich analytisch die Standardabweichung
+σ zu
+\begin{equation}
+ σ = τ_μ
+\end{equation}
+bestimmen. Der Vertrauensbereich $\bar{s} = \SI{0,2}{\micro\second}$ kann weiterhin
+aus dem Student-Faktor $t$, der Anzahl der Messungen $N = 18519$ und σ berechnet werden.
+\begin{equation}
+ \bar{s} = t \cdot \frac{τ_μ}{\sqrt{N}} = \SI{0,2}{\micro\second}
+\end{equation}
+Daraus folgt für den Student-Faktor ein Wert von:
+\begin{equation}
+ t \approx 13
+\end{equation}
+
+Für den Fit wurden rund 60 Punkte (Bins) verwendet. Das legt die Anzahl der Freiheitsgrade
+fest, ad die Anzahl der Parameter dem gegenüber vernachlässigt werden kann.
+Aus \cite{student} geht hervor, dass das Konfidenzniveau so nahe an \SI{100}{\percent}
+liegt, dass es davon nicht mehr numerisch unterschieden werden kann.

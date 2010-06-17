@@ -12,23 +12,34 @@
 \usepackage{subfig}
 \usepackage{siunitx}
 \sisetup{
-	seperr		=	true,
-	trapambigerr	=	true,
-	openerr		=	(,
-	closeerr	=	),
-	expproduct	=	cdot,
-	padnumber	=	both,
-	stickyper	=	true,
-	per		=	reciprocal,
-	trapambigfrac	=	true,
-	repeatunits	=	false,
-	openfrac	=	(,
-	closefrac	=	),
-	prefixsymbolic 	=	true,
-	prefixproduct	=	cdot,
-	decimalsymbol	=	comma,
-        tabnumalign     =       left,
-        tabtextalign    =       left
+% 	seperr		=	true,
+% 	trapambigerr	=	true,
+% 	openerr		=	(,
+% 	closeerr	=	),
+% 	expproduct	=	cdot,
+% 	padnumber	=	both,
+% 	stickyper	=	true,
+% 	per		=	reciprocal,
+% 	trapambigfrac	=	true,
+% 	repeatunits	=	false,
+% 	openfrac	=	(,
+% 	closefrac	=	),
+% 	prefixsymbolic 	=	true,
+% 	prefixproduct	=	cdot,
+% 	decimalsymbol	=	comma,
+%     tabnumalign     =       left,
+%     tabtextalign    =       left
+  separate-uncertainty = true,
+  multi-part-units = brackets,
+  open-bracket = (,
+  close-bracket = ),
+  exponent-product = \cdot,
+  add-decimal-zero = true,
+  add-integer-zero = true,
+  per-mode         =   reciprocal,
+%   prefixes-as-symbols = true,
+  output-decimal-marker = {,},
+  table-figures-uncertainty = 1
 }
 \usepackage{color}
 \definecolor{grey}{rgb}{.4,.4,.4}
@@ -143,9 +154,9 @@ Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
 % \centering
 % \setlength{\tabcolsep}{14pt}
 % \begin{tabular*}{\columnwidth}{%
-% S[tabformat=2.1]%
-% S[tabformat=2.2]%
-% S[tabformat=1.2]}
+% S[table-format=2.1]%
+% S[table-format=2.2]%
+% S[table-format=1.2]}
 % \toprule
 % {$R$ in \si{\ohm}} &
 % {$U$ in \si{\volt}} &
@@ -168,6 +179,10 @@ Thomas Murach; Matr.Nr.: 517771\vspace{18mm}}
 % \caption{experimentelle Messung der Ein- und Ausgangswiderstände}
 % \end{table}
 
+% \begin{tabular}{S[table-format = 2.1,table-figures-uncertainty = 1]}
+%    20(2) \\
+%    20.0(2)
+% \end{tabular}
 
 % \newpage
 

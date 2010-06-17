@@ -400,6 +400,9 @@ entstandene und bereits in Zeiteinheiten umgeeichte Histogramm kann in
   \label{fig:ohne_verzoegerung}
 \end{figure}
 
+Wir haben das Histogramm einem Rebinning unterzogen. Die Methode wird in
+Abschnitt \ref{sec:fit} beschrieben.
+
 Man kann erkennen, dass beinahe alle Events in den ersten \SI{4}{\micro\second}
 nach der Initialisierung der jeweiligen Messung stattgefunden haben. In unserem
 logarithmischen Plot müssten wir eine Gerade erwarten, da das Zerfallsgesetz
@@ -412,6 +415,8 @@ bleibenden Teil des Histogramms nach dieser halben Stunde keine ausreichende
 Statistik aufgenommen hat, muss die Messung über eine wesentlich ausgedehntere
 Zeitspanne ausgeführt werden. Dies wird im nächsten Abschnitt beschrieben.
 
+\subsection{Berechnung der Myonen-Zerfallsrate}
+
 Aus \fref{messung} kann die Rate der registrierten Myonen-Zerfälle abgeleitet.
 Aus der vom MCA generierten Datei geht hervor, dass die Messung
 über eine Zeitdauer von $Δt = 150523$ statt fand. Die Summe über alle Bins kann
@@ -420,7 +425,27 @@ mit ROOT zu $N = 18519$ bestimmt werden. Daraus lässt sich nun die Rate $r$ err
  r = \frac{N}{Δt} = \SI{0.12}{\hertz}
 \end{equation}
 
+Des Weiteren war die Messzeit abzuschätzen, die nötig gewesen wäre, um die
+Lebensdauer der Myonen auf \SI{1}{\percent} genau zu bestimmen. Wenn man dieses
+Problem exakt lösen wollte, müsste man aus eine Methode entwickeln bzw.
+anwenden, mit der man aus der Anzahl der Einträge pro Bin den Fehler dieser
+Anzahl und daraus wiederum die Unsicherheit des Fitparameters $τ_μ$ zu
+berechnen. Da das im Rahmen dieses Versuchs nicht möglich ist, sollte eine
+Näherung getroffen werden. Wir nehmen also an, dass sich die Ungenauigkeit der
+Anzahl direkt auf den Fehler der Lebensdauer auswirkt.
+\begin{eqnarray}
+\Delta N_{rel} &=& \frac{\sqrt{N}}{N} = 0,01\\
+\rightarrow N &=& 10000\\
+r &=& \frac{N}{Δt} \rightarrow Δt = \frac{N}{r}\\
+Δt &=& \SI{81280}{\second} \approx \SI{22,5}{\hour}
+\end{eqnarray}
+Um für die relative Genauigkeit der Anzahlmessung einen Wert von
+\SI{1}{\percent} zu erhalten, muss man \SI{22,5}{\hour} lang messen, unsere
+Messung lief aber sogar länger (knapp \SI{42}{\hour}, 18519 Ereignisse), sodass
+unser Fehler noch kleiner ist.
+
 \subsection{Fit}
+\label{sec:fit}
 
 Mit der eben gewonnenen Eichung kann nun das mit der Schaltung in
 \fref{muon_schaltung} gemessene Histogramm in \fref{messung} konvertiert werden.
@@ -511,7 +536,8 @@ Das Ergebnis für die mittlere Lebensdauer der Myonen ist demnach:
 
 Um den Einfluss der Größen $f$ und $τ_c$ zu untersuchen, wurde der Fit mehrmals
 mit unterschiedlich gewählten Konstanten durchgeführt. Da unser Fehler für die
-Lebensdauer mit \SI{0,2}{\micro\second}relativ groß ausfällt, spielt die
+Lebensdauer mit \SI{0,2}{\micro\second} relativ groß ausfällt (auf jeden Fall
+größer als die oben abgeschätzten \SI{1}{\percent}) spielt die
 Abweichung, welche aus innerhalb des σ-Bereichs anders gewählten Konstanten
 herrührt, eine zu vernachlässigende Rolle. Stets dominiert der Fehler aus dem Fit.
 

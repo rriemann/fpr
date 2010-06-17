@@ -22,9 +22,9 @@ mal durchgeführt. Die Zeitdifferenzen $t_i$ sind in \tref{diff} dargestellt.
 
 \begin{table}[htbp]
 \centering
-% \setlength{\tabcolsep}{14pt}
+\setlength{\tabcolsep}{1.3pt}
 \begin{tabular*}{0.95\columnwidth}{%
-S[tabformat=1.2]%
+S[tabformat=1.3]%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
@@ -39,7 +39,7 @@ S[tabformat=2.1]%
 3,36 & 4,24 & 0,880 & 8,56 & 0,240 & 0,640 & 24,2\\
 \bottomrule
 \end{tabular*}
-\caption{Messwerte der Verzögerungszeiten (angegeben in ns)}
+\caption{Messung der Verzögerungszeiten in \si{\nano\second}}
 \label{tab:diff}
 \end{table}
 
@@ -173,7 +173,7 @@ konnte.
 
 Schließlich sollten die Raten untersucht werden, die sich ergeben, wenn man
 verlangt, dass bestimmte Kombinationen von Szintillatoren gleichzeitig
-ansprechen. Dies ist auch für die nachfolgenden Versuchsteile von Bedeutung, da
+ansprechen. Dies ist auch für die nachfolgenden Aufgaben von Bedeutung, da
 die Selektion der Myonenereignisse über solche Kombinationen erfolgt. Auch hier
 haben wir für jede Kombination acht Messwerte aufgenommen, deren Mittelwerte
 und statistische Fehler in \tref{sc_kombinationen} aufgeführt sind.
@@ -198,7 +198,7 @@ Szintillationszählern $SC_i$}
 
 Da hier (abgesehen vom letzten Fall) schon wesentlich stärkere Kriterien erfüllt
 werden mussten, sinkt die Zahl der gemessenen Ereignisse deutlich ab. Aus
-diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen,
+diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen
 und dann durch diese Zeit dividiert, um die angegebene Rate zu erhalten. Daher
 ist hier die statistische Unsicherheit kleiner als die Wurzel des Mittelwerts.
 An dieser Stelle kann man eine Betrachtung von Hintergrund und Signal
@@ -237,7 +237,7 @@ Szintillator detektierten sind, weil diese Forderung nur Teilchen zulässt, die
 sehr schnell sind und in eine geeignete Richtung fliegen. Der Faktor zwei ist
 darüber also nicht erklärbar. Man muss also davon ausgehen, dass bei der
 Messung ein Fehler unterlaufen ist, sodass dieses eine Ergebnis nicht zur
-Einschätzung der Hintergrundrate verwendbar ist.
+Einschätzung der Hintergrundrate verwendet werden kann.
 
 \subsection{Signalbetrachtung}
 Zu allen im vorigen Abschnitt betrachteten Kombinationen von Photomultipliern
@@ -323,10 +323,26 @@ Die Myonen-Lebensdauer wurde in diesem Experiment durch die Messung einzelner
 Zerfalls-Zeiten bestimmt. Dies wurde mit einem Zeit-Spannungs-Wandler (TAC) und
 einem Multi-Kanal-Analysierer (MCA) experimentell umgesetzt. Da der MCA jedoch
 nur Kanäle misst und nicht direkt die einzelnen Zeitdifferenzen, ist eine
-Eichung notwendig. Mittels eines speziellen Zeituhr-Moduls war es möglich
+Eichung notwendig. Mittels eines speziellen Zeitgeber-Moduls war es möglich
 zeitlich verzögerte Signale variabler Länge zu produzieren, deren Dauer mit dem
-Oszilloskop kontrolliert werden konnte. Das mit der Schaltung in
-\fref{zeit_schaltung} aufgenommene Histogramm ist in \fref{eichung} dargestellt.
+Oszilloskop kontrolliert werden konnte.
+
+Um zu verstehen, wie das TAC funktioniert, haben wir die Konvertierung mit einer
+fixierten Zeitverzögerung von \SI{4}{\micro\second} überprüft. Dafür haben wir den
+TAC auf einem Messbereich von \SI{0}{\micro\second} bis \SI{20}{\micro\second}
+eingestellt. Bei einer maximalen Ausgangsspannung von \SI{10}{\volt} erwarten wir
+eine gemessene Spannung von \SI{2}{\volt}, was gut zu unserem Ergebnis in \fref{tac}
+passt.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\columnwidth,keepaspectratio=true]{tac.png}
+  \caption{Puls variabler Länger, der mittels des Zeitgeber-Moduls generiert wurde}
+  \label{fig:tac}
+\end{figure}
+
+
+Das mit der Schaltung in \fref{zeit_schaltung} aufgenommene Histogramm ist in \fref{eichung} dargestellt.
 
 Zur Eichung wurden nun die einzelnen in \tref{eichung_zeiten} notierten Zeiten
 über dem jeweiligen Kanal abgetragen. Dies wurde automatisch durchgeführt unter
@@ -456,9 +472,19 @@ Hierbei wird die Anzahl der Einträge pro Bin mit $N$, die μ-Halbwertszeit mit
 $τ_μ$, das Verhältnis zwischen positiv und negativen Myonen
 $f = \SI{1.270(3)}{\micro\second}$ und die Halbwertszeit des myonischen Atoms
 bis zum Kerneinfang des Myons mit $τ_c = \SI{2.1(1)}{\micro\second}$ bezeichnet.
-Es wurde versucht den Hintergrund mit einer möglichst einfachen Theorie
+Es wurde versucht den Untergrund mit einer möglichst einfachen Theorie
 (linearer Verlauf) zu beschreiben. Da nur zwei freie Parameter verwendet wurden,
-wird der Wert $\chi^2/\mbox{dof}$ klein gehalten.
+wird der Wert $\chi^2/\mbox{DoF}$ klein gehalten.
+
+Die lineare Modellierung des Hintergrunds kann folgendermaßen motiviert werden:
+\begin{itemize}
+ \item Der konstante Anteil entspricht einem gewissen Grundniveau, welches aus
+       z.B. zufälligen Koinzidenzen resultiert.
+ \item Weiterhin ist es mit größerwerdenden Zeitdauern unwahrscheinlicher, dass bis
+       dahin noch kein Untergrundereignis auftrat. Der Untergrund nimmt also mit
+       fortschreitender Zeit tendenziell ab.
+\end{itemize}
+
 
 \begin{equation}
   N(t) = N_0 e^{-t/τ_μ}\left(1+\frac{1}{f}e^{-t/τ_c}\right) + \underbrace{N+t\cdot N1}_{\mbox{Untergrund}}
@@ -516,7 +542,7 @@ N1 in \si{\per\micro\second}  & 0 & -6±2\\
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=\columnwidth,keepaspectratio=true]{messung}
-  \caption{Langzeitmessung der μ-Zerfälle mit Hilfe der in}
+  \caption{Langzeitmessung der μ-Zerfälle mit Hilfe der in \fref{muon_schaltung} dargestellten Schaltung}
   \label{fig:messung}
 \end{figure}
 
@@ -532,6 +558,9 @@ Das Ergebnis für die mittlere Lebensdauer der Myonen ist demnach:
  τ_μ = \uuline{\SI{2.1(2)}{\micro\second}}
  \label{eqn:ergebnis}
 \end{equation}
+
+Der Parameter χ/DoF liegt bei $1.20$ und damit sehr nahe bei 1. Der Fit liefert
+also ein zufriedenstellendes Ergebnis
 
 \subsection{Systematik}
 
@@ -593,7 +622,7 @@ Daraus folgt für den Student-Faktor ein Wert von:
  t \approx 13
 \end{equation}
 
-Für den Fit wurden rund 60 Punkte (Bins) verwendet. Das legt die Anzahl der Freiheitsgrade
+Für den Fit wurden rund 45 Punkte (Bins) verwendet. Das legt die Anzahl der Freiheitsgrade
 fest, ad die Anzahl der Parameter dem gegenüber vernachlässigt werden kann.
 Aus \cite{student} geht hervor, dass das Konfidenzniveau so nahe an \SI{100}{\percent}
 liegt, dass es davon nicht mehr numerisch unterschieden werden kann.

@@ -1,0 +1,8 @@
+b : 1.5$	/*mm*/
+d : 0.16$	/*mm*/
+l : 1.65$	/*mm*/
+
+A : b*d;
+I : 1$		/*mA*/
+
+rho_vorfaktor : A/(I*l);	/*m/A*/

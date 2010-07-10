@@ -64,3 +64,46 @@ wobei der Fehler durch die vorher beschriebenen Kontakt- und Kabelwiderstände
 vernachlässigt werden kann, da diese wesentlich kleiner sind. Es muss aber
 erwähnt werden, dass dieses Ergebnis nur bei Zimmertemperatur gültig ist, da
 sich der Widerstand stark mit der Temperatur ändern wird.
+
+\subsection{Messung des temperaturabhängigen spezifischen Widerstands}
+Als erstes wurde nun bei eingeschaltetem Kryostaten, der die Temperatur
+kontinuierlich von anfänglich Zimmertemperatur auf schließlich ca.
+\SI{54,3}{\kelvin} absenkte und anschließend wieder auf Raumtemperatur
+aufheizte. Jegliche Messung, die während dieser Phase durchgeführt wurde, wurde
+mittels eines computergestützten Steuerungsprogramm ausgeführt. Damit dieses
+die Messgeräte korrekt ansteuern konnte, musste die \cite{script} entnommene
+\fref{Schaltung} aufgebauf werden.
+
+\begin{figure}[htb]
+ \centering
+ \includegraphics[page=6,viewport=70 395 525 705,clip,width=\columnwidth,keepaspectratio]{../docs/Anleitung_Hall.pdf}
+ \caption{Schaltung zur rechnergesteuerten Datennahme}
+ \label{fig:Schaltung}
+\end{figure}
+
+Um aus den aufgenommenen Messwerten den spezifischen Widerstand berechnen zu
+können, wird eine Umrechnungsformel benötigt. Der spezifische Widerstand ϱ ist
+wie folgt definiert:
+\begin{equation}
+ϱ = R\frac{A}{l} = \frac{A}{I\cdot l} U_ϱ
+\end{equation}
+Hierbei ist $U_ϱ$ der gemessene Spannungsabfall über der Probe (zwischen den
+Kontakten xxx und yyy), $A= b\cdot d$ ist der Querschnitt des Kristalls, l ist
+der Abstand zwischen den beiden Spannungsmesspunkten an der Probe. Die
+Probeneigenschaften $b, d, l$ können dem Messprotokoll im Anhang entnommen
+werden. Der maximale Strom ist mit \SI{1,0}{\milli\ampere} angegeben, und
+dieser Wert wurde auch von der Messapparatur automatisch nachgeregelt. Somit
+kann also über die Messung von $U_ϱ(T)$ der spezifische Widerstand in
+Abhängigkeit von der Temperatur angegeben werden. Das schließlich resultierende
+Diagramm ist in \fref{spezWS} dargestellt.
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/spezWS}
+   \caption{spezifischer Widerstand in Abhängigkeit von der inversen Temperatur}
+   \label{fig:spezWS}
+\end{figure}
+
+Wie man erkennen kann, existiert ein Maximum des spezifischen Widerstands. Bei
+Raumtemperatur und bei der minimalen Temperatur von ca. \SI{54}{\kelvin} sind
+die Widerstände wieder ähnlich groß.

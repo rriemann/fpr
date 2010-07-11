@@ -6,3 +6,7 @@ A : b*d;
 I : 1$		/*mA*/
 
 rho_vorfaktor : A/(I*l);	/*m/A*/
+
+B_8A : float((447+438)/2);
+
+R_H_vorfaktor : d/(I*B_8A);

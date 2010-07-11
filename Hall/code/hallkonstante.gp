@@ -25,4 +25,4 @@ set mxtics 5
 #set key box
 set nokey
 #set format x "10^{%L}"
-plot "../data/Daten.DAT" using (1/(100*($1))):(log(abs(3.6158192E-4*$3))) with points 
+plot "../data/Daten.DAT" using (1/(100*($1))):(log(abs(3.6158192E-4*$5))) with points 

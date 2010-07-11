@@ -1,8 +1,8 @@
 #!/usr/bin/gnuplot
 # kate: encoding utf8
-set terminal pdf enhanced solid 
+set terminal pdfcairo enhanced solid size 3,3 lw 2
 #set terminal postscript portrait enhanced solid color
-#set terminal pdf enhanced color
+#set terminal pdfcairo enhanced color
 set output "../tmp/spezWS.pdf"
 #set size ratio 0.71 #a4
 #set size 0.6
@@ -25,4 +25,4 @@ set mxtics 5
 #set key box
 set nokey
 #set format x "10^{%L}"
-plot "../data/Daten.DAT" using (1/(100*($1))):(log(0.1454545*$2)) with points 
+plot "../data/Daten.DAT" using (1/(100*($1))):(log(0.1454545*$2)) with lp pt 7 ps 0.4 lc 0

@@ -136,7 +136,16 @@ Im dargestellten Diagramm in \fref{spezWS} ist also der Bereich bei kleinen
 inversen Temperaturen (also bei großen Temperaturen) auf die Eigenleitung
 kombiniert mit der Störstellenleitung zurückzuführen, während bei kleinen
 Temperaturen (großen inversen Temperaturen) ausschließlich Störstellenleitung
-auftritt.
+auftritt. Bei steigender Temperatur, also im Bereich der Störstellenleitung,
+steigt zunächst der spezifische Widerstand, bis er einen Maximalwert erreicht.
+Bei noch weiter ansteigender Temperatur sinkt er dann monoton, bedingt durch die
+Eigenleitung. Anhand dieser Grafik kann man noch nicht besonders gut die Grenze
+zwischen den beiden Leitungstypen erkennen, aber man kann bereits vermuten,
+dass sie sich in der Nähe des Maximums (ungefähr bei $1/T =
+\SI{0,009}{\per\kelvin}$ \^{=} \SI{111}{\kelvin}) befinden wird. Eine genauere
+Untersuchung wird bei den folgenden Diagrammen durchgeführt.
+
+\subsection{Messung der temperaturabhängigen Hallkonstanten}
 
 Weiterhin war die Temperaturabhängigkeit der Hall-Konstante unseres Materials
 $R_H$ zu untersuchen. Gemäß \cite[Gl. (XIV.2)]{ibach} kann die Hall-Konstante
@@ -159,7 +168,22 @@ Temperaturabhängigkeit der Hallkonstanten dargestellt wird, wie es in
    \label{fig:hallkonstante}
 \end{figure}
 
-Interpretation...
+Die Hallkonstante ist in gewisser Weise ein Maß für die
+Ladungsträgerkonzentration $n$, was man an der folgenden, \cite{ibach}
+entnommenen Gleichung erkennen kann:
+\begin{equation}
+R_H = -\frac{1}{ne}
+\end{equation}
+Hierbei ist $e$ die Elementarladung.
+
+In der Grafik erkennt man den Vorzeichenwechsel am starken Absinken bei
+ungefähr $1/T \approx \SI{0.008}{\per\kelvin}$ \^{=} \SI{125}{\kelvin}, da in
+diesem Bereich kleine Werte der Hallkonstante vorliegen und somit der
+Lorarithmus gegen $-\infty$ geht, was aufgrund der nicht exakt null werdenden
+Hallkonstante nicht der Fall ist, aber dennoch wird hier deutlich das globale
+Minimum eingenommen. 
+
+\subsection{Weitere elektronische Eigenschaften der Probe}
 
 Schließlich sollte ein weiteres Diagramm angefertigt werden, in dem
 $\ln\{R_H(T/300)^{3/2}\}$ als Funktion von $1/T$ dargestellt ist. Dieses

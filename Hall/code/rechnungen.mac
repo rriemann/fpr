@@ -51,3 +51,8 @@ rho_77K : rho_vorfaktor * U_H_77K;
 
 mu_77K : R_H_77/rho_77K;
 anstieg : (-2.72+2.55)/(0.2);
+
+m_e : 9.10938215e-31$
+e : 1.602176487e-19$
+
+tau : mu_77K*m_e/e;

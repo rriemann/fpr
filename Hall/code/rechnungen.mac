@@ -56,3 +56,10 @@ m_e : 9.10938215e-31$
 e : 1.602176487e-19$
 
 tau : mu_77K*m_e/e;
+
+/* anzahl der atome in einem kubikmeter */
+dichte : 5000$   /*kilo/m^3*/
+N_A : 6.022e23$
+m_M_Te : 123000$
+
+N_atome : N_A*1/20.46*1e6;

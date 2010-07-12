@@ -3,7 +3,7 @@
 set terminal pdfcairo enhanced solid size 3,3 lw 2
 #set terminal postscript portrait enhanced solid color
 #set terminal pdfcairo enhanced color
-set output "../tmp/hallkonstante2.pdf"
+set output "../tmp/beweglichkeit.pdf"
 #set size ratio 0.71 #a4
 #set size 0.6
 set size ratio 1
@@ -11,8 +11,8 @@ set size ratio 1
 set encoding iso_8859_1
 #set title ""
 set xlabel "{/Symbol b}{/Symbol g}" enhanced
-set xlabel "1/T in K^{-1}"
-set ylabel "R_H in Ω"
+set xlabel "ln (T K^{-1})"
+set ylabel "ln μ(T)"
 #set logscale x
 #set logscale y
 #set xtics 5
@@ -28,4 +28,6 @@ set nokey
 set xtics 0.003
 set mxtics 3
 set grid xtics ytics 
-plot [0.003:0.019] "../data/Daten.DAT" using (1/(100*($1))):(((0.3661327231121282*($3-$5)/2))) with lp pt 7 ps 0.3 lc 0
+set tmargin 0
+set rmargin 0.0
+plot "../data/Daten.DAT" using (log(abs(1/(100*($1))))):(log(abs(0.3661327231121282*($3-$5)/2/(4*($2-$4)/55)))) with lp pt 7 ps 0.3 lc 0

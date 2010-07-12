@@ -29,8 +29,8 @@ set key box
 set grid xtics ytics 
 set output "../tmp/Eg_rho_00.pdf"
 fit m*x + n  "../data/Eg_00.dat" using (1/$1):(log(4*($2-$4)/55))  via m, n
-plot "../data/Eg_00.dat" using (1/$1):(log(4*($2-$4)/55)) with p pt 7 ps 0.3 lc 0 title "ln ρ/(Ωm)", m*x + n lc 1 title "Fit"
+plot "../data/Eg_00.dat" using (1/(100*$1)):(log(4*($2-$4)/55)) with p pt 7 ps 0.3 lc 0 title "ln ρ/(Ωm)", m*x + n lc 1 title "Fit"
 
 set output "../tmp/Eg_rho_01.pdf"
 fit m*x + n  "../data/Eg_01.dat" using (1/$1):(log(4*($2-$4)/55))  via m, n
-plot "../data/Eg_01.dat" using (1/$1):(log(4*($2-$4)/55)) with p pt 7 ps 0.3 lc 0 title "ln ρ/(Ωm)", m*x + n lc 1 title "Fit"
+plot "../data/Eg_01.dat" using (1/(100*$1)):(log(4*($2-$4)/55)) with p pt 7 ps 0.3 lc 0 title "ln ρ/(Ωm)", m*x + n lc 1 title "Fit"

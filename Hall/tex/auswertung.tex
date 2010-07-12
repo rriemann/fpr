@@ -113,7 +113,7 @@ die Messgeräte korrekt ansteuern konnte, musste die dem \cite{script} entnommen
 
 Um aus den aufgenommenen Messwerten den spezifischen Widerstand berechnen zu
 können, wird eine Umrechnungsformel benötigt. Der spezifische Widerstand ρ ist
-wie folgt definiert:
+nach \cite[Gl. (12.30)]{ibach}wie folgt definiert:
 \begin{equation}
 ρ = R\frac{A}{l} = \frac{A}{I\cdot l} U_ρ
 \label{eqn:rho}
@@ -390,9 +390,15 @@ sind im Anhang \ref{sec:fits} zu finden.
 \begin{table}[htbp]
 \centering
 \setlength{\tabcolsep}{5pt}
-\begin{tabular*}{\columnwidth}{lS[table-format = 2.2,table-figures-uncertainty = 1]S[table-format = 1.2,table-figures-uncertainty = 1]}
+\begin{tabular*}{\columnwidth}{%
+S[tabformat=1.3]%
+S[tabformat=1.2]%
+S[tabformat=1.2]%
+}%{lS[table-format =
+%2.2,table-figures-uncertainty = 1]S[table-format =
+%1.2,table-figures-uncertainty = 1]}
 \toprule
-& {Abkühl-Phase} & {Aufwärm-Phase} \\
+{} & {Abkühl-Phase} & {Aufwärm-Phase} \\
 \midrule
 aus ρ in \si{\electronvolt} & 9.70(9) & 10.62(9) \\
 aus $R_H$ in \si{\electronvolt} & 1.0(1) & 10.09(3) \\

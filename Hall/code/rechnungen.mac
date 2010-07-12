@@ -33,3 +33,11 @@ Eg_R_H_01: 10.09$
 Eg_R_H_01_err: 0.03$
 norm: Eg_roh_00_err*(1/Eg_roh_00_err: 0.01+Eg_roh_01_err+Eg_R_H_00_err+Eg_R_H_01_err)$
 Eg_mittel: (Eg_roh_00*1 + Eg_roh_01*Eg_roh_00_err/Eg_roh_01_err + Eg_R_H_00*Eg_roh_00_err/Eg_roh_01_err + Eg_R_H_01*Eg_roh_00_err/Eg_roh_01_err)/norm;
+
+
+/* berechnung der beweglichkeit */
+U_H_77K : 2.1361E-01$
+rho_77K : rho_vorfaktor * U_H_77K;
+
+mu_77K : R_H_77/rho_77K;
+anstieg : (-2.72+2.55)/(0.2);

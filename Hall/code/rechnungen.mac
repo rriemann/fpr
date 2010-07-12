@@ -1,12 +1,13 @@
-b : 1.5$	/*mm*/
-d : 0.16$	/*mm*/
-l : 1.65$	/*mm*/
+b : 1.5e-3$	/*m*/
+d : 0.16e-3$	/*m*/
+l : 1.65e-3$	/*m*/
 
 A : b*d;
-I : 1$		/*mA*/
+I : 1e-3$		/*A*/
 
-rho_vorfaktor : A/(I*l);	/*m/A*/
+rho_vorfaktor : A/(I*l);
 
-B_8A : float((447+438)/2);
+/* B_8A : float((447+438)/2); */
+B_8A : 437e-3;
 
 R_H_vorfaktor : d/(I*B_8A);

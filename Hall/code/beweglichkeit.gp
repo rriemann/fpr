@@ -11,12 +11,12 @@ set size ratio 1
 set encoding iso_8859_1
 #set title ""
 set xlabel "{/Symbol b}{/Symbol g}" enhanced
-set xlabel "ln (T K^{-1})"
+set xlabel "ln (T / K)"
 set ylabel "ln μ(T)"
 #set logscale x
 #set logscale y
 #set xtics 5
-set mxtics 5
+#set mxtics 5
 #set ytics 0.5
 #set mytics 4
 #set grid xtics ytics mxtics mytics
@@ -25,9 +25,9 @@ set mxtics 5
 #set key box
 set nokey
 #set format x "10^{%L}"
-set xtics 0.003
+set xtics 0.2
 set mxtics 3
 set grid xtics ytics 
-set tmargin 0
-set rmargin 0.0
+#set tmargin 0
+#set rmargin 0.0
 plot "../data/Daten.DAT" using (log(abs(1/(100*($1))))):(log(abs(0.3661327231121282*($3-$5)/2/(4*($2-$4)/55)))) with lp pt 7 ps 0.3 lc 0

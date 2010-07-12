@@ -348,7 +348,20 @@ Setzt man dies nun in obige Gleichung ein, so lässt sich $n$ berechnen.
  n = \SI{-3,49(2)e21}{\per\meter\cubed}
 \end{equation*}
 
+\subsection{Messung der Ladungsträgerbeweglichkeit}
 
+Die Beweglichkeit μ von Ladungsträgern lässt sich wie folgt berechnen:
+\begin{equation}
+μ = \frac{1}{neϱ}
+\end{equation}
+Hierbei ist ϱ der spezifische Widerstand, der in den vorigen Abschnitten
+bereits eingeführt wurde. Wenn man noch eine andere Variante wählt, die
+Hallkonstante anzugeben, so vereinfacht sich diese Gleichung noch weiter.
+\begin{eqnarray}
+R_H &=& -\frac{1}{ne} = \frac{1}{pe}\\
+\rightarrow μ &=& \frac{R_H}{ϱ}
+\end{eqnarray}
+Dies ist der Zusammenhang, der in \fref{beweglichkeit} dargestellt wurde.
 
 \begin{figure}[htb]
    \centering
@@ -356,3 +369,11 @@ Setzt man dies nun in obige Gleichung ein, so lässt sich $n$ berechnen.
    \caption{$\ln μ$ in Abhängigkeit vom Logarithmus der Temperatur $\ln T$}
    \label{fig:beweglichkeit}
 \end{figure}
+
+Wenn man einen Wert für die Beweglichkeit im Bereich der Störstellenerschöpfung
+(bei ca. \SI{77}{\kelvin}) berechnet, so ergibt sich der folgende Wert:
+\begin{eqnarray}
+μ &=& \frac{R_H(\SI{77}{\kelvin})}{ϱ(\SI{77}{\kelvin})} =
+\frac{\SI{1,79e-3}{\meter\cubed\per\coulomb}}{111}\\
+&=& 
+\end{eqnarray}

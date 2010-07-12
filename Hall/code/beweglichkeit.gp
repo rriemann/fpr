@@ -30,4 +30,4 @@ set mxtics 3
 set grid xtics ytics 
 #set tmargin 0
 #set rmargin 0.0
-plot "../data/Daten.DAT" using (log(abs(1/(100*($1))))):(log(abs(0.3661327231121282*($3-$5)/2/(4*($2-$4)/55)))) with lp pt 7 ps 0.3 lc 0
+plot "../data/Daten.DAT" using (log(abs(100*($1)))):(log(abs(0.3661327231121282*($3-$5)/2/(4*($2-$4)/55)))) with lp pt 7 ps 0.3 lc 0

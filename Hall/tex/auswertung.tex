@@ -347,6 +347,8 @@ Setzt man dies nun in obige Gleichung ein, so lässt sich $n$ berechnen.
 \begin{equation*}
  n = \SI{-3,49(2)e21}{\per\meter\cubed}
 \end{equation*}
+% darauf eingehen, ob das viel oder wenig ist, indem man mit ner beispieldichte
+% von vllt 5g/cm^3 die zahl der atome ausrechnet
 
 \subsection{Messung der Bandlücke}
 
@@ -427,6 +429,55 @@ Wenn man einen Wert für die Beweglichkeit im Bereich der Störstellenerschöpfu
 (bei ca. \SI{77}{\kelvin}) berechnet, so ergibt sich der folgende Wert:
 \begin{eqnarray}
 μ &=& \frac{R_H(\SI{77}{\kelvin})}{ϱ(\SI{77}{\kelvin})} =
-\frac{\SI{1,79e-3}{\meter\cubed\per\coulomb}}{111}\\
-&=& 
+\frac{\SI{1,79e-3}{\meter\cubed\per\coulomb}}{\SI{0.03107}{\ohm\meter}}\\
+&=& \SI{0.058}{\meter\squared\per\volt\per\second}
 \end{eqnarray}
+Die Beweglichkeit der Ladungsträger beträgt also in der Nähe der
+Störstellenerschöpfung ungefähr den oben angegebenen Wert. Bei einer Feldstärke
+von \SI{1}{\volt\per\meter} bewegen sich die Teilchen also im Mittel in jeder
+Sekunde \SI{1}{\meter} weit.
+
+In diesem konkreten Fall ist besonders der Bereich um die
+Störstellenerschöpfung interessant. In \fref{beweglichkeit_ausschnitt} ist nur
+der Teil der Temperaturachse dargestellt, der sich in diesem Bereich befindet.
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/beweglichkeit_ausschnitt}
+   \caption{$\ln μ$ in Abhängigkeit vom Logarithmus der Temperatur $\ln T$ im Bereich der Störstellenerschöpfung}
+   \label{fig:beweglichkeit_ausschnitt}
+\end{figure}
+
+Wie man erkennen kann, handelt es sich in dieser doppeltlogarithmischen
+Darstellung annähernd um eine Gerade, also existiert zwischen der Temperatur
+und der Beweglichkeit ein Potenzgesetz als Zusammenhang. Der Anstieg dieser
+Geraden liegt vom Betrage her ungefähr bei -0,850.
+
+Um daraus eine Information gewinnen zu können, muss man sich überlegen, welche
+Prozesse die Beweglichkeit beeinflussen. Zum einen können die Ladungsträger mit
+akustischen Phononen wechselwirken bzw. streuen. Für diesen Prozess lautet der
+Zusammenhang wie folgt:
+\begin{equation}
+μ \propto T^{-\frac{3}{2}}
+\end{equation}
+Weiterhin können sie auch an optischen Phononen streuen, wobei der Zusammenhang
+hier folgendermaßen aussieht:
+\begin{equation}
+μ \propto T^{\frac{1}{2}}
+\end{equation}
+Schließlich können sie auch mit ionisierten Fremdatomen wechselwirken, und hier
+existiert die folgende Proportionalität:
+\begin{equation}
+μ \propto T^{\frac{3}{2}}
+\end{equation}
+Jeder dieser Prozesse sorgt nun für eine eigene Beweglichkeit, und um die im
+Experiment messbare daraus zu kombinieren, kann man folgende Gleichung
+verwenden:
+\begin{equation}
+μ^{-1} = \sum_i μ_i^{-1}
+\end{equation}
+In unserem wurde also ein Potenzgesetz mit negativem Exponenten ermittelt, was
+den Schluss nahelegt, dass hier die Streuung an akustischen Phononen der
+dominante Prozess ist, der die Beweglichkeit bestimmt. Allerdings haben auch
+die anderen Streumechanismen schon einen Einfluss, wobei es hier noch nicht
+möglich ist, zu sagen, welcher der beiden anderen der wichtigere ist.

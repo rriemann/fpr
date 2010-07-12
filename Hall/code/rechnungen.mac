@@ -44,3 +44,10 @@ Eg: m_mittel*2*k_B; /* in eV */
 print("Eg_err")$
 Eg_err:  m_mittel_err*2*k_B, numer; /* in eV */
 
+
+/* berechnung der beweglichkeit */
+U_H_77K : 2.1361E-01$
+rho_77K : rho_vorfaktor * U_H_77K;
+
+mu_77K : R_H_77/rho_77K;
+anstieg : (-2.72+2.55)/(0.2);

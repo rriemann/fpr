@@ -64,6 +64,14 @@ erwähnt werden, dass dieses Ergebnis nur bei Zimmertemperatur gültig ist, da
 sich der Widerstand stark mit der Temperatur ändern wird.
 
 \subsection{Messung des temperaturabhängigen spezifischen Widerstands}
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=1\columnwidth,keepaspectratio]{../tmp/temperatur}
+   \caption{Temperatur $T$ in K in Abhängigkeit der Zeit}
+   \label{fig:temp}
+\end{figure}
+
 Als erstes wurde nun bei eingeschaltetem Kryostaten, der die Temperatur
 kontinuierlich von anfänglich Zimmertemperatur auf schließlich ca.
 \SI{54,3}{\kelvin} absenkte und anschließend wieder auf Raumtemperatur
@@ -84,14 +92,18 @@ können, wird eine Umrechnungsformel benötigt. Der spezifische Widerstand ρ is
 wie folgt definiert:
 \begin{equation}
 ρ = R\frac{A}{l} = \frac{A}{I\cdot l} U_ρ
+\label{eqn:rho}
 \end{equation}
-Hierbei ist $U_ρ$ der gemessene Spannungsabfall über der Probe (zwischen den
-Kontakten 3 und 4), $A= b\cdot d$ ist der Querschnitt des Kristalls, $l$ ist
-der Abstand zwischen den beiden Spannungsmesspunkten an der Probe. Die
-Probeneigenschaften $b, d, l$ können dem Messprotokoll im Anhang entnommen
-werden. Der maximale Strom ist mit \SI{1,0}{\milli\ampere} angegeben, und
-dieser Wert wurde auch von der Messapparatur automatisch nachgeregelt. Somit
-kann also über die Messung von $U_ρ(T)$ der spezifische Widerstand in
+Hierbei ist $U_ρ$ der gemessene Spannungsabfall über den Kontakten 3 und 4 der Probe,
+$A= b\cdot d$ der Querschnitt des Kristalls, und $l$ der Abstand zwischen den
+beiden Spannungsmesspunkten an der Probe. Die Probeneigenschaften $b, d, l$ können
+der \tref{daten} im Anhang unter Proben-Nr. 2 entnommen werden.
+Der maximale Strom ist mit
+\begin{equation}
+ I = \SI{1,0}{\milli\ampere} 
+\end{equation}
+angegeben, und dieser Wert wurde auch von der Messapparatur automatisch nachgeregelt.
+Somit kann also über die Messung von $U_ρ(T)$ und \eref{rho} der spezifische Widerstand in
 Abhängigkeit von der Temperatur angegeben werden. Das schließlich resultierende
 Diagramm ist in \fref{spezWS} dargestellt.
 
@@ -102,10 +114,19 @@ Diagramm ist in \fref{spezWS} dargestellt.
    \label{fig:spezWS}
 \end{figure}
 
-Die Einheit von ρ ist hierbei \SI{1}{\ohm\meter}.
-Wie man erkennen kann, existiert ein Maximum des spezifischen Widerstands. Bei
-Raumtemperatur und bei der minimalen Temperatur von ca. \SI{54}{\kelvin} sind
-die Widerstände wieder ähnlich groß.
+% Die Einheit von ρ ist hierbei \SI{1}{\ohm\meter}.
+Wie man erkennen kann, existiert ein Maximum des spezifischen Widerstands.
+Außerdem ist ersichtlich, dass sich $ρ$ für kleine $T$, also große $T^{-1}$,
+weniger stark ändert, als für große $T$.
+Der Graph von ρ lässt sich in zwei
+näherungsweise lineare Abschnitte einteilen. Für kleine $T^{-1}$ ist wächst ρ
+exponentiell, um schließlich für große $T^{-1}$ exponentiell schwach zu fallen.
+% Bei Raumtemperatur und bei der minimalen Temperatur von ca. \SI{54}{\kelvin} sind
+% die Widerstände wieder ähnlich groß.
+
+Es sind hierbei pro Temperaturwert $T$ jeweils zwei Werte für ρ angegeben, da $U_ρ(T)$
+einmal beim Abkühlen und dann nochmal beim Aufwärmen für $T$ gemessen werden konnte.
+Dies lässt sich auch gut in \fref{temp} erkennen.
 
 In diesem wie auch in den folgenden Diagrammen waren nun die Gebiete der
 Störstellenleitung sowie der Eigenleitung zu identifizieren. Bei der
@@ -136,13 +157,17 @@ Im dargestellten Diagramm in \fref{spezWS} ist also der Bereich bei kleinen
 inversen Temperaturen (also bei großen Temperaturen) auf die Eigenleitung
 kombiniert mit der Störstellenleitung zurückzuführen, während bei kleinen
 Temperaturen (großen inversen Temperaturen) ausschließlich Störstellenleitung
-auftritt. Bei steigender Temperatur, also im Bereich der Störstellenleitung,
-steigt zunächst der spezifische Widerstand, bis er einen Maximalwert erreicht.
-Bei noch weiter ansteigender Temperatur sinkt er dann monoton, bedingt durch die
-Eigenleitung. Anhand dieser Grafik kann man noch nicht besonders gut die Grenze
-zwischen den beiden Leitungstypen erkennen, aber man kann bereits vermuten,
-dass sie sich in der Nähe des Maximums (ungefähr bei $1/T =
-\SI{0,009}{\per\kelvin}$ \^{=} \SI{111}{\kelvin}) befinden wird. Eine genauere
+auftritt. Man kann der Abb. also entnehmen, dass für kleine Temperaturen,
+bei dem es nur Störstellenleitung und keine Eigenleitung gibt, der spezifische
+Widerstand hoch ist und für steigende Temperaturen zunächst leicht zunimmt, um
+dann schließlich bei ungefähr bei $T^{-1} = \SI{0,009}{\per\kelvin}$ also bei \SI{111}{\kelvin}
+abzufallen.
+
+% Bei steigender Temperatur, also im Bereich der Störstellenleitung,
+% steigt zunächst der spezifische Widerstand, bis er einen Maximalwert erreicht.
+% Bei noch weiter ansteigender Temperatur sinkt er dann monoton, bedingt durch die Eigenleitung.
+Anhand dieser Grafik kann man jedoch noch nicht besonders gut die Grenze
+zwischen den beiden Leitungstypen erkennen. Eine genauere
 Untersuchung wird bei den folgenden Diagrammen durchgeführt.
 
 \subsection{Messung der temperaturabhängigen Hallkonstanten}

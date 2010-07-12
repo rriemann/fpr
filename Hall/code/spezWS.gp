@@ -29,4 +29,4 @@ set tmargin 0.0
 set rmargin 0.2
 set lmargin 8
 set bmargin 2.5
-plot [0.003:0.019]"../data/Daten.DAT" using (1/(100*($1))):(log(0.1454545*($2-$4)/2)) with p pt 7 ps 0.2 lc 0
+plot [0.003:0.019]"../data/Daten.DAT" using (1/(100*($1))):(log(4*($2-$4)/55)) with p pt 7 ps 0.2 lc 0

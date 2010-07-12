@@ -25,4 +25,7 @@ set mxtics 5
 #set key box
 set nokey
 #set format x "10^{%L}"
-plot "../data/Daten.DAT" using (1/(100*($1))):(log(abs(3.6158192E-4*$5))) with lp pt 7 ps 0.4 lc 0
+set xtics 0.003
+set mxtics 3
+set grid xtics ytics 
+plot [0.003:0.019] "../data/Daten.DAT" using (1/(100*($1))):(log((3.6158192E-4*($3-$5)/2))) with lp pt 7 ps 0.3 lc 0

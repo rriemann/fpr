@@ -11,3 +11,11 @@ rho_vorfaktor : A/(I*l);
 B_8A : 437e-3;
 
 R_H_vorfaktor : d/(I*B_8A);
+
+/* berechnung der ladungsträgerdichte */
+
+R_H_77: 1.79e-3$
+R_H_77_err: 0.01e-3$
+e: 1.602176487e-19$
+n: -1/(R_H_77*e), numer;
+n_err: -1/(R_H_77**2*e)*R_H_77_err;

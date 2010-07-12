@@ -288,12 +288,13 @@ Temperatur}
 In der Grafik erkennt man den Vorzeichenwechsel am starken Absinken bei
 ungefähr $1/T \approx \SI{0.008}{\per\kelvin}$ \^{=} \SI{125}{\kelvin}, da in
 diesem Bereich kleine Werte der Hallkonstante vorliegen und somit der
-Lorarithmus gegen $-\infty$ geht, was aufgrund der nicht exakt null werdenden
+Logarithmus gegen $-\infty$ geht, was aufgrund der nicht exakt null werdenden
 Hallkonstante nicht der Fall ist, aber dennoch wird hier deutlich das globale
-Minimum eingenommen. 
+Minimum eingenommen. Der Vorzeichenwechsel ist ebenso auch in der nicht logarithmischen
+\fref{hallkonstante2} zu erkennen.
 
-Aus der Tatsache, dass es sich um einen Vorzeichenwechsel handelt (s.
-\fref{hallkonstante2}), kann man gemäß \eref{hallkonst} schließen, dass es einen
+Aus der Tatsache, dass es sich um einen Vorzeichenwechsel handelt,
+kann man gemäß \eref{hallkonst} schließen, dass es einen
 Übergang gibt, bei dem der eine Ladungsträgertyp allmählich durch den anderen
 als dominanter Ladungsträger abgelöst wird. In unserem Fall hat die
 Hallkonstante bei kleinen Temperaturen ein positives Vorzeichen, woraus
@@ -321,6 +322,26 @@ Wie man sehen kann, ähnelt dieses Diagramm stark demjenigen, das in
 \fref{hallkonstante} dargestellt ist. Einzig bei sehr kleinen Temperaturen,
 also großen inversen Temperaturen, fällt in diesem Diagramm der Ast etwas
 stärker ab als im vorigen Diagramm.
+
+\subsection{Messung der Ladungsträgerkonzentrationen}
+
+Im folgenden soll nun die Ladungsträgerkonzentrationen $n$ bei einer Temperatur von
+$T = \SI{77}{\kelvin}$ bestimmt werden. Hiefür gehen wir von \eref{hallkonst} aus
+und erhalten:
+\begin{equation}
+ n = -\frac{1}{R_H e}
+\end{equation}
+Die Hallkonstante für die entsprechende Temperatur lässt sich der \fref{fig:hallkonstante2}
+entnehmen. Bei Mittelung über beide Werte der Konstante erhält man:
+\begin{equation*}
+ R_H(\SI{77}{\kelvin}) = \SI{1,79(1)e-3}{\meter\cubed\per\coulomb}
+\end{equation*}
+Setzt man dies nun in obige Gleichung ein, so lässt sich $n$ berechnen.
+\begin{equation*}
+ n = \SI{-3,49(2)e21}{\per\meter\cubed}
+\end{equation*}
+
+
 
 \begin{figure}[htb]
    \centering

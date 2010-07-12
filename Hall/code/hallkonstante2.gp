@@ -12,7 +12,7 @@ set encoding iso_8859_1
 #set title ""
 set xlabel "{/Symbol b}{/Symbol g}" enhanced
 set xlabel "1/T in K^{-1}"
-set ylabel "R_H in Ω"
+set ylabel "R_H in m^3 C^{-1}"
 #set logscale x
 #set logscale y
 #set xtics 5

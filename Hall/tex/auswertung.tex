@@ -13,7 +13,8 @@ der letzten angegebenen Nachkommastelle, also ist dieser Fehler hier $\pm
 
 Da wir nun eine Möglichkeit hatten, Magnetfelder zu messen, wurde als Nächstes
 das bei verschiedenen Stromstärken resultierende Magnetfeld untersucht. Dafür
-wurde das Magnetfeld in \SI{1}{\ampere}"~Schritten von \SI{0}{\ampere} bis etwa \SI{10,8}{\ampere} bzw.
+wurde das Magnetfeld in \SI{1}{\ampere}"~Schritten von \SI{0}{\ampere} bis etwa
+\SI{10,8}{\ampere} bzw.
 \SI{-10,8}{\ampere} verändert und das jeweils
 zugehörige Magnetfeld wurde als Messwert aufgenommen. Um den Einfluss von
 Hysterese-Effekten zu untersuchen, wurde immer von kleinen zu großen
@@ -197,12 +198,23 @@ erstellt werden, in dem die Temperaturabhängigkeit der Hallkonstante dargestell
 \end{figure}
 
 Die Hallkonstante ist in gewisser Weise ein Maß für die
-Ladungsträgerkonzentration $n$, was man an der folgenden, dem \cite{ibach}
-entnommenen Gleichung erkennen kann:
+Ladungsträgerkonzentrationen $n$ und $p$, was man an der folgenden, \cite[Gl.
+XIV.5]{ibach} entnommenen Gleichung erkennen kann:
+\begin{equation}
+R_H = \frac{pμ_p^2-nμ_n^2}{e(pμ_p+nμ_n)^2}
+\end{equation}
+Diese Gleichung ist für beide Leitungstypen gültig. Im Falle der
+Störstellenleitung ist aber, abhängig davon, ob es sich bei den Störstellen um
+Akzeptoren oder Donatoren handelt, eine der Konzentrationen gleich null, sodass
+sich diese Gleichung zu der folgenden vereinfacht:
 \begin{equation}
 R_H = -\frac{1}{ne}
 \end{equation}
-Hierbei ist $e$ die Elementarladung.
+Hierbei ist $e$ die Elementarladung. Das Vorzeichen der Hallkonstante sagt
+somit aus, um welchen Leitungstypen es sich bei den gegebenen Umständen wie
+der Temperatur handelt. Ein negatives Vorzeichen bedeutet, dass es sich
+hauptsächlich um Elektronen als Ladungsträger handelt, dass also ein
+n-Halbleiter vorliegt.
 
 Auch hier teilt sich die Kurve in die drei oben genannten Bereiche auf, nur
 dass man hier genauer den Bereich des Übergangs von der Störstellenleitung zur

@@ -64,6 +64,29 @@ vernachlässigt werden kann, da diese wesentlich kleiner sind. Es muss aber
 erwähnt werden, dass dieses Ergebnis nur bei Zimmertemperatur gültig ist, da
 sich der Widerstand stark mit der Temperatur ändern wird.
 
+\subsection{Messverfahren}
+
+Die automatisch Messapparatur misst pro Temperatur $T$ insgesamt sechs Spannung.
+Jene werden im \cite{script} näher erläutert. Man stellt fest, dass die
+Spanunng $U_H$ sowie auch $U_ρ$, deren Bedeutung noch erläutert wird, zweimal
+gemessen werden. Dies geschieht für beide möglichen, senkrechten Orientierungen
+des Magnetfeldes und wird durch eine Umkehrung des Spulenstroms $I$ erreicht.
+Bei der Umkehrung des Magnetfeldes kehren sich auch die beiden gemessenen Spannungen
+um, nicht jedoch aber die systematischen Verschiebungen, wie zum Beispiel der
+Thermospannung wegen ungleichmäßiger Kühlung oder etwaige Spannungsdifferenzen
+auf Grund der Geometrie der Halbleiterprobe.
+\begin{equation}
+ U_{\mbox{mess.}}^± = ± U + U_{\mbox{syst.}}
+\end{equation}
+Durch das zweimalige Messen der Spannungen bei verschieden orientiertem Magnetfeld lässt sich schließlich eine Spannung
+$U$ errechnen, die frei von diesen systematischen Fehlern ist.
+\begin{equation}
+ U = \frac{U_{\mbox{mess.}}^+ - U_{\mbox{mess.}}^-}{2}
+\end{equation}
+Dieses Prinzip wurde für alle aus den Messdaten entnommenen Spannungen angewendet.
+
+
+
 \subsection{Messung des temperaturabhängigen spezifischen Widerstands}
 
 \begin{figure}[htb]

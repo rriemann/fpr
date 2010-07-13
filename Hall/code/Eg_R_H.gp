@@ -28,9 +28,9 @@ set key box
 #set mxtics 3
 set grid xtics ytics 
 set output "../tmp/Eg_R_H_00.pdf"
-fit m*x + n  "../data/Eg_00.dat" using (1/$1):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5)))  via m, n
-plot "../data/Eg_00.dat" using (1/$1):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5))) with p pt 7 ps 0.3 lc 0 title "ln T^{3/2}R_H m^3C^{-1}", m*x + n lc 1 title "Fit"
+fit m*x + n  "../data/Eg_00.dat" using (1/($1*100)):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5)))  via m, n
+plot "../data/Eg_00.dat" using (1/($1*100)):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5))) with p pt 7 ps 0.3 lc 0 title "ln T^{3/2}R_H m^3C^{-1}", m*x + n lc 1 title "Fit"
 
 set output "../tmp/Eg_R_H_01.pdf"
-fit m*x + n  "../data/Eg_01.dat" using (1/$1):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5)))  via m, n
-plot "../data/Eg_01.dat" using (1/$1):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5))) with p pt 7 ps 0.3 lc 0 title "ln T^{3/2}R_H m^3C^{-1}", m*x + n lc 1 title "Fit"
+fit m*x + n  "../data/Eg_01.dat" using (1/($1*100)):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5)))  via m, n
+plot "../data/Eg_01.dat" using (1/($1*100)):(log(abs(0.3661327231121282*($3-$5)/2)*(100*$1)**(1.5))) with p pt 7 ps 0.3 lc 0 title "ln T^{3/2}R_H m^3C^{-1}", m*x + n lc 1 title "Fit"

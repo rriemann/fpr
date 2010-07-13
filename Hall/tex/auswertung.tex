@@ -405,12 +405,12 @@ sind im Anhang \ref{sec:fits} zu finden.
 \centering
 \setlength{\tabcolsep}{5pt}
 \begin{tabular*}{\columnwidth}{%
-S[tabformat=1.3]%
-S[tabformat=1.2]%
-S[tabformat=1.2]%
-}%{lS[table-format =
-%4.0,table-figures-uncertainty = 1]S[table-format =
-%4.0,table-figures-uncertainty = 1]}
+l
+% S[tabformat=1.2]%
+% S[tabformat=1.2]%
+S[table-format =4.0,table-figures-uncertainty = 1]
+S[table-format =4.0,table-figures-uncertainty = 1]
+}
 \toprule
 {} & {Abkühl-Phase} & {Aufwärm-Phase} \\
 \midrule
@@ -425,7 +425,7 @@ aus $R_H$ in \si{\electronvolt} & 996(14) & 1009(3) \\
 Der Wert für die Bandlücke $E_g$ ergibt sich schließlich aus allen vier $m$-Werten durch
 das Bilden eines gewichteten Mittels.
 \begin{equation}
- E_g = \SI{0.1742(5)}{\electonvolt}
+ E_g = \SI{0.1742(5)}{\electronvolt}
 \end{equation}
 
 

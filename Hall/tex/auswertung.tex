@@ -244,6 +244,7 @@ Ladungsträgerkonzentrationen $n$ und $p$, was man an der folgenden, \cite[Gl.
 XIV.5]{ibach} entnommenen Gleichung erkennen kann:
 \begin{equation}
 R_H = \frac{pμ_p^2-nμ_n^2}{e(pμ_p+nμ_n)^2}
+\label{eqn:hallkonst_lang}
 \end{equation}
 Diese Gleichung ist für beide Leitungstypen gültig. Im Falle der
 Störstellenleitung ist aber, abhängig davon, ob es sich bei den Störstellen um
@@ -281,8 +282,8 @@ S[tabformat=1.2]%
 \toprule
 {Leitungsbereich} & {inv. Temp. T$^{-1}$ in [K$^{-1}$]}\\
 \midrule
-{Störstellenleitung} & {T$^{-1} > 0,009$}\\
-{Übergangsbereich} & {$0,007 \le$ T$^{-1} \le 0,009$}\\
+{Störstellenleitung} & {T$^{-1} > 0,01$}\\
+{Übergangsbereich} & {$0,007 \le$ T$^{-1} \le 0,01$}\\
 {Eigenleitung} & {T$^{-1} < 0,007$}\\
 \bottomrule
 \end{tabular*}
@@ -514,4 +515,62 @@ Relaxationszeit bei \SI{77}{\kelvin} der folgende Wert:
 \begin{equation}
 τ(\SI{77}{\kelvin})= \frac{μ(\SI{77}{\kelvin})m_e}{e}=\SI{328(2)}{\femto\second}
 \end{equation}
-Die mittlere Zeit zwischen zwei Stößen beträgt also etwa 330 Femtosekunden. 
+Die mittlere Zeit zwischen zwei Stößen beträgt also etwa 330 Femtosekunden.
+
+\subsection{Bestimmung des Beweglichkeitsverhältnis}
+Das Verhältnis der Beweglichkeiten $b$ der beiden Ladungsträger ist definiert als
+\begin{equation}
+ b = \frac{μ_n}{μ_p}
+\end{equation}
+
+Setzt man nun dieses in die \eref{hallkonst_lang} ein, so erhält man eine Funktion,
+die nur noch von den Ladungskonzentrationen $p$ und $n$ sowie der Beweglichkeit $b$
+abhängt.
+\begin{equation}
+ R_H = \frac{p-b^2n}{e(p+bn)^2}
+ \label{eqn:hallkonst_b}
+\end{equation}
+
+Wir benutzen nun zwei Gleichungen, um eine Formel für $b$ herzuleiten, die uns
+$b$ für die Messung zugänglich macht.
+Zunächst führen wir den Extremwert der Hallkonstanten $R_{H,\mbox{ext.}}$ beim
+Übergang zur Eigenleitung ein.
+\begin{eqnarray}
+ \left(\frac{\dd{R_H}}{\dd{T}}\right)_{R_{H,\mbox{ext.}}} &=& 0 \\
+ \underbrace{\frac{\dd{T}}{\dd{n}}}_{\neq 0} \left(\frac{\dd{R_H}}{\dd{n}}\right)_{R_{H,\mbox{ext.}}} &=& 0
+\end{eqnarray}
+Desweiteres gilt für den Sättigungswert der Hall-Konstanten $R_{H,S}$ im Gebiet
+der Störstellenerschöpfung ($n = 0$) mit \eref{hallkonst_b}:
+\begin{equation}
+ R_{H,S} = \frac{1}{ep} = \frac{1}{ep_S}\,\mbox{mit}\, p = p_S + n
+\end{equation}
+
+Davon ausgehend, finden wir mit \cite{maxima} zunächst das Extremum von $R_H(n)$.
+\begin{eqnarray}
+ \frac{\dd{R_H}}{\dd{n}} &\sim& (b+1)^2(p-bn) \\
+\Rightarrow\qquad p &=& bn
+\end{eqnarray}
+Damit gilt weiterhin:
+\begin{equation}
+ R_{H,S} = \frac{1}{ep_S} = \frac{1}{e(n-p)} = \frac{1}{en(1-b)}
+\end{equation}
+Setzen wir dieses Ergebnis nun in \eref{hallkonst_b} ein, erhalten wir $R_{H,\mbox{ext.}}$.
+\begin{equation}
+ R_{H,\mbox{ext.}} = \frac{1-b}{4ebn} = - \frac{R_{H,S}}{}\frac{(b-1)^2}{b}
+\end{equation}
+Diese Beziehung lässt sich nun nach $b$ auflösen. Da die Formel quadratisch in $b$
+ist, erwarten wir zwei Lösungen. Jedoch kann die eine ausgeschlossen werden, da $b$
+positiv definiert ist.
+\begin{equation}
+ b = 1-2\frac{R_{H,\mbox{ext.}}}{R_{H,S}}\left(1+\sqrt{1-\frac{R_{H,S}}{R_{H,\mbox{ext.}}}}\right)
+\end{equation}
+
+Aus \fref{hallkonstante2} lassen sich folgende Werte ablesen:
+\begin{eqnarray}
+ R_{H,\mbox{ext.}} &=& \SI{-0.025}{m^3C^{-1}}\\
+ R_{H,S} &=&  \SI{0.002}{m^3C^{-1}}
+\end{eqnarray}
+Daraus lässt sich nun $b$ berechnen:
+\begin{equation}
+ b = \si{52(15)}
+\end{equation}

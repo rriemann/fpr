@@ -4,11 +4,30 @@
 
 \appendix
 
+\section{Skizze zum Versuchsaufbau}
+\label{sec:aufbau}
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=1\columnwidth,keepaspectratio]{aufbau}
+   \caption{schematische Skizze des Versuchsaufbaus}
+\end{figure}
+
 \section{Messwerte}
 \label{sec:messwerte}
-OO-Messwerte
 
-auch die ausm laborbuch!!!
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{../data/01.png}
+ \caption{Messprotokoll a)}
+ % 01.png: 792x981 pixel, 100dpi, 20.12x24.92 cm, bb=0 0 570 706
+\end{figure}
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{../data/02.png}
+ \caption{Messprotokoll b)}
+ % 01.png: 792x981 pixel, 100dpi, 20.12x24.92 cm, bb=0 0 570 706
+\end{figure}
+
 
 \begin{figure}[htb!]
  \centering
@@ -19,7 +38,6 @@ auch die ausm laborbuch!!!
 \end{figure}
 
 
-
 \begin{table}[htb!]
  \centering
  \includegraphics[viewport=55 200 500 390,clip]{../docs/scan_datenblatt}
@@ -27,6 +45,13 @@ auch die ausm laborbuch!!!
  \caption{Daten}
  \label{tab:daten}
 \end{table}
+
+\newpage
+\lstinputlisting[language=,caption={Daten Hysteresiskurve}]{../data/Hysteresis.dat}
+
+\section{Berechnungsskript}
+
+\lstinputlisting[language=Maxima,label=lst:Berechnungen,caption={Berechnungen}]{../code/rechnungen.mac}
 
 \section{Fits}
 \label{sec:fits}

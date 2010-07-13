@@ -47,7 +47,23 @@ Eg_err:  m_mittel_err*2*k_B, numer; /* in eV */
 
 /* berechnung der beweglichkeit */
 U_H_77K : 2.1361E-01$
+U_H_77K_err : 0.01e-1$
 rho_77K : rho_vorfaktor * U_H_77K;
+rho_77K_err : rho_vorfaktor * U_H_77K_err;
 
 mu_77K : R_H_77/rho_77K;
+mu_77K_err : sqrt((R_H_77_err/rho_77K)^2 + (R_H_77/rho_77K^2 *rho_77K_err)^2);
 anstieg : (-2.72+2.55)/(0.2);
+
+m_e : 9.10938215e-31$
+e : 1.602176487e-19$
+
+tau : mu_77K*m_e/e;
+tau_err : m_e/e *mu_77K_err;
+
+/* anzahl der atome in einem kubikmeter */
+dichte : 5000$   /*kilo/m^3*/
+N_A : 6.022e23$
+m_M_Te : 123000$
+
+N_atome : N_A*1/20.46*1e6;

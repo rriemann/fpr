@@ -1,0 +1,24 @@
+gliederung:
+
+- abstract: 
+
+- einführung:
+	- schwacher prozess -> was ist die schwache kraft, was ist das Z0
+	- überleitung zum experiment: messen eigenschaften des Z0
+- experiment-beschreibung
+	- lep gebaut, weil...
+	- aufbau des l3-detektors (mit bild)
+	- haben daten genommen und mit mc verglichen und ausgewertet
+- event-selection, cut-beschreibung
+	- wollen möglichst effektiv und präzise zw. myonen und hadronen trennen
+	- cuts: cluster, (sichtbare) energie für hadronen, bla bla für myonen
+- messung des wq, der masse
+	- sp-energie-abhängige lumi und wq`s
+	- fit erklären, masse und zerfallsbreite als parameter
+- messung der partialbreiten für hadronen und myonen
+	- berechnung der breiten, jeweils die wichtigste gleichung angeben
+	- vgl mit den daten
+- messung des weinbergwinkels
+	- kurz und knapp
+- messung des farbfaktors
+	- auch ganz kurz nur

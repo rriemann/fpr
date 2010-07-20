@@ -12,6 +12,8 @@
 \usepackage{epsfig}
 \usepackage{latexsym}
 \usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{../../assets/uniinput}
 
 \newcommand{\spar}{{\stackrel{\rightarrow}{\Rightarrow}}}
 \newcommand{\sant}{{\stackrel{\rightarrow}{\Leftarrow}}}
@@ -20,13 +22,19 @@
 \begin{document}
 \hugehead
 
-\title{Title, z. B. Z-Resonance at LEP}
-\titlerunning{Titel, z. B. Z-Resonance at LEP}
-\authorrunning{Student1, Student2}
+\newcommand{\dd}[1]{\mathrm{d}#1\,} % declare dx operator, usage: \dd{x} for dx
+\newcommand{\lref}[1]{listing (\ref{lst:#1})} % refer to a listing, usage:\lref{label} for Listing (...)
+\newcommand{\fref}[1]{fig. (\ref{fig:#1})} % refer to a figure, usage:\lref{label} for Abb. (...)
+\newcommand{\tref}[1]{tab. (\ref{tab:#1})} % refer to a table, usage:tlref{label} for Tab. (...)
+\newcommand{\eref}[1]{eq. (\ref{eqn:#1})} % refer to a equation, usage:\eref{label} for Gl. (...)
+
+\title{Z-Resonance at LEP}
+\titlerunning{Z-Resonance at LEP}
+\authorrunning{Thomas Murach, Robert Riemann}
 \author{{\bf Draft Version 1.1}\\
 \medskip \\
-Vorname.~Student1,$^{1}$
-Vorname.~Student2$^{1}$
+Thomas Murach,$^{1}$
+Robert Riemann$^{1}$
 } 
 \institute{$^1$Department of Physics, Humboldt University of Berlin, Germany\\}  
 \date{Received: \today / Revised version:}
@@ -44,24 +52,51 @@ were especially happy about...
 \baselineskip=0.38cm
 \vspace*{1.cm}
 
-The model describes...
-The Z-boson is...
-The model parameters are...
+The standard model of elementary particles describes interactions of particles
+by four fundamental forces. One of them is the electroweak force. It`s gauge
+bosons, which mediate the force between the two interacting particles, are the
+photon as well as the W$^{\pm}$- and the Z$^0$-boson. At the
+electron-positron-collider LEP at CERN the Z$^0$ has been seen for the first
+time, which was possible because of the sufficient center of mass energy of this
+collider experiment.
 
-It was measured...
-.......
+We were able to evaluate it`s mass $M_Z$ and it`s lifetime τ. The leptonic and
+the hadronic decay widths $Γ_l$ and $Γ_h$ could be investigated as well. Finally
+the number of quark and lepton families $N_C$ and the weak mixing angle, also
+called Weinstein angle, $\Theta_W$ can be measured. This angle describes the
+ratio of the electric and the weak coupling constants α and α$_w$.
 
 \section{ Experiment}
 
-Z can decay via ....
-and can be observed at ...
+The Z$^0$-particle, which was supposed to be produced at LEP, can decay in
+various ways. One of these possibilities is the decay via two different quarks 
+(Z$^0→q\overline{q'}$), another one could be the decay via two charged leptons
+like Z$^0→ μ^+μ^-$. The first one of the mentioned decays can be seen
+as two jets which can be measured in hadronic calorimeters. The leptonic decay
+is measured due to registration of leptons in electromagnetic calorimeters. 
+
+The detector for all of these particles is the LEP. It`s structure can be seen
+in \fref{aufbau}.
+\begin{figure}[htb]
+ \centering
+ \includegraphics[page=5,viewport=286 620 508 765,clip,%
+  width=\columnwidth,keepaspectratio]{../../Z0/docs/Z0ResFprakt}
+ \caption{Design of the L3 detector\cite{script}}
+ \label{fig:aufbau}
+\end{figure}
+There are layers of components with different purposes, starting from the
+vertex point, these are the tracking chamber, the electromagnetic calorimeter,
+the hadronic calorimeter and finally the muon chamber.
+
 The LEP is ....
 The L3 detector consists of ...
 .....
 \section{ Data analysis}
 
-The decay of the Z in the channel ... was studied...
-The cuts used are described ...
+For a detailed analysis of the mentioned processes it is important to be able
+to distinguish between muonic and hadronic decays, we did some Monte Carlo
+studies to figure out how these processes look like. This gave us the
+possibility to apply cuts on the measured distributions.
 
 \subsection{ Event selection}
 

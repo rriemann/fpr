@@ -58,7 +58,7 @@ void bwigner()
 
   // Create graph from data and fit against fitfuncion
   TCanvas* canvas = new TCanvas("canvas","Breit-Wigner Fit fuer Z0-Resonanz",550,550);
-  canvas->SetGrid();
+//   canvas->SetGrid();
   canvas->SetLeftMargin(0.11);
   canvas->SetBottomMargin(0.1);
   canvas->SetRightMargin(0.06);
@@ -66,7 +66,7 @@ void bwigner()
   canvas->cd(1);
   graph = new TGraphErrors(npoints,x,y,xe,ye);
   graph2 = new TGraph(npoints,x,y);
-  
+
   bool qcustominit=0;
   cout << "Eigene Startbedingungen (Startwerte, Parameter festhalten)?";
   cout << " (ja: 1, nein: 0)"<< endl;
@@ -75,7 +75,7 @@ void bwigner()
     for(int i=0;i<3;i++){
       double tmpd;
       double tmpb;
-      
+
       cout << i+1 << ". Parameter (" << convolutionfunc->GetParName(i);
       cout << ")" << endl;
       cout << "========================" << endl;
@@ -121,8 +121,8 @@ void bwigner()
   TF1* wigner = new TF1("wigner",bwfun2,80,100,3);
   wigner->SetParameters(results[0],results[1],results[2]);
   wigner->SetNpx(funcres);
-  wigner->GetXaxis()->SetTitle("Schwerpunktsenergie [GeV]");
-  wigner->GetYaxis()->SetTitle("Wirkungsquerschnitt [nb]");
+  wigner->GetXaxis()->SetTitle("center of mass energy [GeV]");
+  wigner->GetYaxis()->SetTitle("cross section [nb]");
   
   wigner->Draw("C");
   convolutionfunc->Draw("same");
@@ -140,7 +140,7 @@ void bwigner()
   TLine* green = legend->AddLine(.05,.2,.15,.2);
   green->SetLineWidth(3);
   green->SetLineColor(8);
-  TText* tqed = legend->AddText("QED-korrigiert");
+  TText* tqed = legend->AddText("with QED effects");
   tqed->SetTextSize(.03);
   legend->Draw("");
 

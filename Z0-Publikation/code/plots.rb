@@ -2,7 +2,7 @@
 
 require '../code/diagram.rb'
 require 'fileutils'
-cmd_opts = { :file_extension => "pdf",
+cmd_opts = { :file_extension => "eps",
              :output_dir => ".",
              :glob => "*.root"
            }

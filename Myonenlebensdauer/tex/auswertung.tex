@@ -22,9 +22,9 @@ mal durchgeführt. Die Zeitdifferenzen $t_i$ sind in \tref{diff} dargestellt.
 
 \begin{table}[htbp]
 \centering
-% \setlength{\tabcolsep}{14pt}
+\setlength{\tabcolsep}{1.3pt}
 \begin{tabular*}{0.95\columnwidth}{%
-S[tabformat=1.2]%
+S[tabformat=1.3]%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
 S[tabformat=1.2]%
@@ -39,7 +39,7 @@ S[tabformat=2.1]%
 3,36 & 4,24 & 0,880 & 8,56 & 0,240 & 0,640 & 24,2\\
 \bottomrule
 \end{tabular*}
-\caption{Messwerte der Verzögerungszeiten (angegeben in ns)}
+\caption{Messung der Verzögerungszeiten in \si{\nano\second}}
 \label{tab:diff}
 \end{table}
 
@@ -109,7 +109,7 @@ werden.
 \centering
 \begin{tabular*}{\columnwidth}{l|cc}
 \toprule
-& {SC2: $PM_2\wedge PM_4$} & SC3: $PM_3\wedge PM_5$\\
+& {$SC_2$: $PM_2\wedge PM_4$} & $SC_3$: $PM_3\wedge PM_5$\\
 \midrule
 Rate & 151 & 204\\
 Fehler & 12 & 14\\
@@ -173,7 +173,7 @@ konnte.
 
 Schließlich sollten die Raten untersucht werden, die sich ergeben, wenn man
 verlangt, dass bestimmte Kombinationen von Szintillatoren gleichzeitig
-ansprechen. Dies ist auch für die nachfolgenden Versuchsteile von Bedeutung, da
+ansprechen. Dies ist auch für die nachfolgenden Aufgaben von Bedeutung, da
 die Selektion der Myonenereignisse über solche Kombinationen erfolgt. Auch hier
 haben wir für jede Kombination acht Messwerte aufgenommen, deren Mittelwerte
 und statistische Fehler in \tref{sc_kombinationen} aufgeführt sind.
@@ -198,7 +198,7 @@ Szintillationszählern $SC_i$}
 
 Da hier (abgesehen vom letzten Fall) schon wesentlich stärkere Kriterien erfüllt
 werden mussten, sinkt die Zahl der gemessenen Ereignisse deutlich ab. Aus
-diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen,
+diesem Grund haben wir bei den ersten vier Fällen 10 Sekunden lang gemessen
 und dann durch diese Zeit dividiert, um die angegebene Rate zu erhalten. Daher
 ist hier die statistische Unsicherheit kleiner als die Wurzel des Mittelwerts.
 An dieser Stelle kann man eine Betrachtung von Hintergrund und Signal
@@ -237,7 +237,7 @@ Szintillator detektierten sind, weil diese Forderung nur Teilchen zulässt, die
 sehr schnell sind und in eine geeignete Richtung fliegen. Der Faktor zwei ist
 darüber also nicht erklärbar. Man muss also davon ausgehen, dass bei der
 Messung ein Fehler unterlaufen ist, sodass dieses eine Ergebnis nicht zur
-Einschätzung der Hintergrundrate verwendbar ist.
+Einschätzung der Hintergrundrate verwendet werden kann.
 
 \subsection{Signalbetrachtung}
 Zu allen im vorigen Abschnitt betrachteten Kombinationen von Photomultipliern
@@ -323,10 +323,26 @@ Die Myonen-Lebensdauer wurde in diesem Experiment durch die Messung einzelner
 Zerfalls-Zeiten bestimmt. Dies wurde mit einem Zeit-Spannungs-Wandler (TAC) und
 einem Multi-Kanal-Analysierer (MCA) experimentell umgesetzt. Da der MCA jedoch
 nur Kanäle misst und nicht direkt die einzelnen Zeitdifferenzen, ist eine
-Eichung notwendig. Mittels eines speziellen Zeituhr-Moduls war es möglich
+Eichung notwendig. Mittels eines speziellen Zeitgeber-Moduls war es möglich
 zeitlich verzögerte Signale variabler Länge zu produzieren, deren Dauer mit dem
-Oszilloskop kontrolliert werden konnte. Das mit der Schaltung in
-\fref{zeit_schaltung} aufgenommene Histogramm ist in \fref{eichung} dargestellt.
+Oszilloskop kontrolliert werden konnte.
+
+Um zu verstehen, wie das TAC funktioniert, haben wir die Konvertierung mit einer
+fixierten Zeitverzögerung von \SI{4}{\micro\second} überprüft. Dafür haben wir den
+TAC auf einem Messbereich von \SI{0}{\micro\second} bis \SI{20}{\micro\second}
+eingestellt. Bei einer maximalen Ausgangsspannung von \SI{10}{\volt} erwarten wir
+eine gemessene Spannung von \SI{2}{\volt}, was gut zu unserem Ergebnis in \fref{tac}
+passt.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\columnwidth,keepaspectratio=true]{tac.png}
+  \caption{Puls variabler Länger, der mittels des Zeitgeber-Moduls generiert wurde}
+  \label{fig:tac}
+\end{figure}
+
+
+Das mit der Schaltung in \fref{zeit_schaltung} aufgenommene Histogramm ist in \fref{eichung} dargestellt.
 
 Zur Eichung wurden nun die einzelnen in \tref{eichung_zeiten} notierten Zeiten
 über dem jeweiligen Kanal abgetragen. Dies wurde automatisch durchgeführt unter
@@ -400,6 +416,9 @@ entstandene und bereits in Zeiteinheiten umgeeichte Histogramm kann in
   \label{fig:ohne_verzoegerung}
 \end{figure}
 
+Wir haben das Histogramm einem Rebinning unterzogen. Die Methode wird in
+Abschnitt \ref{sec:fit} beschrieben.
+
 Man kann erkennen, dass beinahe alle Events in den ersten \SI{4}{\micro\second}
 nach der Initialisierung der jeweiligen Messung stattgefunden haben. In unserem
 logarithmischen Plot müssten wir eine Gerade erwarten, da das Zerfallsgesetz
@@ -412,6 +431,8 @@ bleibenden Teil des Histogramms nach dieser halben Stunde keine ausreichende
 Statistik aufgenommen hat, muss die Messung über eine wesentlich ausgedehntere
 Zeitspanne ausgeführt werden. Dies wird im nächsten Abschnitt beschrieben.
 
+\subsection{Berechnung der Myonen-Zerfallsrate}
+
 Aus \fref{messung} kann die Rate der registrierten Myonen-Zerfälle abgeleitet.
 Aus der vom MCA generierten Datei geht hervor, dass die Messung
 über eine Zeitdauer von $Δt = 150523$ statt fand. Die Summe über alle Bins kann
@@ -420,7 +441,27 @@ mit ROOT zu $N = 18519$ bestimmt werden. Daraus lässt sich nun die Rate $r$ err
  r = \frac{N}{Δt} = \SI{0.12}{\hertz}
 \end{equation}
 
+Des Weiteren war die Messzeit abzuschätzen, die nötig gewesen wäre, um die
+Lebensdauer der Myonen auf \SI{1}{\percent} genau zu bestimmen. Wenn man dieses
+Problem exakt lösen wollte, müsste man aus eine Methode entwickeln bzw.
+anwenden, mit der man aus der Anzahl der Einträge pro Bin den Fehler dieser
+Anzahl und daraus wiederum die Unsicherheit des Fitparameters $τ_μ$ zu
+berechnen. Da das im Rahmen dieses Versuchs nicht möglich ist, sollte eine
+Näherung getroffen werden. Wir nehmen also an, dass sich die Ungenauigkeit der
+Anzahl direkt auf den Fehler der Lebensdauer auswirkt.
+\begin{eqnarray}
+\Delta N_{rel} &=& \frac{\sqrt{N}}{N} = 0,01\\
+\rightarrow N &=& 10000\\
+r &=& \frac{N}{Δt} \rightarrow Δt = \frac{N}{r}\\
+Δt &=& \SI{81280}{\second} \approx \SI{22,5}{\hour}
+\end{eqnarray}
+Um für die relative Genauigkeit der Anzahlmessung einen Wert von
+\SI{1}{\percent} zu erhalten, muss man \SI{22,5}{\hour} lang messen, unsere
+Messung lief aber sogar länger (knapp \SI{42}{\hour}, 18519 Ereignisse), sodass
+unser Fehler noch kleiner ist.
+
 \subsection{Fit}
+\label{sec:fit}
 
 Mit der eben gewonnenen Eichung kann nun das mit der Schaltung in
 \fref{muon_schaltung} gemessene Histogramm in \fref{messung} konvertiert werden.
@@ -431,9 +472,19 @@ Hierbei wird die Anzahl der Einträge pro Bin mit $N$, die μ-Halbwertszeit mit
 $τ_μ$, das Verhältnis zwischen positiv und negativen Myonen
 $f = \SI{1.270(3)}{\micro\second}$ und die Halbwertszeit des myonischen Atoms
 bis zum Kerneinfang des Myons mit $τ_c = \SI{2.1(1)}{\micro\second}$ bezeichnet.
-Es wurde versucht den Hintergrund mit einer möglichst einfachen Theorie
+Es wurde versucht den Untergrund mit einer möglichst einfachen Theorie
 (linearer Verlauf) zu beschreiben. Da nur zwei freie Parameter verwendet wurden,
-wird der Wert $\chi^2/\mbox{dof}$ klein gehalten.
+wird der Wert $\chi^2/\mbox{DoF}$ klein gehalten.
+
+Die lineare Modellierung des Hintergrunds kann folgendermaßen motiviert werden:
+\begin{itemize}
+ \item Der konstante Anteil entspricht einem gewissen Grundniveau, welches aus
+       z.B. zufälligen Koinzidenzen resultiert.
+ \item Weiterhin ist es mit größerwerdenden Zeitdauern unwahrscheinlicher, dass bis
+       dahin noch kein Untergrundereignis auftrat. Der Untergrund nimmt also mit
+       fortschreitender Zeit tendenziell ab.
+\end{itemize}
+
 
 \begin{equation}
   N(t) = N_0 e^{-t/τ_μ}\left(1+\frac{1}{f}e^{-t/τ_c}\right) + \underbrace{N+t\cdot N1}_{\mbox{Untergrund}}
@@ -491,7 +542,7 @@ N1 in \si{\per\micro\second}  & 0 & -6±2\\
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=\columnwidth,keepaspectratio=true]{messung}
-  \caption{Langzeitmessung der μ-Zerfälle mit Hilfe der in}
+  \caption{Langzeitmessung der μ-Zerfälle mit Hilfe der in \fref{muon_schaltung} dargestellten Schaltung}
   \label{fig:messung}
 \end{figure}
 
@@ -505,15 +556,77 @@ N1 in \si{\per\micro\second}  & 0 & -6±2\\
 Das Ergebnis für die mittlere Lebensdauer der Myonen ist demnach:
 \begin{equation}
  τ_μ = \uuline{\SI{2.1(2)}{\micro\second}}
+ \label{eqn:ergebnis}
 \end{equation}
+
+Der Parameter χ/DoF liegt bei $1.20$ und damit sehr nahe bei 1. Der Fit liefert
+also ein zufriedenstellendes Ergebnis
 
 \subsection{Systematik}
 
 Um den Einfluss der Größen $f$ und $τ_c$ zu untersuchen, wurde der Fit mehrmals
 mit unterschiedlich gewählten Konstanten durchgeführt. Da unser Fehler für die
-Lebensdauer mit \SI{0,2}{\micro\second}relativ groß ausfällt, spielt die
-Abweichung, welche aus innerhalb des σ-Bereichs anders gewählten Konstanten
-herrührt, eine zu vernachlässigende Rolle. Stets dominiert der Fehler aus dem Fit.
+Lebensdauer mit \SI{0,2}{\micro\second} relativ groß ausfällt, spielt eine etwaige
+Abweichung von $f$ und $τ_c$ nur eine geringe Rolle. Die Abweichung durch $f$ kann gänzlich
+vernachlässigt werden. Wie in \tref{systematik} zu sehen ist, führt ein kleinerer
+Wert für $τ_c$ zu einem kleineren Wert für $τ_μ$.
 
-TODO Tabelle (Laborbuch)
+Im Ergebnis beträgt die Systematische Abweichung nach unten \SI{0.1}{\micro\second},
+während die Abweichung nach oben vernachlässigbar ist. Addiert man diesen Fehler
+zu dem Fehler aus \eref{ergebnis}, so erhält man:
+\begin{equation}
+ τ_μ = \uuline{(2,2 ± 0,2\,^{+0,0}_{-0,1}) \si{\micro\second}}
+ \label{eqn:ergebnis_sys}
+\end{equation}
+% Lebensdauer mit \SI{0,2}{\micro\second} relativ groß ausfällt (auf jeden Fall
+% größer als die oben abgeschätzten \SI{1}{\percent}) spielt die
+% Abweichung, welche aus innerhalb des σ-Bereichs anders gewählten Konstanten
+% herrührt, eine zu vernachlässigende Rolle. Stets dominiert der Fehler aus dem Fit.
 
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{
+l
+S[table-format = 1.4]
+S[table-format = 1.1,table-figures-uncertainty = 1]
+}
+\toprule
+Material& {$τ_c$ in \si{\micro\second}} & {$τ_μ$ in \si{\micro\second}} \\
+\midrule
+Szintillator & 2.1 & 2.2(2) \\
+Aluminium & 0.865 & 2.1(2)\\
+Kupfer & 0.1636 & 2.1(2)\\
+Blei & 0.0746 & 2.1(2)\\
+\bottomrule
+\end{tabular*}
+\caption{Einfluss des fixierten Parameter $τ_c$ auf den Fit.}
+\label{tab:systematik}
+\end{table}
+
+Unser Ergebnis deckt sich also gut mit dem in \eref{tau_mu_theo} angegebenen
+Literaturwert, denn dieser befindet sich innerhalb einer Standardabweichung
+unseres Ergebnisses. Der Unterschied ist also nicht signifikant.
+
+\subsection{Konfidenzniveau}
+
+Gehen wir davon aus, dass die Formel in \eref{fit} näherungsweise ein einfaches,
+exonentielles Zerfallsgesetz ist, so lässt sich analytisch die Standardabweichung
+σ zu
+\begin{equation}
+ σ = τ_μ
+\end{equation}
+bestimmen. Der Vertrauensbereich $\bar{s} = \SI{0,2}{\micro\second}$ kann weiterhin
+aus dem Student-Faktor $t$, der Anzahl der Messungen $N = 18519$ und σ berechnet werden.
+\begin{equation}
+ \bar{s} = t \cdot \frac{τ_μ}{\sqrt{N}} = \SI{0,2}{\micro\second}
+\end{equation}
+Daraus folgt für den Student-Faktor ein Wert von:
+\begin{equation}
+ t \approx 13
+\end{equation}
+
+Für den Fit wurden rund 45 Punkte (Bins) verwendet. Das legt die Anzahl der Freiheitsgrade
+fest, ad die Anzahl der Parameter dem gegenüber vernachlässigt werden kann.
+Aus \cite{student} geht hervor, dass das Konfidenzniveau so nahe an \SI{100}{\percent}
+liegt, dass es davon nicht mehr numerisch unterschieden werden kann.

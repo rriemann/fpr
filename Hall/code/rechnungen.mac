@@ -1,0 +1,69 @@
+b : 1.5e-3$	/*m*/
+d : 0.16e-3$	/*m*/
+l : 1.65e-3$	/*m*/
+
+A : b*d;
+I : 1e-3$		/*A*/
+
+rho_vorfaktor : A/(I*l);
+
+/* B_8A : float((447+438)/2); */
+B_8A : 437e-3;
+
+R_H_vorfaktor : d/(I*B_8A);
+
+/* berechnung der ladungsträgerdichte */
+
+R_H_77: 1.79e-3$
+R_H_77_err: 0.01e-3$
+e: 1.602176487e-19$
+n: -1/(R_H_77*e), numer;
+n_err: -1/(R_H_77**2*e)*R_H_77_err;
+
+/* berechnung bandlücke */
+/* mit roh */
+m_roh_00: 970$ /* in Kelvin alles */
+m_roh_00_err: 9$
+m_roh_01: 1061$
+m_roh_01_err: 8$
+/* mit R_H */
+m_R_H_00: 996.382$
+m_R_H_00_err: 14$
+m_R_H_01: 1009$
+m_R_H_01_err: 3$
+m_roh_00_w: 1$
+m_roh_01_w: (m_roh_00_err/m_roh_01_err)**2$
+m_R_H_00_w: (m_roh_00_err/m_R_H_00_err)**2$
+m_R_H_01_w: (m_roh_00_err/m_R_H_01_err)**2$
+norm: (m_roh_00_w+m_roh_01_w+m_R_H_00_w+m_R_H_01_w)$
+m_mittel: (m_roh_00*m_roh_00_w + m_roh_01*m_roh_01_w + m_R_H_00*m_R_H_00_w + m_R_H_01*m_R_H_01_w)/norm$
+m_mittel_err: sqrt((m_roh_00_err*m_roh_00_w)**2 + (m_roh_01_err*m_roh_01_w)**2 + (m_R_H_00_err*m_R_H_00_w)**2 + (m_R_H_01_err*m_R_H_01_w)**2)/norm$
+k_B: 8.617343e-5$ /* eV/K */
+print("Eg_mittel")$
+Eg: m_mittel*2*k_B; /* in eV */
+print("Eg_err")$
+Eg_err:  m_mittel_err*2*k_B, numer; /* in eV */
+
+
+/* berechnung der beweglichkeit */
+U_H_77K : 2.1361E-01$
+U_H_77K_err : 0.01e-1$
+rho_77K : rho_vorfaktor * U_H_77K;
+rho_77K_err : rho_vorfaktor * U_H_77K_err;
+
+mu_77K : R_H_77/rho_77K;
+mu_77K_err : sqrt((R_H_77_err/rho_77K)^2 + (R_H_77/rho_77K^2 *rho_77K_err)^2);
+anstieg : (-2.72+2.55)/(0.2);
+
+m_e : 9.10938215e-31$
+e : 1.602176487e-19$
+
+tau : mu_77K*m_e/e;
+tau_err : m_e/e *mu_77K_err;
+
+/* anzahl der atome in einem kubikmeter */
+dichte : 5000$   /*kilo/m^3*/
+N_A : 6.022e23$
+m_M_Te : 123000$
+
+N_atome : N_A*1/20.46*1e6;

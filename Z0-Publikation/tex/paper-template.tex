@@ -161,25 +161,31 @@ for muonic events is possible through the requirement of both muons carrying
 about half the energy of the event each. This is possible because muon energies
 can be measured very well.
 
-\subsection{Extraction of the cross section}
-
-Example of an equation:
-
+\subsection{Hadronic events}
+As it is now known how to extract hadronic events out of the data, it is
+possible to determine the hadronic cross section using the following formula:
 \begin{equation}
-\label{a1vm}
-A_{1}^{} = \frac{A^{}_{||}}{D^{}}  - \eta \sqrt{R^{}}\ . \\
+σ_{\mathrm{had}} = \frac{N}{Lε},
 \end{equation}
+where ε is the efficiency of the cuts. This efficiency could be calculated
+using the following equation:
+\begin{equation}
+ε = \frac{N’_{\mathrm{MC}}}{N_{\mathrm{MC}}},
+\end{equation}
+where $N’_{\mathrm{MC}}$ is the number of Monte Carlo events that passed the
+hadron cuts and $N_{\mathrm{MC}}$ is the total number of events in the Monte
+Carlo file.
 
+The hadronic cross section could be calculated at three different center of
+mass energies. The number of hadronic events that passed the hadron cuts can be
+found in \tref{hadr_events}, as well as the hadronic cross sections themselves.
+
+These cross sections have then been used as data for a fit. By fitting the data
+points the overall hadronic cross section, the mass and the hadronic decay width
+of the $Z^0$-boson could be determined. The results can be found in
+\tref{results}.
 
 \subsection{Background subtraction}
-
-\begin{figure}[ht]
-\vspace*{-0.2cm}
-%\resizebox{0.5\textwidth}{0.35\textwidth}{\includegraphics{./r_06m.eps}}
-\caption{\baselineskip=0.38cm Example of a picture}
-\label{fig:1}   
-\end{figure} 
-...
 
 
 
@@ -214,7 +220,8 @@ energy $\sqrt{s}$ [\si{\GeV}] & myon events & cross section $σ_0^μ$ [\si{\nano
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm analyzed hadronic events at different center of mass energies}
+\caption{\baselineskip=0.38cm analyzed muonic events at different center of mass
+energies}
 \label{tab:myon_events}
 \end{center}
 \vspace*{-0.5cm}

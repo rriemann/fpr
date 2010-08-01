@@ -159,7 +159,8 @@ an angle of almost π, as the $Z^0$ boson should be created almost resting in
 the laboratory frame, leading to muons flying back to back. Another selection
 for muonic events is possible through the requirement of both muons carrying
 about half the energy of the event each. This is possible because muon energies
-can be measured very well.
+can be measured very well. Finally it is possible to recognize muons through
+their mass.
 
 \subsection{Hadronic events}
 As it is now known how to extract hadronic events out of the data, it is
@@ -180,15 +181,6 @@ The hadronic cross section could be calculated at three different center of
 mass energies. The number of hadronic events that passed the hadron cuts can be
 found in \tref{hadr_events}, as well as the hadronic cross sections themselves.
 
-These cross sections have then been used as data for a fit. By fitting the data
-points the overall hadronic cross section, the mass and the hadronic decay width
-of the $Z^0$-boson could be determined. The results can be found in
-\tref{results}.
-
-\subsection{Background subtraction}
-
-
-
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|l|l|l|}
@@ -207,12 +199,47 @@ energy $\sqrt{s}$ [\si{\GeV}] & hadronic events & cross section $σ_0^μ$ [\si{\
 \vspace*{-0.5cm}
 \end{table}
 
+These cross sections have then been used as data for a fit. By fitting the data
+points the overall hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$
+of the $Z^0$-boson could be determined. The results can be found in
+\tref{results}.
 
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-energy $\sqrt{s}$ [\si{\GeV}] & myon events & cross section $σ_0^μ$ [\si{\nano\barn}]\\
+$m_Z$ [\si{\GeV}] & $σ_0^{\mathrm{had}}$  [\si{\nano\barn}] & $Γ_Z$ [\si{\GeV}]\\
+\hline
+$91.16 \pm 0.02 \pm 0.02$ & $40.33 \pm 0.65 \pm 0.27$ & $2.61 \pm 0.05 \pm 0.03$\\
+\hline
+\end{tabular}
+\vspace*{0.3cm}
+\caption{\baselineskip=0.38cm results of fit on data: hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$ of the $Z^0$-boson}
+\label{tab:results}
+\end{center}
+\vspace*{-0.5cm}
+\end{table}
+This is the first and already very precise measurement of the mass of the $Z^0$-boson. 
+
+The χ$^2$-value of this fit is almost zero, but as there were only three points to fit, whereas at the same time three parameters had to be evaluated, the number of degrees of freedom (ndf) is zero. Therefore the value of $χ^2/$ndf is undefined. During the next data taking periods more data at different center of mass energies will be acquired, so that this problem will be solved.
+
+From the decay width of the $Z^0$, it is also possible to derive the lifetime of this particle. This is done using the following formula:
+\begin{eqnarray}
+τ_Z &=& \frac{1}{Γ_Z}\\
+&=& (2.53 \pm 0.31 \pm 0.02) \cdot \SI{e-25}{\second}
+\end{eqnarray}
+
+\section{muonic events}
+
+On the other hand, muons could be distinguished from hadronic events as well as from background. Therefore an analysis on muonic events is possible. This is described in this section.
+
+Firstly, the cross sections at the different center of mass energies could be calculated in an analogue way to the hadronic events. The results of this can be found in \tref{muon_events}.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+energy $\sqrt{s}$ [\si{\GeV}] & muon events & cross section $σ_0^μ$ [\si{\nano\barn}]\\
 \hline
 89.48 & \phantom{0}67 ± \phantom{0}8 ± \phantom{0}8  & 0.64 ± 0.03 ± 0.3 \\
 91.33 & 122 ± 11 ± 10 & 1.53 ± 0.05 ± 0.4 \\
@@ -222,10 +249,21 @@ energy $\sqrt{s}$ [\si{\GeV}] & myon events & cross section $σ_0^μ$ [\si{\nano
 \vspace*{0.3cm}
 \caption{\baselineskip=0.38cm analyzed muonic events at different center of mass
 energies}
-\label{tab:myon_events}
+\label{tab:muon_events}
 \end{center}
 \vspace*{-0.5cm}
 \end{table}
+
+Starting from these values and already knowing the decay width of the $Z^0$-boson as well as its mass, we can again do a fit on these three data points. This time the only free parameter is the muonic cross section $σ_0^μ$.
+
+The result of this fit is shown in the following line:
+\begin{equation}
+σ_0^μ = (2.16 \pm 0.05 \pm 0.03) \si{\nano\barn}
+\end{equation}
+The $χ^2$-value of this fit is some 6.8, which gives a $χ^2/$ndf of about 3.4.
+This is already in the right order of magnitude (close to 1).
+
+\subsection{Background subtraction}
 
 
 \begin{table}[h]

@@ -72,7 +72,7 @@ of $Γ_Z = \SI{2.61(6)}{\GeV}$.
 The weak mixing angle is computed to $\sin² Θ_W = \num{0.23(9)}$ and the colour
 factor to $N_C = \num{3.2(13)}$.
 All resuls are in good agreement to the standard model and can be considered as
-a confirmation of it.
+one of its best confirmations.
 }
 
 \maketitle
@@ -158,7 +158,7 @@ energy provided by the apparatus can finally be seen. Therefore there are large
 uncertainties in jet energy measurements, whereas these uncertainties are
 smaller for muonic events. This fact can also be used to distinguish these
 events from each other and from background as well. For example if the $Z^0$
-decays to two very unstable \todo{plural von τ?}\ tauons, these tauons decay very fast. Then two
+decays to two very unstable tauons, these tauons decay very fast. Then two
 neutrinos are created, but they cannot be measured, so that their contribution
 to the visible energy is missing. The visible part of the tau decays resembles
 hadronic events, so it is important to be able to separate this background from
@@ -332,7 +332,27 @@ Now the leptonic decay width $Γ_l$ can be evaluated.
 Γ_l = (83 \pm 4 \pm 3) \si{\mega\electronvolt}
 \end{equation}
 This is in the same order of magnitude as the result shown in
-\eref{leptonicwidthresult}.
+\eref{leptonicwidthresult}. Although these two results do not agree in
+one standard deviation, they do agree in two standard deviations.
+Therefore it can be assumed that a more precise measurement in the future
+will enable physicists to find a better agreement.
+
+\subsection{Determination of the hadronic decay width}
+\label{sec:hadrwidth}
+As we now know the leptonic decay width, it is also possible to calculate the
+hadronic decay width $Γ_{\mathrm{had}}$. There exists an anti-proportional relation
+between these two variables, with only known constants as factors. The value for
+the hadronic decay width evaluates to
+\begin{equation}
+Γ_{\mathrm{had}} = (1.86 \pm 0.01 \pm 0.02) \si{\giga\electronvolt}.
+\end{equation}
+There is also another relation which can be used to determine the value of this
+decay width:
+\begin{eqnarray}
+Γ_{\mathrm{had}} &=& \Gamma_Z - 3\Gamma_{\nu_e} - 3\Gamma_e\\
+&=& (1.86 \pm 0.05 \pm 0.03) \si{\giga\electronvolt}.
+\end{eqnarray}
+It is clearly visible that these two results are in perfect agreement.
 
 \subsection{Calculation of the weak mixing angle}
 
@@ -344,6 +364,7 @@ weak mixing angle using the formula
 As $Γ_l$ as well as $M_Z$ is known, the expression $\sin² Θ_W$ can be computed.
 \begin{eqnarray}
 \sin^2\Theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
+\label{eqn:gammaquark}
 \nonumber &=& 0.23 \pm 0.05 \pm 0.08
 \end{eqnarray}
 Thereby the weak mixing angle is determined, too.
@@ -356,32 +377,23 @@ Thereby the weak mixing angle is determined, too.
 \subsection{Calculation of the colour factor}
 
 Finally the measurements allow also to calculate the colour factor $N_C$ using
-$Γ_{\mathrm{had}}$. The hadronic decay width can be obtained by two formulas.
-This width can be computed, as the overall $Γ_Z$ in known, but also the components
-$Γ_{ν_e}$ and $Γ_l$.
-\begin{equation}
- Γ_Z = Γ_{\mathrm{had}} + 3Γ_{ν_e} + 3Γ_l
- \label{eqn:gammahad1}
-\end{equation}
-In reference to the standard model there is a second way to compute $Γ_{\mathrm{had}}$.
+$Γ_{\mathrm{had}}$. The hadronic decay width was determined in \ref{sec:hadrwidth}.
+
+In reference to the standard model there is a way to compute $N_C$.
 \begin{equation}
  Γ_{\mathrm{had}} = N_C \cdot K_{QCD}\cdot ( 2Γ_u + 3Γ_d )
  \label{eqn:gammahad2}
 \end{equation}
-Replacing $Γ_{\mathrm{had}}$ in \eref{gammahad2} using \eref{gammahad1} leads to a
-formula which allows to compute the colour factor $N_C$.
+The decay widths $Γ_u$ and $Γ_d$ can be calculated by the standard model, using the
+value of the Weinberg angle as seen in \eref{gammaquark}. The charges of the up-quark was
+set to $\frac{2}{3}$ and the charge of the down-quark to $-\frac{1}{3}$. Then the colour
+factor can be calculated.
 \begin{equation}
  N_C = 3.20 \pm 0.11 \pm 0.07
 \end{equation}
 This result confirms, that there are no new quarks to be expected with a mass
 lower than some \SI{90}{\GeV}.
 
-\todo[inline,size=]{
-kleine erläuterung zur abweichung, kleines schlusswort
-in zeile 304 steht schon, wie man die hadronische breite berechnen könnte. das
-haben wir im protokoll nicht gemacht, sondern nur ne andere methode. diese
-methode mit reinnehmen? 
-}
 
 % \begin{table}[h]
 % \begin{center}
@@ -414,6 +426,10 @@ methode mit reinnehmen?
 
 
 \section{ Summary}
+In order to sum up the results one has to say that this is a very precise
+confirmation of the predictions of the standard model. The first exact
+measurement of the weak mixing angle was done, which was one of the most important
+tasks of this experiment.
 
 \begin{thebibliography}{}
 \baselineskip=0.38cm

@@ -41,14 +41,18 @@
 \newcommand{\sant}{{\stackrel{\rightarrow}{\Leftarrow}}}
 \newcommand{\sperpa}{{\rightarrow\Uparrow}}
 \newcommand{\sperpb}{{\rightarrow\Downarrow}}
+
+\setlength{\marginparwidth}{1cm}
+\usepackage[textsize=tiny,colorinlistoftodos%,disable
+]{todonotes}
 \begin{document}
 \hugehead
 
 \newcommand{\dd}[1]{\mathrm{d}#1\,} % declare dx operator, usage: \dd{x} for dx
-\newcommand{\lref}[1]{listing (\ref{lst:#1})} % refer to a listing, usage:\lref{label} for Listing (...)
-\newcommand{\fref}[1]{fig. (\ref{fig:#1})} % refer to a figure, usage:\lref{label} for Abb. (...)
-\newcommand{\tref}[1]{tab. (\ref{tab:#1})} % refer to a table, usage:tlref{label} for Tab. (...)
-\newcommand{\eref}[1]{eq. (\ref{eqn:#1})} % refer to a equation, usage:\eref{label} for Gl. (...)
+\newcommand{\lref}[1]{listing~(\ref{lst:#1})} % refer to a listing, usage:\lref{label} for Listing (...)
+\newcommand{\fref}[1]{fig.~(\ref{fig:#1})} % refer to a figure, usage:\lref{label} for Abb. (...)
+\newcommand{\tref}[1]{tab.~(\ref{tab:#1})} % refer to a table, usage:tlref{label} for Tab. (...)
+\newcommand{\eref}[1]{eq.~(\ref{eqn:#1})} % refer to a equation, usage:\eref{label} for Gl. (...)
 
 \title{Z-Resonance at LEP}
 \titlerunning{Z-Resonance at LEP}
@@ -59,12 +63,17 @@ Thomas Murach,$^{1}$
 Robert Riemann$^{1}$
 } 
 \institute{$^1$Department of Physics, Humboldt University of Berlin, Germany\\}  
-\date{Received: \today / Revised version:}
+\date{Received: \today / Revised version: 0.1}
 \abstract{
-We had a lot of fun measuring the lifetime and the mass of the Z boson! These quantities 
-are important to answer the question of life, universe and everything.
-Another nice thing we could access was the number of the lepton families, which we 
-were especially happy about...  
+This paper describes the analysis of the L3 detector data taken at different
+center of mass energies around \SI{90}{\GeV}, which reveals the properties of
+the $Z$-Boson. Additionally the weak mixing angle and the colour factor are determined.
+The Z-boson mass is evaluated to $M_Z = \SI{91.16(3)}{\GeV}$ with a decay width
+of $Γ_Z = \SI{2.61(6)}{\GeV}$.
+The weak mixing angle is computed to $\sin² Θ_W = \num{0.23(9)}$ and the colour
+factor to $N_C = \num{3.2(13)}$.
+All resuls are in good agreement to the standard model and can be considered as
+a confirmation of it.
 }
 \maketitle
 
@@ -112,7 +121,8 @@ in \fref{aufbau}.
  \centering
  \includegraphics[page=5,viewport=286 620 508 765,clip,%
   width=\columnwidth,keepaspectratio]{../../Z0/docs/Z0ResFprakt}
- \caption{Design of the L3 detector \cite{script}}
+ \caption{design of the L3 detector.}
+ \todo[inline]{soll hier eine quelle hin?}
  \label{fig:aufbau}
 \end{figure}
 There are layers of components with different purposes, starting from the
@@ -133,7 +143,7 @@ For a detailed analysis of the mentioned processes it is important to be able
 to distinguish between muonic and hadronic decays. By Monte Carlo studies the
 difference between both processes could be figure out. This unlocks the
 possibility to apply cuts on the measured distributions. in this paper first
-results of measurements at center of mass energies of 89.48, 91.33 and
+results of measurements at center of mass energies of \num{89.48}, \num{91.33} and
 \SI{93.02}{\giga\electronvolt} can already be presented.
 
 \subsection{ Event selection}
@@ -148,7 +158,7 @@ energy provided by the apparatus can finally be seen. Therefore there are large
 uncertainties in jet energy measurements, whereas these uncertainties are
 smaller for muonic events. This fact can also be used to distinguish these
 events from each other and from background as well. For example if the $Z^0$
-decays to two very unstable tauons, these tauons decay very fast. Then two
+decays to two very unstable \todo{plural von τ?}\ tauons, these tauons decay very fast. Then two
 neutrinos are created, but they cannot be measured, so that their contribution
 to the visible energy is missing. The visible part of the tau decays resembles
 hadronic events, so it is important to be able to separate this background from
@@ -185,7 +195,7 @@ found in \tref{hadr_events}, as well as the hadronic cross sections themselves.
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-energy $\sqrt{s}$ [\si{\GeV}] & hadronic events & cross section $σ_0^μ$ [\si{\nano\barn}]\\
+energy $\sqrt{s}$ [\si{\GeV}] & hadronic events & cross section $σ_0^{\mathrm{had}}$ [\si{\nano\barn}]\\
 \hline
 89.48 & 1848 ± 43 ± 52 & 10.55 ± 0.18 ± 0.16 \\
 91.33 & 3980 ± 63 ± 79 & 29.98 ± 0.49 ± 0.43 \\
@@ -193,22 +203,24 @@ energy $\sqrt{s}$ [\si{\GeV}] & hadronic events & cross section $σ_0^μ$ [\si{\
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm analyzed hadronic events at different center of mass energies}
+\caption{\baselineskip=0.38cm analyzed hadronic events at different center of mass energies.}
 \label{tab:hadr_events}
 \end{center}
 \vspace*{-0.5cm}
 \end{table}
 
-These cross sections have then been used as data for a fit (see
-\fref{fit_hadrons}). By fitting the data
-points the overall hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$
+% These cross sections have then been used as data for a fit (see \fref{fit_hadrons}).
+These cross sections have been used then to fit the Breit-Wigner distribution as
+seen in \fref{fit_hadrons}.
+By fitting the data
+points the overall hadronic cross section $σ_0^{\mathrm{had}}$\todo{$σ_0^{had}$ haben wir doch schon. muss die 0 irgendwo weg?}, the mass $m_Z$ and the decay width $Γ_Z$
 of the $Z^0$-boson could be determined. The results can be found in
 \tref{results}.
 
 \begin{figure}[htb]
  \centering
  \includegraphics[width=1\columnwidth,keepaspectratio]{finalhad_fit}
- \caption{Breit-Wigner-fit for hadronic events}
+ \caption{Breit-Wigner-fit for hadronic events.}
  \label{fig:fit_hadrons}
 \end{figure}
 
@@ -222,26 +234,35 @@ $91.16 \pm 0.02 \pm 0.02$ & $40.33 \pm 0.65 \pm 0.27$ & $2.61 \pm 0.05 \pm 0.03$
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm results of fit on data: hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$ of the $Z^0$-boson}
+\caption{\baselineskip=0.38cm results of fit on data. The hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$ of the $Z^0$-boson is determined from the fit in \fref{fit_hadrons}.}
 \label{tab:results}
 \end{center}
 \vspace*{-0.5cm}
 \end{table}
 This is the first and already very precise measurement of the mass of the $Z^0$-boson. 
+% no paragraph
+The χ$^2$-value of this fit is almost zero, but as there were only three points
+to fit, whereas at the same time three parameters had to be evaluated, the
+number of degrees of freedom (ndf) is zero. Therefore the value of $χ^2/$ndf has to be
+undefined. During the next data taking periods more data at different center of
+mass energies will be acquired, so that this problem will be solved.
 
-The χ$^2$-value of this fit is almost zero, but as there were only three points to fit, whereas at the same time three parameters had to be evaluated, the number of degrees of freedom (ndf) is zero. Therefore the value of $χ^2/$ndf is undefined. During the next data taking periods more data at different center of mass energies will be acquired, so that this problem will be solved.
-
-From the decay width of the $Z^0$, it is also possible to derive the lifetime of this particle. This is done using the following formula:
+From the decay width of the $Z^0$, it is also possible to derive the lifetime
+of this particle. This is done using the following formula:
 \begin{eqnarray}
 τ_Z &=& \frac{1}{Γ_Z}\\
-&=& (2.53 \pm 0.31 \pm 0.02) \cdot \SI{e-25}{\second}
+\nonumber &=& (2.53 \pm 0.31 \pm 0.02) \cdot \SI{e-25}{\second}
 \end{eqnarray}
 
-\section{muonic events}
+\subsection{Muonic events}
 
-On the other hand, muons could be distinguished from hadronic events as well as from background. Therefore an analysis on muonic events is possible. This is described in this section.
+On the other hand, muons could be distinguished from hadronic events as well as
+from background. Therefore an analysis on muonic events is possible. This is
+described in this section.
 
-Firstly, the cross sections at the different center of mass energies could be calculated in an analogue way to the hadronic events. The results of this can be found in \tref{muon_events}.
+Firstly, the cross sections at the different center of mass energies could be
+calculated in an analogue way to the hadronic events. The results of this can
+be found in \tref{muon_events}.
 
 \begin{table}[h]
 \begin{center}
@@ -256,7 +277,7 @@ energy $\sqrt{s}$ [\si{\GeV}] & muon events & cross section $σ_0^μ$ [\si{\nano
 \end{tabular}
 \vspace*{0.3cm}
 \caption{\baselineskip=0.38cm analyzed muonic events at different center of mass
-energies}
+energies.}
 \label{tab:muon_events}
 \end{center}
 \vspace*{-0.5cm}
@@ -264,24 +285,22 @@ energies}
 
 Starting from these values and already knowing the decay width of the
 $Z^0$-boson as well as its mass, we can again do a fit on these three data
-points (see \fref{fit_muons}). This time the only free parameter is the muonic
-cross section $σ_0^μ$.
-
+points. The plot is shown in \fref{fit_muons}. This time the only free
+parameter is the muonic cross section $σ_0^μ$.
 \begin{figure}[htb]
  \centering
  \includegraphics[width=1\columnwidth,keepaspectratio]{finalmu_fit}
- \caption{Breit-Wigner-fit for muonic events}
+ \caption{Breit-Wigner-fit for muonic events.}
  \label{fig:fit_muons}
 \end{figure}
-
-The result of this fit is shown in the following line:
+%The result of this fit is shown in the following line:
 \begin{equation}
-σ_0^μ = (2.16 \pm 0.05 \pm 0.03) \si{\nano\barn}
+\nonumber σ_0^μ = (2.16 \pm 0.05 \pm 0.03) \si{\nano\barn}
 \end{equation}
 The $χ^2$-value of this fit is some 6.8, which gives a $χ^2/$ndf of about 3.4.
-This is already in the right order of magnitude (close to 1).
+This is already in the right order of magnitude as it is close to a value of 1.
 
-\section{Determination of the leptonic decay width}
+\subsection{Determination of the leptonic decay width}
 Through the knowledge of the overall cross section it is possible to calculate
 the leptonic decay width $Γ_l$. First of all we assume that the decay width is
 the same for all leptons. We can use the following formula for determining it
@@ -290,8 +309,8 @@ by using the fit parameter for the muonic cross section:
 σ_0^μ = \frac{12π}{M_Z^2}\frac{Γ_l^2}{Γ_Z^2}.
 \label{eqn:leptonicwidth}
 \end{equation}
-This equation can easily be solved, because all the other variables are known.
-The resulting leptonic decay width is
+This equation can easily be solved to determine the resulting leptonic decay
+width $Γ_l$, because all the other variables are known.
 \begin{equation}
 Γ_l = (91 \pm 2 \pm 1)\si{\mega\electronvolt}
 \label{eqn:leptonicwidthresult}
@@ -308,19 +327,61 @@ following relation:
 Γ_{ν_e} &=& \frac{G_FM_Z^3}{12\sqrt{2}π}\\
 &=& (165.71 \pm 0.10 \pm 0.09)\si{\mega\electronvolt}
 \end{eqnarray}
-Now the leptonic decay width can be evaluated. The result is shown in the
-following line:
+Now the leptonic decay width $Γ_l$ can be evaluated.
 \begin{equation}
 Γ_l = (83 \pm 4 \pm 3) \si{\mega\electronvolt}
 \end{equation}
 This is in the same order of magnitude like the result shown in
-\eref{leptonicwidthresult}
+\eref{leptonicwidthresult}.
 
-fehlt noch: kleine erläuterung zur abweichung, winkel, hadr. breite, zahl der
-farbladungen, kleines schlusswort, abstract.
+\subsection{Calculation of the weak mixing angle}
+
+The achieved results by now offer furthermore an oportunity to obtain the
+weak mixing angle using the formula
+\begin{eqnarray}
+Γ_l &=& \frac{G_F M_Z^3}{24 \sqrt{2}π}\left(1+[1-4|Q_l|\sin² Θ_W]²\right)\,.
+\end{eqnarray}
+As $Γ_l$ as well as $M_Z$ is known, the expression $\sin² Θ_W$ can be computed.
+\begin{eqnarray}
+\sin^2\Theta_W &=& \frac{1-\sqrt{\frac{\Gamma_e\cdot 24\sqrt{2}\pi}{G_FM_Z^3}-1}}{4}\\
+\nonumber &=& 0.23 \pm 0.05 \pm 0.08
+\end{eqnarray}
+Thereby the weak mixing angle is determined, too.
+\begin{eqnarray}
+Θ_W &=& \arcsin(\sqrt{\sin^2\Theta_W})\\
+\nonumber &=& 0.50 \pm 0.11 \pm 0.07\\
+\nonumber &=& (28 \pm 6 \pm 4)\symbol{23}
+\end{eqnarray}
+
+\subsection{Calculation of the colour factor}
+
+Finally the measurements allow also to calculate the colour factor $N_C$ using
+$Γ_{\mathrm{had}}$. The hadronic decay width can be obtained by two formulas.
+This width can be computed, as the overall $Γ_Z$ in known, but also the components
+$Γ_{ν_e}$ and $Γ_l$.
+\begin{equation}
+ Γ_Z = Γ_{\mathrm{had}} + 3Γ_{ν_e} + 3Γ_l
+ \label{eqn:gammahad1}
+\end{equation}
+In reference to the standard model there is a second way to compute $Γ_{\mathrm{had}}$.
+\begin{equation}
+ Γ_{\mathrm{had}} = N_C \cdot K_{QCD}\cdot ( 2Γ_u + 3Γ_d )
+ \label{eqn:gammahad2}
+\end{equation}
+Replacing $Γ_{\mathrm{had}}$ in \eref{gammahad2} using \eref{gammahad1} leads to a
+formula which allows to compute the colour factor $N_C$.
+\begin{equation}
+ N_C = 3.20 \pm 0.11 \pm 0.07
+\end{equation}
+This result confirms, that there are no new quarks to be expected with a mass
+lower than around \SI{90}{\GeV}\todo{richtig?}.
+
+\todo[inline,size=]{
+kleine erläuterung zur abweichung, kleines schlusswort
 in zeile 304 steht schon, wie man die hadronische breite berechnen könnte. das
 haben wir im protokoll nicht gemacht, sondern nur ne andere methode. diese
 methode mit reinnehmen? 
+}
 
 % \begin{table}[h]
 % \begin{center}
@@ -361,6 +422,8 @@ methode mit reinnehmen?
 \bibitem{z3}A. Donnachie, P. V. Landshoff, Phys. Lett. \textbf{B 478} (2000) 146
 
 \end{thebibliography}
+
+\listoftodos
 
 % \begin{figure}[htb]
 %  \centering

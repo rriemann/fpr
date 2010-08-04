@@ -71,8 +71,8 @@ The Z-boson mass is evaluated to $M_Z = \SI{91.16(3)}{\GeV}$ with a decay width
 of $Γ_Z = \SI{2.61(6)}{\GeV}$.
 The weak mixing angle is computed to $\sin² Θ_W = \num{0.23(9)}$ and the colour
 factor to $N_C = \num{3.2(13)}$.
-All resuls are in good agreement to the standard model and can be considered as
-one of its best confirmations.
+All resuls are in good agreement with the standard model and can be considered
+as one of its best confirmations.
 }
 
 \maketitle
@@ -84,15 +84,17 @@ one of its best confirmations.
 \vspace*{1.cm}
 
 The standard model of elementary particles describes interactions of particles
-by four fundamental forces. One of them is the electroweak force. Its gauge
+by four fundamental forces. Two of them, the electric and the weak forces, can
+be seen as one force, the electroweak force. Its gauge
 bosons, which mediate the force between the two interacting particles, are the
-photon as well as the W$^{\pm}$- and the Z$^0$-boson. At the
-electron-positron-collider LEP at CERN the Z$^0$ has been seen for the first
+photon as well as the W$^{\pm}$- and the $Z^0$-boson. At the
+electron-positron-collider LEP at CERN the $Z^0$ has been seen for the first
 time, which was possible because of the sufficient center of mass energy of this
 collider experiment.
 
 We were able to evaluate its mass $M_Z$ and its lifetime τ. The leptonic and
-the hadronic decay widths $Γ_l$ and $Γ_h$ could be investigated as well. Finally
+the hadronic decay widths $Γ_l$ and $Γ_{\mathrm{had}}$ could be investigated as
+well. Finally
 the number of quark and lepton families $N_C$ and the weak mixing angle, also
 called Weinstein angle, $\Theta_W$ can be measured. This angle describes the
 ratio of the electromagnetic and the weak coupling constants α and α$_w$.
@@ -111,40 +113,42 @@ different quarks (Z$^0→q\overline{q'}$), another one could be the decay via tw
 charged leptons like Z$^0→ μ^+μ^-$. The first one of the mentioned decays can be
 seen as two jets which can be measured in hadronic calorimeters. The leptonic
 decay is measured due to registration of leptons in electromagnetic
-calorimeters. All of these layers have an almost cylindrical shape in order to
+calorimeters, muon chambers or even hadronic calorimeters. All of the mentioned
+detector layers have an almost cylindrical shape in order to
 cover as much of the solid angle as possible. This is also the reason for the
 installation of the end caps.
 
-The detector for all of these particles is LEP. Its structure can be seen
-in \fref{aufbau}.
+The detector for all of the possible standard model particles is LEP. Its
+structure can be seen in \fref{aufbau}.
 \begin{figure}[htb]
  \centering
  \includegraphics[page=5,viewport=286 620 508 765,clip,%
   width=\columnwidth,keepaspectratio]{../../Z0/docs/Z0ResFprakt}
- \caption{design of the L3 detector \cite{pic}.}
- \todo[inline]{soll hier eine quelle hin?}
+ \caption{Design of the L3 detector.}% \cite{pic}.}
+%  \todo[inline]{soll hier eine quelle hin?}
  \label{fig:aufbau}
 \end{figure}
-There are layers of components with different purposes, starting from the
-interaction point, these are the tracking chamber, the electromagnetic calorimeter,
-the hadronic calorimeter and finally the muon chamber.
+There are layers of components with different purposes. Starting from the
+interaction point, these are the tracking chamber, the electromagnetic
+calorimeter, the hadronic calorimeter and finally the muon chamber.
 
 In this case the hadronic calorimeter and the muon chamber are the most
-important parts. The hadronic calorimeter consists of alternating layers of
+important parts. The hadronic calo- rimeter consists of alternating layers of
 uranium plates and wire chambers. The muon chamber is built up of drift
 chambers. It detects the high energy muons, which have passed the detector
 without a significant loss of energy, because these are the only particles that
-are able to reach there. Further information about the detector design can
-be found in \cite{script}.
+are able to reach there.
+% Further information about the detector design can be found in \cite{script}.
 
 \section{ Data analysis}
 
 For a detailed analysis of the mentioned processes it is important to be able
 to distinguish between muonic and hadronic decays. By Monte Carlo studies the
-difference between both processes could be figure out. This unlocks the
-possibility to apply cuts on the measured distributions. in this paper first
-results of measurements at center of mass energies of \num{89.48}, \num{91.33} and
-\SI{93.02}{\giga\electronvolt} can already be presented.
+differences between both processes could be figured out. This unlocks the
+possibility to apply cuts on the measured distributions.
+
+In this paper first results of measurements at center of mass energies of
+\num{89.48}, \num{91.33} and \SI{93.02}{\giga\electronvolt} can be presented.
 
 \subsection{ Event selection}
 Muons barely interact with any matter, therefore there are only very few
@@ -158,14 +162,15 @@ energy provided by the apparatus can finally be seen. Therefore there are large
 uncertainties in jet energy measurements, whereas these uncertainties are
 smaller for muonic events. This fact can also be used to distinguish these
 events from each other and from background as well. For example if the $Z^0$
-decays to two very unstable tauons, these tauons decay very fast. Then two
+decays into two very unstable tauons, these tauons decay very fast. Then two
 neutrinos are created, but they cannot be measured, so that their contribution
 to the visible energy is missing. The visible part of the tau decays resembles
 hadronic events, so it is important to be able to separate this background from
 the hadronic signal.
 
 To be able to separate muonic events from background it is suitable to ask for
-an angle of almost π, as the $Z^0$ boson should be created almost resting in
+an angle of almost π between the two muons, as the $Z^0$ boson should be created
+almost resting in
 the laboratory frame, leading to muons flying back to back. Another selection
 for muonic events is possible through the requirement of both muons carrying
 about half the energy of the event each. This is possible because muon energies
@@ -214,9 +219,9 @@ $σ^{\mathrm{had}}$ [\si{\nano\barn}]\\
 These cross sections have been used then to fit the Breit-Wigner distribution as
 seen in \fref{fit_hadrons}.
 By fitting the data
-points the overall hadronic cross section $σ_0^{\mathrm{had}}$\todo{$σ_0^{had}$ haben wir doch schon. muss die 0 irgendwo weg?}, the mass $m_Z$ and the decay width $Γ_Z$
-of the $Z^0$-boson could be determined. The results can be found in
-\tref{results}.
+points the overall hadronic cross section $σ_0^{\mathrm{had}}$, the mass $M_Z$
+and the decay width $Γ_Z$ of the $Z^0$-boson could be determined. The results
+can be found in \tref{results}.
 
 \begin{figure}[htb]
  \centering
@@ -229,13 +234,16 @@ of the $Z^0$-boson could be determined. The results can be found in
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-$m_Z$ [\si{\GeV}] & $σ_0^{\mathrm{had}}$  [\si{\nano\barn}] & $Γ_Z$ [\si{\GeV}]\\
+$M_Z$ [\si{\GeV}] & $σ_0^{\mathrm{had}}$  [\si{\nano\barn}] & $Γ_Z$
+[\si{\GeV}]\\
 \hline
 $91.16 \pm 0.02 \pm 0.02$ & $40.33 \pm 0.65 \pm 0.27$ & $2.61 \pm 0.05 \pm 0.03$\\
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm results of fit on data. The hadronic cross section $σ_0^{\mathrm{had}}$, the mass $m_Z$ and the decay width $Γ_Z$ of the $Z^0$-boson is determined from the fit in \fref{fit_hadrons}.}
+\caption{\baselineskip=0.38cm Results of fit on data. The hadronic cross section
+$σ_0^{\mathrm{had}}$, the mass $M_Z$ and the decay width $Γ_Z$ of the
+$Z^0$-boson is determined from the fit in \fref{fit_hadrons}.}
 \label{tab:results}
 \end{center}
 \vspace*{-0.5cm}
@@ -243,7 +251,7 @@ $91.16 \pm 0.02 \pm 0.02$ & $40.33 \pm 0.65 \pm 0.27$ & $2.61 \pm 0.05 \pm 0.03$
 This is the first and already very precise measurement of the mass of the $Z^0$-boson. 
 % no paragraph
 The χ$^2$-value of this fit is almost zero, but as there were only three points
-to fit, whereas at the same time three parameters had to be evaluated, the
+to fit and at the same time three parameters to be evaluated, the
 number of degrees of freedom (ndf) is zero. Therefore the value of $χ^2/$ndf has to be
 undefined. During the next data taking periods more data at different center of
 mass energies will be acquired, so that this problem will be solved.
@@ -277,7 +285,7 @@ energy $\sqrt{s}$ [\si{\GeV}] & muon events & cross section $σ_0^μ$ [\si{\nano
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm analyzed muonic events at different center of mass
+\caption{\baselineskip=0.38cm Analyzed muonic events at different center of mass
 energies.}
 \label{tab:muon_events}
 \end{center}
@@ -287,7 +295,8 @@ energies.}
 Starting from these values and already knowing the decay width of the
 $Z^0$-boson as well as its mass, we can again do a fit on these three data
 points. The plot is shown in \fref{fit_muons}. This time the only free
-parameter is the muonic cross section $σ_0^μ$.
+parameter is the muonic cross section $σ_0^μ$, which is presented in the next
+equation.
 \begin{figure}[htb]
  \centering
  \includegraphics[width=1\columnwidth,keepaspectratio]{finalmu_fit}
@@ -322,8 +331,8 @@ the following equation:
 Γ_l = \frac{1}{3}(Γ_Z - 3Γ_{\mathrm{Had}} - 3Γ_{ν_l}).
 \end{equation}
 $Γ_{\mathrm{Had}}$ can be calculated in the same way as the leptonic decay
-width in \eref{leptonicwidth}. $Γ_{ν_l}$ can be determinde by using the
-following relation:
+width in \eref{leptonicwidth}. $Γ_{ν_l}$ can be determined by using the
+following relationship:
 \begin{eqnarray}
 Γ_{ν_e} &=& \frac{G_FM_Z^3}{12\sqrt{2}π}\\
 &=& (165.71 \pm 0.10 \pm 0.09)\si{\mega\electronvolt}
@@ -357,7 +366,7 @@ It is clearly visible that these two results are in perfect agreement.
 
 \subsection{Calculation of the weak mixing angle}
 
-The achieved results by now offer furthermore an oportunity to obtain the
+The achieved results by now offer furthermore an opportunity to obtain the
 weak mixing angle using the formula
 \begin{eqnarray}
 Γ_l &=& \frac{G_F M_Z^3}{24 \sqrt{2}π}\left(1+[1-4|Q_l|\sin² Θ_W]²\right)\,.
@@ -439,13 +448,13 @@ further study. During the next months of data taking, there will also be higher
 luminosities available as well as measurements at higher center of mass
 energies, which will improve the resuls of this study.
 
-\begin{thebibliography}{}
-\baselineskip=0.38cm
-\bibitem{pic} http://ams.pg.infn.it/ams-italy/pub/5\_5.htm
-
-\end{thebibliography}
-
-\listoftodos
+% \begin{thebibliography}{}
+% \baselineskip=0.38cm
+% \bibitem{pic} http://ams.pg.infn.it/ams-italy/pub/5\_5.htm
+% 
+% \end{thebibliography}
+% 
+% \listoftodos
 
 % \begin{figure}[htb]
 %  \centering

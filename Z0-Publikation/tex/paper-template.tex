@@ -126,7 +126,7 @@ The particle detector LEP is built in a way as can be seen in \fref{aufbau}.
  \centering
  \includegraphics[page=5,viewport=286 620 508 765,clip,%
   width=\columnwidth,keepaspectratio]{../../Z0/docs/Z0ResFprakt}
- \caption{Design of the L3 detector.}% \cite{pic}.}
+ \caption{Design of the L3 detector \cite{pic}.}
 %  \todo[inline]{soll hier eine quelle hin?}
  \label{fig:aufbau}
 \end{figure}
@@ -186,8 +186,9 @@ possible to determine the hadronic cross section using the following formula:
 \begin{equation}
 σ_{\mathrm{had}} = \frac{N}{Lε},
 \end{equation}
-where ε is the efficiency of the cuts. This efficiency could be calculated
-using the following equation:
+where ε is the efficiency of the cuts. The acceptance can be interpreted as an
+additional factor set to 1, which is included in the efficiency. This efficiency
+could be calculated using the following equation:
 \begin{equation}
 ε = \frac{N’_{\mathrm{MC}}}{N_{\mathrm{MC}}},
 \end{equation}
@@ -220,7 +221,9 @@ $σ^{\mathrm{had}}$ [\si{\nano\barn}]\\
 
 % These cross sections have then been used as data for a fit (see \fref{fit_hadrons}).
 These cross sections have been used then to fit the Breit-Wigner distribution as
-seen in \fref{fit_hadrons}.
+seen in \fref{fit_hadrons}. Additionally there is a second graph shown, which
+is derived by the Breit-Wigner fit, but takes account for QCD effects like
+initial and final state radiation.
 By fitting the data
 points the overall hadronic cross section $σ_0^{\mathrm{had}}$, the mass $M_Z$
 and the decay width $Γ_Z$ of the $Z^0$-boson could be determined. The results
@@ -451,11 +454,13 @@ further study. During the next months of data taking, there will also be higher
 luminosities available as well as measurements at higher center of mass
 energies, which will improve the resuls of this study.
 
-% \begin{thebibliography}{}
-% \baselineskip=0.38cm
-% \bibitem{pic} http://ams.pg.infn.it/ams-italy/pub/5\_5.htm
-% 
-% \end{thebibliography}
+\begin{thebibliography}{}
+\baselineskip=0.38cm
+\bibitem{pic} http://ams.pg.infn.it/ams-italy/pub/5\_5.htm
+\bibitem{tdr} CERN (1984). "LEP design report". Geneva.
+\bibitem{pdb} C. Amsler et al. (2008). "Review of Particle Physics". Physics Letters B 667
+
+\end{thebibliography}
 % 
 % \listoftodos
 

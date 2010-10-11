@@ -147,11 +147,16 @@ are able to reach there.
 
 For a detailed analysis of the mentioned processes it is important to be able
 to distinguish between muonic and hadronic decays. By Monte Carlo studies the
-differences between both processes could be figured out. This unlocks the
+differences between both processes could be figured out using pure hadronic and
+muonic data samples as well as simulated data.
+% , which was necessary
+% because the hadronic and muonic cross sections and decay widths are going to
+% be calculated seperately.
+This facilitates the
 possibility to apply cuts on the measured distributions.
 
 In this paper first results of measurements at center of mass energies of
-\num{89.48}, \num{91.33} and \SI{93.02}{\giga\electronvolt} can be presented.
+\num{89.48}, \num{91.33} and \SI{93.02}{\giga\electronvolt} will be presented.
 
 \subsection{ Event selection}
 Muons barely interact with any matter, therefore there are only very few
@@ -163,7 +168,9 @@ jets.
 Due to inefficiencies in energy measurement it is possible that not all the
 energy provided by the apparatus can finally be seen. Therefore there are large
 uncertainties in jet energy measurements, whereas these uncertainties are
-smaller for muonic events. This fact can also be used to distinguish these
+smaller for muonic events. Nevertheless also for these events there is a
+statistical uncertainty limiting the energetic resolution. This fact can also be
+used to distinguish these
 events from each other and from background as well. For example if the $Z^0$
 decays into two very unstable tauons, these tauons decay very fast. Then two
 neutrinos are created, but they cannot be measured, so that their contribution
@@ -185,6 +192,7 @@ As it is now known how to extract hadronic events out of the data, it is
 possible to determine the hadronic cross section using the following formula:
 \begin{equation}
 σ_{\mathrm{had}} = \frac{N}{Lε},
+\label{eqn:sigma}
 \end{equation}
 where ε is the efficiency of the cuts. The acceptance can be interpreted as an
 additional factor set to 1, which is included in the efficiency. This efficiency
@@ -213,17 +221,24 @@ $σ^{\mathrm{had}}$ [\si{\nano\barn}]\\
 \hline
 \end{tabular}
 \vspace*{0.3cm}
-\caption{\baselineskip=0.38cm analyzed hadronic events at different center of mass energies.}
+\caption{\baselineskip=0.38cm analyzed hadronic events at different center of
+mass energies. The first given error is the statistical, the second one is the
+systematic uncertainty.}
 \label{tab:hadr_events}
 \end{center}
 \vspace*{-0.5cm}
 \end{table}
 
+The systematic uncertainties listed in this table are derived from the
+systematic uncertainties of $ε_{\mathrm{had}}$ and the influence of variations
+of the cuts.
+
 % These cross sections have then been used as data for a fit (see \fref{fit_hadrons}).
-These cross sections have been used then to fit the Breit-Wigner distribution as
+The listed cross sections have been used then to fit the Breit-Wigner distribution as
 seen in \fref{fit_hadrons}. Additionally there is a second graph shown, which
 is derived by the Breit-Wigner fit, but takes account for QCD effects like
 initial and final state radiation.
+
 By fitting the data
 points the overall hadronic cross section $σ_0^{\mathrm{had}}$, the mass $M_Z$
 and the decay width $Γ_Z$ of the $Z^0$-boson could be determined. The results
@@ -271,12 +286,13 @@ of this particle. This is done using the following formula:
 
 \subsection{Muonic events}
 
-On the other hand, muons could be distinguished from hadronic events as well as
+Muonic signals could be distinguished from hadronic events as well as
 from background. Therefore an analysis on muonic events is possible. This is
 described in this section.
 
 Firstly, the cross sections at the different center of mass energies could be
-calculated in an analogue way to the hadronic events. The results of this can
+calculated in an analogue way to the hadronic events (see \eref{sigma}). The
+results of this can
 be found in \tref{muon_events}.
 
 \begin{table}[h]
@@ -389,6 +405,8 @@ Thereby the weak mixing angle is determined, too.
 \nonumber &=& 0.50 \pm 0.11 \pm 0.07\\
 \nonumber &=& (28 \pm 6 \pm 4)\symbol{23}
 \end{eqnarray}
+This angle is, as a parameter of the electroweak theory, a fundamental
+constant describing this interaction as a symmetry group.
 
 \subsection{Calculation of the colour factor}
 
@@ -408,7 +426,7 @@ factor can be calculated.
  N_C = 3.20 \pm 0.11 \pm 0.07
 \end{equation}
 This result confirms, that there are no new quarks to be expected with a mass
-lower than some \SI{90}{\GeV}.
+lower than some \SI{45}{\GeV}.
 
 
 % \begin{table}[h]
@@ -442,7 +460,7 @@ lower than some \SI{90}{\GeV}.
 
 
 \section{ Summary}
-In order to sum up the results one has to say that this is a very precise
+In order to sum up the results one has to say that this is a first
 confirmation of the predictions of the standard model. The properties of the
 predicted $Z^0$-boson could be measured precisely. Additionally the first exact
 measurement of the weak mixing angle was done successfully, which was one of the

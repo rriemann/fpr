@@ -1,0 +1,14 @@
+c : 3e8$
+h : 6.626e-34$
+/* e : 1.609e-19$ */
+
+E_puls		: 5e-3*10e-9$	/*Wattsekunden*/
+lambda_photon	: 633e-9$	/*Meter*/
+E_photon 	: h*c/lambda_photon;
+
+N_photonen	: E_puls/E_photon;
+
+parameter	: N_photonen$
+p_ziel		: 0.999$
+
+solve(norm*parameter*exp(-norm*parameter) = 0.999, norm);

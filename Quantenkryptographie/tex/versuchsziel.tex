@@ -13,9 +13,32 @@ Polarisationen des zur Übertragung verwendeten Laserlichts repräsentiert.
 Um vertrauliche Informationen auszutauschen, ist die Verschlüsselung das
 Mittel der Wahl. Der Sender wird allgemeinhin mit Alice, der Empfänger mit Bob
 bezeichnet. Werden während der Überbringung oder Übertragung die Daten von
-einem Dritten, oft Eve genannt, abgefangen, so kann dieser mit den
+einem Dritten, oft Eve genannt, abgefangen bzw. mitgelesen, so kann dies bei
+der Wahl eines klassischen Übermittlungsweges nicht bemerkt werden, im Falle
+von quantenkryptographischen Methoden kann aber mit Hilfe von Vergleichen der
+Ergebnisse von Sender und Empfänger über statistische Methoden die Existenz
+von Eve nachgewiesen werden. In einem solchen Fall kann der ausgetauschte
+Schlüssel einfach verworfen werden, die Nachricht selbst wird demnach auch
+nicht übermittelt werden.
+
+Mithilfe des sicher übertragenen Schlüssels kann nun auf öffentlichem Wege die
+chiffrierte Nachricht übermittelt werden. Für jeden, der nicht im Besitz des
+Schlüssels ist, ist die verschlüsselte Botschaft nicht lesbar und daher nutzlos.
 
 
 \subsection{Physikalische Grundlagen}
+
+Die quantenkryptographische Sicherheit kann mit Hilfe des BB84-Protokolls
+erreicht werden. Hier wird die Polarisationsrichtung von Photonen verwendet, um
+Informationen zu übertragen. Zunächst erzeugt Alice unpolarisierte Photonen mit
+Einzelphotonenquellen wie beispielsweise Quantenpunkten. Diese werden durch
+einen Polarisationsfilter geleitet, der die Photonen linear polarisiert. Die
+Richtung dieses Filters kann dabei in \SI{45}{\degree}-Schritten von 0 bis
+\SI{135}{\degree} eingestellt werden. Dabei stellen die Positionen bei null und
+\SI{90}{degree} die Achsen eines „ungedrehten“, rechtwinkligen
+Koordinatensystems dar, während die Einstellung bei 45 und \SI{135}{degree} die
+Achsen eines gedrehten, ebenfalls rechtwinkligen Koordinatensystems darstellen.
+Die beiden Koordinatensysteme repräsentieren jeweils eine Basis, bezüglich der
+die Polarisation der Photonen gemessen wird. 
 
 \subsection{Versuchsaufbau}

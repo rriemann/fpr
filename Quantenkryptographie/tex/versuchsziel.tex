@@ -35,10 +35,34 @@ Einzelphotonenquellen wie beispielsweise Quantenpunkten. Diese werden durch
 einen Polarisationsfilter geleitet, der die Photonen linear polarisiert. Die
 Richtung dieses Filters kann dabei in \SI{45}{\degree}-Schritten von 0 bis
 \SI{135}{\degree} eingestellt werden. Dabei stellen die Positionen bei null und
-\SI{90}{degree} die Achsen eines „ungedrehten“, rechtwinkligen
-Koordinatensystems dar, während die Einstellung bei 45 und \SI{135}{degree} die
+\SI{90}{\degree} die Achsen eines „ungedrehten“, rechtwinkligen
+Koordinatensystems dar, während die Einstellung bei 45 und \SI{135}{\degree} die
 Achsen eines gedrehten, ebenfalls rechtwinkligen Koordinatensystems darstellen.
 Die beiden Koordinatensysteme repräsentieren jeweils eine Basis, bezüglich der
-die Polarisation der Photonen gemessen wird. 
+die Polarisation der Photonen gemessen wird. Die konkrete Wahl der Basis von
+Alice wird zufällig eingestellt. Die polarisierten Photonen werden nun zu Bob
+geleitet, der das Licht ebenfalls mit einem Polarisationsfilter analysiert. Die
+Wahl der Basis von Bob erfolgt zufällig. Schließlich können die Photonen, die
+den Filter passiert haben, mit einem Detektor nachgewiesen werden.
+
+Um aus den Messungen der Photonen einen Schlüssel zu erzeugen, vergleichen
+Alice und Bob die Wahlen ihrer Basen. Nur wenn beide zufällig die gleichen Basen
+gewählt haben, werden die in diesen Fällen gemessenen Werte weiter verwendet, da
+nur hier die Messergebnisse von Bob deterministisch sind und somit Informationen
+liefern können. Schließlich müssen sie sich einigen, welche der Achsen der
+beiden Basen von Alice einer Null bzw. einer Eins entsprechen. So können beide
+nur über den Vergleich der verwendeten Basis und insbesondere ohne den
+Vergleich der Messwerte einen Schlüssel konstruieren.
+
+Wenn Eve versuchen würde, die Polarisation der von Alice gesendeten Photonen zu
+messen und ein Photon gleicher Polarisation zu Bob zu senden, würde dies
+dadurch auffallen, dass Eve statistisch gesehen in der Hälfte der Fälle die
+falsche Basis gewählt hat und in diesen Fällen rein zufällige Messungen macht
+und daher in \SI{50}{\percent} der Fälle falsch polarisiertes Licht zu Bob
+schickt. Alice und Bob können beispielsweise einen Teil ihres Schlüssels
+veröffentlichen und vergleichen, wie oft sie unterschiedliche Ergebnisse
+produziert haben, was geschehen würde, wenn Eve eine andere Basis als Alice und
+Bob gewählt hat. Wenn dies häufig der Fall ist, bedeutet dies, dass ihre
+Transaktion abgehört wurde. 
 
 \subsection{Versuchsaufbau}

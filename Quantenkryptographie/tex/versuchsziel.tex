@@ -97,3 +97,42 @@ Bob gewählt hat. Wenn dies häufig der Fall ist, bedeutet dies, dass ihre
 Transaktion abgehört wurde. 
 
 \subsection{Versuchsaufbau}
+
+Der für den Versuch konkret verwendete Aufbau weicht in einigen Details vom
+prinzipiellen Schema ab. Zunächst wurde keine wirkliche Ein-Photonen-Quelle
+verwendet, sondern ein Laser, dessen Intesität so stark abgeschwächt wurde,
+dass es sehr unwahrscheinlich ist, dass mehr als ein Photon gleichzeitig
+emittiert wird.
+
+Weiterhin wurden die Photonen durch einen Strahlteiler geleitet, der nur
+vertikal porarisiertes Licht passieren lässt und die vertikalen Anteile aus der
+Apparatur herausführt. In einem nächsten Schritt passieren die Photonen einen 
+„elektro-optischen Modulator“ (EOM), wie sie in \fref{aufbau} zu sehen sind.
+
+\begin{figure*}[htb]
+ \centering
+ \includegraphics[page=8,viewport=166 482 445 565,clip,%
+  width=0.8\paperwidth,keepaspectratio]{%
+  ../doc/crypto3}
+ \caption{Aufbau des Experiments}
+ \label{fig:aufbau}
+\end{figure*}
+
+Dabei handelt es sich um Geräte, die den Lichtstrahl, der durch sie
+hindurchläuft, durch ein doppelbrechendes Medium leiten, dessen
+Brechungsindizes von der angelegten elektrischen Spannung abhängen. Man kann
+über eine Software diesen Spannungswert variieren und somit das optische
+Verhalten des doppelbrechenden Kristalls beeinflussen. Da die Wellenlänge der
+Photonen konstant und bekannt ist (ca. \SI{633}{nm}), kann gezielt eingestellt
+werden, ob sich die EOMs wie $λ/4$- oder $λ/2$-Plättchen verhalten. Im
+Endeffekt resultieren je nach gewähltem Spannungswert horizontal, vertikal oder
+rechts- bzw. links-zirkular polarisierte Photonen, die zu Bob gesendet werden.
+Ein Nachweis, dass zirkular polarisiertes Licht für unsere Zwecke geeignet ist,
+wird in \textcolor{red}{\sref{zirkular}} geführt.
+
+Auf der Seite von Bob wird das eintreffende Licht zunächst durch einen weiteren
+EOM geleitet. Hier wird die Polarisationsrichtung des Lichts erneut um einen
+gewissen Winkel gedreht, der mit einer Spannung geregelt werden kann.
+Anschließend wird der Lichtstrahl erneut durch einen Strahlteiler geleitet, der
+nur die vertikal polarisierten Anteile passieren lässt. Schließlich werden die
+Photonen mit einer Avalanche-Photodiode (APD) registriert.

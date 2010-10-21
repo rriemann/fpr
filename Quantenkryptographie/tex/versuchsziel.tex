@@ -13,18 +13,49 @@ Polarisationen des zur Übertragung verwendeten Laserlichts repräsentiert.
 Um vertrauliche Informationen auszutauschen, ist die Verschlüsselung das
 Mittel der Wahl. Der Sender wird allgemeinhin mit Alice, der Empfänger mit Bob
 bezeichnet. Werden während der Überbringung oder Übertragung die Daten von
-einem Dritten, oft Eve genannt, abgefangen bzw. mitgelesen, so kann dies bei
-der Wahl eines klassischen Übermittlungsweges nicht bemerkt werden, im Falle
-von quantenkryptographischen Methoden kann aber mit Hilfe von Vergleichen der
-Ergebnisse von Sender und Empfänger über statistische Methoden die Existenz
-von Eve nachgewiesen werden. In einem solchen Fall kann der ausgetauschte
-Schlüssel einfach verworfen werden, die Nachricht selbst wird demnach auch
-nicht übermittelt werden.
+einem Dritten, der Konvention nach Eve genannt, abgefangen beziehungsweise
+mitgelesen, so erhält dieser nicht ohne weiteres Aufschluss über die Informationen.
+Die gesicherte Kommunikation ist also nur so lange gewährleistet, wie die zur
+Verschlüsselung verwendeten Parameter (der Schlüssel) nur Alice und Bob bekannt
+sind. Die Herausforderung verschiebt sich nun von der abhörsicheren
+Informationsübermittlung hin zur Frage, wie der Schlüssel ausgetauscht werden
+kann.
 
-Mithilfe des sicher übertragenen Schlüssels kann nun auf öffentlichem Wege die
-chiffrierte Nachricht übermittelt werden. Für jeden, der nicht im Besitz des
-Schlüssels ist, ist die verschlüsselte Botschaft nicht lesbar und daher nutzlos.
+Bei der asymmetrischen Verschlüsselung wird der Schlüssel in einen privaten und
+einen öffentlichen Schlüssel geteilt. Durch die Verwendung von Einmal-Funktionen
+entfällt nun die Notwendigkeit einer Schlüsselübergabe. Allerdings kann eine
+unbefugte Entschlüsselung nicht prinzipiell ausgeschlossen werden. Man hofft,
+dass eine kurzfristige Entschlüsselung auf Grund des hohen Aufwandes nicht möglich
+ist. Mit steigender Leistungsfähigkeit der Computer sinkt somit die Sicherheit
+der heute verwendeten asymmetrischen Verschlüsselungssysteme, wodurch die Forschung
+nach alternativen Lösungsansätzen an Bedeutung gewinnt.
 
+Die symmetrische Verschlüsselung erfordert einen Schlüsselaustausch vor der
+Informationsübertragung. Wenn der Schlüssel ebensolang wie die zu verschlüsselnde
+Information ist, so ist es prinzipiell unmöglich aus den verschlüsselten Daten
+etwas zurückzugewinnen. Man spricht in diesem Fall von dem One-Time-Pad. Gelingt
+es allerdings Eve Kenntniss über den Schlüssel zu gewinnen, so ist eine sichere
+Verschlüsselung nicht mehr gewährleistet.
+
+Die klassische Kryptographie sieht sich also mit zwei Problemen konfrontiert:
+\begin{enumerate}[a)]
+ \item Wie kann ein nicht-deterministischer Schlüssel erzeugt werden?
+ \item Wie kann ausgeschlossen werden, dass der Schlüssel abgehört wurde?
+\end{enumerate}
+
+Die Quantenkryptographie erlaubt die Lösung dieser beiden Probleme. Durch
+den der Quantenmechanik eigenen intrinsischen Zufall ist das Vorhersagen
+des aus quantenmechanischen Zuständen abgeleiteten Schlüssels nicht möglich.
+
+Außerdem folgt aus dem No-Clone-Theorem, dass der Schlüssel nicht unbemerkt
+abgehört werden kann. Hierfür ist es allerdings notwendig, für das Übetragen des
+Schlüssels jeweis nur ein Teilchen zu benutzen um einen quantenmechanischen
+Zustand zu übertragen.
+
+Nachdem der Schlüssel übertragen wurde und ein Abhören nicht stattgefunden hat,
+kann nun auf einem öffentlichen Kanal die chiffrierte Nachricht übermittelt werden.
+Für jeden, der nicht im Besitz des Schlüssels ist, ist die verschlüsselte
+Botschaft nicht lesbar und daher nutzlos.
 
 \subsection{Physikalische Grundlagen}
 

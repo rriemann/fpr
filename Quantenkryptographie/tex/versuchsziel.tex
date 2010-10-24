@@ -116,7 +116,6 @@ gleichzeitig emittiert werden. Die Berechnung zur Stärke bzw. Anzahl der
 erforderlichen Filter zur Abschwächung des Liches in Abhängigkeit der
 Laserleistung befindet sich in Anhang \ref{sec:laser}
 
-
 Die Photonen werden zunächst durch einen Strahlteiler geleitet, der nur vertikal
 porarisierte Photonen passieren lässt und alle anderen Photonen aus der Apparatur
 herausleitet. In einem nächsten Schritt passieren die Photonen einen 
@@ -142,3 +141,58 @@ kann. Anschließend wird der Lichtstrahl erneut durch einen Strahlteiler
 geleitet, nachdem nur die vertikal polarisierten Anteile verbleiben.
 Schließlich werden die Photonen mit einer Avalanche-Photodiode (APD)
 registriert.
+
+Da beide EOMs sowie der Detektor über den Computer gesteuert beziehungsweise
+ausgelesen werden können, erfolgt die weitere Umsetzung des BB84-Protokoll
+automatisiert in einer eigens dafür eingerichteten Labview-Umgebung.
+
+\subsection{Kalibration}
+
+Wie zuvor bereits ausgeführt wurde, erlauben die EOMs die Polarisation des
+Lichtes relativ zum einfallenden Licht zu verändern. Die anliegende Spannung
+zur Variation des Effektes kann softwareseitig von 0 (\SI{-12}{\volt}) bis
+255 (\SI{+12}{\volt}). Die genauen Einstellwerte für die vier verschiedenen
+Polarisationsrichtungen der beiden EOMs mussten vor der Messung zunächst
+gefunden und experimentell verifiziert werden. Hierzu wurden die
+Abschächungsfilter vorerst entfernt und eine weitere, weniger empfindliche
+Photodiode verwendet.
+
+Um das erste EOM auf der Seite des Senders (Alice) einzustellen, wurde direkt
+hinter dem EOM der zweite Vertikalpolarisator platziert. Darauf folgte die
+Photodiode, die ihrerseits über einen Verstärken an ein Oszilloskop
+angeschlossen wurde. Durch die softwareseitige Variation der Spannung konnten
+Minima und Maxima gefunden werden, die die vertikale beziehungsweise der
+horizontale Polarisationsrichtung festlegen. Auf halbem Weg zwischen diesen
+Extrema findet man die Einstellung für das zirkular polarisierte Licht. Eine
+genauere Unterscheidung ist nicht ohne Umstände möglich und auch nicht notwendig.
+
+Um das zweite EOM einzustellen, wurde der zweite Vertikalpolarisator und die
+Photodiode hinter dem nun zu vermessenden EOM eingesetzt. Der erste EOM wurde
+auf vertikale Polarisation eingestellt, wodurch die Polarisation beim Durchgang
+unverändert bleibt. Analog zur Vermessung des ersten EOM konnte nun der zweite
+kalibriert werden. Die Messergebnisse mit ihren Unsicherheiten können dem
+Messprotokoll in Anhang \ref{sec:protokoll} entnommen werden. Die
+Steuerungssoftware wurde auf die in \tref{kalibration} zusammengefassten Werte
+eingestellt.
+
+\begin{table}[htbp]
+\centering
+% \setlength{\tabcolsep}{14pt}
+\begin{tabular*}{\columnwidth}{%
+l%
+S[tabformat=3.0]%
+S[tabformat=3.0]}
+\toprule
+Polarisation &
+{EOM von Alice} &
+{EOM von Bob}\\
+\midrule
+vertikal & 105 & 139 \\
+horizontal & 255 & 41 \\
+zirkular 1 & 160 & 193 \\
+zirkular 2 & 51 & 90 \\
+\bottomrule
+\end{tabular*}
+\caption{Kalibration der EOMs}
+\label{tab:kalibration}
+\end{table}

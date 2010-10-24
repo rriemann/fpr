@@ -59,55 +59,45 @@ Botschaft nicht lesbar und daher nutzlos.
 
 \subsection{Physikalische Grundlagen}
 
-Die quantenkryptographische Sicherheit kann mit Hilfe des BB84-Protokolls
-erreicht werden. Hier wird die Polarisationsrichtung von Photonen verwendet, um
-Informationen zu übertragen. Zunächst erzeugt Alice unpolarisierte Photonen mit
-Einzelphotonenquellen wie beispielsweise Quantenpunkten. Diese werden durch
-einen Polarisationsfilter geleitet, der die Photonen linear polarisiert. Die
-Richtung dieses Filters kann dabei in \SI{45}{\degree}-Schritten von 0 bis
-\SI{135}{\degree} eingestellt werden. Dabei stellen die Positionen bei null und
-\SI{90}{\degree} die Achsen eines „ungedrehten“, rechtwinkligen
-Koordinatensystems dar, während die Einstellung bei 45 und \SI{135}{\degree} die
-Achsen eines gedrehten, ebenfalls rechtwinkligen Koordinatensystems darstellen.
-Die beiden Koordinatensysteme repräsentieren jeweils eine Basis, bezüglich der
-die Polarisation der Photonen gemessen wird. Die konkrete Wahl der Basis von
-Alice wird zufällig eingestellt. Die polarisierten Photonen werden nun zu Bob
-geleitet, der das Licht ebenfalls mit einem Polarisationsfilter analysiert. Die
-Wahl der Basis von Bob erfolgt zufällig. Schließlich können die Photonen, die
-den Filter passiert haben, mit einem Detektor nachgewiesen werden.
+Eine mögliche Implementierung des quantenkryptographischen Schlüsselaustausches
+wird durch das BB84-Protokoll beschrieben. Hierbei wird die
+Polarisationsrichtung von Photonen verwendet, um Quantenzustände zu übertragen.
+Prinzipiell können jedoch auch Zeit- und Phasenzustände verwendet werden.
 
-Um aus den Messungen der Photonen einen Schlüssel zu erzeugen, vergleichen
-Alice und Bob die Wahlen ihrer Basen. Nur wenn beide zufällig die gleichen Basen
-gewählt haben, werden die in diesen Fällen gemessenen Werte weiter verwendet, da
-nur hier die Messergebnisse von Bob deterministisch sind und somit Informationen
-liefern können. Schließlich müssen sie sich einigen, welche der Achsen der
-beiden Basen von Alice einer Null bzw. einer Eins entsprechen. So können beide
-nur über den Vergleich der verwendeten Basis und insbesondere ohne den
-Vergleich der Messwerte einen Schlüssel konstruieren.
+Zunächst erzeugt Alice einzelne Photonen. Diese werden durch
+einen Polarisationsfilter geleitet, wodurch die Photonen in einer der beiden
+möglichen Basen einen der beiden zueinander orthogonalen Zustände einnimmt.
+Die Wahl der Basis erfolgt zufällig.
 
-Wenn Eve versuchen würde, die Polarisation der von Alice gesendeten Photonen zu
-messen und ein Photon gleicher Polarisation zu Bob zu senden, würde dies
-dadurch auffallen, dass Eve statistisch gesehen in der Hälfte der Fälle die
-falsche Basis gewählt hat und in diesen Fällen rein zufällige Messungen macht
-und daher in \SI{50}{\percent} der Fälle falsch polarisiertes Licht zu Bob
-schickt. Alice und Bob können beispielsweise einen Teil ihres Schlüssels
-veröffentlichen und vergleichen, wie oft sie unterschiedliche Ergebnisse
-produziert haben, was geschehen würde, wenn Eve eine andere Basis als Alice und
-Bob gewählt hat. Wenn dies häufig der Fall ist, bedeutet dies, dass ihre
-Transaktion abgehört wurde. 
+Die polarisierten Photonen werden nun zu Bob geleitet, der das Licht ebenfalls
+mit einem Polarisationsfilter analysiert. Die Wahl der Basis von Bob erfolgt
+ebenfalls zufällig. Schließlich können die Photonen, die den Filter passiert
+haben, mit einem Detektor nachgewiesen werden.
+
+Stimmen die zufällig gewählten Basen bei Alice und Bob überein, so sind die
+Messergebnisse bei Bob zu den gewählten Zuständen bei Alice in der Theorie zu
+\SI{100}{\percent} korreliert. Aus diesen Ergebnissen kann schließlich ein
+Schlüssel erzeugt werden. Wurden verschiedene Basen verwendet, so müssen die
+Messergebnisse bei Bob verworfen werden, da aus ihnen keine Rückschlüsse auf die
+gewählten Zustände von Alice gezogen werden können.
+
+Wenn Eve nun versuchen würde, die Polarisation der von Alice gesendeten Photonen
+zu messen und ein Photon gleicher Polarisation zu Bob zu senden, müsste Eve
+sich zunächst für eine Basis entscheiden müssen. Bei zwei Möglichkeiten wird
+Eve in \SI{50}{\percent} der Fälle die falsche Basis verwenden und ein rein
+zufälliges Ergebnis messen, welches dann an Bob weitergeleitet werden würde.
+Nutzen nun Alice und Bob einen Teil ihres Schlüssels um einen öffentlichen
+Vergleich auf Unterschiede des Schlüssels durchzuführen, so kann die Sicherheit
+und Richtigkeit des Schlüssels validiert werden. Wenn ein höherer Prozentsatz
+des Schlüssels zum Vergleichen genutzt wird, sinkt die Wahrscheinlichkeit, dass
+ein Angriff durchgeführt worden ist, jedoch sinkt ebenso die Länge das für die
+Verschlüsselung verbleibenden Schlüsselanteils.
+
+Darüber hinaus gibt es noch weitere Möglichkeiten einen Angriff auszuschließen.
+So können bestimmte Köder-Lichtpulse (Decoy-States) verwendet werden, um die
+Sicherheit weiter zu erhöhen.
 
 \subsection{Versuchsaufbau}
-
-Der für den Versuch konkret verwendete Aufbau weicht in einigen Details vom
-prinzipiellen Schema ab. Zunächst wurde keine wirkliche Ein-Photonen-Quelle
-verwendet, sondern ein Laser, dessen Intesität so stark abgeschwächt wurde,
-dass es sehr unwahrscheinlich ist, dass mehr als ein Photon gleichzeitig
-emittiert wird.
-
-Weiterhin wurden die Photonen durch einen Strahlteiler geleitet, der nur
-vertikal porarisiertes Licht passieren lässt und die vertikalen Anteile aus der
-Apparatur herausführt. In einem nächsten Schritt passieren die Photonen einen 
-„elektro-optischen Modulator“ (EOM), wie sie in \fref{aufbau} zu sehen sind.
 
 \begin{figure*}[htb]
  \centering
@@ -118,21 +108,34 @@ Apparatur herausführt. In einem nächsten Schritt passieren die Photonen einen
  \label{fig:aufbau}
 \end{figure*}
 
-Dabei handelt es sich um Geräte, die den Lichtstrahl, der durch sie
-hindurchläuft, durch ein doppelbrechendes Medium leiten, dessen
-Brechungsindizes von der angelegten elektrischen Spannung abhängen. Man kann
-über eine Software diesen Spannungswert variieren und somit das optische
-Verhalten des doppelbrechenden Kristalls beeinflussen. Da die Wellenlänge der
-Photonen konstant und bekannt ist (ca. \SI{633}{nm}), kann gezielt eingestellt
-werden, ob sich die EOMs wie $λ/4$- oder $λ/2$-Plättchen verhalten. Im
-Endeffekt resultieren je nach gewähltem Spannungswert horizontal, vertikal oder
-rechts- bzw. links-zirkular polarisierte Photonen, die zu Bob gesendet werden.
-Ein Nachweis, dass zirkular polarisiertes Licht für unsere Zwecke geeignet ist,
-wird in \textcolor{red}{\sref{zirkular}} geführt.
+Der Versuchsaufbau ist schematisch in \fref{aufbau} dargestellt.
+
+Als Einzelphotonenquelle dient ein Laser, dessen Intesität so stark abgeschwächt
+wird, dass nur mit einer sehr geringen Wahrscheinlichkeit mehr als ein Photon
+gleichzeitig emittiert werden.
+
+Die Photonen werden zunächst durch einen Strahlteiler geleitet, der nur vertikal
+porarisierte Photonen passieren lässt und alle anderen Photonen aus der Apparatur
+herausleitet. In einem nächsten Schritt passieren die Photonen einen 
+elektro-optischen Modulator (EOM), in dem die Photonen durch ein
+doppelbrechendes Medium geleitet werden, dessen Brechungsindizes von der
+angelegten elektrischen Spannung abhängen. Dieser Spannungswert kann letztlich
+softwareseitig variiert werden, wodurch somit das optische Verhalten des
+doppelbrechenden Kristalls beeinflusst wird.
+
+Da die Wellenlänge der Photonen konstant \SI{633}{nm} beträgt, kann gezielt
+eingestellt werden, ob sich die EOMs wie $λ/4$- oder $λ/2$-Plättchen verhalten.
+Nachdem das Licht das erste EOM passiert hat, verbleiben je nach gewähltem
+Spannungswert bei Wahl von Basis 1 horizontal oder vertikal und bei Wahl von
+Basis 2 rechts- bzw. links-zirkular polarisierte Photonen.
+
+Ein Nachweis, dass die gewählten Polarisationen innerhalb des BB84-Protokolls
+verwendet werden können, ist im Anhang \ref{sec:zirkular} zu finden.
 
 Auf der Seite von Bob wird das eintreffende Licht zunächst durch einen weiteren
 EOM geleitet. Hier wird die Polarisationsrichtung des Lichts erneut um einen
-gewissen Winkel gedreht, der mit einer Spannung geregelt werden kann.
-Anschließend wird der Lichtstrahl erneut durch einen Strahlteiler geleitet, der
-nur die vertikal polarisierten Anteile passieren lässt. Schließlich werden die
-Photonen mit einer Avalanche-Photodiode (APD) registriert.
+gewissen Winkel gedreht, der mit einer Spannung softwareseitig geregelt werden
+kann. Anschließend wird der Lichtstrahl erneut durch einen Strahlteiler
+geleitet, nachdem nur die vertikal polarisierten Anteile verbleiben.
+Schließlich werden die Photonen mit einer Avalanche-Photodiode (APD)
+registriert.

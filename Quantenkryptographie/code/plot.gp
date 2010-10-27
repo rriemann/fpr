@@ -11,12 +11,12 @@ set encoding utf8
 #set encoding iso_8859_1
 #set title ""
 set xlabel "{/Symbol b}{/Symbol g}" enhanced
-set xlabel "ln (T / K)"
-set ylabel "ln μ(T)"
-set logscale x
+set xlabel "log (f / Hz)"
+set ylabel "Similarity"
+#set logscale x
 #set logscale y
-#set xtics 5
-#set mxtics 5
+#set xtics 3
+#set mxtics 3
 #set ytics 0.5
 #set mytics 4
 #set grid xtics ytics mxtics mytics
@@ -25,15 +25,16 @@ set logscale x
 #set key box
 set nokey
 #set format x "10^{%L}"
-set xtics 0.2
+#set xtics 0.2
 set mxtics 3
 set grid xtics ytics 
 #set tmargin 0
 #set rmargin 0.0
-f(x) = y0 + A*exp((x-x0)/s)
-y0 = 0
+f(x) = A*(1 - exp(-x))
+#f(x) = y0 + A*log(s*(x-x0))
+#y0 = 90
 x0 = 0
 s = 1
-A = 1
-fit f(x) "../data/similarity.dat" using 1:3 via y0,x0,s,A
-plot "../data/similarity.dat" using ($1):($3) with p pt 7 ps 0.3, f(x) t "Fit"
+A = 90
+fit f(x) "../data/similarity.dat" using 1:2 via A
+plot "../data/similarity.dat" using (log10($1)):($2) with p pt 7 ps 0.3, f(x) t "Fit"

@@ -34,6 +34,7 @@ set key box
 set key left
 error_frequ = 0.01
 error_attenuation = 0.01
+
 plot "../data/similarity.dat" using (log10($1)):($5) with p pt 7 ps 0.5 t "{/Symbol a = 4,5}", "" using (log10($1)):($2) with p pt 1 ps 0.7 lc 0 t "{/Symbol a = 5,0}", "" using (log10($1)):($3) with p pt 2 ps 0.7 t "{/Symbol a = 5,5}", "" using (log10($1)):($4) with p pt 4 ps 0.5 lc 2 t "{/Symbol a} = 6,0"
 
 

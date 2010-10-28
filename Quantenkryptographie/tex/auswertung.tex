@@ -21,34 +21,45 @@ zugehörigen Messdaten können in Anhang \ref{sec:messwerttabellen} eingesehen
 werden.
 
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
  \centering
-%  \includegraphics[page=8,viewport=166 482 445 565,clip,%
-%   width=0.8\paperwidth,keepaspectratio]{%
-%   ../doc/crypto3}
- \caption{Aufbau des Experiments}
+ \includegraphics[width=\columnwidth,keepaspectratio]{%
+  ../tmp/similarity_vs_Hz}
+ \caption{Similarity in Abhängigkeit von der Frequenz $f$}
  \label{fig:sim_frequenz}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
  \centering
-%  \includegraphics[page=8,viewport=166 482 445 565,clip,%
-%   width=0.8\paperwidth,keepaspectratio]{%
-%   ../doc/crypto3}
- \caption{Aufbau des Experiments}
- \label{fig:sim_alpha}
-\end{figure*}
+ \includegraphics[width=\columnwidth,keepaspectratio]{%
+  ../tmp/similarity_vs_alpha1}
+ \caption{Similarity in Abhängigkeit vom Dämpfungsexponenten α bei Frequenzen%
+ von $f\in [50;500]$ Hz}
+ \label{fig:sim_alpha1}
+\end{figure}
+
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=\columnwidth,keepaspectratio]{%
+  ../tmp/similarity_vs_alpha2}
+ \caption{Similarity in Abhängigkeit vom Dämpfungsexponenten α bei Frequenzen%
+ von $f\in [1;10]$ kHz}
+ \label{fig:sim_alpha2}
+\end{figure}
 
 \subsection{Einfluss der Parameter auf die Similarity}
 
-Mit kleiner werdenden Frequenzen nimmt die Similarity unabhängig von der
+Zunächst wurde die Frequenzabhängigkeit der Similarity untersucht (s.
+\fref{sim_frequenz}). Mit kleiner werdenden Frequenzen nimmt die Similarity
+unabhängig von der
 gewählten Dämpfung ab. Eine Begründung hierfür könnte der Einfluss des
 Streulichtes sein. Als mögliche Quellen wäre das verbleibende Umgebungslicht 
 im Labor denkbar, danaben aber auch Wärmestrahlung. Thermische Prozesse im
 Detektor tragen ebenfalls ein Teil zum Fehler bei.
 Wenn man davon ausgeht, dass die Anzahl der Streuphotonen pro
-Zeitintervall konstant bleibt, so steigt der relative Fehler und damit auch die
-Similarity, wenn im gleichen Zeitfenster nur wenige Photonen des Signals den
+Zeitintervall konstant bleibt, so steigt der relative Fehler, wodurch die
+Similarity verringert wird, wenn im gleichen Zeitfenster nur wenige Photonen des
+Signals den
 Detektor erreichen. Bei hohen Frequenzen dagegen macht der Anteil des
 Streulichtes am Gesamtsignal im Detektor nur einen geringen Prozentsatz aus,
 wodurch die Similarity größere Werte annimmt.
@@ -72,10 +83,45 @@ Bob ebenfalls seine spezifische Polarisation verlieren. Daher sollte ein Aufheiz
 Einstauben, oder Verschmutzen der Apparatur möglichst ausgeschlossen werden, dies
 lässt sich jedoch nur unter größerem Aufwand erreichen.
 
--weniger Dämpfung -> mehr Photonen -> Bob könnte angreifen (bei uns egal)
-                                   -> mehr Streulicht durch Mehrfachreflexion an Geräten
--mehr Dämpfung -> Einfluss von Streulicht wächst, da Signal/Rauschen verhältnis sinkt
+Weiterhin bewirkt die konkrete Wahl des Wertes des Dämpfungsexponenten bei
+konstant gehaltener Frequenz verschiedene Similarity-Werte. In \fref{sim_alpha1}
+und \fref{sim_alpha2} sind die Verläufe für verschiedene Frequenzen dargestellt.
 
--fitten nicht möglich, da zu wenig Messpunkte
+Wie man erkennen kann, nimmt die Similarity unabhängig von der gewählten
+Frequenz mit steigender Dämpfung ab. Eine Ausnahme bildet zum einen die mit
+\SI{50}{Hz} aufgenommene Kurve und zum anderen die zu einem Exponenten von $α=6$
+gehörenden Punkte in \fref{sim_alpha2}. Eine stärkere Dämpfung bedeutet weniger
+Photonen, die pro Laserpuls den Detektor erreichen können. Somit wächst, wie
+schon weiter oben beschrieben, der Einfluss von in der Apparatur vorhandenem
+Streulicht, was zu geringeren Similarity-Werten führt.
+
+Für geringere Dämpfungen können im Mittel mehr Photonen pro Puls die Filter
+passieren. Dies führt zu einer Zunahme an Messwert-Anzahlen und somit zur
+Verringerung von statistischen Unsicherheiten bzw. Schwankungen. Andererseits
+kann es somit durch Verunreinigungen der optischen Elemente zu einer Zunahme
+von Streulicht kommen, was zu einer Verringerung der Similarity führt. Da aber
+die Similarity für kleiner werdende Exponenten generell größere Werte annimmt,
+lässt sich vermuten, dass diese Streulichtzunahme klein ist im Vergleich zum
+größeren Einfluss des Streulichts bei größeren Dämpfungsexponenten.
+
+In einer realen Anwendung würde man allerdings aus anderen Gründen nicht zu
+kleinen Dämpfungen übergehen, da es hier bedingt durch die Wahl
+eines Lasers als Lichtquelle wahrscheinlicher wird, dass mehr als ein Photon
+gleichzeitig die Apparatur durchqueren, was dazu führt, dass ein potentieller
+Spion größere Chancen hat, unentdeckt zu bleiben und somit unbemerkt partielle
+Kenntnis über den Schlüssel erlangen kann.
+
+Um die gemessenen Daten genauer untersuchen zu können, wird eine Theorie
+benötigt, die den Einfluss der Veränderung der beiden betrachteten Parameter in
+einer Formel beschreit. Mit einer solchen Formel könnte man die gemessenen
+Daten fitten und so einen quantitativen Vergleich zwischen Erwartung und
+Experiment anstellen. Da uns keine solche Theorie bekannt ist und nur relativ
+wenige Messpunkte vorliegen, konnte kein sinnvoller Fit erstellt werden. Daher
+musste sich auf die Betrachtung von Tendenzen beschränkt werden.
+
+Schließlich wurden die aus den Unsicherheiten der Parameter resultierenden 
+Fehlerbalken in alle gezeigten Histogramme hinzugefügt. 
+
 -fehler für similarity benötigt weiterer untersuchungen um systematik quantifizieren
 zu können
+- schlüssel nicht gut, siehe tab., bildübertragung nicht möglich

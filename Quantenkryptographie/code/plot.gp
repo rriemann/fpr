@@ -35,8 +35,8 @@ set key left
 error_frequ = 0.01
 error_attenuation = 0.01
 
-plot "../data/similarity.dat" using (log10($1)):($5) with p pt 7 ps 0.5 t "{/Symbol a = 4,5}", "" using (log10($1)):($2) with p pt 1 ps 0.7 lc 0 t "{/Symbol a = 5,0}", "" using (log10($1)):($3) with p pt 2 ps 0.7 t "{/Symbol a = 5,5}", "" using (log10($1)):($4) with p pt 4 ps 0.5 lc 2 t "{/Symbol a} = 6,0"
-
+#plot "../data/similarity.dat" using (log10($1)):($5):($5error_attenuation*$5) pt 7 ps 0.5 t "{/Symbol a = 4,5}" with yerrorbars , "" using (log10($1)):($2):(0.01*$2) pt 1 ps 0.7 lc 0 t "{/Symbol a = 5,0}" with yerrorbars, "" using (log10($1)):($3) pt 2 ps 0.7 t "{/Symbol a = 5,5}" with yerrorbars, "" using (log10($1)):($4) pt 4 ps 0.5 lc 2 t "{/Symbol a} = 6,0" with yerrorbars
+############################## hier drueber muss noch der fehler besser gemacht werden
 
 set output "../tmp/similarity_vs_alpha1.pdf"
 set xlabel "Dämpfungsexponent {/Symbol a}"
@@ -45,10 +45,10 @@ set mxtics 2
 set grid mxtics ytics 
 set key right
 
-plot "../data/similarity_transponiert1.dat" using ($1):($2) with p pt 7 ps 0.5 t "f = 50 Hz", "" using ($1):($3) with p pt 1 ps 0.7 lc 0 t "f = 100 Hz", "" using ($1):($4) with p pt 2 ps 0.7 t "f = 500 Hz"
+plot "../data/similarity_transponiert1.dat" using ($1):($2):(error_frequ*$2) pt 7 ps 0.5 t "f = 50 Hz" with yerrorbars, "" using ($1):($3):(error_frequ*$3) pt 1 ps 0.7 lc 0 t "f = 100 Hz" with yerrorbars, "" using ($1):($4):(error_frequ*$4) pt 2 ps 0.7 t "f = 500 Hz" with yerrorbars
 
 set output "../tmp/similarity_vs_alpha2.pdf"
-plot "../data/similarity_transponiert2.dat" using ($1):($2) with p pt 7 ps 0.5 t "f =   1 kHz", "" using ($1):($3) with p pt 1 ps 0.7 lc 0 t "f =   5 kHz", "" using ($1):($4) with p pt 2 ps 0.7 t "f = 10 kHz"
+plot "../data/similarity_transponiert2.dat" using ($1):($2):(error_frequ*$2) pt 7 ps 0.5 t "f =   1 kHz" with yerrorbars, "" using ($1):($3):(error_frequ*$3) pt 1 ps 0.7 lc 0 t "f =   5 kHz" with yerrorbars, "" using ($1):($4):(error_frequ*$4) pt 2 ps 0.7 t "f = 10 kHz" with yerrorbars
 
 
 #fehler: nur y, dämpfung : vllt 1%, frequ: auch 1%

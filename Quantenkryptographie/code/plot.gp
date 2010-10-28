@@ -35,8 +35,8 @@ set key left
 error_frequ = 0.01
 error_attenuation = 0.01
 
-#plot "../data/similarity.dat" using (log10($1)):($5):($5error_attenuation*$5) pt 7 ps 0.5 t "{/Symbol a = 4,5}" with yerrorbars , "" using (log10($1)):($2):(0.01*$2) pt 1 ps 0.7 lc 0 t "{/Symbol a = 5,0}" with yerrorbars, "" using (log10($1)):($3) pt 2 ps 0.7 t "{/Symbol a = 5,5}" with yerrorbars, "" using (log10($1)):($4) pt 4 ps 0.5 lc 2 t "{/Symbol a} = 6,0" with yerrorbars
-############################## hier drueber muss noch der fehler besser gemacht werden
+plot "../data/similarity.dat" using (log10($1)):($5):(error_attenuation*$5) pt 7 ps 0.5 t "{/Symbol a = 4,5}" with yerrorbars , "" using (log10($1)):($2):(error_attenuation*$2) pt 1 ps 0.7 lc 0 t "{/Symbol a = 5,0}" with yerrorbars, "" using (log10($1)):($3):(error_attenuation*$3) pt 2 ps 0.7 t "{/Symbol a = 5,5}" with yerrorbars, "" using (log10($1)):($4):(error_attenuation*$4) pt 4 ps 0.5 lc 2 t "{/Symbol a} = 6,0" with yerrorbars
+############################## um zu beachten, dass der fehler durch alpha nicht symmetrisch ist, muesste man ja die funktion kennen, und dann fehlerfortpflanzung betreiben. geht hier nicht. also: wieder annahme 1prozent
 
 set output "../tmp/similarity_vs_alpha1.pdf"
 set xlabel "Dämpfungsexponent {/Symbol a}"

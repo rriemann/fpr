@@ -80,6 +80,53 @@ quantenkryptographischen Schlüsselübertragung geeignet ist.
 \section{Messwerttabellen}
 \subsection{Similarity}
 \label{sec:messwerttabellen}
+\begin{table}[htbp]
+\centering
+\setlength{\tabcolsep}{14pt}
+\begin{tabular*}{0.75\columnwidth}{%
+S[tabformat=2.2]%
+S[tabformat=2.2]%
+S[tabformat=2.2]%
+S[tabformat=2.2]%
+S[tabformat=2.2]}
+\toprule
+{Similarity-Werte} & {α = 4,5} & {α = 5} & {α = 5,5} & {α = 6}\\
+\midrule
+{$f=\SI{50}{Hz}$} & {} & {40,91} & {66,67} & {46,31}\\
+{$f=\SI{100}{Hz}$} & {} & {54,55} & {50,00} & {51,13}\\
+{$f=\SI{500}{Hz}$} & {} & {60,09} & {55,72} & {51,18}\\
+{$f=\SI{1}{kHz}$} & {65,99} & {65,60} & {59,30} & {50,74}\\
+{$f=\SI{5}{kHz}$} & {77,66} & {73,35} & {64,99} & {58,47}\\
+{$f=\SI{10}{kHz}$} & {78,51} & {73,64} & {63,60} & {56,10}\\
+\bottomrule
+\end{tabular*}
+\caption{Similarity in Abhängigkeit von der Frequenz und des Dämpfungsexponenten α}
+\label{tab:similarity}
+\end{table}
+
 
 \label{Schlüssellängen}
 \label{sec:keylength}
+\begin{table}[htbp]
+\centering
+\setlength{\tabcolsep}{14pt}
+\begin{tabular*}{0.9\columnwidth}{%
+S[tabformat=10.0]%
+S[tabformat=10.0]%
+S[tabformat=10.0]%
+S[tabformat=10.0]%
+S[tabformat=10.0]}
+\toprule
+{Code-Längen} & {α = 4,5} & {α = 5} & {α = 5,5} & {α = 6}\\
+\midrule
+{$f=\SI{50}{Hz}$} & {} & {22/1000} & {36/1000} & {149/3000} \\
+{$f=\SI{100}{Hz}$} & {} & {44/1000} & {82/1000} & {311/1000} \\
+{$f=\SI{500}{Hz}$} & {} & {1824/10000} & {2769/10000} & {3357/10000} \\
+{$f=\SI{1}{kHz}$} & {3520/20000} & {2823/10000} & {3715/10000} & {3987/10000} \\
+{$f=\SI{5}{kHz}$} & {7347/20000} & {4240/10000} & {3008/10000} & {2309/10000} \\
+{$f=\SI{10}{kHz}$} & {4653/20000} & {3095/10000} & {1261/10000} & {1155/10000} \\
+\bottomrule
+\end{tabular*}
+\caption{Erreichte Codelänge relativ zu den maximal von Alice gesendeten Anzahl von Bits in Abhängigkeit von der Frequenz und des Dämpfungsexponenten α}
+\label{tab:codelength}
+\end{table}
